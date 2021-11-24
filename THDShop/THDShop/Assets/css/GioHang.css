@@ -1,0 +1,200 @@
+﻿input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+th,td{
+    border:0px solid !important ;
+    text-align:center!important ;
+}
+.giohang1 {
+    display: flex;
+    border-radius: 100px;
+    background-color: #f0f2ff;
+    margin-top: 50px;
+}
+
+.giohang2 {
+    border-radius: 100px;
+    background-color: #ff3939;
+    color: #fff;
+}
+
+.giohang2both {
+    width: 33.33%;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+}
+.shopping-cart {
+    background-color: #FFFFFF;
+    box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+    border-radius: 6px;
+}
+.padding {
+    padding-top: 10px;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+.padding-table {
+    padding-top: 50px;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+.title2-all {
+    padding: 5px;
+}
+
+.title2-cart {
+    font-weight:600
+}
+.sh-table-cell {
+    display: table-cell;
+    vertical-align: middle;
+    float: none !important;
+}
+.title2 {
+    color: #5E6977;
+    font-size: 14px;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+.price {
+    float: right;
+}
+.title {
+    display: flex;
+    padding: 40px 80px 40px 80px;
+    color: #5E6977;
+    font-size: 30px;
+    font-weight: 600;
+    justify-content: space-between;
+}
+.carttotal {
+    background-color: #f9f9f9;
+    color: #454545;
+    padding: 20px;
+    font-weight: 600;
+}
+
+.content-table {
+    border-collapse: collapse;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+    .content-table th,
+    .content-table td {
+        text-align:center;
+        border-bottom: 1px solid #f1f1f1;
+        padding: 10px 35px;
+    }
+
+.buttons {
+    position: relative;
+    padding-top: 40px;
+    margin-right: 20px;
+}
+
+.delete-btn {
+    width: 18px;
+    height: 17px;
+    background: url(https://designmodo.com/demo/shopping-cart/delete-icn.svg) no-repeat center;
+}
+.description {
+    width: 100%;
+    text-align: center;
+    margin: 6px 0;
+}
+.total-price {
+    width: 83px;
+    padding-top: 27px;
+    text-align: center;
+    font-size: 16px;
+    color: #43484D;
+    font-weight: 300;
+}
+
+.Update {
+    border: 0px;
+    border-radius: 5px;
+    background-color: #ff3939;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 1;
+}
+
+    .Update:hover {
+        opacity: 0.8
+    }
+.quantity {
+    width: 50px;
+    text-align: center;
+    border-radius: 15px;
+    background-color: white;
+    color: black;
+    padding: 10px 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.padding-nextpage {
+    padding-top: 40px;
+}
+.next-table {
+    border-collapse: collapse;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+}
+.code {
+    text-align: center;
+    border-radius: 15px;
+    border: 2px solid #dcdcdc;
+    background-color: white;
+    color: #5c5c5c;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.padding-descrition {
+    padding-bottom:10px
+}
+.btn2 {
+    color: #fff;
+    padding:15px;
+    background: #e81d3b;
+    border-radius: 10px;
+    transition: all 0.3s;
+    font-size: 25px;
+    font-weight: 500;
+    }
+    .btn2:hover {
+        text-decoration: none;
+        background: #4edfbe;
+        color: #111;
+    }
+
+.btn-code {
+    border-radius: 5px;
+    background-color: #ff3939;
+    border: none;
+    color: #ffffff;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 1;
+}
+
+    .btn-code:hover {
+        opacity: 0.8
+    }
