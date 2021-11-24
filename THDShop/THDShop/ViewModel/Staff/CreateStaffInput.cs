@@ -1,11 +1,14 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace THDShop.ViewModel
+namespace THDShop.ViewModel.Staff
 {
-    public class Staff
+    public class CreateStaffInput
     {
         public int ID { get; set; }
         public int IDUSER { get; set; }
@@ -17,5 +20,9 @@ namespace THDShop.ViewModel
         public string PASSWORD { get; set; }
         public string AVATAR { get; set; }
         public Nullable<int> IDROLES { get; set; }
+    }
+    public class UpdateStaffInput : CreateStaffInput
+    {
+
     }
 }

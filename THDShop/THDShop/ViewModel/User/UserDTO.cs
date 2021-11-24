@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace THDShop.ViewModel
+namespace THDShop.ViewModel.User
 {
-    public class User
+    public class UserDTO
     {
         public int ID { get; set; }
         public string NAME { get; set; }

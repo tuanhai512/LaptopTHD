@@ -211,9 +211,15 @@
     <Compile Include="ViewModel\Product\DetailProductDTO.cs" />
     <Compile Include="ViewModel\Product\ProductDTO.cs" />
     <Compile Include="ViewModel\Product\ProductSingleton.cs" />
-    <Compile Include="ViewModel\Roles.cs" />
-    <Compile Include="ViewModel\Staff.cs" />
-    <Compile Include="ViewModel\User.cs" />
+    <Compile Include="ViewModel\Role\CreateRoleInput.cs" />
+    <Compile Include="ViewModel\Role\DetailRoleDTO.cs" />
+    <Compile Include="ViewModel\Role\RoleDTO.cs" />
+    <Compile Include="ViewModel\Staff\CreateStaffInput.cs" />
+    <Compile Include="ViewModel\Staff\DetailStaffDTO.cs" />
+    <Compile Include="ViewModel\Staff\StaffDTO.cs" />
+    <Compile Include="ViewModel\User\CreateProductInput.cs" />
+    <Compile Include="ViewModel\User\DetailProductDTO.cs" />
+    <Compile Include="ViewModel\User\UserDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\site.css" />
@@ -2151,6 +2157,22 @@
     <Content Include="Areas\Manager\Views\Product\Create.cshtml" />
     <Content Include="Areas\Manager\Views\Product\Edit.cshtml" />
     <Content Include="Areas\Manager\Views\Product\Detail.cshtml" />
+    <Content Include="Areas\Manager\Views\Customer\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\Customer\Create.cshtml" />
+    <Content Include="Areas\Manager\Views\Customer\Edit.cshtml" />
+    <Content Include="Areas\Manager\Views\Role\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\Role\Create.cshtml" />
+    <Content Include="Areas\Manager\Views\Role\Edit.cshtml" />
+    <Content Include="Areas\Manager\Views\User\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\User\Create.cshtml" />
+    <Content Include="Areas\Manager\Views\User\Edit.cshtml" />
+    <Content Include="Areas\Manager\Views\Staff\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\Staff\Create.cshtml" />
+    <Content Include="Areas\Manager\Views\Staff\Edit.cshtml" />
+    <Content Include="Areas\Manager\Views\Order\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\Order\Comfirm.cshtml" />
+    <Content Include="Areas\Manager\Views\Order\Success.cshtml" />
+    <Content Include="Areas\Manager\Views\Order\Cancel.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2180,12 +2202,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Manager\Data\" />
-    <Folder Include="Areas\Manager\Views\Customer\" />
     <Folder Include="Areas\Manager\Views\LoginManager\" />
-    <Folder Include="Areas\Manager\Views\Order\" />
-    <Folder Include="Areas\Manager\Views\Role\" />
-    <Folder Include="Areas\Manager\Views\Staff\" />
-    <Folder Include="Areas\Manager\Views\User\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Cart\" />
     <Folder Include="Views\LoginCustomer\" />

@@ -13,10 +13,7 @@ namespace THDShop.Areas.Manager.Controllers
         QLLaptopShopEntities database = new QLLaptopShopEntities();
         public ActionResult Index()
         {
-            if (Session["IDQL"] == null)
-            {
-                return RedirectToAction("Index", "LoginQuanLy");
-            }
+          
             return View(database.ROLES.ToList());
         }
 
