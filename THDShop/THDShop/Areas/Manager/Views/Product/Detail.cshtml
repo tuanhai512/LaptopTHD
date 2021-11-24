@@ -1,0 +1,144 @@
+﻿@model THDShop.ViewModel.Product.DetailProductDTO
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Manager/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link href="~/form/css/StyleSheet.css" rel="stylesheet" />
+</head>
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Detail Product</h1>
+</div>
+
+@using (Html.BeginForm("Detail", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div style="display: flex; align-items: flex-start;">
+        <div class="text-center-box">
+            <div class="paddingtop rl" style="padding-bottom: 20px;">
+                <div class="form">
+                    <!-- Tên -->
+                    <div class="form-group name-title">
+                        Sản phẩm
+                    </div>
+                    <div class="form-group">
+                        @Html.DisplayFor(model => model.NAME)
+                    </div>
+
+                    <!-- Giá Bán -->
+                    <div class="form-group name-title">
+                        Giá bán
+                    </div>
+                    <div class="form-group ">
+                        @Html.DisplayFor(model => model.PRICE)
+                    </div>
+
+                    <!-- Giá Gốc -->
+                    <div class="form-group name-title">
+                        Giá gốc
+                    </div>
+                    <div class="form-group ">
+                        @Html.DisplayFor(model => model.ORI_PRICE)
+                    </div>
+
+                    <!-- Số Lượng -->
+                    <div class="form-group name-title">
+                        Số lượng
+                    </div>
+                    <div class="form-group">
+                        @Html.DisplayFor(model => model.QUANTITY)
+                    </div>
+
+                    <!-- Mô Tả Chung -->
+                    <div class="form-group name-title">
+                        Mô tả chung
+                    </div>
+                    <div class="form-group ">
+                        @Html.DisplayFor(model => model.DESCRIPTION)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center-box">
+            <div class="paddingtop rl" style="padding-bottom: 20px;">
+                <div class="form">
+                    <!-- Mô Tả Card -->
+                    <div class="form-group name-title">
+                        Card Màn Hình
+                    </div>
+                    <div class="form-group ">
+                        @Html.DisplayFor(model => model.DESCRIPTION_CARD)
+                    </div>
+
+                    <!-- Mô Tả CPU -->
+                    <div class="form-group name-title">
+                        CPU
+                    </div>
+                    <div class="form-group ">
+                        @Html.DisplayFor(model => model.DESCRIPTION_CPU)
+                    </div>
+
+                    <!-- Mô Tả Ram -->
+                    <div class="form-group name-title">
+                        Ram
+                    </div>
+                    <div class="form-group ">
+                        @Html.DisplayFor(model => model.DESCRIPTION_RAM)
+                    </div>
+
+                    <!-- Mô Tả Khung Hình -->
+                    <div class="form-group name-title">
+                        Màn Hình
+                    </div>
+                    <div class="form-group ">
+                        @Html.DisplayFor(model => model.DESCRIPTION_SCREEN)
+                    </div>
+
+                    <!-- Mô Tả Dung lượng -->
+                    <div class="form-group name-title">
+                        Dung lượng
+                    </div>
+                    <div class="form-group ">
+                        @Html.DisplayFor(model => model.DESCRIPTION_STORAGE)
+                    </div>
+
+                    <!-- Mô Tả Cân Nặng -->
+                    <div class="form-group name-title">
+                        Cân nặng
+                    </div>
+                    <div class="form-group ">
+                        @Html.DisplayFor(model => model.DESCRIPTION_WEIGHT)
+                    </div>
+
+                    <!-- Loại Sản Phảm -->
+                    <div class="form-group name-title">
+                        Loại sản phẩm
+                    </div>
+                    <div class="form-group ">
+                        @Html.DisplayFor(model => model.CATEGORYNAME)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center-box">
+            <div class="paddingtop rl" style="padding-bottom: 20px;">
+                <div class="form">
+                    <!-- Hình Ảnh -->
+                    <div class="form-group name-title">
+                        Hình Ảnh
+                    </div>
+                    <div class="form-group ">
+                        <img src="@Url.Content(Model.IMAGE)" style="height:250px; width:250px; margin:10px;border-radius:10px;" />
+                    </div>
+
+                    <!-- Buttons -->
+                    <div>
+                        <span class="btn btn-link">@Html.ActionLink("Quay về", "Index") </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

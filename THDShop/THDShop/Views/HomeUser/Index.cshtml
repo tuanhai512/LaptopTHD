@@ -1,0 +1,143 @@
+﻿@model IEnumerable<THDShop.PRODUCT>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainPage.cshtml";
+}
+
+<head>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="~/Assets/main/hotte/image/x-icon" />
+    <link rel="icon" href="favicon.ico" type="~/Assets/main/hotte/image/x-icon" />
+
+    <!-- Icofont CSS -->
+    <link rel="stylesheet" href="~/Assets/main/hotte/css/icofont.min.css" />
+    <!-- Slick CSS -->
+    <link rel="stylesheet" href="~/Assets/main/hotte/css/slick.css" />
+    <link rel="stylesheet" href="~/Assets/main/hotte/css/slick-theme.css" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Assets/main/hotte/css/bootstrap.min.css" />
+    <!-- Venobox CSS -->
+    <link rel="stylesheet" href="~/Assets/main/hotte/css/venobox.min.css" />
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="~/Assets/main/hotte/css/style.css" />
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="~/Assets/main/hotte/css/responsive.css" />
+
+    <script>
+        $(".testimonial-slider").slick({
+            autoplay: true,
+            autoplaySpreed: 7000,
+            arrows: true,
+            prevArrow: '<i class="icofont-arrow-left"></i>',
+            nextArrow: '<i class="icofont-arrow-right"></i>',
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        infinite: true,
+                    },
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                    },
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                    },
+                },
+            ],
+        });</script>
+</head>
+<div class="font_asap">
+    @if (Model.Count() > 0)
+    {
+        <div class="food-menu-section" id="food-menu">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="menu-head text-center">
+                            <h2><span>SẢN PHẨM</span></h2>
+                            <p>Toàn bộ các dòng sản phảm Laptop</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row food-box">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+                            <div class="food-menu text-center">
+                                <a style="color:aliceblue" href="/HomeUser/Details/@item.ID">
+                                    <div class="food-img-info">
+                                        <div class="food-img">
+                                            <img src="@Url.Content(item.IMAGE)" width="300" height="300" />
+                                        </div>
+                                        <div class="overlay text-left">
+                                            <h4>Cấu Hình</h4>
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="item-left">
+                                                            <img width="300" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/cpu.png" class="lazyloaded">
+                                                        </td>
+                                                        <td class="item-right">i5 1135G7</td>
+                                                        <td class="item-left">
+                                                            <img width="300" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/gpu.png" class="lazyloaded">
+                                                        </td>
+                                                        <td class="item-right">MX350</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="item-left">
+                                                            <img width="300" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/ram.png" class="lazyloaded">
+                                                        </td>
+                                                        <td class="item-right">8GB</td>
+                                                        <td class="item-left">
+                                                            <img width="300" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/ssd.png" class="lazyloaded">
+                                                        </td>
+                                                        <td class="item-right">512GB</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="item-left">
+                                                            <img width="300" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/weight.png" class="lazyloaded">
+                                                        </td>
+                                                        <td class="item-right">1.65KG</td>
+                                                        <td class="item-left">
+                                                            <img width="300" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/size.png" class="lazyloaded">
+                                                        </td>
+                                                        <td class="item-right">15.6" FHD</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="food-informaion">
+                                    <div class="row align-items-center">
+                                        <div class="col-12"><h2>@Html.DisplayFor(modelItem => item.NAME)</h2></div>
+                                        <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                            <div class="food-info text-left">
+                                                <span> @Html.DisplayFor(modelItem => item.CATEGORYNAME)</span>
+                                                <h3><span>đ</span>@item.PRICE.ToString("#,##")</h3>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-right">
+                                            <a href="/Cart/AddToCart/@item.ID" class="btn order-btn2">Giỏ Hàng</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>}
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
