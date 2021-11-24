@@ -1,0 +1,63 @@
+﻿@model IEnumerable<THDShop.ORDER>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DAY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TOTALMONEY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STATUS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.METHODS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DELI_ADDRESS.NAME)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DAY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TOTALMONEY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STATUS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.METHODS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DELI_ADDRESS.NAME)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
