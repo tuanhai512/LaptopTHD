@@ -88,9 +88,9 @@
                             <li>
                                 <a href="@Url.Action("ShowToCart","Cart")">
                                     <span>
-                                        @ViewBag.totalQty
+                                        @Html.Action("BagCart", "Cart")
                                     </span>
-                                    <img style="filter:invert(1);width:25px;" src="~/Images/shopping.png" />
+                                    <img style="filter:invert(1);width:25px;" src="~/Assets/Images/shopping.png" />
                                 </a>
                             </li>
                             <li>
