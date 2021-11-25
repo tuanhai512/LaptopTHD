@@ -78,13 +78,7 @@ namespace THDShop.Areas.Manager.Controllers
             }
         }
 
-        public ActionResult Delete(int id)
-        {
-            return View(_db.STAFFs.Where(s => s.ID == id).FirstOrDefault());
-        }
-
-        // POST: NhanVien/DonViTinhMon/Delete/5
-        [HttpPost]
+        
         public ActionResult Delete(STAFF staff, int id)
         {
             try

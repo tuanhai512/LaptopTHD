@@ -13,6 +13,7 @@ namespace THDShop.Areas.Manager.Controllers
         QLLaptopShopEntities database = new QLLaptopShopEntities();
         public ActionResult Index()
         {
+         
           
             return View(database.ROLES.ToList());
         }
@@ -23,20 +24,22 @@ namespace THDShop.Areas.Manager.Controllers
             return View(database.ROLES.Where(s => s.ID == id).FirstOrDefault());
         }
 
-    
+
         public ActionResult Create()
         {
-            return View();
+            ROLE role = new ROLE();
+            return View(role);
         }
 
-     
+        // POST: QuanLy/KhuyenMai/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(ROLE role)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                database.ROLES.Add(role);
+                database.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -72,23 +75,13 @@ namespace THDShop.Areas.Manager.Controllers
         // GET: QuanLy/KhachHang/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var entity = database.ROLES.Find(id);
+            database.ROLES.Remove(entity);
+            database.SaveChanges();
+            
+            return RedirectToAction("Index");
         }
 
-        // POST: QuanLy/KhachHang/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+       
     }
 }

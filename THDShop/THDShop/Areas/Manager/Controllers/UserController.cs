@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using THDShop.ViewModel.User;
 
 namespace THDShop.Areas.Manager.Controllers
 {
@@ -14,7 +15,8 @@ namespace THDShop.Areas.Manager.Controllers
 
         public ActionResult Index()
         {
-          
+
+
             return View(_db.USERS.ToList());
         }
 
@@ -27,79 +29,91 @@ namespace THDShop.Areas.Manager.Controllers
 
         public ActionResult Create()
         {
-            USER user = new USER();
-            return View(user);
+            return View();
+
         }
 
 
         [HttpPost]
-        public ActionResult Create(USER user)
+        public ActionResult Create(CreateUserInput model)
         {
             try
             {
                 if (ModelState.IsValid)
                 // TODO: Add insert logic here
                 {
-                    _db.USERS.Add(user);
+                    var entity = new USER();
+                    if (model == null)
+                    { entity = new USER(); }
+                    entity.NAME = model.NAME;
+                    entity.PASSWORD = model.PASSWORD;
+                    entity.ADDRESS = model.ADDRESS;
+                    entity.PHONE = model.PHONE;
+                    entity.EMAIL = model.EMAIL;
+                    entity.AVATAR = model.AVATAR;
+                    _db.USERS.Add(entity);
                     _db.SaveChanges();
-                    return RedirectToAction("Index");
+
                 }
-                return View(user);
+                return RedirectToAction("Index");
+
             }
             catch
             {
-                return View();
+                return View("Create");
             }
         }
 
 
         public ActionResult Edit(int id)
         {
-            return View(_db.USERS.Where(s => s.ID == id).FirstOrDefault());
+            var entity = _db.USERS.Find(id);
+            var model = new UpdateUserInput();
+            model.ID = entity.ID;
+            model.NAME = entity.NAME;
+            model.PASSWORD = entity.PASSWORD;
+            model.PHONE = entity.PHONE;
+            model.EMAIL = entity.EMAIL;
+            model.AVATAR = entity.AVATAR;
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult Edit(USER user, int id)
+        public ActionResult Edit(UpdateUserInput model)
         {
-            try
+
+            // TODO: Add update logic here
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-                if (ModelState.IsValid)
-                {
-                    _db.Entry(user).State = EntityState.Modified;
-                    _db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                return View(user);
-            }
-            catch
-            {
-                return Content("Data đang được sử dụng bởi một bảng khác");
-            }
+                var entity = new USER();
+                if (model == null)
+                    return HttpNotFound();
+                entity.ID = model.ID;
+                entity.NAME = model.NAME;
+                entity.PASSWORD = model.PASSWORD;
+                entity.ADDRESS = model.ADDRESS;
+                entity.PHONE = model.PHONE;
+                entity.EMAIL = model.EMAIL;
+                entity.AVATAR = model.AVATAR;
+                _db.Entry(entity).State = EntityState.Modified;
+                _db.SaveChanges();
+             }
+            return RedirectToAction("Index");
         }
+
+    
 
         public ActionResult Delete(int id)
         {
-            return View(_db.USERS.Where(s => s.ID == id).FirstOrDefault());
+
+            var entity = _db.USERS.Find(id);
+            _db.USERS.Remove(entity);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // POST: NhanVien/DonViTinhMon/Delete/5
-        [HttpPost]
-        public ActionResult Delete(USER user, int id)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-                user = _db.USERS.Where(s => s.ID == id).FirstOrDefault();
-                _db.USERS.Remove(user);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return Content("Dữ liệu này đang được sử dụng bởi một bảng khác");
-            }
-        }
+       
 
     }
 }

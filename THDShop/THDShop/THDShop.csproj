@@ -128,8 +128,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Manager\Controllers\BillController.cs" />
     <Compile Include="Areas\Manager\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Manager\Controllers\CustomerController.cs" />
+    <Compile Include="Areas\Manager\Controllers\GiftController.cs" />
     <Compile Include="Areas\Manager\Controllers\LoginManagerController.cs" />
     <Compile Include="Areas\Manager\Controllers\OrderController.cs" />
     <Compile Include="Areas\Manager\Controllers\ProductController.cs" />
@@ -207,6 +209,9 @@
     <Compile Include="ViewModel\Customer\CustomerDTO.cs" />
     <Compile Include="ViewModel\Customer\CustomerSingleton.cs" />
     <Compile Include="ViewModel\Customer\DetailCustomerDTO.cs" />
+    <Compile Include="ViewModel\Gift\CreateGiftInput.cs" />
+    <Compile Include="ViewModel\Gift\DetailGiftDTO.cs" />
+    <Compile Include="ViewModel\Gift\GiftDTO.cs" />
     <Compile Include="ViewModel\Product\CreateProductInput.cs" />
     <Compile Include="ViewModel\Product\DetailProductDTO.cs" />
     <Compile Include="ViewModel\Product\ProductDTO.cs" />
@@ -217,7 +222,7 @@
     <Compile Include="ViewModel\Staff\CreateStaffInput.cs" />
     <Compile Include="ViewModel\Staff\DetailStaffDTO.cs" />
     <Compile Include="ViewModel\Staff\StaffDTO.cs" />
-    <Compile Include="ViewModel\User\CreateProductInput.cs" />
+    <Compile Include="ViewModel\User\CreateUserInput.cs" />
     <Compile Include="ViewModel\User\DetailProductDTO.cs" />
     <Compile Include="ViewModel\User\UserDTO.cs" />
   </ItemGroup>
@@ -1961,13 +1966,6 @@
     <Content Include="Areas\Manager\Views\Category\Index.cshtml" />
     <Content Include="Areas\Manager\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Manager\Views\Category\Create.cshtml" />
-    <EntityDeploy Include="Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Manager\Views\Product\Index.cshtml" />
     <Content Include="Assets\manager\scss\navs\_global.scss" />
     <Content Include="Assets\manager\scss\navs\_sidebar.scss" />
@@ -2173,6 +2171,18 @@
     <Content Include="Areas\Manager\Views\Order\Comfirm.cshtml" />
     <Content Include="Areas\Manager\Views\Order\Success.cshtml" />
     <Content Include="Areas\Manager\Views\Order\Cancel.cshtml" />
+    <EntityDeploy Include="Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Manager\Views\Bill\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\Bill\Details.cshtml" />
+    <Content Include="Areas\Manager\Views\Gift\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\Gift\Create.cshtml" />
+    <Content Include="Areas\Manager\Views\Gift\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

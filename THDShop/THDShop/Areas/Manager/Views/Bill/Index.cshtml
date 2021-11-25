@@ -1,0 +1,59 @@
+﻿@model IEnumerable<THDShop.BILL>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>BILL</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TOTALMONEY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DATETIME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.METHODS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER.NOTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STAFF.NAME)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TOTALMONEY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DATETIME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.METHODS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ORDER.NOTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STAFF.NAME)
+        </td>
+        <td>
+            
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) 
+        </td>
+    </tr>
+}
+
+</table>

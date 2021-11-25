@@ -10,7 +10,7 @@ namespace THDShop.ViewModel.Category
     {
         [Required]
         [Display(Name = "Tên loại")]
-        public string Name { get; set; }
+        public string NAME { get; set; }
     }
     public class UpdateCategoryInput : CreateCategoryInput
     {

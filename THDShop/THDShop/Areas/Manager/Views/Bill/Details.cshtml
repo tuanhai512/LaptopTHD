@@ -1,0 +1,65 @@
+﻿@model THDShop.BILL
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BILL</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TOTALMONEY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TOTALMONEY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DATETIME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATETIME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOTE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOTE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.METHODS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.METHODS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ORDER.NOTE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ORDER.NOTE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STAFF.NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STAFF.NAME)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

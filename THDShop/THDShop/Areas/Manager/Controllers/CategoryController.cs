@@ -37,7 +37,7 @@ namespace THDShop.Areas.Manager.Controllers
             var entity = new CATEGORy();
             if (model == null)
                 entity = new CATEGORy();
-            entity.NAME = model.Name;
+            entity.NAME = model.NAME;
             _context.CATEGORIES.Add(entity);
             _context.SaveChanges();
             CategorySingleton.Instance.listCategory.Clear();
@@ -51,7 +51,7 @@ namespace THDShop.Areas.Manager.Controllers
             var entity = _context.CATEGORIES.Find(id);
             var model = new UpdateCategoryInput();
             model.ID = entity.ID;
-            model.Name = entity.NAME;
+            model.NAME = entity.NAME;
             return View(model);
         }
         [HttpPost]
@@ -61,7 +61,7 @@ namespace THDShop.Areas.Manager.Controllers
             if (model == null)
                 return HttpNotFound();
             entity.ID = model.ID;
-            entity.NAME = model.Name;
+            entity.NAME = model.NAME;
             _context.Entry(entity).State = EntityState.Modified;
             _context.SaveChanges();
             CategorySingleton.Instance.listCategory.Clear();

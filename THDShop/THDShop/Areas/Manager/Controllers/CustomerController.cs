@@ -45,7 +45,13 @@ namespace THDShop.Areas.Manager.Controllers
             if (model == null)
                 entity = new CUSTOMER();
             entity.ID = model.IDUSER;
+            entity.NAME = model.NAME;
             entity.PASSWORD = model.PASSWORD;
+            entity.ADDRESS = model.ADDRESS;
+            entity.PHONE = model.PHONE;
+            entity.EMAIL = model.EMAIL;
+            entity.AVATAR = model.AVATAR;
+            entity.POINT_MY = 0;
             _context.CUSTOMERs.Add(entity);
             _context.SaveChanges();
             CustomerSingleton.Instance.listCustomer.Clear();
@@ -60,6 +66,11 @@ namespace THDShop.Areas.Manager.Controllers
             var model = new UpdateCustomerInput();
             model.IDUSER = entity.IDUSER;
             model.PASSWORD = entity.PASSWORD;
+            model.ADDRESS = entity.ADDRESS;
+            model.PHONE = entity.PHONE;
+            model.EMAIL = entity.EMAIL;
+            model.AVATAR = entity.AVATAR;
+            model.POINT_MY = entity.POINT_MY;
             return View(model);
         }
         [HttpPut]
@@ -69,7 +80,13 @@ namespace THDShop.Areas.Manager.Controllers
             if (model == null)
                 return HttpNotFound();
             entity.ID = model.IDUSER;
+            entity.NAME = model.NAME;
             entity.PASSWORD = model.PASSWORD;
+            entity.ADDRESS = model.ADDRESS;
+            entity.PHONE = model.PHONE;
+            entity.EMAIL = model.EMAIL;
+            entity.AVATAR = model.AVATAR;
+            entity.POINT_MY = model.POINT_MY;
             this._context.Entry(entity).State = EntityState.Modified;
             this._context.SaveChanges();
             return RedirectToAction("Index");

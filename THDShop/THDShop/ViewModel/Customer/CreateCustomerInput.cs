@@ -17,6 +17,8 @@ namespace THDShop.ViewModel.Customer
         public string EMAIL { get; set; }
         public string PASSWORD { get; set; }
         public string AVATAR { get; set; }
+        public int POINT_MY { get; set; }
+
     }
     public class UpdateCustomerInput : CreateCustomerInput
     {
