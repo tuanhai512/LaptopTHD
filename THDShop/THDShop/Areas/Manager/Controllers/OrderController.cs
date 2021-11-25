@@ -30,7 +30,7 @@ namespace THDShop.Areas.Manager.Controllers
             {
                 return RedirectToAction("Index");
             }
-            ORDER dathang = _db.ORDERS.Find(id);
+            ORDERS dathang = _db.ORDERS.Find(id);
             if (dathang.STATUS == 0)
             {
                 dathang.STATUS = 1;
@@ -47,7 +47,7 @@ namespace THDShop.Areas.Manager.Controllers
                 return RedirectToAction("Index");
             }
             //int temp = (int)Session["MAKH"];
-            ORDER dathang = _db.ORDERS.Find(id);
+            ORDERS dathang = _db.ORDERS.Find(id);
             if (dathang.STATUS == 1)
             {
                 if (ModelState.IsValid)
@@ -61,7 +61,7 @@ namespace THDShop.Areas.Manager.Controllers
                        // ID = (int)Session["MAKH"]
 
                     };
-                    _db.BILLs.Add(hoadon);
+                    _db.BILL.Add(hoadon);
                     _db.SaveChanges();
 
                     var mONAN_DATHANG = _db.DE_ORDER.Where(m => m.IDORDER == id).ToList();
@@ -92,7 +92,7 @@ namespace THDShop.Areas.Manager.Controllers
             {
                 return RedirectToAction("Index");
             }
-            ORDER dathang = _db.ORDERS.Find(id);
+            ORDERS dathang = _db.ORDERS.Find(id);
             if (dathang.STATUS == 1)
             {
                 dathang.STATUS = 3;

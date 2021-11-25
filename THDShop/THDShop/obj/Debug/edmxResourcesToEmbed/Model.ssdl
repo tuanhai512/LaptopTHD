@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="QLLaptopShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="QLLaptopShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="BILL">
     <Key>
       <PropertyRef Name="ID" />
@@ -48,7 +48,7 @@
     <Property Name="IDBILL" Type="int" Nullable="false" />
     <Property Name="IDORDER" Type="int" Nullable="false" />
     <Property Name="IDPRODUCT" Type="int" Nullable="false" />
-    <Property Name="QUANTITY" Type="int" />
+    <Property Name="QUANTITY" Type="int" Nullable="false" />
     <Property Name="NOTE" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="DE_ORDER">
@@ -58,7 +58,7 @@
     </Key>
     <Property Name="IDORDER" Type="int" Nullable="false" />
     <Property Name="IDPRODUCT" Type="int" Nullable="false" />
-    <Property Name="QUANTITY" Type="int" />
+    <Property Name="QUANTITY" Type="int" Nullable="false" />
     <Property Name="PRICE" Type="float" Nullable="false" />
   </EntityType>
   <EntityType Name="DELI_ADDRESS">

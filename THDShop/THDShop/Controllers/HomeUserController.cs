@@ -22,6 +22,11 @@ namespace THDShop.Controllers
             var query = _db.PRODUCTS.OrderByDescending(x => x.NAME);
             return View(query);
 
-        }   
+        }
+        public ActionResult Details(int id)
+        {
+            return View(_db.PRODUCTS.Where(s => s.ID == id).FirstOrDefault());
+        }
+
     }
 }
