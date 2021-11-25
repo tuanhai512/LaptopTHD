@@ -17,14 +17,14 @@ namespace THDShop
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MYGIFT()
         {
-            this.CUSTOMERs = new HashSet<CUSTOMER>();
+            this.CUSTOMER = new HashSet<CUSTOMER>();
         }
     
         public int ID { get; set; }
         public string IDGIFT { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CUSTOMER> CUSTOMERs { get; set; }
+        public virtual ICollection<CUSTOMER> CUSTOMER { get; set; }
         public virtual GIFT GIFT { get; set; }
     }
 }

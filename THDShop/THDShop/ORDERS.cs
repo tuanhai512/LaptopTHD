@@ -12,22 +12,27 @@ namespace THDShop
     using System;
     using System.Collections.Generic;
     
-    public partial class DE_ORDER
+    public partial class ORDERS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DE_ORDER()
+        public ORDERS()
         {
-            this.DE_BILL = new HashSet<DE_BILL>();
+            this.BILL = new HashSet<BILL>();
+            this.DE_ORDER = new HashSet<DE_ORDER>();
         }
     
-        public int IDORDER { get; set; }
-        public int IDPRODUCT { get; set; }
-        public int QUANTITY { get; set; }
-        public double PRICE { get; set; }
+        public int ID { get; set; }
+        public System.DateTime DAY { get; set; }
+        public int IDDELIADDRESS { get; set; }
+        public double TOTALMONEY { get; set; }
+        public string NOTE { get; set; }
+        public int STATUS { get; set; }
+        public int METHODS { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DE_BILL> DE_BILL { get; set; }
-        public virtual ORDERS ORDERS { get; set; }
-        public virtual PRODUCTS PRODUCTS { get; set; }
+        public virtual ICollection<BILL> BILL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DE_ORDER> DE_ORDER { get; set; }
+        public virtual DELI_ADDRESS DELI_ADDRESS { get; set; }
     }
 }

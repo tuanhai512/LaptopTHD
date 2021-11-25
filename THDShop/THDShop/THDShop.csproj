@@ -140,7 +140,7 @@
     <Compile Include="BILL.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="CATEGORy.cs">
+    <Compile Include="CATEGORIES.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\CartController.cs" />
@@ -182,20 +182,20 @@
     <Compile Include="MYGIFT.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="ORDER.cs">
+    <Compile Include="ORDERS.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="PRODUCT.cs">
+    <Compile Include="PRODUCTS.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ROLE.cs">
+    <Compile Include="ROLES.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="STAFF.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="USER.cs">
+    <Compile Include="USERS.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\Cart.cs" />
@@ -212,9 +212,15 @@
     <Compile Include="ViewModel\Product\DetailProductDTO.cs" />
     <Compile Include="ViewModel\Product\ProductDTO.cs" />
     <Compile Include="ViewModel\Product\ProductSingleton.cs" />
-    <Compile Include="ViewModel\Roles.cs" />
-    <Compile Include="ViewModel\Staff.cs" />
-    <Compile Include="ViewModel\User.cs" />
+    <Compile Include="ViewModel\Role\CreateRoleInput.cs" />
+    <Compile Include="ViewModel\Role\DetailRoleDTO.cs" />
+    <Compile Include="ViewModel\Role\RoleDTO.cs" />
+    <Compile Include="ViewModel\Staff\CreateStaffInput.cs" />
+    <Compile Include="ViewModel\Staff\DetailStaffDTO.cs" />
+    <Compile Include="ViewModel\Staff\StaffDTO.cs" />
+    <Compile Include="ViewModel\User\CreateProductInput.cs" />
+    <Compile Include="ViewModel\User\DetailProductDTO.cs" />
+    <Compile Include="ViewModel\User\UserDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\checkout.css" />
@@ -2179,13 +2185,6 @@
     <Content Include="Areas\Manager\Views\Category\Index.cshtml" />
     <Content Include="Areas\Manager\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Manager\Views\Category\Create.cshtml" />
-    <EntityDeploy Include="Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Manager\Views\Product\Index.cshtml" />
     <Content Include="Assets\manager\scss\navs\_global.scss" />
     <Content Include="Assets\manager\scss\navs\_sidebar.scss" />
@@ -2410,6 +2409,26 @@
     <Content Include="Assets\main\hotte\js\fonts\slick.eot" />
     <Content Include="Assets\main\hotte\js\fonts\slick.ttf" />
     <Content Include="Assets\main\hotte\js\fonts\slick.woff" />
+    <Content Include="Areas\Manager\Views\User\Create.cshtml" />
+    <Content Include="Areas\Manager\Views\User\Edit.cshtml" />
+    <Content Include="Areas\Manager\Views\User\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\Staff\Create.cshtml" />
+    <Content Include="Areas\Manager\Views\Staff\Edit.cshtml" />
+    <Content Include="Areas\Manager\Views\Staff\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\Order\Cancel.cshtml" />
+    <Content Include="Areas\Manager\Views\Order\Comfirm.cshtml" />
+    <Content Include="Areas\Manager\Views\Order\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\Order\Success.cshtml" />
+    <Content Include="Areas\Manager\Views\Customer\Create.cshtml" />
+    <Content Include="Areas\Manager\Views\Customer\Edit.cshtml" />
+    <Content Include="Areas\Manager\Views\Customer\Index.cshtml" />
+    <EntityDeploy Include="Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2444,12 +2463,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Manager\Data\" />
-    <Folder Include="Areas\Manager\Views\Customer\" />
-    <Folder Include="Areas\Manager\Views\LoginManager\" />
-    <Folder Include="Areas\Manager\Views\Order\" />
     <Folder Include="Areas\Manager\Views\Role\" />
-    <Folder Include="Areas\Manager\Views\Staff\" />
-    <Folder Include="Areas\Manager\Views\User\" />
     <Folder Include="Models\" />
     <Folder Include="Views\LoginCustomer\" />
   </ItemGroup>

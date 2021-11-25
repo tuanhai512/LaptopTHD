@@ -12,15 +12,18 @@ namespace THDShop
     using System;
     using System.Collections.Generic;
     
-    public partial class DE_BILL
+    public partial class ROLES
     {
-        public int IDBILL { get; set; }
-        public int IDORDER { get; set; }
-        public int IDPRODUCT { get; set; }
-        public int QUANTITY { get; set; }
-        public string NOTE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ROLES()
+        {
+            this.STAFF = new HashSet<STAFF>();
+        }
     
-        public virtual BILL BILL { get; set; }
-        public virtual DE_ORDER DE_ORDER { get; set; }
+        public int ID { get; set; }
+        public string NAME { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<STAFF> STAFF { get; set; }
     }
 }

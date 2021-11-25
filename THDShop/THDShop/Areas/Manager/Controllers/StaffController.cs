@@ -15,13 +15,13 @@ namespace THDShop.Areas.Manager.Controllers
         public ActionResult Index()
         {
 
-            return View(_db.STAFFs.ToList());
+            return View(_db.STAFF.ToList());
         }
 
 
         public ActionResult Details(int id)
         {
-            return View(_db.STAFFs.Where(s => s.ID == id).FirstOrDefault());
+            return View(_db.STAFF.Where(s => s.ID == id).FirstOrDefault());
         }
 
 
@@ -40,7 +40,7 @@ namespace THDShop.Areas.Manager.Controllers
                 if (ModelState.IsValid)
                 // TODO: Add insert logic here
                 {
-                    _db.STAFFs.Add(staff);
+                    _db.STAFF.Add(staff);
                     _db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -55,7 +55,7 @@ namespace THDShop.Areas.Manager.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View(_db.STAFFs.Where(s => s.ID == id).FirstOrDefault());
+            return View(_db.STAFF.Where(s => s.ID == id).FirstOrDefault());
         }
 
         [HttpPost]
@@ -80,7 +80,7 @@ namespace THDShop.Areas.Manager.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View(_db.STAFFs.Where(s => s.ID == id).FirstOrDefault());
+            return View(_db.STAFF.Where(s => s.ID == id).FirstOrDefault());
         }
 
         // POST: NhanVien/DonViTinhMon/Delete/5
@@ -90,8 +90,8 @@ namespace THDShop.Areas.Manager.Controllers
             try
             {
                 // TODO: Add delete logic here
-                staff = _db.STAFFs.Where(s => s.ID == id).FirstOrDefault();
-                _db.STAFFs.Remove(staff);
+                staff = _db.STAFF.Where(s => s.ID == id).FirstOrDefault();
+                _db.STAFF.Remove(staff);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
