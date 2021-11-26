@@ -14,9 +14,11 @@ table{
 .tbl-header {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    background-color: #8579ff1c;
+    background-color: #1d1c2b;
 }
-
+tr {
+    border-top: solid 1px rgb(29 28 43 / 27%)
+}
 th{
   padding: 20px 15px;
   text-align: left;
@@ -29,10 +31,9 @@ td{
   text-align: center !important;
   padding: 15px;
   vertical-align:middle;
-  font-weight: 300;
-  font-size: 12px;
-  color: #fff;
-  border-bottom: solid 1px rgba(255,255,255,0.1);
+  font-weight: 500;
+  font-size: 16px;
+  color: #000;
 }
 
 
@@ -72,6 +73,28 @@ section{
   text-decoration: underline;
 }
 
+.filter__link {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+}
+
+    .filter__link::after {
+        content: '';
+        position: absolute;
+        color: white;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .filter__link.desc::after {
+        content: '(desc)';
+    }
+
+    .filter__link.asc::after {
+        content: '(asc)';
+    }
 
 /* for custom scrollbar for webkit browser*/
 

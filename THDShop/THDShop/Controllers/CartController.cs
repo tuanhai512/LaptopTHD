@@ -112,7 +112,7 @@ namespace THDShop.Controllers
                 _db.SaveChanges();
 
                 //Order
-                var order = new ORDERS()
+                var order = new ORDER()
                 {
                     DAY = DateTime.Now,
                     IDDELIADDRESS = deliaddr.ID,

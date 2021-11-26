@@ -16,7 +16,7 @@ namespace THDShop.ViewModel.Customer
         {
             if (listCustomer.Count == 0)
             {
-                var query = from c in _context.CUSTOMER
+                var query = from c in _context.CUSTOMERs
                             select new CustomerDTO
                             {
                                 ID = c.ID,

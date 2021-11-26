@@ -24,11 +24,11 @@ namespace THDShop
         public Nullable<int> IDSTAFF { get; set; }
         public int IDORDER { get; set; }
         public double TOTALMONEY { get; set; }
-        public Nullable<System.DateTime> DATETIME { get; set; }
+        public System.DateTime DATETIME { get; set; }
         public string NOTE { get; set; }
         public int METHODS { get; set; }
     
-        public virtual ORDERS ORDERS { get; set; }
+        public virtual ORDER ORDER { get; set; }
         public virtual STAFF STAFF { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DE_BILL> DE_BILL { get; set; }

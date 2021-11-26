@@ -19,7 +19,8 @@ namespace THDShop.ViewModel.Category
                             select new CategoryDTO
                             {
                                 ID = c.ID,
-                                NAME = c.NAME
+                                NAME = c.NAME,
+                                CREATEAT = c.CREATEAT
                             };
                 foreach (var item in query)
                 {
