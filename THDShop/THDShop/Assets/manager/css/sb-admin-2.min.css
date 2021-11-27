@@ -134,6 +134,14 @@ sub {
 sup {
     top: -.5em
 }
+.btn-disabled {
+    background: #f5f5f5;
+    border-color: #d9d9d9;
+    box-shadow: none;
+    color: rgba(0,0,0,.25);
+    text-shadow: none;
+    cursor: not-allowed;
+}
 
 a {
     color: #4e73df;

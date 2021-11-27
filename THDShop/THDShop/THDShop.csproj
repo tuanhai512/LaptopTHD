@@ -2927,11 +2927,9 @@
     <Content Include="Areas\Manager\Views\Staff\Create.cshtml" />
     <Content Include="Areas\Manager\Views\Staff\Edit.cshtml" />
     <Content Include="Areas\Manager\Views\Staff\Index.cshtml" />
-    <Content Include="Areas\Manager\Views\Order\Cancel.cshtml" />
     <Content Include="Areas\Manager\Views\Order\Comfirm.cshtml" />
     <Content Include="Areas\Manager\Views\Order\Index.cshtml" />
-    <Content Include="Areas\Manager\Views\Order\Success.cshtml" />
-    <Content Include="Areas\Manager\Views\Order\Cancel.cshtml" />
+    <Content Include="Areas\Manager\Views\Order\BillSuccess.cshtml" />
     <Content Include="Areas\Manager\Views\Customer\Create.cshtml" />
     <Content Include="Areas\Manager\Views\Customer\Edit.cshtml" />
     <Content Include="Areas\Manager\Views\Customer\Index.cshtml" />
@@ -2981,6 +2979,7 @@
     <Content Include="Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Manager\Views\Order\BillCancel.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\editorEDK.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

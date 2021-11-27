@@ -1,92 +1,145 @@
-﻿@model IEnumerable<THDShop.ORDERS>
-
+﻿@model IEnumerable<THDShop.ORDER>
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Đơn Đặt</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Đơn Hàng</h1>
+        <div class="input-group">
+            <input type="text" name="id" class="form-control bg-light border-0 small" placeholder="Nhập mã đơn hàng"
+                   aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-6 text-right">
+            <a href="@Url.Action("BillSuccess", "Order")" class="btn btn-sm btn-success">Đơn Hoàn Tất</a>
+            <a href="@Url.Action("BillCancel", "Order")" class="btn btn-sm btn-danger">Đơn Hủy</a>
+        </div>
+    </div>
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DAY)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TOTALMONEY)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NOTE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.STATUS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.METHODS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DELI_ADDRESS.NAME)
-        </th>
-        <th></th>
-    </tr>
+    <div class="text-center">
+        <div>
+            <div class="tbl-header">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <thead class="table-header">
+                        <tr>
+                            <th class="header__item">
+                                <a class="filter__link filter__link--number" id="datetime" href="#">
+                                    Thời Gian
+                                </a>
+                            </th>
+                            <th class="header__item">
+                                <a class="filter__link filter__link--number" id="id" href="#">
+                                    Mã
+                                </a>
+                            </th>
+                            <th class="header__item">
+                                <a class="filter__link" id="name" href="#">
+                                    Tên
+                                </a>
+                            </th>
+                            <th class="header__item">
+                                <a class="filter__link filter__link--number" id="phone" href="#">
+                                    SĐT
+                                </a>
+                            </th>
+                            <th>
+                                Địa Chỉ
+                            </th>
+                            <th class="header__item">
+                                <a class="filter__link filter__link--number" id="price" href="#">
+                                    Tổng tiền
+                                </a>
+                            </th>
+                            <th>
+                                Phương Thức
+                            </th>
+                            <th>
+                                Tình Trạng Đơn
+                            </th>
+                            <th>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.DAY)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.TOTALMONEY)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NOTE)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.STATUS)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.METHODS)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DELI_ADDRESS.NAME)
-    </td>
-    <td>
-    <td>
-        <a href="@Url.Action("Comfirm", "Order", new { id = @item.ID })" class="btn btn-info btn-sm">
-            @if (item.STATUS.Equals(0))
-            {
-                <span>Xác Nhận</span>
-            }
-            else
-            {
-                <span>Đã Xác Nhận</span>
-            }
-        </a>
-        <a href="@Url.Action("Success", "Order", new { id = @item.ID })" class="btn btn-info btn-sm">
-            @if (item.STATUS.Equals(1))
-            {
-                <span>Hoàn Tất Đơn</span>
-            }
-            else
-            {
-                <span>Đã Hoàn Tất Đơn</span>
-            }
-        </a>
-        <a href="@Url.Action("Cancel", "Order", new { id = @item.ID })" class="btn btn-info btn-sm">
-            @if (item.STATUS.Equals(1))
-            {
-                <span>Hủy Đơn</span>
-            }
-            else
-            {
-                <span>Đã Hủy Đơn</span>
-            }
-        </a>
-        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
-
-    </td>
-    </td>
-</tr>
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div>
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody class="table-content">
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr class="table-row">
+                                    <td class="table-data">
+                                        @(item.DAY.ToString("dd/MM HH:mm"))
+                                    </td>
+                                    <td class="table-data">
+                                        @Html.DisplayFor(modelItem => item.ID)
+                                    </td>
+                                    <td class="table-data">
+                                        @Html.DisplayFor(modelItem => item.DELI_ADDRESS.NAME)
+                                    </td>
+                                    <td class="table-data">
+                                        @Html.DisplayFor(modelItem => item.DELI_ADDRESS.PHONE)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DELI_ADDRESS.ADDRESS)
+                                    </td>
+                                    <td class="table-data">
+                                        @Html.DisplayFor(modelItem => item.TOTALMONEY)
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Comfirm", "Order", new { id = @item.ID })">
+                                            @if (item.STATUS.Equals(0))
+                                            {
+                                                <span class="btn btn-sm btn-warning">Xác Nhận</span>
+                                            }
+                                        </a>
+                                        <a href="@Url.Action("Success", "Order", new { id = @item.ID })" style="margin-bottom: 5px;">
+                                            @if (item.STATUS.Equals(1))
+                                            {
+                                                <span class="btn btn-sm btn-info">Hoàn Tất</span>
+                                            }
+                                            @if (item.STATUS.Equals(2))
+                                            {
+                                                <span class="btn-disabled">Đã Hoàn Tất</span>
+                                            }
+                                        </a>
+                                        <a href="@Url.Action("Cancel", "Order", new { id = @item.ID })" style="margin-bottom: 5px;">
+                                            @if (item.STATUS.Equals(1))
+                                            {
+                                                <span class="btn btn-sm btn-danger">Hủy Đơn</span>
+                                            }
+                                            @if (item.STATUS.Equals(3))
+                                            {
+                                                <span class="btn-disabled">Đã Hủy Đơn</span>
+                                            }
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Details", "Order", new { id = @item.ID })" style="text-decoration: none;">
+                                            <span class="btn btn-info btn-sm">Chi Tiết</span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 }
-
-</table>
+<script src="~/Scripts/search.js"></script>

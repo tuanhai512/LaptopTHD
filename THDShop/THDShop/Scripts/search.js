@@ -5,6 +5,9 @@
 	'oriprice',
 	'price',
 	'quantity',
+	'phone',
+	'datetime',
+	'email',
 ];
 
 $.each(properties, function (i, val) {
