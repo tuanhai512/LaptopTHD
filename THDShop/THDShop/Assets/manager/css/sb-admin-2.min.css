@@ -134,6 +134,14 @@ sub {
 sup {
     top: -.5em
 }
+.btn-disabled {
+    background: #f5f5f5;
+    border-color: #d9d9d9;
+    box-shadow: none;
+    color: rgba(0,0,0,.25);
+    text-shadow: none;
+    cursor: not-allowed;
+}
 
 a {
     color: #4e73df;
@@ -143,7 +151,6 @@ a {
 
     a:hover {
         color: #224abe;
-        text-decoration: underline
     }
 
     a:not([href]):not([class]) {
@@ -3371,11 +3378,12 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     }
 
 .input-group {
+    margin-left: 20px;
+    margin-right: auto;
     position: relative;
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
-    width: 100%
 }
 
     .input-group > .custom-file, .input-group > .custom-select, .input-group > .form-control, .input-group > .form-control-plaintext {
@@ -9634,7 +9642,7 @@ a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover {
     height: auto;
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
     border-radius: 30px;
-    background-color: rgb(100 100 100 / 0.05);
+    background-color: rgb(255 255 255);
     backdrop-filter: blur(15px);
     text-align: center !important
 }
@@ -9653,7 +9661,6 @@ input[type=text] {
     color : white;
     width: 100%;
     padding: 5px 10px;
-    margin: 8px 0;
     display: inline-block;
     border-radius: 10px;
     box-sizing: border-box;

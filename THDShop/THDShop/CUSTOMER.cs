@@ -33,7 +33,7 @@ namespace THDShop
         public Nullable<int> IDMYGIFT { get; set; }
     
         public virtual MYGIFT MYGIFT { get; set; }
-        public virtual USERS USERS { get; set; }
+        public virtual USER USER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DELI_ADDRESS> DELI_ADDRESS { get; set; }
     }

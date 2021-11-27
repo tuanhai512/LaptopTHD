@@ -44,8 +44,7 @@
 
                     <!-- Mô Tả Chung -->
                     <div class="form-group ">
-                        @Html.EditorFor(model => model.DESCRIPTION, new { htmlAttributes = new { placeholder = "Nội Dung" } })
-                        @Html.ValidationMessageFor(model => model.DESCRIPTION, "", new { @class = "text-danger" })
+                        @Html.TextAreaFor(model => model.DESCRIPTION, new { htmlAttributes = new { placeholder = "..." }, id = "txtContent" })
                     </div>
                 </div>
             </div>
@@ -117,4 +116,5 @@
         </div>
     </div>
 }
-
+<script src="~/Scripts/editorEDK.js"></script>
+<script src="~/Assets/manager/ckeditor/ckeditor.js"></script>

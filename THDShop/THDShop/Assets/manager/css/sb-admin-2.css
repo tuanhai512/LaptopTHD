@@ -166,7 +166,14 @@ a {
 
 a:hover {
   color: #224abe;
-  text-decoration: underline;
+}
+.btn-disabled {
+    background: #f5f5f5;
+    border-color: #d9d9d9;
+    box-shadow: none;
+    color: rgba(0,0,0,.25);
+    text-shadow: none;
+    cursor: not-allowed;
 }
 
 a:not([href]):not([class]) {
@@ -3354,11 +3361,12 @@ input[type="button"].btn-block {
 }
 
 .input-group {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  width: 100%;
+    margin-left: 20px;
+    margin-right: auto;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
 }
 
 .input-group > .form-control,
