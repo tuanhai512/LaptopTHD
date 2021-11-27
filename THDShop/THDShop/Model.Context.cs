@@ -38,5 +38,7 @@ namespace THDShop
         public virtual DbSet<ROLE> ROLES { get; set; }
         public virtual DbSet<STAFF> STAFFs { get; set; }
         public virtual DbSet<USER> USERS { get; set; }
+
+        public System.Data.Entity.DbSet<THDShop.ViewModel.Category.CategoryDTO> CategoryDTOes { get; set; }
     }
 }

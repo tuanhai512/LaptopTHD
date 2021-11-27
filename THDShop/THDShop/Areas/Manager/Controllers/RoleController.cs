@@ -81,7 +81,11 @@ namespace THDShop.Areas.Manager.Controllers
             
             return RedirectToAction("Index");
         }
+        public ActionResult Searchname(string name)
+        {
+            var list = database.ROLES.Where(p => p.NAME == name).ToList();
+            return View(list);
+        }
 
-       
     }
 }

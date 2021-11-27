@@ -5,59 +5,91 @@
 }
 
 <h2>USER</h2>
+@using (Html.BeginForm("Searchphone", "User"))
+{
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Thương Hiệu</h1>
+        <div class="input-group">
+            <input type="text" name="phone" class="form-control bg-light border-0 small" placeholder="Nhập sdt user"
+                   aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
+        <a href="@Url.Action("Create", "User")" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> Tạo tai khoan
+        </a>
+    </div>
+    <div class="text-center">
+        <div>
+            <div class="tbl-header">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <thead class="table-header">
+                        <tr>
+                            <th class="header__item">
+                                <a class="filter__link filter__link--number" id="id" href="#">
+                                    Ten vai tro
+                                </a>
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PASSWORD)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ADDRESS)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PHONE)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.EMAIL)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.AVATAR)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div>
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody class="table-content">
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model)
+                            {
+                        <tr class="table-row">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NAME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PASSWORD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ADDRESS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PHONE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EMAIL)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AVATAR)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PASSWORD)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ADDRESS)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PHONE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EMAIL)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AVATAR)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
-
-</table>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NAME)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PASSWORD)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ADDRESS)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PHONE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EMAIL)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AVATAR)
+                            </td>
+                            <td style="display: flex;align-content: center;flex-wrap: wrap;flex-direction: column;">
+                                <a href="@Url.Action("Edit", "Product", new { id = item.ID })" class="btn btn-sm btn-warning" style="margin-bottom: 5px;">Edit</a>
+                                <a href="@Url.Action("Delete", "Product", new { id = item.ID })" class="btn btn-sm btn-danger" style="margin-bottom: 5px;">Delete</a>
+                                <a href="@Url.Action("Detail", "Product", new { id = item.ID })" class="btn btn-sm btn-info" style="margin-bottom: 5px;">Detail</a>
+                            </td>
+                        </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>}

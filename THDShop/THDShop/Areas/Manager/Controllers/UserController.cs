@@ -113,7 +113,12 @@ namespace THDShop.Areas.Manager.Controllers
         }
 
         // POST: NhanVien/DonViTinhMon/Delete/5
-       
+        public ActionResult Searchphone(string phone)
+        {
+            var list = _db.USERS.Where(p => p.PHONE == phone).ToList();
+
+            return View(list);
+        }
 
     }
 }

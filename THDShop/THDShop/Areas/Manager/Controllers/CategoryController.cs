@@ -96,5 +96,11 @@ namespace THDShop.Areas.Manager.Controllers
             var loaiList = _context.CATEGORIES.ToList();
             return PartialView(loaiList);
         }
+        public ActionResult Searchname(string name)
+        {
+            var query = CategorySingleton.Instance.listCategory.Where(p => p.NAME == name).ToList();
+
+            return View(query);
+        }
     }
 }

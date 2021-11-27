@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Searchname", "Order"))
 {
     @Html.AntiForgeryToken()
     <!-- Page Heading -->

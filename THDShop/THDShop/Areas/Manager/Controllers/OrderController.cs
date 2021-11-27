@@ -143,5 +143,10 @@ namespace THDShop.Areas.Manager.Controllers
                 return View();
             }
         }
+        public ActionResult Searchid(int id)
+        {
+            var list = _db.ORDERS.Where(p => p.ID == id).ToList();
+            return View(list);
+        }
     }
 }

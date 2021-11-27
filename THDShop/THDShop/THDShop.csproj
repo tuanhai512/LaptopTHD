@@ -2980,6 +2980,14 @@
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
     <Content Include="Areas\Manager\Views\Order\BillCancel.cshtml" />
+    <Content Include="Areas\Manager\Views\Bill\Searchid.cshtml" />
+    <Content Include="Areas\Manager\Views\Category\Searchname.cshtml" />
+    <Content Include="Areas\Manager\Views\Role\Searchname.cshtml" />
+    <Content Include="Areas\Manager\Views\Role\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\Role\Details.cshtml" />
+    <Content Include="Areas\Manager\Views\Role\Create.cshtml" />
+    <Content Include="Areas\Manager\Views\Role\Edit.cshtml" />
+    <Content Include="Areas\Manager\Views\Order\Searchid.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\editorEDK.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -3016,7 +3024,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Manager\Data\" />
-    <Folder Include="Areas\Manager\Views\Role\" />
     <Folder Include="Models\" />
     <Folder Include="Views\LoginCustomer\" />
   </ItemGroup>
