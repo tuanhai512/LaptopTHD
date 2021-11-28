@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>THDShop</RootNamespace>
     <AssemblyName>THDShop</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -133,6 +133,7 @@
     <Compile Include="Areas\Manager\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Manager\Controllers\GiftController.cs" />
     <Compile Include="Areas\Manager\Controllers\LoginManagerController.cs" />
+    <Compile Include="Controllers\MyGiftController.cs" />
     <Compile Include="Areas\Manager\Controllers\OrderController.cs" />
     <Compile Include="Areas\Manager\Controllers\ProductController.cs" />
     <Compile Include="Areas\Manager\Controllers\RoleController.cs" />
@@ -213,6 +214,7 @@
     <Compile Include="ViewModel\Gift\DetailGiftDTO.cs" />
     <Compile Include="ViewModel\Gift\GiftDTO.cs" />
     <Compile Include="ViewModel\DeliAddress\CreateDeliAddressInput.cs" />
+    <Compile Include="ViewModel\MyGift\MyGiftDTO.cs" />
     <Compile Include="ViewModel\Product\CreateProductInput.cs" />
     <Compile Include="ViewModel\Product\DetailProductDTO.cs" />
     <Compile Include="ViewModel\Product\ProductDTO.cs" />
@@ -2935,7 +2937,6 @@
     <Content Include="Areas\Manager\Views\Customer\Index.cshtml" />
     <Content Include="Areas\Manager\Views\Bill\Index.cshtml" />
     <Content Include="Areas\Manager\Views\Bill\Details.cshtml" />
-    <Content Include="Areas\Manager\Views\Gift\Index.cshtml" />
     <Content Include="Areas\Manager\Views\Gift\Create.cshtml" />
     <Content Include="Areas\Manager\Views\Gift\Edit.cshtml" />
     <Content Include="libman.json" />
@@ -2988,6 +2989,9 @@
     <Content Include="Areas\Manager\Views\Role\Create.cshtml" />
     <Content Include="Areas\Manager\Views\Role\Edit.cshtml" />
     <Content Include="Areas\Manager\Views\Order\Searchid.cshtml" />
+    <Content Include="Views\MyGift\Index.cshtml" />
+    <Content Include="Views\Shared\Gift_index.cshtml" />
+    <Content Include="Areas\Manager\Views\Gift\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\editorEDK.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -3020,12 +3024,13 @@
     <Content Include="Views\Cart\BagCart.cshtml" />
     <Content Include="Views\Cart\DeliveryForm.cshtml" />
     <Content Include="Views\Cart\CheckOutSuccess.cshtml" />
+    <Content Include="Views\LoginCustomer\RegisterUser.cshtml" />
+    <Content Include="Views\LoginCustomer\LoginAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Manager\Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\LoginCustomer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

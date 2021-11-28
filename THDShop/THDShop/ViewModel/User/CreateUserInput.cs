@@ -30,6 +30,10 @@ namespace THDShop.ViewModel.User
         [Display(Name = "Nhap email lien lac")]
         public string EMAIL { get; set; }
         public string AVATAR { get; set; }
+
+        [NotMapped]
+        [Compare("PASSWORD")]
+        public string CONFIRM { get; set; }
     }
     public class UpdateUserInput : CreateUserInput
     {
@@ -54,5 +58,9 @@ namespace THDShop.ViewModel.User
         public string EMAIL { get; set; }
         public string AVATAR { get; set; }
 
+        [NotMapped]
+        [Compare("PASSWORD")]
+
+        public string CONFIRM { get; set; }
     }
 }

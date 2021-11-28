@@ -34,30 +34,36 @@ namespace THDShop.Areas.Manager.Controllers
         [HttpPost]
         public ActionResult Create(CreateGiftInput model)
         {
-            
-                // TODO: Add insert logic here
-                //_db.GIFTs.Add(gift);
-                //_db.SaveChanges();
 
-            var entity = new GIFT();
-            if (model == null)
+            // TODO: Add insert logic here
+            //_db.GIFTs.Add(gift);
+            //_db.SaveChanges();
+            try
             {
-
-                entity = new GIFT();
+                if (ModelState.IsValid)
+                {
+                    var entity = new GIFT();
+                    if (model == null)
+                    { entity = new GIFT(); }
+                    entity.ID = model.ID;
+                    entity.G_POINT = model.G_POINT;
+                    entity.G_VALUE = model.G_VALUE;
+                    entity.G_START = model.G_START;
+                    entity.G_END = model.G_END;
+                    entity.DESCREPTION = model.DESCREPTION;
+                    entity.QUANTITY = model.QUANTITY;
+                    _db.GIFTs.Add(entity);
+                    _db.SaveChanges();
+                  
+                }
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View("Create");
             }
 
-             entity.ID = model.ID;
-             entity.G_POINT = model.G_POINT;
-             entity.G_VALUE = model.G_VALUE;
-             entity.G_START = model.G_START;
-             entity.G_END = model.G_END;
-             entity.DESCREPTION = model.DESCREPTION;
-             entity.QUANTITY = model.QUANTITY;
-             _db.GIFTs.Add(entity);
-             _db.SaveChanges();
-             return RedirectToAction("Index");
-           
-           
+
         }
 
         // GET: Manager/Gift/Edit/5
@@ -86,8 +92,8 @@ namespace THDShop.Areas.Manager.Controllers
             entity.ID = model.ID;
             entity.G_POINT = model.G_POINT;
             entity.G_VALUE = model.G_VALUE;
-            entity.G_START = model.G_START;
-            entity.G_END = model.G_END;
+            entity.G_START = (DateTime)model.G_START;
+            entity.G_END = (DateTime)model.G_END;
             entity.DESCREPTION = model.DESCREPTION;
             entity.QUANTITY = model.QUANTITY;
             _db.GIFTs.Add(entity);

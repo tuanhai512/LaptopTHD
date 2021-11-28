@@ -37,19 +37,25 @@ namespace THDShop.Controllers
                 Session["EMAIL"] = _user.EMAIL;
                 Session["PASSWORD"] = _user.PASSWORD;
                 STAFF sTAFF = database.STAFFs.Where(m => m.ID == _user.ID).FirstOrDefault();
-                if (_user.PASSWORD == sTAFF.PASSWORD && _user.EMAIL == sTAFF.EMAIL && sTAFF.ROLE.NAME == "Manager")
-                {
-                    Session["TENQLY"] = sTAFF.NAME;
-                    Session["ID"] = sTAFF.ID;
 
-                }
-                else if (_user.ID == sTAFF.IDUSER || sTAFF.ROLE.NAME == "Staff")
+                if (_user.PASSWORD == sTAFF.PASSWORD && _user.EMAIL == sTAFF.EMAIL)
                 {
-                    Session["TENNV"] = sTAFF.NAME;
-                    Session["ID"] = sTAFF.ID;
+                    if (sTAFF.ROLE.NAME == "Manager")
+                    {
+                        Session["TENQLY"] = sTAFF.NAME;
+                        Session["ID"] = sTAFF.ID;
+                        return RedirectToAction("index", "Category");
+                    }
+                    return RedirectToAction("index", "Product");
+                }
+                else
+                {
+                    Session["TENNV"] = cUSTOMER.NAME;
+                    Session["ID"] = cUSTOMER.ID;
+                    RedirectToAction("index", "Home");
                 }
 
-                return RedirectToAction("Index", "Product");
+                return RedirectToAction("Index", "Home");
             }
 
         }
@@ -91,7 +97,44 @@ namespace THDShop.Controllers
         public ActionResult Logout()
         {
             Session.Abandon();
-            return RedirectToAction("Index", "LoginUser");
+            return RedirectToAction("Index", "Home");
         }
+        public ActionResult RegisterUser()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult RegisterUser(USER _user)
+        {
+            if (ModelState.IsValid)
+            {
+                
+                var check_ID = database.USERS.Where(s => s.EMAIL == _user.EMAIL).FirstOrDefault();
+                if (check_ID == null)
+                {
+                    database.Configuration.ValidateOnSaveEnabled = false;
+                    database.USERS.Add(_user);
+                    var _cus = new CUSTOMER()
+                    {
+                        EMAIL = _user.EMAIL,
+                        PHONE=_user.PHONE,
+                        NAME=_user.NAME,
+                        ADDRESS=_user.ADDRESS,
+                        PASSWORD=_user.PASSWORD,
+                    };
+                    database.CUSTOMERs.Add(_cus);
+                    database.SaveChanges();
+                    return RedirectToAction("LoginAccount");
+                }
+                else
+                {
+                    ViewBag.ErrorRegister = "This ID is exist";
+                    return View();
+                }
+            }
+            return View();
+        }
+
     }
 }
