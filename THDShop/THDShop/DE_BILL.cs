@@ -19,6 +19,7 @@ namespace THDShop
         public int IDPRODUCT { get; set; }
         public int QUANTITY { get; set; }
         public string NOTE { get; set; }
+        public Nullable<double> INCOME { get; set; }
     
         public virtual BILL BILL { get; set; }
         public virtual DE_ORDER DE_ORDER { get; set; }

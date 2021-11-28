@@ -62,7 +62,7 @@ namespace THDShop.Areas.Manager.Controllers
 
         public ActionResult Edit(int id)
         {
-            var entity = this._context.CUSTOMER.Find(id);
+            var entity = this._context.CUSTOMERs.Find(id);
             var model = new UpdateCustomerInput();
             model.IDUSER = entity.IDUSER;
             model.PASSWORD = entity.PASSWORD;
@@ -94,8 +94,8 @@ namespace THDShop.Areas.Manager.Controllers
 
         public ActionResult Delete(int id)
         {
-            var entity = this._context.CUSTOMER.Find(id);
-            this._context.CUSTOMER.Remove(entity);
+            var entity = this._context.CUSTOMERs.Find(id);
+            this._context.CUSTOMERs.Remove(entity);
             this._context.SaveChanges();
             CustomerSingleton.Instance.listCustomer.Clear();
             CustomerSingleton.Instance.Init(_context);
@@ -103,7 +103,7 @@ namespace THDShop.Areas.Manager.Controllers
         }
         public ActionResult Detail(int id)
         {
-            var query = from c in _context.CUSTOMER
+            var query = from c in _context.CUSTOMERs
                         where c.IDUSER == id
                         select new DetailCustomerDTO
                         {

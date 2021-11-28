@@ -24,9 +24,10 @@ namespace THDShop
         public Nullable<int> IDSTAFF { get; set; }
         public int IDORDER { get; set; }
         public double TOTALMONEY { get; set; }
-        public Nullable<System.DateTime> DATETIME { get; set; }
+        public System.DateTime DATETIME { get; set; }
         public string NOTE { get; set; }
         public int METHODS { get; set; }
+        public Nullable<double> TOTAL_INCOME { get; set; }
     
         public virtual ORDERS ORDERS { get; set; }
         public virtual STAFF STAFF { get; set; }

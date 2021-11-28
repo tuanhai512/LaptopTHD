@@ -31,8 +31,10 @@ namespace THDShop
         public string AVATAR { get; set; }
         public int POINT_MY { get; set; }
         public Nullable<int> IDMYGIFT { get; set; }
+        public Nullable<int> IDROLE { get; set; }
     
         public virtual MYGIFT MYGIFT { get; set; }
+        public virtual ROLES ROLES { get; set; }
         public virtual USERS USERS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DELI_ADDRESS> DELI_ADDRESS { get; set; }

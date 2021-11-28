@@ -13,9 +13,10 @@
           <Property Name="IDSTAFF" Type="int" />
           <Property Name="IDORDER" Type="int" Nullable="false" />
           <Property Name="TOTALMONEY" Type="float" Nullable="false" />
-          <Property Name="DATETIME" Type="datetime" />
+          <Property Name="DATETIME" Type="datetime" Nullable="false" />
           <Property Name="NOTE" Type="nvarchar(max)" />
           <Property Name="METHODS" Type="int" Nullable="false" />
+          <Property Name="TOTAL_INCOME" Type="float" />
         </EntityType>
         <EntityType Name="CATEGORIES">
           <Key>
@@ -24,7 +25,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NAME" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="CREATEBY" Type="int" />
-          <Property Name="CREATEAT" Type="datetime" />
+          <Property Name="CREATEAT" Type="datetime" Nullable="false" />
           <Property Name="UPDATEBY" Type="int" />
           <Property Name="UPDATEAT" Type="datetime" />
         </EntityType>
@@ -43,6 +44,7 @@
           <Property Name="AVATAR" Type="text" />
           <Property Name="POINT_MY" Type="int" Nullable="false" />
           <Property Name="IDMYGIFT" Type="int" />
+          <Property Name="IDROLE" Type="int" />
         </EntityType>
         <EntityType Name="DE_BILL">
           <Key>
@@ -55,6 +57,7 @@
           <Property Name="IDPRODUCT" Type="int" Nullable="false" />
           <Property Name="QUANTITY" Type="int" Nullable="false" />
           <Property Name="NOTE" Type="nvarchar(max)" />
+          <Property Name="INCOME" Type="float" />
         </EntityType>
         <EntityType Name="DE_ORDER">
           <Key>
@@ -89,7 +92,7 @@
           <Property Name="G_START" Type="datetime" />
           <Property Name="G_END" Type="datetime" />
           <Property Name="DESCREPTION" Type="nvarchar" MaxLength="1" />
-          <Property Name="QUANTITY" Type="int" />
+          <Property Name="QUANTITY" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="MYGIFT">
           <Key>
@@ -119,7 +122,7 @@
           <Property Name="QUANTITY" Type="int" Nullable="false" />
           <Property Name="PRICE" Type="float" Nullable="false" />
           <Property Name="ORI_PRICE" Type="float" Nullable="false" />
-          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="30" />
+          <Property Name="DESCRIPTION" Type="nvarchar(max)" />
           <Property Name="DESCRIPTION_CPU" Type="nvarchar" MaxLength="100" />
           <Property Name="DESCRIPTION_RAM" Type="nvarchar" MaxLength="100" />
           <Property Name="DESCRIPTION_STORAGE" Type="nvarchar" MaxLength="100" />
@@ -213,6 +216,18 @@
             </Principal>
             <Dependent Role="CUSTOMER">
               <PropertyRef Name="IDMYGIFT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMER_ROLES">
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="0..1" />
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER">
+              <PropertyRef Name="IDROLE" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -368,6 +383,10 @@
             <End Role="MYGIFT" EntitySet="MYGIFT" />
             <End Role="CUSTOMER" EntitySet="CUSTOMER" />
           </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMER_ROLES" Association="Self.FK_CUSTOMER_ROLES">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+          </AssociationSet>
           <AssociationSet Name="FK_CUSTOMER_USER" Association="Self.FK_CUSTOMER_USER">
             <End Role="USERS" EntitySet="USERS" />
             <End Role="CUSTOMER" EntitySet="CUSTOMER" />
@@ -422,9 +441,10 @@
           <Property Name="IDSTAFF" Type="Int32" />
           <Property Name="IDORDER" Type="Int32" Nullable="false" />
           <Property Name="TOTALMONEY" Type="Double" Nullable="false" />
-          <Property Name="DATETIME" Type="DateTime" Precision="3" />
+          <Property Name="DATETIME" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="NOTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="METHODS" Type="Int32" Nullable="false" />
+          <Property Name="TOTAL_INCOME" Type="Double" />
           <NavigationProperty Name="ORDERS" Relationship="Self.FK_BILL_ORDER" FromRole="BILL" ToRole="ORDERS" />
           <NavigationProperty Name="STAFF" Relationship="Self.FK_BILL_STAFF" FromRole="BILL" ToRole="STAFF" />
           <NavigationProperty Name="DE_BILL" Relationship="Self.FK_DEBILL_BILL" FromRole="BILL" ToRole="DE_BILL" />
@@ -436,7 +456,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CREATEBY" Type="Int32" />
-          <Property Name="CREATEAT" Type="DateTime" Precision="3" />
+          <Property Name="CREATEAT" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UPDATEBY" Type="Int32" />
           <Property Name="UPDATEAT" Type="DateTime" Precision="3" />
           <NavigationProperty Name="PRODUCTS" Relationship="Self.FK_CATE_PRODUCTS" FromRole="CATEGORIES" ToRole="PRODUCTS" />
@@ -456,7 +476,9 @@
           <Property Name="AVATAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="POINT_MY" Type="Int32" Nullable="false" />
           <Property Name="IDMYGIFT" Type="Int32" />
+          <Property Name="IDROLE" Type="Int32" />
           <NavigationProperty Name="MYGIFT" Relationship="Self.FK_CUSTOMER_MYGIFT" FromRole="CUSTOMER" ToRole="MYGIFT" />
+          <NavigationProperty Name="ROLES" Relationship="Self.FK_CUSTOMER_ROLES" FromRole="CUSTOMER" ToRole="ROLES" />
           <NavigationProperty Name="USERS" Relationship="Self.FK_CUSTOMER_USER" FromRole="CUSTOMER" ToRole="USERS" />
           <NavigationProperty Name="DELI_ADDRESS" Relationship="Self.FK_DEADDRESS_CUSTOMER" FromRole="CUSTOMER" ToRole="DELI_ADDRESS" />
         </EntityType>
@@ -471,6 +493,7 @@
           <Property Name="IDPRODUCT" Type="Int32" Nullable="false" />
           <Property Name="QUANTITY" Type="Int32" Nullable="false" />
           <Property Name="NOTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INCOME" Type="Double" />
           <NavigationProperty Name="BILL" Relationship="Self.FK_DEBILL_BILL" FromRole="DE_BILL" ToRole="BILL" />
           <NavigationProperty Name="DE_ORDER" Relationship="Self.FK_DEBILL_DEORDER" FromRole="DE_BILL" ToRole="DE_ORDER" />
         </EntityType>
@@ -512,7 +535,7 @@
           <Property Name="G_START" Type="DateTime" Precision="3" />
           <Property Name="G_END" Type="DateTime" Precision="3" />
           <Property Name="DESCREPTION" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Name="QUANTITY" Type="Int32" />
+          <Property Name="QUANTITY" Type="Int32" Nullable="false" />
           <NavigationProperty Name="MYGIFT" Relationship="Self.FK_GIFT_MYGIFT" FromRole="GIFT" ToRole="MYGIFT" />
         </EntityType>
         <EntityType Name="MYGIFT">
@@ -548,7 +571,7 @@
           <Property Name="QUANTITY" Type="Int32" Nullable="false" />
           <Property Name="PRICE" Type="Double" Nullable="false" />
           <Property Name="ORI_PRICE" Type="Double" Nullable="false" />
-          <Property Name="DESCRIPTION" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DESCRIPTION_CPU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DESCRIPTION_RAM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DESCRIPTION_STORAGE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -571,6 +594,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_CUSTOMER_ROLES" FromRole="ROLES" ToRole="CUSTOMER" />
           <NavigationProperty Name="STAFF" Relationship="Self.FK_STAFF_ROLES" FromRole="ROLES" ToRole="STAFF" />
         </EntityType>
         <EntityType Name="STAFF">
@@ -662,6 +686,18 @@
             </Principal>
             <Dependent Role="CUSTOMER">
               <PropertyRef Name="IDMYGIFT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMER_ROLES">
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="0..1" />
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER">
+              <PropertyRef Name="IDROLE" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -809,6 +845,10 @@
             <End Role="MYGIFT" EntitySet="MYGIFT" />
             <End Role="CUSTOMER" EntitySet="CUSTOMER" />
           </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMER_ROLES" Association="Self.FK_CUSTOMER_ROLES">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+          </AssociationSet>
           <AssociationSet Name="FK_CUSTOMER_USER" Association="Self.FK_CUSTOMER_USER">
             <End Role="USERS" EntitySet="USERS" />
             <End Role="CUSTOMER" EntitySet="CUSTOMER" />
@@ -862,6 +902,7 @@
                 <ScalarProperty Name="DATETIME" ColumnName="DATETIME" />
                 <ScalarProperty Name="NOTE" ColumnName="NOTE" />
                 <ScalarProperty Name="METHODS" ColumnName="METHODS" />
+                <ScalarProperty Name="TOTAL_INCOME" ColumnName="TOTAL_INCOME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -891,6 +932,7 @@
                 <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
                 <ScalarProperty Name="POINT_MY" ColumnName="POINT_MY" />
                 <ScalarProperty Name="IDMYGIFT" ColumnName="IDMYGIFT" />
+                <ScalarProperty Name="IDROLE" ColumnName="IDROLE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -902,6 +944,7 @@
                 <ScalarProperty Name="IDPRODUCT" ColumnName="IDPRODUCT" />
                 <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
                 <ScalarProperty Name="NOTE" ColumnName="NOTE" />
+                <ScalarProperty Name="INCOME" ColumnName="INCOME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -11,6 +11,7 @@
           <ScalarProperty Name="DATETIME" ColumnName="DATETIME" />
           <ScalarProperty Name="NOTE" ColumnName="NOTE" />
           <ScalarProperty Name="METHODS" ColumnName="METHODS" />
+          <ScalarProperty Name="TOTAL_INCOME" ColumnName="TOTAL_INCOME" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -40,6 +41,7 @@
           <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
           <ScalarProperty Name="POINT_MY" ColumnName="POINT_MY" />
           <ScalarProperty Name="IDMYGIFT" ColumnName="IDMYGIFT" />
+          <ScalarProperty Name="IDROLE" ColumnName="IDROLE" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -51,6 +53,7 @@
           <ScalarProperty Name="IDPRODUCT" ColumnName="IDPRODUCT" />
           <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
           <ScalarProperty Name="NOTE" ColumnName="NOTE" />
+          <ScalarProperty Name="INCOME" ColumnName="INCOME" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

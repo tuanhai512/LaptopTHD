@@ -23,7 +23,7 @@ namespace THDShop
         public int ID { get; set; }
         public string NAME { get; set; }
         public Nullable<int> CREATEBY { get; set; }
-        public Nullable<System.DateTime> CREATEAT { get; set; }
+        public System.DateTime CREATEAT { get; set; }
         public Nullable<int> UPDATEBY { get; set; }
         public Nullable<System.DateTime> UPDATEAT { get; set; }
     

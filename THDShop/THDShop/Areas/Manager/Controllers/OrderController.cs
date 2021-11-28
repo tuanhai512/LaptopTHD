@@ -5,11 +5,22 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using THDShop.ViewModel;
+using THDShop.ViewModel.Report;
 
 namespace THDShop.Areas.Manager.Controllers
 {
     public class OrderController : Controller
     {
+        public ReportDTO GetReport()
+        {
+            ReportDTO getreport = Session["ReportDTO"] as ReportDTO;
+            if (getreport == null || Session["ReportDTO"] == null)
+            {
+                getreport = new ReportDTO();
+                Session["ReportDTO"] = getreport;
+            }
+            return getreport;
+        }
         // GET: Manager/Order
         QLLaptopShopEntities _db = new QLLaptopShopEntities();
         // GET: QuanLy/DonHang
@@ -30,7 +41,7 @@ namespace THDShop.Areas.Manager.Controllers
             {
                 return RedirectToAction("Index");
             }
-            ORDERS dathang = _db.ORDERS.Find(id);
+            ORDER dathang = _db.ORDERS.Find(id);
             if (dathang.STATUS == 0)
             {
                 dathang.STATUS = 1;
@@ -42,12 +53,13 @@ namespace THDShop.Areas.Manager.Controllers
         }
         public ActionResult Success(int? id)
         {
+            var getreport = GetReport();
             if (id == null)
             {
                 return RedirectToAction("Index");
             }
             //int temp = (int)Session["MAKH"];
-            ORDERS dathang = _db.ORDERS.Find(id);
+            ORDER dathang = _db.ORDERS.Find(id);
             if (dathang.STATUS == 1)
             {
                 if (ModelState.IsValid)
@@ -61,7 +73,21 @@ namespace THDShop.Areas.Manager.Controllers
                        // ID = (int)Session["MAKH"]
 
                     };
-                    _db.BILL.Add(hoadon);
+                    _db.BILLs.Add(hoadon);
+                    _db.SaveChanges();
+                    
+
+                    var product = new PRODUCT();
+                    var report = new REPORT()
+                    {
+                        IDBILL = hoadon.ID,
+                        //IDPRODUCT = product.ID,
+                        TOTALMONEY = getreport.Income(),
+                        DATERP = DateTime.Now,
+                        // ID = (int)Session["MAKH"]
+
+                    };
+                    _db.REPORTs.Add(report);
                     _db.SaveChanges();
 
                     var mONAN_DATHANG = _db.DE_ORDER.Where(m => m.IDORDER == id).ToList();
@@ -92,7 +118,7 @@ namespace THDShop.Areas.Manager.Controllers
             {
                 return RedirectToAction("Index");
             }
-            ORDERS dathang = _db.ORDERS.Find(id);
+            ORDER dathang = _db.ORDERS.Find(id);
             if (dathang.STATUS == 1)
             {
                 dathang.STATUS = 3;

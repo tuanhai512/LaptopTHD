@@ -13,6 +13,6 @@ namespace THDShop.ViewModel.Gift
         public Nullable<System.DateTime> G_START { get; set; }
         public Nullable<System.DateTime> G_END { get; set; }
         public string DESCREPTION { get; set; }
-        public Nullable<int> QUANTITY { get; set; }
+        public int QUANTITY { get; set; }
     }
 }

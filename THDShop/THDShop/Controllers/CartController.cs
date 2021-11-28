@@ -29,6 +29,7 @@ namespace THDShop.Controllers
             if (product != null)
             {
                 GetCart().Add_Product_Cart(product);
+
             }
             return RedirectToAction("ShowToCart", "Cart");
         }

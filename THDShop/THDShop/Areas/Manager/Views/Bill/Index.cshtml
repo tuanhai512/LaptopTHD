@@ -4,9 +4,15 @@
     ViewBag.Title = "Index";
 }
 
-<h2>BILL</h2>
+
 
 <table class="table">
+    <div class="form-group pull-right">
+        @using(Html.BeginForm("Export","Report",FormMethod.Post))
+            {
+                <input type="submit" value="report" class="btn btn-success"/>
+            }
+    </div>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.TOTALMONEY)
