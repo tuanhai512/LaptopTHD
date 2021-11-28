@@ -1,0 +1,69 @@
+﻿@model IEnumerable<THDShop.GIFT>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Gift_index</title>
+</head>
+<body>
+    
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.G_POINT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.G_VALUE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.G_START)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.G_END)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DESCREPTION)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QUANTITY)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.G_POINT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.G_VALUE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.G_START)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.G_END)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DESCREPTION)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QUANTITY)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Doi diem", "Getgift", new { id=item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
