@@ -27,5 +27,10 @@ namespace THDShop.Areas.Manager.Controllers
             var list = database.BILLs.Where(p => p.ID==id).ToList();
             return View(list);
         }
+        public ActionResult Report()
+        {
+            return View(database.BILLs.ToList());
+
+        }
     }
 }

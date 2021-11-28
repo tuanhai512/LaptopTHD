@@ -27,7 +27,6 @@ namespace THDShop
         public System.DateTime DATETIME { get; set; }
         public string NOTE { get; set; }
         public int METHODS { get; set; }
-    
         public virtual ORDER ORDER { get; set; }
         public virtual STAFF STAFF { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

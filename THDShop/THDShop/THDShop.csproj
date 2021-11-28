@@ -201,6 +201,9 @@
     <Compile Include="USER.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\Bill\CreateBillInput.cs" />
+    <Compile Include="ViewModel\Bill\DetailBillDTO.cs" />
+    <Compile Include="ViewModel\Bill\BillDTO.cs" />
     <Compile Include="ViewModel\Cart.cs" />
     <Compile Include="ViewModel\Category\CategoryDTO.cs" />
     <Compile Include="ViewModel\Category\CategorySingleton.cs" />
