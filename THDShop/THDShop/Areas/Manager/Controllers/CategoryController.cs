@@ -24,6 +24,7 @@ namespace THDShop.Areas.Manager.Controllers
             //{
             //    return RedirectToAction("Index", "LoginQuanLy");
             //}
+            //return View(_context.CATEGORIES.ToList());
             var query = CategorySingleton.Instance.listCategory;
             return View(query.ToList());
         }
@@ -98,9 +99,11 @@ namespace THDShop.Areas.Manager.Controllers
         }
         public ActionResult Searchname(string name)
         {
-            var query = CategorySingleton.Instance.listCategory.Where(p => p.NAME == name).ToList();
+            //var query = CategorySingleton.Instance.listCategory.Where(p => p.NAME == name).ToList();
 
-            return View(query);
+            //return View(query);
+            return View(_context.CATEGORIES.Where(p => p.NAME == name).ToList());
+
         }
     }
 }
