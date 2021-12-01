@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="565f104650cc4f369401b4fc4936bf39" Name="Diagram1">
+      <Diagram DiagramId="da8fcd4a5dad40c7881b1ddf9a74cab6" Name="Diagram1">
         <EntityTypeShape EntityType="QLLaptopShopModel.BILL" Width="1.5" PointX="9.75" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QLLaptopShopModel.CATEGORy" Width="1.5" PointX="5.25" PointY="14.375" IsExpanded="true" />
         <EntityTypeShape EntityType="QLLaptopShopModel.CUSTOMER" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
@@ -14,7 +14,7 @@
         <EntityTypeShape EntityType="QLLaptopShopModel.GIFT" Width="1.5" PointX="1.5" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QLLaptopShopModel.MYGIFT" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QLLaptopShopModel.ORDER" Width="1.5" PointX="7.5" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLLaptopShopModel.PRODUCT" Width="1.5" PointX="7.5" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLLaptopShopModel.PRODUCT" Width="1.5" PointX="7.5" PointY="12.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QLLaptopShopModel.ROLE" Width="1.5" PointX="3.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLLaptopShopModel.STAFF" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLLaptopShopModel.USER" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />

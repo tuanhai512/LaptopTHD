@@ -63,7 +63,7 @@ namespace THDShop.ViewModel.Product
         public string DESCRIPTION_WEIGHT { get; set; }
 
         public string IMAGE { get; set; }
-
+        public int HOTPRODUCT { get; set; }
 
         [NotMapped]
         public HttpPostedFileBase UploadImage { get; set; }

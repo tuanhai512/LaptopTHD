@@ -8,7 +8,7 @@
     <Property Name="IDSTAFF" Type="Int32" />
     <Property Name="IDORDER" Type="Int32" Nullable="false" />
     <Property Name="TOTALMONEY" Type="Double" Nullable="false" />
-    <Property Name="DATETIME" Type="DateTime" Precision="3" />
+    <Property Name="DATETIME" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="NOTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="METHODS" Type="Int32" Nullable="false" />
     <NavigationProperty Name="ORDER" Relationship="Self.FK_BILL_ORDER" FromRole="BILL" ToRole="ORDERS" />
@@ -22,7 +22,7 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="CREATEBY" Type="Int32" />
-    <Property Name="CREATEAT" Type="DateTime" Precision="3" />
+    <Property Name="CREATEAT" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UPDATEBY" Type="Int32" />
     <Property Name="UPDATEAT" Type="DateTime" Precision="3" />
     <NavigationProperty Name="PRODUCTS" Relationship="Self.FK_CATE_PRODUCTS" FromRole="CATEGORIES" ToRole="PRODUCTS" />
@@ -98,7 +98,7 @@
     <Property Name="G_START" Type="DateTime" Precision="3" />
     <Property Name="G_END" Type="DateTime" Precision="3" />
     <Property Name="DESCREPTION" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
-    <Property Name="QUANTITY" Type="Int32" />
+    <Property Name="QUANTITY" Type="Int32" Nullable="false" />
     <NavigationProperty Name="MYGIFTs" Relationship="Self.FK_GIFT_MYGIFT" FromRole="GIFT" ToRole="MYGIFT" />
   </EntityType>
   <EntityType Name="MYGIFT">
@@ -142,6 +142,7 @@
     <Property Name="DESCRIPTION_SCREEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="DESCRIPTION_WEIGHT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="HOTPRODUCT" Type="Int32" Nullable="false" />
     <Property Name="CATEGORYNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <Property Name="CREATEBY" Type="Int32" />
     <Property Name="CREATEAT" Type="DateTime" Precision="3" />

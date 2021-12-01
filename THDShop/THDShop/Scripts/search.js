@@ -8,6 +8,7 @@
 	'phone',
 	'datetime',
 	'email',
+	'thuoctinh',
 ];
 
 $.each(properties, function (i, val) {

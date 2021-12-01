@@ -9692,6 +9692,18 @@ input[type=text] {
 option {
    
 }
+.name-title-edit {
+    padding-top: 5px;
+    padding-bottom: 18px;
+    display: flex;
+    font-size: 18px;
+    font-weight: 600;
+}
+.name-title-edit-note {
+    color: #ee3434;
+    display: flex;
+    font-size: 14px;
+}
 .name-title {
     font-weight: 500;
     padding: 20px;

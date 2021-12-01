@@ -128,6 +128,7 @@
           <ScalarProperty Name="DESCRIPTION_SCREEN" ColumnName="DESCRIPTION_SCREEN" />
           <ScalarProperty Name="DESCRIPTION_WEIGHT" ColumnName="DESCRIPTION_WEIGHT" />
           <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
+          <ScalarProperty Name="HOTPRODUCT" ColumnName="HOTPRODUCT" />
           <ScalarProperty Name="CATEGORYNAME" ColumnName="CATEGORYNAME" />
           <ScalarProperty Name="CREATEBY" ColumnName="CREATEBY" />
           <ScalarProperty Name="CREATEAT" ColumnName="CREATEAT" />

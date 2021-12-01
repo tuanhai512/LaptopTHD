@@ -8,7 +8,7 @@
     <Property Name="IDSTAFF" Type="int" />
     <Property Name="IDORDER" Type="int" Nullable="false" />
     <Property Name="TOTALMONEY" Type="float" Nullable="false" />
-    <Property Name="DATETIME" Type="datetime" />
+    <Property Name="DATETIME" Type="datetime" Nullable="false" />
     <Property Name="NOTE" Type="nvarchar(max)" />
     <Property Name="METHODS" Type="int" Nullable="false" />
   </EntityType>
@@ -19,7 +19,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NAME" Type="nvarchar" MaxLength="30" Nullable="false" />
     <Property Name="CREATEBY" Type="int" />
-    <Property Name="CREATEAT" Type="datetime" />
+    <Property Name="CREATEAT" Type="datetime" Nullable="false" />
     <Property Name="UPDATEBY" Type="int" />
     <Property Name="UPDATEAT" Type="datetime" />
   </EntityType>
@@ -84,7 +84,7 @@
     <Property Name="G_START" Type="datetime" />
     <Property Name="G_END" Type="datetime" />
     <Property Name="DESCREPTION" Type="nvarchar" MaxLength="1" />
-    <Property Name="QUANTITY" Type="int" />
+    <Property Name="QUANTITY" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="MYGIFT">
     <Key>
@@ -122,6 +122,7 @@
     <Property Name="DESCRIPTION_SCREEN" Type="nvarchar" MaxLength="100" />
     <Property Name="DESCRIPTION_WEIGHT" Type="nvarchar" MaxLength="100" />
     <Property Name="IMAGE" Type="text" />
+    <Property Name="HOTPRODUCT" Type="int" Nullable="false" />
     <Property Name="CATEGORYNAME" Type="nvarchar" MaxLength="30" />
     <Property Name="CREATEBY" Type="int" />
     <Property Name="CREATEAT" Type="datetime" />

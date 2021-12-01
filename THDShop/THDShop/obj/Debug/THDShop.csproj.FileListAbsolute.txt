@@ -577,5 +577,5 @@ D:\HUFLIT\MTK\LaptopTHD\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\Newtonsoft.Json.
 D:\HUFLIT\MTK\LaptopTHD\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\Antlr3.Runtime.pdb
 D:\HUFLIT\MTK\LaptopTHD\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\HUFLIT\MTK\LaptopTHD\LaptopTHD\LaptopTHD\THDShop\THDShop\obj\Debug\THDShop.csproj.CopyComplete
-D:\HUFLIT\MTK\LaptopTHD\LaptopTHD\LaptopTHD\THDShop\THDShop\obj\Debug\THDShop.csprojAssemblyReference.cache
 D:\Github\LaptopTHD\THDShop\THDShop\obj\Debug\THDShop.csproj.AssemblyReference.cache
+D:\HUFLIT\MTK\LaptopTHD\LaptopTHD\LaptopTHD\THDShop\THDShop\obj\Debug\THDShop.csprojAssemblyReference.cache

@@ -33,6 +33,7 @@ namespace THDShop
         public string DESCRIPTION_SCREEN { get; set; }
         public string DESCRIPTION_WEIGHT { get; set; }
         public string IMAGE { get; set; }
+        public int HOTPRODUCT { get; set; }
         public string CATEGORYNAME { get; set; }
         public Nullable<int> CREATEBY { get; set; }
         public Nullable<System.DateTime> CREATEAT { get; set; }

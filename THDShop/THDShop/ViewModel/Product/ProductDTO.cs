@@ -8,6 +8,7 @@ namespace THDShop.ViewModel.Product
     public class ProductDTO
     {
         public int ID { get; set; }
+        public int HOTPRODUCT { get; set; }
         public string NAME { get; set; }
         public int QUANTITY { get; set; }
         public double PRICE { get; set; }
