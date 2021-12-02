@@ -18,34 +18,59 @@
         <div class="text-center-box">
             <div class="paddingtop rl" style="padding-bottom: 20px;">
                 <div class="form">
+
+                    <!-- Tình Trạng SP -->
+                    <div class="name-title-edit" style="padding-bottom:25px">
+                        Tình trạng sản phẩm
+                    </div>
+                    <div class="form-group">
+                        <div class="name-title-edit-note">
+                            * 0 = "New" | 1 = "HOT" | 2 = "OLD" *
+                        </div>
+                        @Html.EditorFor(model => model.HOTPRODUCT, new { htmlAttributes = new { placeholder = "Tình Trạng Sản Phẩm" } })
+                    </div>
                     <!-- Tên -->
+                    <div class="name-title-edit">
+                        Tên sản phẩm
+                    </div>
                     <div class="form-group">
                         @Html.EditorFor(model => model.NAME, new { htmlAttributes = new { placeholder = "Tên Sản Phẩm" } })
                         @Html.ValidationMessageFor(model => model.NAME, "", new { @class = "text-danger" })
                     </div>
 
                     <!-- Giá Bán -->
+                    <div class="name-title-edit">
+                        Giá bán
+                    </div>
                     <div class="form-group ">
                         @Html.EditorFor(model => model.PRICE, new { htmlAttributes = new { placeholder = "Giá Bán" } })
                         @Html.ValidationMessageFor(model => model.PRICE, "", new { @class = "text-danger" })
                     </div>
 
                     <!-- Giá Gốc -->
+                    <div class="name-title-edit">
+                        Giá gốc
+                    </div>
                     <div class="form-group ">
                         @Html.EditorFor(model => model.ORI_PRICE, new { htmlAttributes = new { placeholder = "Giá Gốc" } })
                         @Html.ValidationMessageFor(model => model.ORI_PRICE, "", new { @class = "text-danger" })
                     </div>
 
                     <!-- Số Lượng -->
+                    <div class="name-title-edit">
+                        Số lượng
+                    </div>
                     <div class="form-group">
                         @Html.EditorFor(model => model.QUANTITY, new { htmlAttributes = new { placeholder = "Số Lượng" } })
                         @Html.ValidationMessageFor(model => model.QUANTITY, "", new { @class = "text-danger" })
                     </div>
 
                     <!-- Mô Tả Chung -->
+                    <div class="name-title-edit">
+                        Mô tả
+                    </div>
                     <div class="form-group ">
-                        @Html.EditorFor(model => model.DESCRIPTION, new { htmlAttributes = new { placeholder = "Nội Dung" } })
-                        @Html.ValidationMessageFor(model => model.DESCRIPTION, "", new { @class = "text-danger" })
+                        @Html.TextAreaFor(model => model.DESCRIPTION, new { htmlAttributes = new { placeholder = "..." }, id = "txtContent" })
                     </div>
                 </div>
             </div>
@@ -54,42 +79,63 @@
             <div class="paddingtop rl" style="padding-bottom: 20px;">
                 <div class="form">
                     <!-- Mô Tả Card -->
+                    <div class="name-title-edit">
+                        Mô tả Card
+                    </div>
                     <div class="form-group ">
                         @Html.EditorFor(model => model.DESCRIPTION_CARD, new { htmlAttributes = new { placeholder = "Mô Tả Card" } })
                         @Html.ValidationMessageFor(model => model.DESCRIPTION, "", new { @class = "text-danger" })
                     </div>
 
                     <!-- Mô Tả CPU -->
+                    <div class="name-title-edit">
+                        Mô tả CPU
+                    </div>
                     <div class="form-group ">
                         @Html.EditorFor(model => model.DESCRIPTION_CPU, new { htmlAttributes = new { placeholder = "Mô Tả CPU" } })
                         @Html.ValidationMessageFor(model => model.DESCRIPTION, "", new { @class = "text-danger" })
                     </div>
 
                     <!-- Mô Tả Ram -->
+                    <div class="name-title-edit">
+                        Mô tả Ram
+                    </div>
                     <div class="form-group ">
                         @Html.EditorFor(model => model.DESCRIPTION_RAM, new { htmlAttributes = new { placeholder = "Mô Tả Ram" } })
                         @Html.ValidationMessageFor(model => model.DESCRIPTION, "", new { @class = "text-danger" })
                     </div>
 
                     <!-- Mô Tả Khung Hình -->
+                    <div class="name-title-edit">
+                        Mô tả Màn Hình
+                    </div>
                     <div class="form-group ">
                         @Html.EditorFor(model => model.DESCRIPTION_SCREEN, new { htmlAttributes = new { placeholder = "Mô Tả Khung Hình" } })
                         @Html.ValidationMessageFor(model => model.DESCRIPTION, "", new { @class = "text-danger" })
                     </div>
 
                     <!-- Mô Tả Dung lượng -->
+                    <div class="name-title-edit">
+                        Mô tả Dung lượng
+                    </div>
                     <div class="form-group ">
                         @Html.EditorFor(model => model.DESCRIPTION_STORAGE, new { htmlAttributes = new { placeholder = "Mô Tả Dung lượng" } })
                         @Html.ValidationMessageFor(model => model.DESCRIPTION, "", new { @class = "text-danger" })
                     </div>
 
                     <!-- Mô Tả Cân Nặng -->
+                    <div class="name-title-edit">
+                        Mô tả Cân Nặng
+                    </div>
                     <div class="form-group ">
                         @Html.EditorFor(model => model.DESCRIPTION_WEIGHT, new { htmlAttributes = new { placeholder = "Mô Tả Cân Nặng" } })
                         @Html.ValidationMessageFor(model => model.DESCRIPTION, "", new { @class = "text-danger" })
                     </div>
 
                     <!-- Loại Sản Phảm -->
+                    <div class="name-title-edit">
+                        Thương Hiệu
+                    </div>
                     <div class="form-group ">
                         @Html.DropDownList("IDCATEGORY", (IEnumerable<SelectListItem>)ViewBag.Categories, "Chọn loại", new { @id = "adad" })
                         @Html.ValidationMessageFor(model => model.IDCATEGORY, "", new { @class = "text-danger" })

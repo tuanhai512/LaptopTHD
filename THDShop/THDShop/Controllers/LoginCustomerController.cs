@@ -21,10 +21,10 @@ namespace THDShop.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult LoginAccount(USERS _user)
+        public ActionResult LoginAccount(USER _user)
         {
 
-            CUSTOMER cUSTOMER = database.CUSTOMER.Where(m => m.ID == _user.ID).FirstOrDefault();
+            CUSTOMER cUSTOMER = database.CUSTOMERs.Where(m => m.ID == _user.ID).FirstOrDefault();
 
             if (!CheckExistAccount(_user))
             {
@@ -36,20 +36,26 @@ namespace THDShop.Controllers
                 database.Configuration.ValidateOnSaveEnabled = false;
                 Session["EMAIL"] = _user.EMAIL;
                 Session["PASSWORD"] = _user.PASSWORD;
-                STAFF sTAFF = database.STAFF.Where(m => m.ID == _user.ID).FirstOrDefault();
-                if (_user.PASSWORD == sTAFF.PASSWORD && _user.EMAIL == sTAFF.EMAIL && sTAFF.ROLES.NAME == "Manager")
-                {
-                    Session["TENQLY"] = sTAFF.NAME;
-                    Session["ID"] = sTAFF.ID;
+                STAFF sTAFF = database.STAFFs.Where(m => m.ID == _user.ID).FirstOrDefault();
 
-                }
-                else if (_user.ID == sTAFF.IDUSER || sTAFF.ROLES.NAME == "Staff")
+                if (_user.PASSWORD == sTAFF.PASSWORD && _user.EMAIL == sTAFF.EMAIL)
                 {
-                    Session["TENNV"] = sTAFF.NAME;
-                    Session["ID"] = sTAFF.ID;
+                    if (sTAFF.ROLE.NAME == "Manager")
+                    {
+                        Session["TENQLY"] = sTAFF.NAME;
+                        Session["ID"] = sTAFF.ID;
+                        return RedirectToAction("index", "Category");
+                    }
+                    return RedirectToAction("index", "Product");
+                }
+                else
+                {
+                    Session["TENNV"] = cUSTOMER.NAME;
+                    Session["ID"] = cUSTOMER.ID;
+                    RedirectToAction("index", "Home");
                 }
 
-                return RedirectToAction("Index", "Product");
+                return RedirectToAction("Index", "Home");
             }
 
         }
@@ -60,7 +66,7 @@ namespace THDShop.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditAccount(USERS user)
+        public ActionResult EditAccount(USER user)
         {
             var detail = database.USERS.Where(m => m.ID == user.ID);
 
@@ -78,7 +84,7 @@ namespace THDShop.Controllers
             return RedirectToAction("Index");
         }
 
-        public bool CheckExistAccount(USERS _user)
+        public bool CheckExistAccount(USER _user)
         {
 
             var check = database.USERS.Where(s => s.EMAIL == _user.EMAIL && s.PASSWORD == _user.PASSWORD).FirstOrDefault();
@@ -91,7 +97,44 @@ namespace THDShop.Controllers
         public ActionResult Logout()
         {
             Session.Abandon();
-            return RedirectToAction("Index", "LoginUser");
+            return RedirectToAction("Index", "Home");
         }
+        public ActionResult RegisterUser()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult RegisterUser(USER _user)
+        {
+            if (ModelState.IsValid)
+            {
+                
+                var check_ID = database.USERS.Where(s => s.EMAIL == _user.EMAIL).FirstOrDefault();
+                if (check_ID == null)
+                {
+                    database.Configuration.ValidateOnSaveEnabled = false;
+                    database.USERS.Add(_user);
+                    var _cus = new CUSTOMER()
+                    {
+                        EMAIL = _user.EMAIL,
+                        PHONE=_user.PHONE,
+                        NAME=_user.NAME,
+                        ADDRESS=_user.ADDRESS,
+                        PASSWORD=_user.PASSWORD,
+                    };
+                    database.CUSTOMERs.Add(_cus);
+                    database.SaveChanges();
+                    return RedirectToAction("LoginAccount");
+                }
+                else
+                {
+                    ViewBag.ErrorRegister = "This ID is exist";
+                    return View();
+                }
+            }
+            return View();
+        }
+
     }
 }

@@ -1,4 +1,4 @@
-﻿@model THDShop.PRODUCTS
+﻿@model THDShop.PRODUCT
 
 @{
     ViewData["Title"] = "Details";
@@ -6,89 +6,99 @@
 }
 @{
     <link href="~/Assets/css/GioHang.css" rel="stylesheet" />
-    <link href="~/Assets/css/DetailsUser.css" rel="stylesheet" />
 }
-<div>
-    <div class="special-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-sm-12 col-md-5 col-lg-6 col-xl-6">
-                    <div class="special-img">
-                        <img src="@Url.Content(Model.IMAGE)" width="400" height="300" />
+<div class="font_asap">
+    <div class="container container-240">
+        <div class="single-product-detail product-bundle product-aff">
+            <ul style="background-color: #ffffff!important" class="breadcrumb">
+                <li><a href="#">Trang Chủ</a></li>
+                <li class="active">Sản Phẩm</li>
+                <li class="active">@Html.DisplayFor(model => model.CATEGORy.NAME)</li>
+                <li class="active">@Html.DisplayFor(model => model.NAME)</li>
+            </ul>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="flex product-img-slide">
+                        <div class="product-images">
+                            <div class="main-img js-product-slider">
+                                <a href="#" class="hover-images effect"><img src="@Url.Content(Model.IMAGE)" alt="photo" class="img-reponsive"></a>
+                            </div>
+                        </div>
+                        <div class="multiple-img-list-ver2 js-click-product">
+                            <div class="product-col">
+                                <div class="img active">
+                                    <img src="@Url.Content(Model.IMAGE)" alt="photo" class="img-reponsive">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-7 col-lg-6 col-xl-6">
-                    <div class="special-content">
-                        <div class="donut-icon m-auto">
-                            <img src="img/donut.png" class="w-100" alt="" />
-                        </div>
-                        <h1 style="color: #db3a3a;">
-                            @Html.DisplayFor(model => model.NAME)
-                        </h1>
-                        <p>
-                            <div class="font-red">
-                                <strong>Thông Số Kỹ Thuật:</strong>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="single-flex">
+                        <div class="single-product-info product-info product-grid-v2 s-50">
+                            <p class="product-cate">@Html.DisplayFor(model => model.CATEGORy.NAME)</p>
+                            <h1 class="product-title"><a href="#">@Html.DisplayFor(model => model.NAME) </a></h1>
+                            <div class="product-price">
+                                <span>@Model.PRICE.ToString("#,##")<span style="font-size:12px">VNĐ</span></span>
                             </div>
-                            <div class="padding-descrition">
-                                <div>
-                                    <img width="35" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/cpu.png" class="lazyloaded" data-ll-status="loaded">
-                                    <span>@Html.DisplayFor(model => model.DESCRIPTION_CPU) </span>
-                                </div>
+                            <div class="availability">
+                                <p class="product-inventory"> <label>Tình Trạng : </label><span> Còn Hàng</span></p>
+                            </div>
+                            <div class="product-sku">
+                                <label>MÃ SP :</label><span> @Html.DisplayFor(model => model.ID)</span>
+                            </div>
+                            <div class="short-desc">
+                                <ul class="desc-list">
+                                    <p class="product-desc">THÔNG SỐ KỸ THUẬT</p>
+                                    <li>
+                                        <img width="20" src="https://thenewxgear.com/wp-content/uploads/2021/08/cpu.png" class="lazyloaded" data-ll-status="loaded">
+                                        <span>@Html.DisplayFor(model => model.DESCRIPTION_CPU) </span>
+                                    </li>
+                                    <li>
+                                        <img width="20" src="https://thenewxgear.com/wp-content/uploads/2021/08/gpu.png" class="lazyloaded" data-ll-status="loaded">
+                                        <span>@Html.DisplayFor(model => model.DESCRIPTION_CARD)</span>
+                                    </li>
+                                    <li>
+                                        <img width="20" src="https://thenewxgear.com/wp-content/uploads/2021/08/ram.png" class="lazyloaded" data-ll-status="loaded">
+                                        <span>@Html.DisplayFor(model => model.DESCRIPTION_RAM)</span>
+                                    </li>
+                                    <li>
+                                        <img width="20" src="https://thenewxgear.com/wp-content/uploads/2021/08/ssd.png" class="lazyloaded" data-ll-status="loaded">
+                                        <span>@Html.DisplayFor(model => model.DESCRIPTION_STORAGE)</span>
+                                    </li>
+                                    <li>
+                                        <img width="20" src="https://thenewxgear.com/wp-content/uploads/2021/08/weight.png" class="lazyloaded" data-ll-status="loaded">
+                                        <span>@Html.DisplayFor(model => model.DESCRIPTION_WEIGHT)</span>
+                                    </li>
+                                    <li>
+                                        <img width="20" src="https://thenewxgear.com/wp-content/uploads/2021/08/size.png" class="lazyloaded" data-ll-status="loaded">
+                                        <span>@Html.DisplayFor(model => model.DESCRIPTION_SCREEN)</span>
+                                    </li>
+                                </ul>
                             </div>
 
-                            <div class="padding-descrition">
-                                <div>
-                                    <img width="35" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/gpu.png" class="lazyloaded" data-ll-status="loaded">
-                                    <span>@Html.DisplayFor(model => model.DESCRIPTION_CARD)</span>
-                                </div>
-                            </div>
-                            <div class="padding-descrition">
-                                <div>
-                                    <img width="35" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/ram.png" class="lazyloaded" data-ll-status="loaded">
-                                    <span>@Html.DisplayFor(model => model.DESCRIPTION_RAM)</span>
-                                </div>
-                            </div>
-                            <div class="padding-descrition">
-                                <div>
-                                    <img width="35" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/ssd.png" class="lazyloaded" data-ll-status="loaded">
-                                    <span>@Html.DisplayFor(model => model.DESCRIPTION_STORAGE)</span>
-                                </div>
-                            </div>
-                            <div class="padding-descrition">
-                                <div>
-                                    <img width="35" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/weight.png" class="lazyloaded" data-ll-status="loaded">
-                                    <span>@Html.DisplayFor(model => model.DESCRIPTION_WEIGHT)</span>
-                                </div>
-                            </div>
-                            <div class="padding-descrition">
-                                <div>
-                                    <img width="35" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/size.png" class="lazyloaded" data-ll-status="loaded">
-                                    <span>@Html.DisplayFor(model => model.DESCRIPTION_SCREEN)</span>
-                                </div>
-                            </div>
-                        </p>
-                        <div class="offer-info">
-                            <div class="justify-content-center align-items-center">
-                                <div>
-                                    <div class="item-price">
-                                        <h2 style="color:#ff0000"><span style="font-size:25px">đ</span>@Model.PRICE.ToString("#,##")</h2>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <a href="/Cart/AddToCart/@Model.ID" class="btn2">GIỎ HÀNG</a>
-                                </div>
+                            <div>
+                                <a href="/Cart/AddToCart/@Model.ID" class="btn2">GIỎ HÀNG</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div>
-                <div style="padding-top:20px" class="font-red">
-                    <strong>Mô Tả Sản Phẩm</strong>
+
+            <div class="single-product-tab bd-7">
+                <div class="cmt-title text-center abs">
+                    <ul style="width: 105px !important;height: 47px!important;" class="nav nav-tabs text-center">
+                        <li style="padding-left:24px" class="active"><a data-toggle="pill" href="#desc">Mô Tả</a></li>
+                    </ul>
                 </div>
-                <div style="padding-bottom:40px">
-                    @Html.DisplayFor(model => model.DESCRIPTION)
+                <div class="tab-content">
+                    <div id="desc" class="tab-pane fade in active">
+                        <div class="entry-content">
+                            <div style="padding: 0 30px;">
+                                @Html.Raw(Model.DESCRIPTION)
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -16,6 +16,14 @@
     <link rel="stylesheet" href="~/Assets/main/freda/src/app/css/uikit-custom.min.css" />
     <link rel="stylesheet" href="~/Assets/main/freda/src/app/css/app.css" />
     <link href="~/Assets/css/QuangCao.css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="~/Assets/ECome/css/owl.carousel.min.css">
+    <link rel="shortcut icon" href="~/Assets/ECome/img/favicon.png" type="~/Assets/ECome/image/png">
+    <link rel="stylesheet" href="~/Assets/ECome/css/slick.css">
+    <link rel="stylesheet" href="~/Assets/ECome/css/slick-theme.css">
+    <link rel="stylesheet" href="~/Assets/ECome/css/owl.theme.default.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Assets/ECome/css/style.css">
 </head>
 <body>
     <header class="yb-main-header" id="main-header">
@@ -52,7 +60,7 @@
         <nav class="yb-main-menu " id="main-menu">
             <div class="uk-container" data-uk-navbar>
                 <div class="uk-navbar-left">
-                    <a class="yb-logo uk-navbar-item uk-logo" href=""><span></span></a>
+                    <a class="yb-logo uk-navbar-item uk-logo" href="@Url.Action("Index","HomeUser")"><img width="120" height="100" src="~/Assets/Images/logoTHD.png"/></a>
                 </div>
                 <div class="uk-navbar-right uk-hidden@m">
                     <a class="uk-navbar-toggle" href="#" id="btn-menu-toggle">
@@ -64,22 +72,22 @@
                     <div class="uk-navbar-center">
                         <ul class="uk-navbar-nav" data-uk-scrollspy-nav="closest: li; scroll: false; offset: 79 ">
                             <li>
-                                <a class="yb-inner-link" href="#home"> Trang Chủ </a>
+                                <a  href=""> Trang Chủ </a>
                             </li>
                             <li>
-                                <a class="yb-inner-link" href="#about"> Sự Kiện</a>
+                                <a  href=""> Sự Kiện</a>
                             </li>
                             <li>
-                                <a class="yb-inner-link" href="#resume"> Sản Phẩm </a>
+                                <a  href=""> Sản Phẩm </a>
                             </li>
                             <li>
-                                <a class="yb-inner-link" href="#portfolio"> Portfolio </a>
+                                <a  href=""> Portfolio </a>
                             </li>
                             <li>
-                                <a class="yb-inner-link" href="#blog"> Blog </a>
+                                <a  href=""> Blog </a>
                             </li>
                             <li>
-                                <a class="yb-inner-link" href="#contact"> Contact </a>
+                                <a  href=""> Contact </a>
                             </li>
                         </ul>
                     </div>
@@ -108,6 +116,36 @@
                                     <span class="uk-icon" data-uk-icon="icon: twitter"></span>
                                 </a>
                             </li>
+                            @if (Session["Email"] == null)
+                            {
+                                <li><a href="@Url.Action("Login", "LoginUser")" class="dropdown-toggle">Đăng nhập</a></li>
+                            }
+                            else
+                            {
+                                <li><span style="color:black;text-align:center;vertical-align:middle;">@Session["Email"]</span></li>
+                                <li><a href="@Url.Action("Logout", "LoginCustomer")">Đăng xuất</a></li>
+
+                            }
+                            @if (Session["Email"] == null)
+                            {
+                                <li class="dropdown submenu">
+                                    <a href="@Url.Action("RegisterUser", "LoginCustomer")" class="dropdown-toggle">Đăng ký</a>
+                                </li><li class="dropdown submenu">
+    <a href="~/Views/Shared/Gift_index.cshtml">Doi diem thuong</a>
+</li>
+                            }
+                            else
+                            {
+                                <li class="dropdown submenu">
+                                    <a href="@Url.Action("DonDat", "LoginCustomer", new { id = Session["MaKH"] })">Đơn Đặt</a>
+                                </li>
+                                <li class="dropdown submenu">
+                                    <a href="@Url.Action("EditAccount", "LoginCustomer", new { id = Session["MaKH"] })">Thông tin</a>
+                                </li>
+                                <li class="dropdown submenu">
+                                    <a href="@Url.Action("Index", "MyGift", new { id = Session["MaKH"] })">Kho diem thuong</a>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </div>
@@ -211,6 +249,15 @@
     <script src="~/Assets/js/QuangCaoJS.js"></script>
     <script src="~/Assets/main/freda/src/app/js/plugins.min.js"></script>
     <script src="~/Assets/main/freda/src/app/js/app.js"></script>
+
+
+
+    <script src="~/Assets/ECome/js/jquery.js"></script>
+    <script src="~/Assets/ECome/js/bootstrap.js"></script>
+    <script src="~/Assets/ECome/js/owl.carousel.min.js"></script>
+    <script src="~/Assets/ECome/js/slick.js"></script>
+    <script src="~/Assets/ECome/js/countdown.js"></script>
+    <script src="~/Assets/ECome/js/main.js"></script>
 
 </body>
 </html>

@@ -55,7 +55,7 @@ namespace THDShop.Areas.Manager.Controllers
 
        
         [HttpPost]
-        public ActionResult Edit(ROLES role)
+        public ActionResult Edit(ROLE role)
         {
             var detail = database.ROLES.Where(s => s.ID == role.ID);
 
@@ -81,7 +81,11 @@ namespace THDShop.Areas.Manager.Controllers
             
             return RedirectToAction("Index");
         }
+        public ActionResult Searchname(string name)
+        {
+            var list = database.ROLES.Where(p => p.NAME == name).ToList();
+            return View(list);
+        }
 
-       
     }
 }

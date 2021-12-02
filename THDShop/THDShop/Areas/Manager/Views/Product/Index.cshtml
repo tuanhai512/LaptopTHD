@@ -1,89 +1,133 @@
-﻿@model IEnumerable<THDShop.ViewModel.Product.ProductDTO>
+﻿@model IEnumerable<THDShop.PRODUCT>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Manager/Views/Shared/_Layout.cshtml";
 }
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Product</h1>
-        <a href="@Url.Action("Create","Product")" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-            <i class="fas fa-download fa-sm text-white-50"></i> Create Product
+        <h1 class="h3 mb-0 text-gray-800">Sản Phẩm</h1>
+        <div class="input-group">
+            <input type="text" name="id" class="form-control bg-light border-0 small" placeholder="Nhập mã sản phẩm"
+                   aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
+
+        <a href="@Url.Action("Create", "Product")" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> Tạo Sản Phẩm
         </a>
     </div>
+
+
     <div class="text-center">
-        <div class="paddingtop rl" style="padding-bottom: 20px;">
+        <div>
             <div class="tbl-header">
                 <table cellpadding="0" cellspacing="0" border="0">
-                    <thead>
+                    <thead class="table-header">
                         <tr>
                             <th>
-                                Mã
                             </th>
-                            <th>
-                                Tên
+                            <th class="header__item">
+                                <a class="filter__link filter__link--number" id="id" href="#">
+                                    Mã
+                                </a>
                             </th>
-                            <th>
-                                Loại
+                            <th class="header__item">
+                                <a class="filter__link" id="name" href="#"> 
+                                    Tên
+                                </a>
                             </th>
-                            <th>
-                                Giá Bán
+                            <th class="header__item">
+                                <a class="filter__link" id="cate" href="#">
+                                    Thương Hiệu
+                                </a>
                             </th>
-                            <th>
-                                Số Lượng
+                            <th class="header__item">
+                                <a class="filter__link filter__link--number" id="oriprice" href="#">
+                                    Giá Gốc
+                                </a>
+                            </th>
+                            <th class="header__item">
+                                <a class="filter__link filter__link--number" id="price" href="#">
+                                    Giá Bán
+                                </a>
                             </th>
                             <th>
                                 Hình Ảnh
                             </th>
-                            <th>
-                                Mô Tả
+                            <th class="header__item">
+                                <a class="filter__link filter__link--number" id="quantity" href="#">
+                                    Số Lượng
+                                </a>
                             </th>
                             <th></th>
                         </tr>
                     </thead>
                 </table>
             </div>
-            @foreach (var item in Model)
-            {
-                <div>
-                    <table cellpadding="0" cellspacing="0" border="0">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ID)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.NAME)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CATEGORYNAME)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PRICE)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.QUANTITY)
-                                </td>
-                                <td>
-                                    <img src="@Url.Content(item.IMAGE)" width="100" height="100" style="border-radius: 10px;" />
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DESCRIPTION)
-                                </td>
-                                <td style="display: flex;align-content: center;flex-wrap: wrap;flex-direction: column;">
-                                    <a href="@Url.Action("Edit","Product",new { id = item.ID })" class="btn btn-sm btn-warning" style="margin-bottom: 5px;">Edit</a>
-                                    <a href="@Url.Action("Delete","Product",new { id = item.ID })" class="btn btn-sm btn-danger" style="margin-bottom: 5px;">Delete</a>
-                                    <a href="@Url.Action("Detail","Product",new { id = item.ID })" class="btn btn-sm btn-info" style="margin-bottom: 5px;">Detail</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            }
+            <div>
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody class="table-content">
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr class="table-row">
+                                    <td>
+                                        @if (item.HOTPRODUCT.Equals(0))
+                                        {
+                                            <img style="width:80px" src="~/Assets/Images/logonew.png"/>
+                                        }
+                                        @if (item.HOTPRODUCT.Equals(1))
+                                        {
+                                            <img style="width:80px" src="~/Assets/Images/logohot.png" />
+                                        }
+                                        @if (item.HOTPRODUCT.Equals(2))
+                                        {
+                                            <span class="btn btn-sm btn-warning">OLD</span>
+                                        }
+                                    </td>
+                                    <td class="table-data">
+                                        @Html.DisplayFor(modelItem => item.ID)
+                                    </td>
+                                    <td class="table-data">
+                                        @Html.DisplayFor(modelItem => item.NAME)
+                                    </td>
+                                    <td class="table-data">
+                                        @Html.DisplayFor(modelItem => item.CATEGORy.NAME)
+                                    </td>
+                                    <td class="table-data">
+                                        @Html.DisplayFor(modelItem => item.ORI_PRICE)
+                                    </td>
+                                    <td class="table-data">
+                                        @Html.DisplayFor(modelItem => item.PRICE)
+                                    </td>
+                                    <td>
+                                        <img src="@Url.Content(item.IMAGE)" width="100" height="100" style="border-radius: 10px;" />
+                                    </td>
+                                    <td class="table-data">
+                                        @Html.DisplayFor(modelItem => item.QUANTITY)
+                                    </td>
+                                    <td style="display: flex;align-content: center;flex-wrap: wrap;flex-direction: column;">
+                                        <a href="@Url.Action("Edit", "Product", new { id = item.ID })" class="btn btn-sm btn-warning" style="margin-bottom: 5px;">Edit</a>
+                                        <a href="@Url.Action("Delete", "Product", new { id = item.ID })" class="btn btn-sm btn-danger" style="margin-bottom: 5px;">Delete</a>
+                                        <a href="@Url.Action("Detail", "Product", new { id = item.ID })" class="btn btn-sm btn-info" style="margin-bottom: 5px;">Detail</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 }
-
+<script src="~/Scripts/search.js"></script>

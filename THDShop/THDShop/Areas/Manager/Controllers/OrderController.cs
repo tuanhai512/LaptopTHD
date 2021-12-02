@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using THDShop.ViewModel;
@@ -41,7 +42,7 @@ namespace THDShop.Areas.Manager.Controllers
             {
                 return RedirectToAction("Index");
             }
-            ORDERS dathang = _db.ORDERS.Find(id);
+            ORDER dathang = _db.ORDERS.Find(id);
             if (dathang.STATUS == 0)
             {
                 dathang.STATUS = 1;
@@ -51,6 +52,11 @@ namespace THDShop.Areas.Manager.Controllers
             return RedirectToAction("Index");
 
         }
+        public ActionResult BillSuccess()
+        {
+            var model = _db.ORDERS.Where(s => s.STATUS == 2).ToList();
+            return View(model);
+        }
         public ActionResult Success(int? id)
         {
             var getreport = GetReport();
@@ -59,7 +65,7 @@ namespace THDShop.Areas.Manager.Controllers
                 return RedirectToAction("Index");
             }
             //int temp = (int)Session["MAKH"];
-            ORDERS dathang = _db.ORDERS.Find(id);
+            ORDER dathang = _db.ORDERS.Find(id);
             if (dathang.STATUS == 1)
             {
                 if (ModelState.IsValid)
@@ -73,7 +79,7 @@ namespace THDShop.Areas.Manager.Controllers
                        // ID = (int)Session["MAKH"]
 
                     };
-                    _db.BILL.Add(hoadon);
+                    _db.BILLs.Add(hoadon);
                     _db.SaveChanges();
                     
 
@@ -112,13 +118,18 @@ namespace THDShop.Areas.Manager.Controllers
             return RedirectToAction("Index");
 
         }
+        public ActionResult BillCancel()
+        {
+            var model = _db.ORDERS.Where(s => s.STATUS == 3).ToList();
+            return View(model);
+        }
         public ActionResult Cancel(int? id)
         {
             if (id == null)
             {
                 return RedirectToAction("Index");
             }
-            ORDERS dathang = _db.ORDERS.Find(id);
+            ORDER dathang = _db.ORDERS.Find(id);
             if (dathang.STATUS == 1)
             {
                 dathang.STATUS = 3;
@@ -129,9 +140,18 @@ namespace THDShop.Areas.Manager.Controllers
 
         }
         // GET: QuanLy/DonHang/Details/5
-        public ActionResult Details()
+        public ActionResult Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var order = _db.ORDERS.Find(id);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            return View(order);
         }
 
         // POST: QuanLy/DonHang/Delete/5
@@ -148,6 +168,11 @@ namespace THDShop.Areas.Manager.Controllers
             {
                 return View();
             }
+        }
+        public ActionResult Searchid(int id)
+        {
+            var list = _db.ORDERS.Where(p => p.ID == id).ToList();
+            return View(list);
         }
     }
 }

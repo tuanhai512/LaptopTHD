@@ -193,12 +193,12 @@ body, html {
 
 .yb-main-content {
     z-index: 10;
-    background: #ece8e1;
+    background: #ffffff;
     min-height: 650px
 }
 
 .yb-main-content, .yb-section {
-    background-color: #ece8e1;
+    background-color: #ffffff;
     position: relative
 }
 
