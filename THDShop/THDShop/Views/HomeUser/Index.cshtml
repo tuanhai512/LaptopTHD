@@ -24,38 +24,7 @@
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="~/Assets/main/hotte/css/responsive.css" />
 
-    <script>
-        $(".testimonial-slider").slick({
-            autoplay: true,
-            autoplaySpreed: 7000,
-            arrows: true,
-            prevArrow: '<i class="icofont-arrow-left"></i>',
-            nextArrow: '<i class="icofont-arrow-right"></i>',
-            responsive: [
-                {
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        infinite: true,
-                    },
-                },
-                {
-                    breakpoint: 600,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                    },
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                    },
-                },
-            ],
-        });</script>
+    <link rel="stylesheet" type="text/css" href="~/Assets/ECome/css/style.css">
 </head>
 <div class="font_asap">
     @if (Model.Count() > 0)
@@ -65,91 +34,68 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="menu-head text-center">
-                            <h2><span>SẢN PHẨM</span></h2>
-                            <p>Toàn bộ các dòng sản phảm Laptop</p>
+                            <h2><span>SẢN PHẨM HOT</span></h2>
+                            <p>Các dòng sản phảm Laptop HOT</p>
                         </div>
                     </div>
                 </div>
-                <div class="row food-box">
+                <div class="owl-carousel owl-theme owl-cate js-owl-cate2">
                     @foreach (var item in Model)
                     {
-                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
-                            <div class="food-menu text-center">
-                                <a style="color:aliceblue" href="/HomeUser/Details/@item.ID">
-                                    <div class="food-img-info">
-                                        <div class="food-img">
-                                            <img src="@Url.Content(item.IMAGE)" width="300" height="300" />
+                        if (item.HOTPRODUCT == 1)
+                        {
+                            <div class="product-countd pd-bd product-inner">
+                                <div class="product-item-countd">
+                                    <div class="product-head product-img">
+                                        <a href="/HomeUser/Details/@item.ID"><img style="height:320px; width:320px;" src="@Url.Content(item.IMAGE)" alt=""></a>
+                                        <div class="ribbon-price v3 red"><span>HOT</span></div>
+                                    </div>
+                                    <div class="product-info">
+                                        <p class="product-cate text-center">@Html.DisplayFor(modelItem => item.CATEGORy.NAME)</p>
+                                        <div class="product-price thin-price v3">
+                                            <span class="red">@item.PRICE.ToString("#,##")</span>
                                         </div>
-                                        <div class="overlay text-left">
-                                            <h4>Cấu Hình</h4>
+                                        <h3 class="product-title text-center v2"><a href="/HomeUser/Details/@item.ID">@Html.DisplayFor(modelItem => item.NAME)</a></h3>
+                                        <did id="config_tnx">
                                             <table>
                                                 <tbody>
                                                     <tr>
-                                                        <!-- CPU -->
                                                         <td class="item-left">
-                                                            <img width="300" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/cpu.png" class="lazyloaded">
+                                                            <img width="512" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/cpu.png" />
                                                         </td>
-                                                        <td class="item-right">@Html.DisplayFor(modelItem => item.DESCRIPTION_CPU) </td>
-
-                                                        <!-- GPU -->
+                                                        <td class="item-right">@Html.DisplayFor(modelItem => item.DESCRIPTION_CPU)</td>
                                                         <td class="item-left">
-                                                            <img width="300" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/gpu.png" class="lazyloaded">
+                                                            <img width="512" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/gpu.png" />
                                                         </td>
                                                         <td class="item-right">@Html.DisplayFor(modelItem => item.DESCRIPTION_CARD)</td>
                                                     </tr>
                                                     <tr>
-                                                        <!-- RAM -->
                                                         <td class="item-left">
-                                                            <img width="300" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/ram.png" class="lazyloaded">
+                                                            <img width="512" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/ram.png" />
                                                         </td>
                                                         <td class="item-right">@Html.DisplayFor(modelItem => item.DESCRIPTION_RAM)</td>
-
-                                                        <!-- Dung Lượng -->
                                                         <td class="item-left">
-                                                            <img width="300" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/ssd.png" class="lazyloaded">
+                                                            <img width="512" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/ssd.png" />
                                                         </td>
                                                         <td class="item-right">@Html.DisplayFor(modelItem => item.DESCRIPTION_STORAGE)</td>
                                                     </tr>
                                                     <tr>
-                                                        <!-- Cân nặng -->
                                                         <td class="item-left">
-                                                            <img width="300" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/weight.png" class="lazyloaded">
+                                                            <img width="512" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/weight.png" />
                                                         </td>
                                                         <td class="item-right">@Html.DisplayFor(modelItem => item.DESCRIPTION_WEIGHT)</td>
-
-                                                        <!-- Màn Hình -->
                                                         <td class="item-left">
-                                                            <img width="300" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/size.png" class="lazyloaded">
+                                                            <img width="512" height="512" src="https://thenewxgear.com/wp-content/uploads/2021/08/size.png" />
                                                         </td>
                                                         <td class="item-right">@Html.DisplayFor(modelItem => item.DESCRIPTION_SCREEN)</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="food-informaion">
-                                    <div class="row align-items-center">
-
-                                        <!-- Tên Sản Phẩm -->
-                                        <div class="col-12"><h2>@Html.DisplayFor(modelItem => item.NAME)</h2></div>
-
-                                        <!-- Loại , Giá -->
-                                        <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                            <div class="food-info text-left">
-                                                <span> @Html.DisplayFor(modelItem => item.CATEGORYNAME)</span>
-                                                <h3><span>đ</span>@item.PRICE.ToString("#,##")</h3>
-                                            </div>
-                                        </div>
-
-                                        <!-- Buttons Giỏ Hàng -->
-                                        <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-right">
-                                            <a href="/Cart/AddToCart/@item.ID" class="btn order-btn2">Giỏ Hàng</a>
-                                        </div>
+                                        </did>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        }
                     }
                 </div>
             </div>

@@ -133,6 +133,7 @@ namespace THDShop.Areas.Manager.Controllers
                 );
             ViewBag.Categories = categorylist;
             model.ID = entity.ID;
+            model.HOTPRODUCT = entity.HOTPRODUCT;
             model.NAME = entity.NAME;
             model.PRICE = entity.PRICE;
             model.ORI_PRICE = entity.ORI_PRICE;
@@ -149,6 +150,7 @@ namespace THDShop.Areas.Manager.Controllers
             return View(model);
         }
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Edit(UpdateProductInput model)
         {
             var entity = new PRODUCT();
@@ -174,6 +176,7 @@ namespace THDShop.Areas.Manager.Controllers
 
             }
             entity.ID = model.ID;
+            entity.HOTPRODUCT = model.HOTPRODUCT;
             entity.NAME = model.NAME;
             entity.PRICE = model.PRICE.HasValue ? model.PRICE.Value : 0;
             entity.ORI_PRICE = model.ORI_PRICE.HasValue ? model.ORI_PRICE.Value : 0;
@@ -215,6 +218,7 @@ namespace THDShop.Areas.Manager.Controllers
                         select new DetailProductDTO
                         {
                             ID = c.ID,
+                            HOTPRODUCT = c.HOTPRODUCT,
                             NAME = c.NAME,
                             PRICE = c.PRICE,
                             ORI_PRICE = c.ORI_PRICE,

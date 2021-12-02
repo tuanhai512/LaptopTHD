@@ -174,13 +174,13 @@ th,td{
     background: #e81d3b;
     border-radius: 10px;
     transition: all 0.3s;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 500;
     }
     .btn2:hover {
         text-decoration: none;
-        background: #4edfbe;
-        color: #111;
+        background: #dc485e;
+        color: #fff;
     }
 
 .btn-code {
