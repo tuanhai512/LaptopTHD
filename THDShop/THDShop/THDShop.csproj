@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>THDShop</RootNamespace>
     <AssemblyName>THDShop</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -142,7 +142,7 @@
     <Compile Include="BILL.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="CATEGORy.cs">
+    <Compile Include="CATEGORIES.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\CartController.cs" />
@@ -184,20 +184,23 @@
     <Compile Include="MYGIFT.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="ORDER.cs">
+    <Compile Include="ORDERS.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="PRODUCT.cs">
+    <Compile Include="PRODUCTS.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ROLE.cs">
+    <Compile Include="REPORT.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ROLES.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="STAFF.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="USER.cs">
+    <Compile Include="USERS.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\Cart.cs" />
@@ -3321,13 +3324,6 @@
     <Content Include="Areas\Manager\Views\Role\Create.cshtml" />
     <Content Include="Areas\Manager\Views\Role\Edit.cshtml" />
     <Content Include="Areas\Manager\Views\Order\Searchid.cshtml" />
-    <EntityDeploy Include="Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Content>
     <Content Include="Assets\ECome\css\bootstrap-slider.css.map" />
     <Content Include="Assets\ECome\css\fonts\slick.eot" />
     <Content Include="Assets\ECome\css\fonts\slick.ttf" />
@@ -3472,6 +3468,13 @@
     <Content Include="Assets\ECome\sass\_mixins.scss" />
     <Content Include="Assets\ECome\sass\_rules.scss" />
     <Content Include="Assets\ECome\sass\_variables.scss" />
+    <EntityDeploy Include="Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\editorEDK.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -3504,13 +3507,14 @@
     <Content Include="Views\Cart\BagCart.cshtml" />
     <Content Include="Views\Cart\DeliveryForm.cshtml" />
     <Content Include="Views\Cart\CheckOutSuccess.cshtml" />
+    <Content Include="Views\LoginCustomer\LoginAccount.cshtml" />
+    <Content Include="Views\LoginCustomer\RegisterUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Manager\Data\" />
     <Folder Include="Assets\ECome\sass\components\Mixins\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\LoginCustomer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

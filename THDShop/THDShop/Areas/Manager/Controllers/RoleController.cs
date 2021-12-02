@@ -55,7 +55,7 @@ namespace THDShop.Areas.Manager.Controllers
 
        
         [HttpPost]
-        public ActionResult Edit(ROLE role)
+        public ActionResult Edit(ROLES role)
         {
             var detail = database.ROLES.Where(s => s.ID == role.ID);
 

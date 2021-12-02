@@ -6,22 +6,22 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using THDShop.ViewModel;
-using THDShop.ViewModel.Report;
+
 
 namespace THDShop.Areas.Manager.Controllers
 {
     public class OrderController : Controller
     {
-        public ReportDTO GetReport()
-        {
-            ReportDTO getreport = Session["ReportDTO"] as ReportDTO;
-            if (getreport == null || Session["ReportDTO"] == null)
-            {
-                getreport = new ReportDTO();
-                Session["ReportDTO"] = getreport;
-            }
-            return getreport;
-        }
+        //public ReportDTO GetReport()
+        //{
+        //    ReportDTO getreport = Session["ReportDTO"] as ReportDTO;
+        //    if (getreport == null || Session["ReportDTO"] == null)
+        //    {
+        //        getreport = new ReportDTO();
+        //        Session["ReportDTO"] = getreport;
+        //    }
+        //    return getreport;
+        //}
         // GET: Manager/Order
         QLLaptopShopEntities _db = new QLLaptopShopEntities();
         // GET: QuanLy/DonHang
@@ -42,7 +42,7 @@ namespace THDShop.Areas.Manager.Controllers
             {
                 return RedirectToAction("Index");
             }
-            ORDER dathang = _db.ORDERS.Find(id);
+            ORDERS dathang = _db.ORDERS.Find(id);
             if (dathang.STATUS == 0)
             {
                 dathang.STATUS = 1;
@@ -59,13 +59,13 @@ namespace THDShop.Areas.Manager.Controllers
         }
         public ActionResult Success(int? id)
         {
-            var getreport = GetReport();
+           // var getreport = GetReport();
             if (id == null)
             {
                 return RedirectToAction("Index");
             }
             //int temp = (int)Session["MAKH"];
-            ORDER dathang = _db.ORDERS.Find(id);
+            ORDERS dathang = _db.ORDERS.Find(id);
             if (dathang.STATUS == 1)
             {
                 if (ModelState.IsValid)
@@ -79,7 +79,7 @@ namespace THDShop.Areas.Manager.Controllers
                        // ID = (int)Session["MAKH"]
 
                     };
-                    _db.BILLs.Add(hoadon);
+                    _db.BILL.Add(hoadon);
                     _db.SaveChanges();
                     
 
@@ -129,7 +129,7 @@ namespace THDShop.Areas.Manager.Controllers
             {
                 return RedirectToAction("Index");
             }
-            ORDER dathang = _db.ORDERS.Find(id);
+            ORDERS dathang = _db.ORDERS.Find(id);
             if (dathang.STATUS == 1)
             {
                 dathang.STATUS = 3;

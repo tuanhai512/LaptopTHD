@@ -21,41 +21,37 @@ namespace THDShop.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult LoginAccount(USER _user)
+        public ActionResult LoginAccount(USERS _user)
         {
-
-            CUSTOMER cUSTOMER = database.CUSTOMERs.Where(m => m.ID == _user.ID).FirstOrDefault();
-
+       
             if (!CheckExistAccount(_user))
             {
                 ViewBag.ErrorInfo = "Sai info";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("LoginAccount", "LoginCustomer");
             }
             else
             {
-                database.Configuration.ValidateOnSaveEnabled = false;
-                Session["EMAIL"] = _user.EMAIL;
-                Session["PASSWORD"] = _user.PASSWORD;
-                STAFF sTAFF = database.STAFFs.Where(m => m.ID == _user.ID).FirstOrDefault();
-
-                if (_user.PASSWORD == sTAFF.PASSWORD && _user.EMAIL == sTAFF.EMAIL)
+                var check = database.USERS.Where(s => s.EMAIL == _user.EMAIL && s.PASSWORD == _user.PASSWORD).FirstOrDefault();
+                if (check.ROLENAME == "Customer")
                 {
-                    if (sTAFF.ROLE.NAME == "Manager")
-                    {
-                        Session["TENQLY"] = sTAFF.NAME;
-                        Session["ID"] = sTAFF.ID;
-                        return RedirectToAction("index", "Category");
-                    }
-                    return RedirectToAction("index", "Product");
-                }
+                    database.Configuration.ValidateOnSaveEnabled = false;
+                    Session["EMAIL"] = _user.EMAIL;
+                    Session["PASSWORD"] = _user.PASSWORD;
+                    return RedirectToAction("Index", "HomeUser");
+                }                
                 else
                 {
-                    Session["TENNV"] = cUSTOMER.NAME;
-                    Session["ID"] = cUSTOMER.ID;
-                    RedirectToAction("index", "Home");
+                    var checkM = database.USERS.Where(s => s.EMAIL == _user.EMAIL && s.PASSWORD == _user.PASSWORD).FirstOrDefault();
+                    if (checkM.ROLENAME == "Manager")
+                    {
+                        Session["TENQLY"] = _user.NAME;
+                        Session["ID"] = _user.ID;
+                        return RedirectToAction("Index", "Category");
+                    }
+                    return RedirectToAction("Index", "Product");
                 }
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "HomeUser");
             }
 
         }
@@ -66,7 +62,7 @@ namespace THDShop.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditAccount(USER user)
+        public ActionResult EditAccount(USERS user)
         {
             var detail = database.USERS.Where(m => m.ID == user.ID);
 
@@ -84,10 +80,11 @@ namespace THDShop.Controllers
             return RedirectToAction("Index");
         }
 
-        public bool CheckExistAccount(USER _user)
+        public bool CheckExistAccount(USERS _user)
         {
 
             var check = database.USERS.Where(s => s.EMAIL == _user.EMAIL && s.PASSWORD == _user.PASSWORD).FirstOrDefault();
+
             if (check != null)
             {
                 return true;
@@ -105,7 +102,7 @@ namespace THDShop.Controllers
         }
 
         [HttpPost]
-        public ActionResult RegisterUser(USER _user)
+        public ActionResult RegisterUser(USERS _user)
         {
             if (ModelState.IsValid)
             {
@@ -114,6 +111,8 @@ namespace THDShop.Controllers
                 if (check_ID == null)
                 {
                     database.Configuration.ValidateOnSaveEnabled = false;
+
+                    _user.ROLENAME = "Customer";
                     database.USERS.Add(_user);
                     var _cus = new CUSTOMER()
                     {
@@ -122,8 +121,10 @@ namespace THDShop.Controllers
                         NAME=_user.NAME,
                         ADDRESS=_user.ADDRESS,
                         PASSWORD=_user.PASSWORD,
+                        ROLENAME = _user.ROLENAME,
                     };
-                    database.CUSTOMERs.Add(_cus);
+                   
+                    database.CUSTOMER.Add(_cus);
                     database.SaveChanges();
                     return RedirectToAction("LoginAccount");
                 }

@@ -12,32 +12,22 @@ namespace THDShop
     using System;
     using System.Collections.Generic;
     
-    public partial class CUSTOMER
+    public partial class CATEGORIES
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CUSTOMER()
+        public CATEGORIES()
         {
-            this.DELI_ADDRESS = new HashSet<DELI_ADDRESS>();
+            this.PRODUCTS = new HashSet<PRODUCTS>();
         }
     
         public int ID { get; set; }
-        public int IDUSER { get; set; }
         public string NAME { get; set; }
-        public Nullable<System.DateTime> BIRTHDAY { get; set; }
-        public string ADDRESS { get; set; }
-        public string PHONE { get; set; }
-        public string EMAIL { get; set; }
-        public string PASSWORD { get; set; }
-        public string AVATAR { get; set; }
-        public int POINT_MY { get; set; }
-        public Nullable<int> IDMYGIFT { get; set; }
-        public Nullable<int> IDROLE { get; set; }
-        public string ROLENAME { get; set; }
+        public Nullable<int> CREATEBY { get; set; }
+        public System.DateTime CREATEAT { get; set; }
+        public Nullable<int> UPDATEBY { get; set; }
+        public Nullable<System.DateTime> UPDATEAT { get; set; }
     
-        public virtual MYGIFT MYGIFT { get; set; }
-        public virtual ROLES ROLES { get; set; }
-        public virtual USERS USERS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DELI_ADDRESS> DELI_ADDRESS { get; set; }
+        public virtual ICollection<PRODUCTS> PRODUCTS { get; set; }
     }
 }

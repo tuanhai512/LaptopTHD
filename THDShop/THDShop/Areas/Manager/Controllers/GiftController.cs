@@ -56,7 +56,7 @@ namespace THDShop.Areas.Manager.Controllers
                 entity.G_START = model.G_START;
                 entity.G_END = model.G_END;
                 entity.DESCREPTION = model.DESCREPTION;
-                entity.QUANTITY = model.QUANTITY;
+                entity.QUANTITY = (int)model.QUANTITY;
                 _db.GIFT.Add(entity);
                 _db.SaveChanges();        
                 return RedirectToAction("Index");

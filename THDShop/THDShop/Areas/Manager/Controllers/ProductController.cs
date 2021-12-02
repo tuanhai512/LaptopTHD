@@ -69,10 +69,10 @@ namespace THDShop.Areas.Manager.Controllers
         [ValidateInput(false)]
         public ActionResult Create(CreateProductInput model)
         {
-            var entity = new PRODUCT();
+            var entity = new PRODUCTS();
             if (model != null)
             {
-                entity = new PRODUCT();
+                entity = new PRODUCTS();
                 var categorylist = _context.CATEGORIES.ToList().Select(
                 x => new SelectListItem
                 {
@@ -133,7 +133,7 @@ namespace THDShop.Areas.Manager.Controllers
                 );
             ViewBag.Categories = categorylist;
             model.ID = entity.ID;
-            model.HOTPRODUCT = entity.HOTPRODUCT;
+           // model.HOTPRODUCT = entity.HOTPRODUCT;
             model.NAME = entity.NAME;
             model.PRICE = entity.PRICE;
             model.ORI_PRICE = entity.ORI_PRICE;
@@ -153,7 +153,7 @@ namespace THDShop.Areas.Manager.Controllers
         [ValidateInput(false)]
         public ActionResult Edit(UpdateProductInput model)
         {
-            var entity = new PRODUCT();
+            var entity = new PRODUCTS();
             if (model == null)
                 return HttpNotFound();
 
@@ -176,7 +176,7 @@ namespace THDShop.Areas.Manager.Controllers
 
             }
             entity.ID = model.ID;
-            entity.HOTPRODUCT = model.HOTPRODUCT;
+          //  entity.HOTPRODUCT = model.HOTPRODUCT;
             entity.NAME = model.NAME;
             entity.PRICE = model.PRICE.HasValue ? model.PRICE.Value : 0;
             entity.ORI_PRICE = model.ORI_PRICE.HasValue ? model.ORI_PRICE.Value : 0;
@@ -196,7 +196,7 @@ namespace THDShop.Areas.Manager.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Delete(int id, PRODUCT prod)
+        public ActionResult Delete(int id, PRODUCTS prod)
         {
             try
             {
@@ -218,14 +218,14 @@ namespace THDShop.Areas.Manager.Controllers
                         select new DetailProductDTO
                         {
                             ID = c.ID,
-                            HOTPRODUCT = c.HOTPRODUCT,
+                           // HOTPRODUCT = c.HOTPRODUCTS,
                             NAME = c.NAME,
                             PRICE = c.PRICE,
                             ORI_PRICE = c.ORI_PRICE,
                             QUANTITY = c.QUANTITY,
                             DESCRIPTION = c.DESCRIPTION,
                             IMAGE = c.IMAGE,
-                            CATEGORYNAME = c.CATEGORy.NAME,
+                            CATEGORYNAME = c.CATEGORIES.NAME,
                             DESCRIPTION_CPU = c.DESCRIPTION_CPU,
                             DESCRIPTION_RAM = c.DESCRIPTION_RAM,
                             DESCRIPTION_STORAGE = c.DESCRIPTION_STORAGE,
