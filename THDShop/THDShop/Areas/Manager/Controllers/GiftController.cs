@@ -75,8 +75,8 @@ namespace THDShop.Areas.Manager.Controllers
             model.G_POINT = entity.G_POINT;
 
             model.G_VALUE = entity.G_VALUE;
-            model.G_START = entity.G_START;
-            model.G_END = entity.G_END;
+            model.G_START = (DateTime)entity.G_START;
+            model.G_END = (DateTime)entity.G_END;
             model.DESCREPTION = entity.DESCREPTION;
             model.QUANTITY = entity.QUANTITY;
             return View(model);

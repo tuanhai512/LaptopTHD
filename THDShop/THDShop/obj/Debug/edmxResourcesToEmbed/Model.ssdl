@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="QLLaptopShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="QLLaptopShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="BILL">
     <Key>
       <PropertyRef Name="ID" />
@@ -8,7 +8,8 @@
     <Property Name="IDSTAFF" Type="int" />
     <Property Name="IDORDER" Type="int" Nullable="false" />
     <Property Name="TOTALMONEY" Type="float" Nullable="false" />
-    <Property Name="DATETIME" Type="datetime" />
+    <Property Name="ORI_PRICE" Type="float" Nullable="false" />
+    <Property Name="DATETIME" Type="datetime" Nullable="false" />
     <Property Name="NOTE" Type="nvarchar(max)" />
     <Property Name="METHODS" Type="int" Nullable="false" />
   </EntityType>
@@ -19,7 +20,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NAME" Type="nvarchar" MaxLength="30" Nullable="false" />
     <Property Name="CREATEBY" Type="int" />
-    <Property Name="CREATEAT" Type="datetime" />
+    <Property Name="CREATEAT" Type="datetime" Nullable="false" />
     <Property Name="UPDATEBY" Type="int" />
     <Property Name="UPDATEAT" Type="datetime" />
   </EntityType>
@@ -48,6 +49,7 @@
     <Property Name="IDBILL" Type="int" Nullable="false" />
     <Property Name="IDORDER" Type="int" Nullable="false" />
     <Property Name="IDPRODUCT" Type="int" Nullable="false" />
+    <Property Name="ORI_PRICE" Type="float" Nullable="false" />
     <Property Name="QUANTITY" Type="int" Nullable="false" />
     <Property Name="NOTE" Type="nvarchar(max)" />
   </EntityType>
@@ -60,6 +62,7 @@
     <Property Name="IDPRODUCT" Type="int" Nullable="false" />
     <Property Name="QUANTITY" Type="int" Nullable="false" />
     <Property Name="PRICE" Type="float" Nullable="false" />
+    <Property Name="ORI_PRICE" Type="float" Nullable="false" />
   </EntityType>
   <EntityType Name="DELI_ADDRESS">
     <Key>
@@ -78,20 +81,20 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="ID" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="G_POINT" Type="int" Nullable="false" />
     <Property Name="G_VALUE" Type="float" Nullable="false" />
     <Property Name="G_START" Type="datetime" />
     <Property Name="G_END" Type="datetime" />
-    <Property Name="DESCREPTION" Type="nvarchar" MaxLength="1" />
-    <Property Name="QUANTITY" Type="int" />
+    <Property Name="DESCREPTION" Type="nvarchar" MaxLength="20" />
+    <Property Name="QUANTITY" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="MYGIFT">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IDGIFT" Type="varchar" MaxLength="1" />
+    <Property Name="IDGIFT" Type="varchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="ORDERS">
     <Key>
@@ -101,6 +104,7 @@
     <Property Name="DAY" Type="datetime" Nullable="false" />
     <Property Name="IDDELIADDRESS" Type="int" Nullable="false" />
     <Property Name="TOTALMONEY" Type="float" Nullable="false" />
+    <Property Name="ORI_PRICE" Type="float" Nullable="false" />
     <Property Name="NOTE" Type="nvarchar(max)" />
     <Property Name="STATUS" Type="int" Nullable="false" />
     <Property Name="METHODS" Type="int" Nullable="false" />
@@ -128,6 +132,15 @@
     <Property Name="UPDATEBY" Type="int" />
     <Property Name="UPDATEAT" Type="datetime" />
     <Property Name="IDCATEGORY" Type="int" />
+  </EntityType>
+  <EntityType Name="REPORT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDBILL" Type="int" Nullable="false" />
+    <Property Name="INCOME" Type="float" Nullable="false" />
+    <Property Name="DATE" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="ROLES">
     <Key>
@@ -309,6 +322,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_REPORT_BILL">
+    <End Role="BILL" Type="Self.BILL" Multiplicity="1" />
+    <End Role="REPORT" Type="Self.REPORT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BILL">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="REPORT">
+        <PropertyRef Name="IDBILL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_STAFF_ROLES">
     <End Role="ROLES" Type="Self.ROLES" Multiplicity="0..1" />
     <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
@@ -344,6 +369,7 @@
     <EntitySet Name="MYGIFT" EntityType="Self.MYGIFT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ORDERS" EntityType="Self.ORDERS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PRODUCTS" EntityType="Self.PRODUCTS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="REPORT" EntityType="Self.REPORT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ROLES" EntityType="Self.ROLES" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="STAFF" EntityType="Self.STAFF" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
@@ -394,6 +420,10 @@
     <AssociationSet Name="FK_ORDER_DEADDRESS" Association="Self.FK_ORDER_DEADDRESS">
       <End Role="DELI_ADDRESS" EntitySet="DELI_ADDRESS" />
       <End Role="ORDERS" EntitySet="ORDERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REPORT_BILL" Association="Self.FK_REPORT_BILL">
+      <End Role="BILL" EntitySet="BILL" />
+      <End Role="REPORT" EntitySet="REPORT" />
     </AssociationSet>
     <AssociationSet Name="FK_STAFF_ROLES" Association="Self.FK_STAFF_ROLES">
       <End Role="ROLES" EntitySet="ROLES" />

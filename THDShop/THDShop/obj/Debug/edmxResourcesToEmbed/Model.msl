@@ -8,6 +8,7 @@
           <ScalarProperty Name="IDSTAFF" ColumnName="IDSTAFF" />
           <ScalarProperty Name="IDORDER" ColumnName="IDORDER" />
           <ScalarProperty Name="TOTALMONEY" ColumnName="TOTALMONEY" />
+          <ScalarProperty Name="ORI_PRICE" ColumnName="ORI_PRICE" />
           <ScalarProperty Name="DATETIME" ColumnName="DATETIME" />
           <ScalarProperty Name="NOTE" ColumnName="NOTE" />
           <ScalarProperty Name="METHODS" ColumnName="METHODS" />
@@ -49,6 +50,7 @@
           <ScalarProperty Name="IDBILL" ColumnName="IDBILL" />
           <ScalarProperty Name="IDORDER" ColumnName="IDORDER" />
           <ScalarProperty Name="IDPRODUCT" ColumnName="IDPRODUCT" />
+          <ScalarProperty Name="ORI_PRICE" ColumnName="ORI_PRICE" />
           <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
           <ScalarProperty Name="NOTE" ColumnName="NOTE" />
         </MappingFragment>
@@ -61,6 +63,7 @@
           <ScalarProperty Name="IDPRODUCT" ColumnName="IDPRODUCT" />
           <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
           <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="ORI_PRICE" ColumnName="ORI_PRICE" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -106,6 +109,7 @@
           <ScalarProperty Name="DAY" ColumnName="DAY" />
           <ScalarProperty Name="IDDELIADDRESS" ColumnName="IDDELIADDRESS" />
           <ScalarProperty Name="TOTALMONEY" ColumnName="TOTALMONEY" />
+          <ScalarProperty Name="ORI_PRICE" ColumnName="ORI_PRICE" />
           <ScalarProperty Name="NOTE" ColumnName="NOTE" />
           <ScalarProperty Name="STATUS" ColumnName="STATUS" />
           <ScalarProperty Name="METHODS" ColumnName="METHODS" />
@@ -134,6 +138,16 @@
           <ScalarProperty Name="UPDATEBY" ColumnName="UPDATEBY" />
           <ScalarProperty Name="UPDATEAT" ColumnName="UPDATEAT" />
           <ScalarProperty Name="IDCATEGORY" ColumnName="IDCATEGORY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REPORTs">
+      <EntityTypeMapping TypeName="QLLaptopShopModel.REPORT">
+        <MappingFragment StoreEntitySet="REPORT">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDBILL" ColumnName="IDBILL" />
+          <ScalarProperty Name="INCOME" ColumnName="INCOME" />
+          <ScalarProperty Name="DATE" ColumnName="DATE" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

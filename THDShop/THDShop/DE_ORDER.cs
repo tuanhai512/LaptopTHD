@@ -24,6 +24,7 @@ namespace THDShop
         public int IDPRODUCT { get; set; }
         public int QUANTITY { get; set; }
         public double PRICE { get; set; }
+        public double ORI_PRICE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DE_BILL> DE_BILL { get; set; }

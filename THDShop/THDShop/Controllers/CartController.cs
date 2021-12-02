@@ -64,7 +64,7 @@ namespace THDShop.Controllers
             Cart cart = Session["Cart"] as Cart;
             if (cart != null)
             {
-                _t_item = cart.Total_Quantity();
+                _t_item = cart.Total_quantity();
             }
             ViewBag.infoCart = _t_item;
             return PartialView("BagCart");
@@ -117,6 +117,8 @@ namespace THDShop.Controllers
                     DAY = DateTime.Now,
                     IDDELIADDRESS = deliaddr.ID,
                     TOTALMONEY = cart.Total_money(),
+                    ORI_PRICE=cart.Total_OriPrice()
+                    
                 };
                 _db.ORDERS.Add(order);
                 _db.SaveChanges();

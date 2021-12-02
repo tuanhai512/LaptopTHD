@@ -64,10 +64,22 @@ namespace THDShop.Areas.Manager.Controllers
                         IDORDER = dathang.ID,
                         TOTALMONEY = (double)dathang.TOTALMONEY,
                         DATETIME = dathang.DAY,
-                       // ID = (int)Session["MAKH"]
+                        ORI_PRICE=dathang.ORI_PRICE
+
+                        // ID = (int)Session["MAKH"]
 
                     };
+                   
                     _db.BILLs.Add(hoadon);
+
+                    var report = new REPORT()
+                    {
+                        IDBILL = hoadon.ID,
+                        INCOME = (double)hoadon.TOTALMONEY,
+                        DATE = hoadon.DATETIME,
+
+                    };
+                    _db.REPORTs.Add(report);
                     _db.SaveChanges();
 
                     var mONAN_DATHANG = _db.DE_ORDER.Where(m => m.IDORDER == id).ToList();
@@ -79,6 +91,7 @@ namespace THDShop.Areas.Manager.Controllers
                             IDORDER = item.IDORDER,
                             IDPRODUCT = item.IDPRODUCT,
                             QUANTITY = item.QUANTITY,
+
                         };
                         _db.DE_BILL.Add(cthoadon);
                         _db.SaveChanges();

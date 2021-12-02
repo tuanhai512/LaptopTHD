@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using THDShop.ViewModel.Report;
 
 namespace THDShop.Areas.Manager.Controllers
 {
@@ -27,10 +28,6 @@ namespace THDShop.Areas.Manager.Controllers
             var list = database.BILLs.Where(p => p.ID==id).ToList();
             return View(list);
         }
-        public ActionResult Report()
-        {
-            return View(database.BILLs.ToList());
-
+        
         }
     }
-}

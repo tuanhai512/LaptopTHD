@@ -60,9 +60,13 @@ namespace THDShop.ViewModel
         {
             items.Clear();
         }
-        public int Total_Quantity()
+        public double Total_OriPrice()
         {
-            return items.Sum(s => s._quantity);
+            var total =items.Sum(s => s._product.ORI_PRICE* s._quantity);
+            return (total);
         }
+       
+
+
     }
 }

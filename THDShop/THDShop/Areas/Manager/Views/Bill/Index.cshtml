@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
+
 @using (Html.BeginForm("Searchid", "Bill"))
 {
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -48,45 +49,50 @@
                                     Tổng Tiền
                                 </a>
                             </th>
-                            <th></th>
+                            <th>origi price</th><th></th>
                         </tr>
                     </thead>
                 </table>
             </div>
             <div>
-                <table cellpadding="0" cellspacing="0" border="0">
-                    <tbody class="table-content">
-                        @if (Model != null)
-                        {
-                            foreach (var item in Model)
+                @using (Html.BeginForm("Report", "Bill"))
+                {
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <tbody class="table-content">
+                            @if (Model != null)
                             {
-                                <tr class="table-row">
-                                    <td class="table-data">
-                                        @(item.DATETIME.ToString("dd/MM HH:mm"))
-                                    </td>
-                                    <td class="table-data">
-                                        @Html.DisplayFor(modelItem => item.ID)
-                                    </td>
-                                    <td class="table-data">
-                                        @Html.DisplayFor(modelItem => item.ORDER.DELI_ADDRESS.NAME)
-                                    </td>
-                                    <td class="table-data">
-                                        @Html.DisplayFor(modelItem => item.ORDER.DELI_ADDRESS.PHONE)
-                                    </td>
-                                    <td class="table-data">
-                                        @Html.DisplayFor(modelItem => item.TOTALMONEY)
-                                    </td>
-                                    <td style="display: flex;align-content: center;flex-wrap: wrap;flex-direction: column;">
-                                        <a href="@Url.Action("Edit", "Product", new { id = item.ID })" class="btn btn-sm btn-warning" style="margin-bottom: 5px;">Edit</a>
-                                        <a href="@Url.Action("Delete", "Product", new { id = item.ID })" class="btn btn-sm btn-danger" style="margin-bottom: 5px;">Delete</a>
-                                        <a href="@Url.Action("Detail", "Product", new { id = item.ID })" class="btn btn-sm btn-info" style="margin-bottom: 5px;">Detail</a>
-                                    </td>
-                                </tr>
+                                foreach (var item in Model)
+                                {
+                                    <tr class="table-row">
+                                        <td class="table-data">
+                                            @(item.DATETIME.ToString("dd/MM HH:mm"))
+                                        </td>
+                                        <td class="table-data">
+                                            @Html.DisplayFor(modelItem => item.ID)
+                                        </td>
+                                        <td class="table-data">
+                                            @Html.DisplayFor(modelItem => item.ORDER.DELI_ADDRESS.NAME)
+                                        </td>
+                                        <td class="table-data">
+                                            @Html.DisplayFor(modelItem => item.ORDER.DELI_ADDRESS.PHONE)
+                                        </td>
+                                        <td class="table-data">
+                                            @Html.DisplayFor(modelItem => item.TOTALMONEY)
+                                        </td><td class="table-data">
+    @Html.DisplayFor(modelItem => item.ORI_PRICE)
+</td>
+                                        <td style="display: flex;align-content: center;flex-wrap: wrap;flex-direction: column;">
+                                            <a href="@Url.Action("Report", "Bill", new { id = item.ID })" class="btn btn-sm btn-warning" style="margin-bottom: 5px;">Thong ke</a>
+                                            <a href="@Url.Action("Detail", "Product", new { id = item.ID })" class="btn btn-sm btn-info" style="margin-bottom: 5px;">Detail</a>
+                                        </td>
+                                    </tr>
+                                }
                             }
-                        }
-                    </tbody>
-                </table>
-            </div>
+                        </tbody>
+                    </table>
+                    }
+                </div>
         </div>
     </div>
     }
+}

@@ -7,6 +7,23 @@
 
 <head>
     <link href="~/Assets/css/GioHang.css" rel="stylesheet" />
+    <script>
+        var sitePlusMinus = function () {
+            $('.js-btn-minus').on('click', function (e) {
+                e.preventDefault();
+                if ($(this).closest('.input-group').find('.quantity').val() != 0) {
+                    $(this).closest('.input-group').find('.quantity').val(parseInt($(this).closest('.input-group').find('.quantity').val()) - 1);
+                } else {
+                    $(this).closest('.input-group').find('.quantity').val(parseInt(0));
+                }
+            });
+            $('.js-btn-plus').on('click', function (e) {
+                e.preventDefault();
+                $(this).closest('.input-group').find('.quantity').val(parseInt($(this).closest('.input-group').find('.quantity').val()) + 1);
+            });
+        };
+        sitePlusMinus();
+    </script>
 </head>
 
 
@@ -102,11 +119,18 @@
                             <td>
                                 @using (Html.BeginForm("UpdateCart", "Cart"))
                                 {
-                                    <div style="display:flex">
-                                        <input type="hidden" value="@item._product.ID" name="ID_PRODUCT" />
-                                        <input type="number" class="quantity" value="@item._quantity" name="Quantity" />
-                                        <input class="Update" type="submit" value="Cập Nhật" />
+                                <div style="display:flex">
+                                    <input type="hidden" value="@item._product.ID" name="ID_PRODUCT" />
+                                    <div class="input-group-append">
+
+                                        @*<input class="btn btn-outline-primary js-btn-minus" type="button"value="&minus;"/>*@
+                                        <input type="number" class="quantity" value="@item._quantity" name="Quantity"/>
+                                       @* <input class="btn btn-outline-primary js-btn-plus" type="button"value="&plus;"/>*@
+
+
                                     </div>
+                                    <input class="Update" type="submit" value="Cập Nhật" />
+                                </div>
                                 }
                             </td>
 

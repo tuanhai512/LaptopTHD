@@ -18,18 +18,23 @@ namespace THDShop
         public BILL()
         {
             this.DE_BILL = new HashSet<DE_BILL>();
+            this.REPORTs = new HashSet<REPORT>();
         }
     
         public int ID { get; set; }
         public Nullable<int> IDSTAFF { get; set; }
         public int IDORDER { get; set; }
         public double TOTALMONEY { get; set; }
+        public double ORI_PRICE { get; set; }
         public System.DateTime DATETIME { get; set; }
         public string NOTE { get; set; }
         public int METHODS { get; set; }
+    
         public virtual ORDER ORDER { get; set; }
         public virtual STAFF STAFF { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DE_BILL> DE_BILL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<REPORT> REPORTs { get; set; }
     }
 }

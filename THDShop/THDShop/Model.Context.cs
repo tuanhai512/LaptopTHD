@@ -35,10 +35,9 @@ namespace THDShop
         public virtual DbSet<MYGIFT> MYGIFTs { get; set; }
         public virtual DbSet<ORDER> ORDERS { get; set; }
         public virtual DbSet<PRODUCT> PRODUCTS { get; set; }
+        public virtual DbSet<REPORT> REPORTs { get; set; }
         public virtual DbSet<ROLE> ROLES { get; set; }
         public virtual DbSet<STAFF> STAFFs { get; set; }
         public virtual DbSet<USER> USERS { get; set; }
-
-        public System.Data.Entity.DbSet<THDShop.ViewModel.Category.CategoryDTO> CategoryDTOes { get; set; }
     }
 }
