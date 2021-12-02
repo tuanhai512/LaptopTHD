@@ -116,6 +116,36 @@
                                     <span class="uk-icon" data-uk-icon="icon: twitter"></span>
                                 </a>
                             </li>
+                            @if (Session["Email"] == null)
+                            {
+                                <li><a href="@Url.Action("Login", "LoginUser")" class="dropdown-toggle">Đăng nhập</a></li>
+                            }
+                            else
+                            {
+                                <li><span style="color:black;text-align:center;vertical-align:middle;">@Session["Email"]</span></li>
+                                <li><a href="@Url.Action("Logout", "LoginCustomer")">Đăng xuất</a></li>
+
+                            }
+                            @if (Session["Email"] == null)
+                            {
+                                <li class="dropdown submenu">
+                                    <a href="@Url.Action("RegisterUser", "LoginCustomer")" class="dropdown-toggle">Đăng ký</a>
+                                </li><li class="dropdown submenu">
+    <a href="~/Views/Shared/Gift_index.cshtml">Doi diem thuong</a>
+</li>
+                            }
+                            else
+                            {
+                                <li class="dropdown submenu">
+                                    <a href="@Url.Action("DonDat", "LoginCustomer", new { id = Session["MaKH"] })">Đơn Đặt</a>
+                                </li>
+                                <li class="dropdown submenu">
+                                    <a href="@Url.Action("EditAccount", "LoginCustomer", new { id = Session["MaKH"] })">Thông tin</a>
+                                </li>
+                                <li class="dropdown submenu">
+                                    <a href="@Url.Action("Index", "MyGift", new { id = Session["MaKH"] })">Kho diem thuong</a>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </div>

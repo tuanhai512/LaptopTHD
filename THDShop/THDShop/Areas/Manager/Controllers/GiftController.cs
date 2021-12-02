@@ -1,20 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using THDShop.ViewModel.Gift;
 using System.Web.Mvc;
+using THDShop.ViewModel.Gift;
 
 namespace THDShop.Areas.Manager.Controllers
 {
     public class GiftController : Controller
     {
-        QLLaptopShopEntities _db = new QLLaptopShopEntities();
         // GET: Manager/Gift
+        QLLaptopShopEntities _db = new QLLaptopShopEntities();
         public ActionResult Index()
         {
-            return View(_db.GIFTs.ToList());
+            var query = from c in _db.GIFT
+                        select new GiftDTO
+                        {
+                            DESCREPTION = c.DESCREPTION,
+                            G_POINT = c.G_POINT,
+                            G_START = c.G_START,
+                            G_END = c.G_END,
+                            ID = c.ID,
+                            QUANTITY = c.QUANTITY,
+                            G_VALUE = c.G_VALUE
+                        };
+            return View(query.ToList());
         }
 
         // GET: Manager/Gift/Details/5
@@ -26,83 +36,79 @@ namespace THDShop.Areas.Manager.Controllers
         // GET: Manager/Gift/Create
         public ActionResult Create()
         {
-            
             return View();
         }
 
-        // POST: QuanLy/KhuyenMai/Create
+        // POST: Manager/Gift/Create
         [HttpPost]
         public ActionResult Create(CreateGiftInput model)
         {
-            
-                // TODO: Add insert logic here
-                //_db.GIFTs.Add(gift);
-                //_db.SaveChanges();
-
-            var entity = new GIFT();
-            if (model == null)
+            try
             {
+                // TODO: Add insert logic here
+                var entity = new GIFT();
+                if (model == null)
+                  entity = new GIFT();
 
-                entity = new GIFT();
+                entity.ID = model.ID;
+                entity.G_POINT = model.G_POINT;
+                entity.G_VALUE = model.G_VALUE;
+                entity.G_START = model.G_START;
+                entity.G_END = model.G_END;
+                entity.DESCREPTION = model.DESCREPTION;
+                entity.QUANTITY = model.QUANTITY;
+                _db.GIFT.Add(entity);
+                _db.SaveChanges();        
+                return RedirectToAction("Index");
             }
-
-             entity.ID = model.ID;
-             entity.G_POINT = model.G_POINT;
-             entity.G_VALUE = model.G_VALUE;
-             entity.G_START = model.G_START;
-             entity.G_END = model.G_END;
-             entity.DESCREPTION = model.DESCREPTION;
-             entity.QUANTITY = model.QUANTITY;
-             _db.GIFTs.Add(entity);
-             _db.SaveChanges();
-             return RedirectToAction("Index");
-           
-           
+            catch
+            {
+                return View();
+            }
         }
 
         // GET: Manager/Gift/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
-            var entity = _db.GIFTs.Find(id);
-            var model = new UpdateGiftInput();
-            model.ID = entity.ID;
-            model.G_POINT = entity.G_POINT;
-
-            model.G_VALUE = entity.G_VALUE;
-            model.G_START = entity.G_START;
-            model.G_END = entity.G_END;
-            model.DESCREPTION = entity.DESCREPTION;
-            model.QUANTITY = entity.QUANTITY;
-            return View(model);
+            return View();
         }
 
-
+        // POST: Manager/Gift/Edit/5
         [HttpPost]
-        public ActionResult Edit(UpdateGiftInput model)
+        public ActionResult Edit(int id, FormCollection collection)
         {
-            var entity = new GIFT();
-            if (model == null)
-            { entity = new GIFT(); }
-            entity.ID = model.ID;
-            entity.G_POINT = model.G_POINT;
-            entity.G_VALUE = model.G_VALUE;
-            entity.G_START = model.G_START;
-            entity.G_END = model.G_END;
-            entity.DESCREPTION = model.DESCREPTION;
-            entity.QUANTITY = model.QUANTITY;
-            _db.GIFTs.Add(entity);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                // TODO: Add update logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
 
-        // GET: QuanLy/KhachHang/Delete/5
-        public ActionResult Delete(string id)
+        // GET: Manager/Gift/Delete/5
+        public ActionResult Delete(int id)
         {
-            var entity = _db.GIFTs.Find(id);
-            _db.GIFTs.Remove(entity);
-            _db.SaveChanges();
+            return View();
+        }
 
-            return RedirectToAction("Index");
+        // POST: Manager/Gift/Delete/5
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }

@@ -19,14 +19,14 @@ $.each(properties, function (i, val) {
 		e.preventDefault();
 		$('.filter__link.filter__link--active').not(this).removeClass('filter__link--active');
 		$(this).toggleClass('filter__link--active');
-		$('.filter__link').removeClass('asc desc');
+		$('.filter__link').removeClass('△ ▽');
 
-		if (orderClass == 'desc' || orderClass == '') {
-			$(this).addClass('asc');
-			orderClass = 'asc';
+		if (orderClass == '▽' || orderClass == '') {
+			$(this).addClass('△ ');
+			orderClass = '△ ';
 		} else {
-			$(this).addClass('desc');
-			orderClass = 'desc';
+			$(this).addClass('▽');
+			orderClass = '▽';
 		}
 
 		var parent = $(this).closest('.header__item');

@@ -34,11 +34,12 @@ namespace THDShop.Areas.Manager.Controllers
         [HttpPost]
         public ActionResult Create(CreateCategoryInput model)
         {
-            var entity = new CATEGORy();
+            var entity = new CATEGORIES();
             if (model == null)
-                entity = new CATEGORy();
-            entity.CREATEAT = DateTime.Now;
+                entity = new CATEGORIES();
+
             entity.NAME = model.NAME;
+
             _context.CATEGORIES.Add(entity);
             _context.SaveChanges();
             CategorySingleton.Instance.listCategory.Clear();
@@ -58,7 +59,7 @@ namespace THDShop.Areas.Manager.Controllers
         [HttpPost]
         public ActionResult Edit(UpdateCategoryInput model)
         {
-            var entity = new CATEGORy();
+            var entity = new CATEGORIES();
             if (model == null)
                 return HttpNotFound();
             entity.ID = model.ID;
@@ -95,12 +96,6 @@ namespace THDShop.Areas.Manager.Controllers
         {
             var loaiList = _context.CATEGORIES.ToList();
             return PartialView(loaiList);
-        }
-        public ActionResult Searchname(string name)
-        {
-            var query = CategorySingleton.Instance.listCategory.Where(p => p.NAME == name).ToList();
-
-            return View(query);
         }
     }
 }

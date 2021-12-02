@@ -1,7 +1,8 @@
-﻿@model IEnumerable<THDShop.GIFT>
+﻿@model IEnumerable<THDShop.ViewModel.Gift.GiftDTO>
 
 @{
     ViewBag.Title = "Index";
+
 }
 
 <h2>Index</h2>
@@ -11,9 +12,6 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ID)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.G_POINT)
         </th>
@@ -36,34 +34,31 @@
     </tr>
 
 @foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.ID)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.G_POINT)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.G_VALUE)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.G_START)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.G_END)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DESCREPTION)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.QUANTITY)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-    </td>
-</tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.G_POINT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.G_VALUE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.G_START)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.G_END)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESCREPTION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QUANTITY)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
 }
 
 </table>
