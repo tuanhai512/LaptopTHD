@@ -18,6 +18,7 @@ namespace THDShop
         public BILL()
         {
             this.DE_BILL = new HashSet<DE_BILL>();
+            this.REPORT = new HashSet<REPORT>();
         }
     
         public int ID { get; set; }
@@ -32,5 +33,7 @@ namespace THDShop
         public virtual STAFF STAFF { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DE_BILL> DE_BILL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<REPORT> REPORT { get; set; }
     }
 }

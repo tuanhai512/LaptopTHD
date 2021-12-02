@@ -27,13 +27,13 @@ namespace THDShop.Areas.Manager.Controllers
 
         public ActionResult Create()
         {
-            ROLE role = new ROLE();
+            ROLES role = new ROLES();
             return View(role);
         }
 
         // POST: QuanLy/KhuyenMai/Create
         [HttpPost]
-        public ActionResult Create(ROLE role)
+        public ActionResult Create(ROLES role)
         {
             try
             {

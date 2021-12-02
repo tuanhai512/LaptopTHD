@@ -137,6 +137,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="REPORT">
+      <EntityTypeMapping TypeName="QLLaptopShopModel.REPORT">
+        <MappingFragment StoreEntitySet="REPORT">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDBILL" ColumnName="IDBILL" />
+          <ScalarProperty Name="IDPRODUCT" ColumnName="IDPRODUCT" />
+          <ScalarProperty Name="TOTALMONEY" ColumnName="TOTALMONEY" />
+          <ScalarProperty Name="DATERP" ColumnName="DATERP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="ROLES">
       <EntityTypeMapping TypeName="QLLaptopShopModel.ROLES">
         <MappingFragment StoreEntitySet="ROLES">

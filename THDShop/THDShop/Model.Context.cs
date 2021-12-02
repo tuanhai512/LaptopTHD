@@ -35,6 +35,7 @@ namespace THDShop
         public virtual DbSet<MYGIFT> MYGIFT { get; set; }
         public virtual DbSet<ORDERS> ORDERS { get; set; }
         public virtual DbSet<PRODUCTS> PRODUCTS { get; set; }
+        public virtual DbSet<REPORT> REPORT { get; set; }
         public virtual DbSet<ROLES> ROLES { get; set; }
         public virtual DbSet<STAFF> STAFF { get; set; }
         public virtual DbSet<USERS> USERS { get; set; }

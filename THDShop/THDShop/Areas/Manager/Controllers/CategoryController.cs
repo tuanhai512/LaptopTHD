@@ -37,7 +37,9 @@ namespace THDShop.Areas.Manager.Controllers
             var entity = new CATEGORIES();
             if (model == null)
                 entity = new CATEGORIES();
-            entity.NAME = model.Name;
+
+            entity.NAME = model.NAME;
+
             _context.CATEGORIES.Add(entity);
             _context.SaveChanges();
             CategorySingleton.Instance.listCategory.Clear();
