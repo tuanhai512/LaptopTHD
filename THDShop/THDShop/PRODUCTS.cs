@@ -12,13 +12,12 @@ namespace THDShop
     using System;
     using System.Collections.Generic;
     
-    public partial class PRODUCTS
+    public partial class PRODUCT
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PRODUCTS()
+        public PRODUCT()
         {
             this.DE_ORDER = new HashSet<DE_ORDER>();
-            this.REPORT = new HashSet<REPORT>();
         }
     
         public int ID { get; set; }
@@ -34,6 +33,7 @@ namespace THDShop
         public string DESCRIPTION_SCREEN { get; set; }
         public string DESCRIPTION_WEIGHT { get; set; }
         public string IMAGE { get; set; }
+        public int HOTPRODUCT { get; set; }
         public string CATEGORYNAME { get; set; }
         public Nullable<int> CREATEBY { get; set; }
         public Nullable<System.DateTime> CREATEAT { get; set; }
@@ -41,10 +41,8 @@ namespace THDShop
         public Nullable<System.DateTime> UPDATEAT { get; set; }
         public Nullable<int> IDCATEGORY { get; set; }
     
-        public virtual CATEGORIES CATEGORIES { get; set; }
+        public virtual CATEGORy CATEGORy { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DE_ORDER> DE_ORDER { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<REPORT> REPORT { get; set; }
     }
 }
