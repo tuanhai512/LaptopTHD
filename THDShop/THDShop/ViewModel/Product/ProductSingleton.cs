@@ -19,12 +19,12 @@ namespace THDShop.ViewModel.Product
                             select new ProductDTO
                             {
                                 ID = c.ID,
-                                HOTPRODUCT = c.HOTPRODUCT,
+                               // HOTPRODUCT = c.HOTPRODUCT,
                                 NAME = c.NAME,
                                 PRICE = c.PRICE,
                                 ORI_PRICE = c.ORI_PRICE,
                                 DESCRIPTION = c.DESCRIPTION,
-                                CATEGORYNAME = c.CATEGORy.NAME,
+                                CATEGORYNAME = c.CATEGORIES.NAME,
                                 IDCATEGORY = c.IDCATEGORY,
                                 QUANTITY = c.QUANTITY,
                                 IMAGE = c.IMAGE,

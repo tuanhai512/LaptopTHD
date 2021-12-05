@@ -12,19 +12,29 @@ namespace THDShop
     using System;
     using System.Collections.Generic;
     
-    public partial class MYGIFT
+    public partial class USERS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MYGIFT()
+        public USERS()
         {
             this.CUSTOMER = new HashSet<CUSTOMER>();
+            this.STAFF = new HashSet<STAFF>();
         }
     
         public int ID { get; set; }
-        public string IDGIFT { get; set; }
+        public string NAME { get; set; }
+        public string PASSWORD { get; set; }
+        public string ADDRESS { get; set; }
+        public string PHONE { get; set; }
+        public string EMAIL { get; set; }
+        public string AVATAR { get; set; }
+        public Nullable<int> IDROLE { get; set; }
+        public string ROLENAME { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CUSTOMER> CUSTOMER { get; set; }
-        public virtual GIFT GIFT { get; set; }
+        public virtual ROLES ROLES { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<STAFF> STAFF { get; set; }
     }
 }
