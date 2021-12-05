@@ -12,7 +12,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDSTAFF" Type="int" />
           <Property Name="IDORDER" Type="int" Nullable="false" />
-          <Property Name="TOTALMONEY" Type="int" Nullable="false" />
+          <Property Name="TOTALMONEY" Type="float" Nullable="false" />
           <Property Name="DATETIME" Type="datetime" Nullable="false" />
           <Property Name="NOTE" Type="nvarchar(max)" />
           <Property Name="METHODS" Type="int" Nullable="false" />
@@ -44,6 +44,7 @@
           <Property Name="POINT_MY" Type="int" Nullable="false" />
           <Property Name="IDMYGIFT" Type="int" />
           <Property Name="IDROLE" Type="int" />
+          <Property Name="ROLENAME" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="DE_BILL">
           <Key>
@@ -86,7 +87,7 @@
           </Key>
           <Property Name="ID" Type="varchar" MaxLength="1" Nullable="false" />
           <Property Name="G_POINT" Type="int" Nullable="false" />
-          <Property Name="G_VALUE" Type="float" Nullable="false" />
+          <Property Name="G_VALUE" Type="int" Nullable="false" />
           <Property Name="G_START" Type="datetime" />
           <Property Name="G_END" Type="datetime" />
           <Property Name="DESCREPTION" Type="nvarchar" MaxLength="1" />
@@ -106,7 +107,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DAY" Type="datetime" Nullable="false" />
           <Property Name="IDDELIADDRESS" Type="int" Nullable="false" />
-          <Property Name="TOTALMONEY" Type="int" Nullable="false" />
+          <Property Name="TOTALMONEY" Type="float" Nullable="false" />
           <Property Name="NOTE" Type="nvarchar(max)" />
           <Property Name="STATUS" Type="int" Nullable="false" />
           <Property Name="METHODS" Type="int" Nullable="false" />
@@ -144,7 +145,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDBILL" Type="int" Nullable="false" />
           <Property Name="IDPRODUCT" Type="int" Nullable="false" />
-          <Property Name="TOTALMONEY" Type="int" />
+          <Property Name="TOTALMONEY" Type="float" />
           <Property Name="DATERP" Type="datetime" />
         </EntityType>
         <EntityType Name="ROLES">
@@ -168,6 +169,7 @@
           <Property Name="PASSWORD" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="AVATAR" Type="text" />
           <Property Name="IDROLES" Type="int" />
+          <Property Name="ROLENAME" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="USERS">
           <Key>
@@ -180,6 +182,8 @@
           <Property Name="PHONE" Type="varchar" MaxLength="20" />
           <Property Name="EMAIL" Type="varchar" MaxLength="30" />
           <Property Name="AVATAR" Type="text" />
+          <Property Name="IDROLE" Type="int" />
+          <Property Name="ROLENAME" Type="varchar" MaxLength="30" />
         </EntityType>
         <Association Name="FK_BILL_ORDER">
           <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="1" />
@@ -375,6 +379,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_USER_ROLES">
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="0..1" />
+          <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USERS">
+              <PropertyRef Name="IDROLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="PK_REPORT_BILL">
           <End Role="BILL" Type="Self.BILL" Multiplicity="1" />
           <End Role="REPORT" Type="Self.REPORT" Multiplicity="*" />
@@ -466,6 +482,10 @@
             <End Role="USERS" EntitySet="USERS" />
             <End Role="STAFF" EntitySet="STAFF" />
           </AssociationSet>
+          <AssociationSet Name="FK_USER_ROLES" Association="Self.FK_USER_ROLES">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
           <AssociationSet Name="PK_REPORT_BILL" Association="Self.PK_REPORT_BILL">
             <End Role="BILL" EntitySet="BILL" />
             <End Role="REPORT" EntitySet="REPORT" />
@@ -483,7 +503,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDSTAFF" Type="Int32" />
           <Property Name="IDORDER" Type="Int32" Nullable="false" />
-          <Property Name="TOTALMONEY" Type="Int32" Nullable="false" />
+          <Property Name="TOTALMONEY" Type="Double" Nullable="false" />
           <Property Name="DATETIME" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="NOTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="METHODS" Type="Int32" Nullable="false" />
@@ -520,6 +540,7 @@
           <Property Name="POINT_MY" Type="Int32" Nullable="false" />
           <Property Name="IDMYGIFT" Type="Int32" />
           <Property Name="IDROLE" Type="Int32" />
+          <Property Name="ROLENAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MYGIFT" Relationship="Self.FK_CUSTOMER_MYGIFT" FromRole="CUSTOMER" ToRole="MYGIFT" />
           <NavigationProperty Name="ROLE" Relationship="Self.FK_CUSTOMER_ROLES" FromRole="CUSTOMER" ToRole="ROLES" />
           <NavigationProperty Name="USER" Relationship="Self.FK_CUSTOMER_USER" FromRole="CUSTOMER" ToRole="USERS" />
@@ -573,7 +594,7 @@
           </Key>
           <Property Name="ID" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="G_POINT" Type="Int32" Nullable="false" />
-          <Property Name="G_VALUE" Type="Double" Nullable="false" />
+          <Property Name="G_VALUE" Type="Int32" Nullable="false" />
           <Property Name="G_START" Type="DateTime" Precision="3" />
           <Property Name="G_END" Type="DateTime" Precision="3" />
           <Property Name="DESCREPTION" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
@@ -596,7 +617,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DAY" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IDDELIADDRESS" Type="Int32" Nullable="false" />
-          <Property Name="TOTALMONEY" Type="Int32" Nullable="false" />
+          <Property Name="TOTALMONEY" Type="Double" Nullable="false" />
           <Property Name="NOTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="STATUS" Type="Int32" Nullable="false" />
           <Property Name="METHODS" Type="Int32" Nullable="false" />
@@ -640,7 +661,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDBILL" Type="Int32" Nullable="false" />
           <Property Name="IDPRODUCT" Type="Int32" Nullable="false" />
-          <Property Name="TOTALMONEY" Type="Int32" />
+          <Property Name="TOTALMONEY" Type="Double" />
           <Property Name="DATERP" Type="DateTime" Precision="3" />
           <NavigationProperty Name="BILL" Relationship="Self.PK_REPORT_BILL" FromRole="REPORT" ToRole="BILL" />
           <NavigationProperty Name="PRODUCT" Relationship="Self.FK_REPORT_PRODUCT" FromRole="REPORT" ToRole="PRODUCTS" />
@@ -653,6 +674,7 @@
           <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CUSTOMERs" Relationship="Self.FK_CUSTOMER_ROLES" FromRole="ROLES" ToRole="CUSTOMER" />
           <NavigationProperty Name="STAFFs" Relationship="Self.FK_STAFF_ROLES" FromRole="ROLES" ToRole="STAFF" />
+          <NavigationProperty Name="USERS" Relationship="Self.FK_USER_ROLES" FromRole="ROLES" ToRole="USERS" />
         </EntityType>
         <EntityType Name="STAFF">
           <Key>
@@ -668,6 +690,7 @@
           <Property Name="PASSWORD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AVATAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="IDROLES" Type="Int32" />
+          <Property Name="ROLENAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="BILLs" Relationship="Self.FK_BILL_STAFF" FromRole="STAFF" ToRole="BILL" />
           <NavigationProperty Name="ROLE" Relationship="Self.FK_STAFF_ROLES" FromRole="STAFF" ToRole="ROLES" />
           <NavigationProperty Name="USER" Relationship="Self.FK_STAFF_USER" FromRole="STAFF" ToRole="USERS" />
@@ -683,7 +706,10 @@
           <Property Name="PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="EMAIL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="AVATAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IDROLE" Type="Int32" />
+          <Property Name="ROLENAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CUSTOMERs" Relationship="Self.FK_CUSTOMER_USER" FromRole="USERS" ToRole="CUSTOMER" />
+          <NavigationProperty Name="ROLE" Relationship="Self.FK_USER_ROLES" FromRole="USERS" ToRole="ROLES" />
           <NavigationProperty Name="STAFFs" Relationship="Self.FK_STAFF_USER" FromRole="USERS" ToRole="STAFF" />
         </EntityType>
         <Association Name="FK_BILL_ORDER">
@@ -880,6 +906,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_USER_ROLES">
+          <End Role="ROLES" Type="Self.ROLE" Multiplicity="0..1" />
+          <End Role="USERS" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USERS">
+              <PropertyRef Name="IDROLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_STAFF_USER">
           <End Role="USERS" Type="Self.USER" Multiplicity="1" />
           <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
@@ -971,6 +1009,10 @@
             <End Role="ROLES" EntitySet="ROLES" />
             <End Role="STAFF" EntitySet="STAFFs" />
           </AssociationSet>
+          <AssociationSet Name="FK_USER_ROLES" Association="Self.FK_USER_ROLES">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
           <AssociationSet Name="FK_STAFF_USER" Association="Self.FK_STAFF_USER">
             <End Role="USERS" EntitySet="USERS" />
             <End Role="STAFF" EntitySet="STAFFs" />
@@ -1022,6 +1064,7 @@
                 <ScalarProperty Name="POINT_MY" ColumnName="POINT_MY" />
                 <ScalarProperty Name="IDMYGIFT" ColumnName="IDMYGIFT" />
                 <ScalarProperty Name="IDROLE" ColumnName="IDROLE" />
+                <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1153,6 +1196,7 @@
                 <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
                 <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
                 <ScalarProperty Name="IDROLES" ColumnName="IDROLES" />
+                <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1166,6 +1210,8 @@
                 <ScalarProperty Name="PHONE" ColumnName="PHONE" />
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
+                <ScalarProperty Name="IDROLE" ColumnName="IDROLE" />
+                <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

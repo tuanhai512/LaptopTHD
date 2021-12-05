@@ -17,7 +17,7 @@ namespace THDShop.Areas.Manager
             context.MapRoute(
                 "Manager",
                 "Manager/{controller}/{action}/{id}",
-                new {  action = "Index", id = UrlParameter.Optional }              
+                new { area = "Manager" , controller = "CategoryController" , action = "Index", id = UrlParameter.Optional }              
             );
         }
     }

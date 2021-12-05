@@ -41,6 +41,7 @@
           <ScalarProperty Name="POINT_MY" ColumnName="POINT_MY" />
           <ScalarProperty Name="IDMYGIFT" ColumnName="IDMYGIFT" />
           <ScalarProperty Name="IDROLE" ColumnName="IDROLE" />
+          <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -172,6 +173,7 @@
           <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
           <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
           <ScalarProperty Name="IDROLES" ColumnName="IDROLES" />
+          <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -185,6 +187,8 @@
           <ScalarProperty Name="PHONE" ColumnName="PHONE" />
           <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
           <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
+          <ScalarProperty Name="IDROLE" ColumnName="IDROLE" />
+          <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

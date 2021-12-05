@@ -24,7 +24,7 @@ namespace THDShop.Areas.Manager.Controllers
         }
         public ActionResult Searchid(int id)
         {
-            var list = database.BILL.Where(p => p.ID==id).ToList();
+            var list = database.BILLs.Where(p => p.ID==id).ToList();
             return View(list);
         }
     }

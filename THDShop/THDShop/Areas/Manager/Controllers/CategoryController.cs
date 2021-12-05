@@ -39,6 +39,7 @@ namespace THDShop.Areas.Manager.Controllers
                 entity = new CATEGORy();
 
             entity.NAME = model.NAME;
+            entity.CREATEAT = DateTime.Now;
 
             _context.CATEGORIES.Add(entity);
             _context.SaveChanges();

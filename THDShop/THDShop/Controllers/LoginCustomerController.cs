@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using THDShop.Areas.Manager.Controllers;
 
 namespace THDShop.Controllers
 {
@@ -21,7 +22,7 @@ namespace THDShop.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult LoginAccount(USERS _user)
+        public ActionResult LoginAccount(USER _user)
         {
        
             if (!CheckExistAccount(_user))
@@ -46,7 +47,7 @@ namespace THDShop.Controllers
                     {
                         Session["TENQLY"] = _user.NAME;
                         Session["ID"] = _user.ID;
-                        return RedirectToAction("Index", "Category");
+                        return Redirect("/Manager/Category");
                     }
                     return RedirectToAction("Index", "Product");
                 }
@@ -62,7 +63,7 @@ namespace THDShop.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditAccount(USERS user)
+        public ActionResult EditAccount(USER user)
         {
             var detail = database.USERS.Where(m => m.ID == user.ID);
 
@@ -80,7 +81,7 @@ namespace THDShop.Controllers
             return RedirectToAction("Index");
         }
 
-        public bool CheckExistAccount(USERS _user)
+        public bool CheckExistAccount(USER _user)
         {
 
             var check = database.USERS.Where(s => s.EMAIL == _user.EMAIL && s.PASSWORD == _user.PASSWORD).FirstOrDefault();
@@ -102,7 +103,7 @@ namespace THDShop.Controllers
         }
 
         [HttpPost]
-        public ActionResult RegisterUser(USERS _user)
+        public ActionResult RegisterUser(USER _user)
         {
             if (ModelState.IsValid)
             {
@@ -124,7 +125,7 @@ namespace THDShop.Controllers
                         ROLENAME = _user.ROLENAME,
                     };
                    
-                    database.CUSTOMER.Add(_cus);
+                    database.CUSTOMERs.Add(_cus);
                     database.SaveChanges();
                     return RedirectToAction("LoginAccount");
                 }

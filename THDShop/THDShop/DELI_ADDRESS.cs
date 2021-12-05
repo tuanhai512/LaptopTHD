@@ -17,7 +17,7 @@ namespace THDShop
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DELI_ADDRESS()
         {
-            this.ORDERS = new HashSet<ORDERS>();
+            this.ORDERS = new HashSet<ORDER>();
         }
     
         public int ID { get; set; }
@@ -31,6 +31,6 @@ namespace THDShop
     
         public virtual CUSTOMER CUSTOMER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ORDERS> ORDERS { get; set; }
+        public virtual ICollection<ORDER> ORDERS { get; set; }
     }
 }

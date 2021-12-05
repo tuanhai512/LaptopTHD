@@ -7,7 +7,7 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDSTAFF" Type="Int32" />
     <Property Name="IDORDER" Type="Int32" Nullable="false" />
-    <Property Name="TOTALMONEY" Type="Int32" Nullable="false" />
+    <Property Name="TOTALMONEY" Type="Double" Nullable="false" />
     <Property Name="DATETIME" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="NOTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="METHODS" Type="Int32" Nullable="false" />
@@ -44,6 +44,7 @@
     <Property Name="POINT_MY" Type="Int32" Nullable="false" />
     <Property Name="IDMYGIFT" Type="Int32" />
     <Property Name="IDROLE" Type="Int32" />
+    <Property Name="ROLENAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="MYGIFT" Relationship="Self.FK_CUSTOMER_MYGIFT" FromRole="CUSTOMER" ToRole="MYGIFT" />
     <NavigationProperty Name="ROLE" Relationship="Self.FK_CUSTOMER_ROLES" FromRole="CUSTOMER" ToRole="ROLES" />
     <NavigationProperty Name="USER" Relationship="Self.FK_CUSTOMER_USER" FromRole="CUSTOMER" ToRole="USERS" />
@@ -97,7 +98,7 @@
     </Key>
     <Property Name="ID" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="G_POINT" Type="Int32" Nullable="false" />
-    <Property Name="G_VALUE" Type="Double" Nullable="false" />
+    <Property Name="G_VALUE" Type="Int32" Nullable="false" />
     <Property Name="G_START" Type="DateTime" Precision="3" />
     <Property Name="G_END" Type="DateTime" Precision="3" />
     <Property Name="DESCREPTION" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
@@ -120,7 +121,7 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="DAY" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="IDDELIADDRESS" Type="Int32" Nullable="false" />
-    <Property Name="TOTALMONEY" Type="Int32" Nullable="false" />
+    <Property Name="TOTALMONEY" Type="Double" Nullable="false" />
     <Property Name="NOTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="STATUS" Type="Int32" Nullable="false" />
     <Property Name="METHODS" Type="Int32" Nullable="false" />
@@ -164,7 +165,7 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDBILL" Type="Int32" Nullable="false" />
     <Property Name="IDPRODUCT" Type="Int32" Nullable="false" />
-    <Property Name="TOTALMONEY" Type="Int32" />
+    <Property Name="TOTALMONEY" Type="Double" />
     <Property Name="DATERP" Type="DateTime" Precision="3" />
     <NavigationProperty Name="BILL" Relationship="Self.PK_REPORT_BILL" FromRole="REPORT" ToRole="BILL" />
     <NavigationProperty Name="PRODUCT" Relationship="Self.FK_REPORT_PRODUCT" FromRole="REPORT" ToRole="PRODUCTS" />
@@ -177,6 +178,7 @@
     <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="CUSTOMERs" Relationship="Self.FK_CUSTOMER_ROLES" FromRole="ROLES" ToRole="CUSTOMER" />
     <NavigationProperty Name="STAFFs" Relationship="Self.FK_STAFF_ROLES" FromRole="ROLES" ToRole="STAFF" />
+    <NavigationProperty Name="USERS" Relationship="Self.FK_USER_ROLES" FromRole="ROLES" ToRole="USERS" />
   </EntityType>
   <EntityType Name="STAFF">
     <Key>
@@ -192,6 +194,7 @@
     <Property Name="PASSWORD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="AVATAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="IDROLES" Type="Int32" />
+    <Property Name="ROLENAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="BILLs" Relationship="Self.FK_BILL_STAFF" FromRole="STAFF" ToRole="BILL" />
     <NavigationProperty Name="ROLE" Relationship="Self.FK_STAFF_ROLES" FromRole="STAFF" ToRole="ROLES" />
     <NavigationProperty Name="USER" Relationship="Self.FK_STAFF_USER" FromRole="STAFF" ToRole="USERS" />
@@ -207,7 +210,10 @@
     <Property Name="PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="EMAIL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="AVATAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IDROLE" Type="Int32" />
+    <Property Name="ROLENAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="CUSTOMERs" Relationship="Self.FK_CUSTOMER_USER" FromRole="USERS" ToRole="CUSTOMER" />
+    <NavigationProperty Name="ROLE" Relationship="Self.FK_USER_ROLES" FromRole="USERS" ToRole="ROLES" />
     <NavigationProperty Name="STAFFs" Relationship="Self.FK_STAFF_USER" FromRole="USERS" ToRole="STAFF" />
   </EntityType>
   <Association Name="FK_BILL_ORDER">
@@ -404,6 +410,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_USER_ROLES">
+    <End Role="ROLES" Type="Self.ROLE" Multiplicity="0..1" />
+    <End Role="USERS" Type="Self.USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLES">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USERS">
+        <PropertyRef Name="IDROLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_STAFF_USER">
     <End Role="USERS" Type="Self.USER" Multiplicity="1" />
     <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
@@ -494,6 +512,10 @@
     <AssociationSet Name="FK_STAFF_ROLES" Association="Self.FK_STAFF_ROLES">
       <End Role="ROLES" EntitySet="ROLES" />
       <End Role="STAFF" EntitySet="STAFFs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USER_ROLES" Association="Self.FK_USER_ROLES">
+      <End Role="ROLES" EntitySet="ROLES" />
+      <End Role="USERS" EntitySet="USERS" />
     </AssociationSet>
     <AssociationSet Name="FK_STAFF_USER" Association="Self.FK_STAFF_USER">
       <End Role="USERS" EntitySet="USERS" />

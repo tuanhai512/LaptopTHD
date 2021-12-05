@@ -9,7 +9,7 @@ namespace THDShop.ViewModel
 {
     public class CartItem
     {
-        public PRODUCTS _product { get; set; }
+        public PRODUCT _product { get; set; }
 
         public int _quantity { get; set; }
     }
@@ -22,7 +22,7 @@ namespace THDShop.ViewModel
         {
             get { return items; }
         }
-        public void Add_Product_Cart(PRODUCTS prod, int _quan = 1)
+        public void Add_Product_Cart(PRODUCT prod, int _quan = 1)
         {
             var item = Items.FirstOrDefault(s => s._product.ID == prod.ID);
             if (item == null)

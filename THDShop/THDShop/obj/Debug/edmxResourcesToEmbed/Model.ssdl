@@ -7,7 +7,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IDSTAFF" Type="int" />
     <Property Name="IDORDER" Type="int" Nullable="false" />
-    <Property Name="TOTALMONEY" Type="int" Nullable="false" />
+    <Property Name="TOTALMONEY" Type="float" Nullable="false" />
     <Property Name="DATETIME" Type="datetime" Nullable="false" />
     <Property Name="NOTE" Type="nvarchar(max)" />
     <Property Name="METHODS" Type="int" Nullable="false" />
@@ -39,6 +39,7 @@
     <Property Name="POINT_MY" Type="int" Nullable="false" />
     <Property Name="IDMYGIFT" Type="int" />
     <Property Name="IDROLE" Type="int" />
+    <Property Name="ROLENAME" Type="varchar" MaxLength="30" />
   </EntityType>
   <EntityType Name="DE_BILL">
     <Key>
@@ -81,7 +82,7 @@
     </Key>
     <Property Name="ID" Type="varchar" MaxLength="1" Nullable="false" />
     <Property Name="G_POINT" Type="int" Nullable="false" />
-    <Property Name="G_VALUE" Type="float" Nullable="false" />
+    <Property Name="G_VALUE" Type="int" Nullable="false" />
     <Property Name="G_START" Type="datetime" />
     <Property Name="G_END" Type="datetime" />
     <Property Name="DESCREPTION" Type="nvarchar" MaxLength="1" />
@@ -101,7 +102,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DAY" Type="datetime" Nullable="false" />
     <Property Name="IDDELIADDRESS" Type="int" Nullable="false" />
-    <Property Name="TOTALMONEY" Type="int" Nullable="false" />
+    <Property Name="TOTALMONEY" Type="float" Nullable="false" />
     <Property Name="NOTE" Type="nvarchar(max)" />
     <Property Name="STATUS" Type="int" Nullable="false" />
     <Property Name="METHODS" Type="int" Nullable="false" />
@@ -139,7 +140,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IDBILL" Type="int" Nullable="false" />
     <Property Name="IDPRODUCT" Type="int" Nullable="false" />
-    <Property Name="TOTALMONEY" Type="int" />
+    <Property Name="TOTALMONEY" Type="float" />
     <Property Name="DATERP" Type="datetime" />
   </EntityType>
   <EntityType Name="ROLES">
@@ -163,6 +164,7 @@
     <Property Name="PASSWORD" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="AVATAR" Type="text" />
     <Property Name="IDROLES" Type="int" />
+    <Property Name="ROLENAME" Type="varchar" MaxLength="30" />
   </EntityType>
   <EntityType Name="USERS">
     <Key>
@@ -175,6 +177,8 @@
     <Property Name="PHONE" Type="varchar" MaxLength="20" />
     <Property Name="EMAIL" Type="varchar" MaxLength="30" />
     <Property Name="AVATAR" Type="text" />
+    <Property Name="IDROLE" Type="int" />
+    <Property Name="ROLENAME" Type="varchar" MaxLength="30" />
   </EntityType>
   <Association Name="FK_BILL_ORDER">
     <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="1" />
@@ -370,6 +374,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_USER_ROLES">
+    <End Role="ROLES" Type="Self.ROLES" Multiplicity="0..1" />
+    <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLES">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USERS">
+        <PropertyRef Name="IDROLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="PK_REPORT_BILL">
     <End Role="BILL" Type="Self.BILL" Multiplicity="1" />
     <End Role="REPORT" Type="Self.REPORT" Multiplicity="*" />
@@ -460,6 +476,10 @@
     <AssociationSet Name="FK_STAFF_USER" Association="Self.FK_STAFF_USER">
       <End Role="USERS" EntitySet="USERS" />
       <End Role="STAFF" EntitySet="STAFF" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USER_ROLES" Association="Self.FK_USER_ROLES">
+      <End Role="ROLES" EntitySet="ROLES" />
+      <End Role="USERS" EntitySet="USERS" />
     </AssociationSet>
     <AssociationSet Name="PK_REPORT_BILL" Association="Self.PK_REPORT_BILL">
       <End Role="BILL" EntitySet="BILL" />

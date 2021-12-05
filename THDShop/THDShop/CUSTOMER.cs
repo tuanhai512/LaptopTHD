@@ -32,6 +32,7 @@ namespace THDShop
         public int POINT_MY { get; set; }
         public Nullable<int> IDMYGIFT { get; set; }
         public Nullable<int> IDROLE { get; set; }
+        public string ROLENAME { get; set; }
     
         public virtual MYGIFT MYGIFT { get; set; }
         public virtual ROLE ROLE { get; set; }

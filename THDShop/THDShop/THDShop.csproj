@@ -3523,13 +3523,14 @@
     <Content Include="Views\Shared\_HomePage.cshtml" />
     <Content Include="Views\HomePage\Details.cshtml" />
     <Content Include="Views\HomePage\Product.cshtml" />
+    <Content Include="Views\LoginCustomer\LoginAccount.cshtml" />
+    <Content Include="Views\LoginCustomer\RegisterUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Manager\Data\" />
     <Folder Include="Assets\ECome\sass\components\Mixins\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\LoginCustomer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
