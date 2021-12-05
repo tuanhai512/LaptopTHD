@@ -1,0 +1,49 @@
+﻿@model IEnumerable<THDShop.GIFT>
+
+@{
+    ViewBag.Title = "Voucher";
+  
+}
+
+<div class="font_asap">
+    @if (Model.Count() > 0)
+    {
+<div class="food-menu-section" id="food-menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="menu-head text-center">
+                    <h2><span>Voucher</span></h2>
+                    <p>Toàn bộ các dòng sản phảm Laptop</p>
+                </div>
+            </div>
+        </div>
+        <div class="row food-box">
+            @foreach (var item in Model)
+            {
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+    <div class="food-menu text-center">     
+            <div class="food-img-info">                                           
+                    <table>
+                        <tbody>
+                            <tr>
+                                <!-- CPU -->
+                                <th>ID</th>
+                                <td class="item-right">@Html.DisplayFor(modelItem => item.ID) </td>
+
+                                <!-- GPU -->
+                               <th>Mô tả</th>
+                                <td class="item-right">@Html.DisplayFor(modelItem => item.DESCREPTION)</td>
+                            </tr>                         
+                        </tbody>
+                    </table>
+              
+            </div>  
+        
+    </div>
+</div>}
+        </div>
+    </div>
+</div>}
+</div>
+
