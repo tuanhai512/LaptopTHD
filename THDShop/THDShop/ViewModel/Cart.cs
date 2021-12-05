@@ -42,7 +42,11 @@ namespace THDShop.ViewModel
         {
             var total = items.Sum(s => s._quantity * s._product.PRICE);
             return (int)total;
-
+        }
+        public int Total_money_USD()
+        {
+            var total = items.Sum(s => s._quantity * s._product.USD_PRICE);
+            return (int)total;
         }
         public void Update_quantity(int id, int _quan)
         {

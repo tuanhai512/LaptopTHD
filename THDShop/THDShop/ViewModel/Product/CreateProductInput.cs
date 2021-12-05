@@ -32,12 +32,12 @@ namespace THDShop.ViewModel.Product
         [Range(1, int.MaxValue, ErrorMessage = "Giá không được âm")]
         [Required(ErrorMessage = "Bạn chưa nhập giá bán")]
         [Display(Name = "Giá Bán")]
-        public double? PRICE { get; set; }
+        public int? PRICE { get; set; }
 
         [Range(1, int.MaxValue, ErrorMessage = "Giá không được âm")]
         [Required(ErrorMessage = "Bạn chưa nhập giá gốc")]
         [Display(Name = "Giá Gốc")]
-        public double? ORI_PRICE { get; set; }
+        public int? ORI_PRICE { get; set; }
 
 
         [Required(ErrorMessage = "Bạn chưa nhập mô tả")]
@@ -64,6 +64,11 @@ namespace THDShop.ViewModel.Product
 
         public string IMAGE { get; set; }
         public int HOTPRODUCT { get; set; }
+        public int? USD_PRICE ()
+        {
+            var usdprice = PRICE / 22000;
+            return usdprice;   
+        }
 
         [NotMapped]
         public HttpPostedFileBase UploadImage { get; set; }

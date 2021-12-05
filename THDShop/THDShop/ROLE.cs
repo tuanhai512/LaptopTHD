@@ -17,12 +17,15 @@ namespace THDShop
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ROLE()
         {
+            this.CUSTOMERs = new HashSet<CUSTOMER>();
             this.STAFFs = new HashSet<STAFF>();
         }
     
         public int ID { get; set; }
         public string NAME { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CUSTOMER> CUSTOMERs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<STAFF> STAFFs { get; set; }
     }

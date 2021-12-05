@@ -12,7 +12,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDSTAFF" Type="int" />
           <Property Name="IDORDER" Type="int" Nullable="false" />
-          <Property Name="TOTALMONEY" Type="float" Nullable="false" />
+          <Property Name="TOTALMONEY" Type="int" Nullable="false" />
           <Property Name="DATETIME" Type="datetime" Nullable="false" />
           <Property Name="NOTE" Type="nvarchar(max)" />
           <Property Name="METHODS" Type="int" Nullable="false" />
@@ -43,6 +43,7 @@
           <Property Name="AVATAR" Type="text" />
           <Property Name="POINT_MY" Type="int" Nullable="false" />
           <Property Name="IDMYGIFT" Type="int" />
+          <Property Name="IDROLE" Type="int" />
         </EntityType>
         <EntityType Name="DE_BILL">
           <Key>
@@ -64,7 +65,7 @@
           <Property Name="IDORDER" Type="int" Nullable="false" />
           <Property Name="IDPRODUCT" Type="int" Nullable="false" />
           <Property Name="QUANTITY" Type="int" Nullable="false" />
-          <Property Name="PRICE" Type="float" Nullable="false" />
+          <Property Name="PRICE" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="DELI_ADDRESS">
           <Key>
@@ -105,7 +106,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DAY" Type="datetime" Nullable="false" />
           <Property Name="IDDELIADDRESS" Type="int" Nullable="false" />
-          <Property Name="TOTALMONEY" Type="float" Nullable="false" />
+          <Property Name="TOTALMONEY" Type="int" Nullable="false" />
           <Property Name="NOTE" Type="nvarchar(max)" />
           <Property Name="STATUS" Type="int" Nullable="false" />
           <Property Name="METHODS" Type="int" Nullable="false" />
@@ -117,8 +118,10 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NAME" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="QUANTITY" Type="int" Nullable="false" />
-          <Property Name="PRICE" Type="float" Nullable="false" />
-          <Property Name="ORI_PRICE" Type="float" Nullable="false" />
+          <Property Name="PRICE" Type="int" Nullable="false" />
+          <Property Name="ORI_PRICE" Type="int" Nullable="false" />
+          <Property Name="USD_PRICE" Type="int" Nullable="false" />
+          <Property Name="HOTPRODUCT" Type="int" Nullable="false" />
           <Property Name="DESCRIPTION" Type="nvarchar(max)" />
           <Property Name="DESCRIPTION_CPU" Type="nvarchar" MaxLength="100" />
           <Property Name="DESCRIPTION_RAM" Type="nvarchar" MaxLength="100" />
@@ -127,13 +130,22 @@
           <Property Name="DESCRIPTION_SCREEN" Type="nvarchar" MaxLength="100" />
           <Property Name="DESCRIPTION_WEIGHT" Type="nvarchar" MaxLength="100" />
           <Property Name="IMAGE" Type="text" />
-          <Property Name="HOTPRODUCT" Type="int" Nullable="false" />
           <Property Name="CATEGORYNAME" Type="nvarchar" MaxLength="30" />
           <Property Name="CREATEBY" Type="int" />
           <Property Name="CREATEAT" Type="datetime" />
           <Property Name="UPDATEBY" Type="int" />
           <Property Name="UPDATEAT" Type="datetime" />
           <Property Name="IDCATEGORY" Type="int" />
+        </EntityType>
+        <EntityType Name="REPORT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDBILL" Type="int" Nullable="false" />
+          <Property Name="IDPRODUCT" Type="int" Nullable="false" />
+          <Property Name="TOTALMONEY" Type="int" />
+          <Property Name="DATERP" Type="datetime" />
         </EntityType>
         <EntityType Name="ROLES">
           <Key>
@@ -214,6 +226,18 @@
             </Principal>
             <Dependent Role="CUSTOMER">
               <PropertyRef Name="IDMYGIFT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMER_ROLES">
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="0..1" />
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER">
+              <PropertyRef Name="IDROLE" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -315,6 +339,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_REPORT_PRODUCT">
+          <End Role="PRODUCTS" Type="Self.PRODUCTS" Multiplicity="1" />
+          <End Role="REPORT" Type="Self.REPORT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REPORT">
+              <PropertyRef Name="IDPRODUCT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_STAFF_ROLES">
           <End Role="ROLES" Type="Self.ROLES" Multiplicity="0..1" />
           <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
@@ -339,6 +375,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="PK_REPORT_BILL">
+          <End Role="BILL" Type="Self.BILL" Multiplicity="1" />
+          <End Role="REPORT" Type="Self.REPORT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BILL">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REPORT">
+              <PropertyRef Name="IDBILL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="QLLaptopShopModelStoreContainer">
           <EntitySet Name="BILL" EntityType="Self.BILL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CATEGORIES" EntityType="Self.CATEGORIES" Schema="dbo" store:Type="Tables" />
@@ -350,6 +398,7 @@
           <EntitySet Name="MYGIFT" EntityType="Self.MYGIFT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ORDERS" EntityType="Self.ORDERS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCTS" EntityType="Self.PRODUCTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REPORT" EntityType="Self.REPORT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ROLES" EntityType="Self.ROLES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STAFF" EntityType="Self.STAFF" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
@@ -367,6 +416,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_CUSTOMER_MYGIFT" Association="Self.FK_CUSTOMER_MYGIFT">
             <End Role="MYGIFT" EntitySet="MYGIFT" />
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMER_ROLES" Association="Self.FK_CUSTOMER_ROLES">
+            <End Role="ROLES" EntitySet="ROLES" />
             <End Role="CUSTOMER" EntitySet="CUSTOMER" />
           </AssociationSet>
           <AssociationSet Name="FK_CUSTOMER_USER" Association="Self.FK_CUSTOMER_USER">
@@ -401,6 +454,10 @@
             <End Role="DELI_ADDRESS" EntitySet="DELI_ADDRESS" />
             <End Role="ORDERS" EntitySet="ORDERS" />
           </AssociationSet>
+          <AssociationSet Name="FK_REPORT_PRODUCT" Association="Self.FK_REPORT_PRODUCT">
+            <End Role="PRODUCTS" EntitySet="PRODUCTS" />
+            <End Role="REPORT" EntitySet="REPORT" />
+          </AssociationSet>
           <AssociationSet Name="FK_STAFF_ROLES" Association="Self.FK_STAFF_ROLES">
             <End Role="ROLES" EntitySet="ROLES" />
             <End Role="STAFF" EntitySet="STAFF" />
@@ -408,6 +465,10 @@
           <AssociationSet Name="FK_STAFF_USER" Association="Self.FK_STAFF_USER">
             <End Role="USERS" EntitySet="USERS" />
             <End Role="STAFF" EntitySet="STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="PK_REPORT_BILL" Association="Self.PK_REPORT_BILL">
+            <End Role="BILL" EntitySet="BILL" />
+            <End Role="REPORT" EntitySet="REPORT" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -422,13 +483,14 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDSTAFF" Type="Int32" />
           <Property Name="IDORDER" Type="Int32" Nullable="false" />
-          <Property Name="TOTALMONEY" Type="Double" Nullable="false" />
+          <Property Name="TOTALMONEY" Type="Int32" Nullable="false" />
           <Property Name="DATETIME" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="NOTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="METHODS" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ORDER" Relationship="Self.FK_BILL_ORDER" FromRole="BILL" ToRole="ORDERS" />
           <NavigationProperty Name="STAFF" Relationship="Self.FK_BILL_STAFF" FromRole="BILL" ToRole="STAFF" />
           <NavigationProperty Name="DE_BILL" Relationship="Self.FK_DEBILL_BILL" FromRole="BILL" ToRole="DE_BILL" />
+          <NavigationProperty Name="REPORTs" Relationship="Self.PK_REPORT_BILL" FromRole="BILL" ToRole="REPORT" />
         </EntityType>
         <EntityType Name="CATEGORy">
           <Key>
@@ -457,7 +519,9 @@
           <Property Name="AVATAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="POINT_MY" Type="Int32" Nullable="false" />
           <Property Name="IDMYGIFT" Type="Int32" />
+          <Property Name="IDROLE" Type="Int32" />
           <NavigationProperty Name="MYGIFT" Relationship="Self.FK_CUSTOMER_MYGIFT" FromRole="CUSTOMER" ToRole="MYGIFT" />
+          <NavigationProperty Name="ROLE" Relationship="Self.FK_CUSTOMER_ROLES" FromRole="CUSTOMER" ToRole="ROLES" />
           <NavigationProperty Name="USER" Relationship="Self.FK_CUSTOMER_USER" FromRole="CUSTOMER" ToRole="USERS" />
           <NavigationProperty Name="DELI_ADDRESS" Relationship="Self.FK_DEADDRESS_CUSTOMER" FromRole="CUSTOMER" ToRole="DELI_ADDRESS" />
         </EntityType>
@@ -483,7 +547,7 @@
           <Property Name="IDORDER" Type="Int32" Nullable="false" />
           <Property Name="IDPRODUCT" Type="Int32" Nullable="false" />
           <Property Name="QUANTITY" Type="Int32" Nullable="false" />
-          <Property Name="PRICE" Type="Double" Nullable="false" />
+          <Property Name="PRICE" Type="Int32" Nullable="false" />
           <NavigationProperty Name="DE_BILL" Relationship="Self.FK_DEBILL_DEORDER" FromRole="DE_ORDER" ToRole="DE_BILL" />
           <NavigationProperty Name="ORDER" Relationship="Self.FK_DEORDER_ORDER" FromRole="DE_ORDER" ToRole="ORDERS" />
           <NavigationProperty Name="PRODUCT" Relationship="Self.FK_DEORDER_PRODUCTS" FromRole="DE_ORDER" ToRole="PRODUCTS" />
@@ -532,7 +596,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DAY" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IDDELIADDRESS" Type="Int32" Nullable="false" />
-          <Property Name="TOTALMONEY" Type="Double" Nullable="false" />
+          <Property Name="TOTALMONEY" Type="Int32" Nullable="false" />
           <Property Name="NOTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="STATUS" Type="Int32" Nullable="false" />
           <Property Name="METHODS" Type="Int32" Nullable="false" />
@@ -547,8 +611,10 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="QUANTITY" Type="Int32" Nullable="false" />
-          <Property Name="PRICE" Type="Double" Nullable="false" />
-          <Property Name="ORI_PRICE" Type="Double" Nullable="false" />
+          <Property Name="PRICE" Type="Int32" Nullable="false" />
+          <Property Name="ORI_PRICE" Type="Int32" Nullable="false" />
+          <Property Name="USD_PRICE" Type="Int32" Nullable="false" />
+          <Property Name="HOTPRODUCT" Type="Int32" Nullable="false" />
           <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DESCRIPTION_CPU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DESCRIPTION_RAM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -557,7 +623,6 @@
           <Property Name="DESCRIPTION_SCREEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DESCRIPTION_WEIGHT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="HOTPRODUCT" Type="Int32" Nullable="false" />
           <Property Name="CATEGORYNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="CREATEBY" Type="Int32" />
           <Property Name="CREATEAT" Type="DateTime" Precision="3" />
@@ -566,6 +631,19 @@
           <Property Name="IDCATEGORY" Type="Int32" />
           <NavigationProperty Name="CATEGORy" Relationship="Self.FK_CATE_PRODUCTS" FromRole="PRODUCTS" ToRole="CATEGORIES" />
           <NavigationProperty Name="DE_ORDER" Relationship="Self.FK_DEORDER_PRODUCTS" FromRole="PRODUCTS" ToRole="DE_ORDER" />
+          <NavigationProperty Name="REPORTs" Relationship="Self.FK_REPORT_PRODUCT" FromRole="PRODUCTS" ToRole="REPORT" />
+        </EntityType>
+        <EntityType Name="REPORT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDBILL" Type="Int32" Nullable="false" />
+          <Property Name="IDPRODUCT" Type="Int32" Nullable="false" />
+          <Property Name="TOTALMONEY" Type="Int32" />
+          <Property Name="DATERP" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BILL" Relationship="Self.PK_REPORT_BILL" FromRole="REPORT" ToRole="BILL" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK_REPORT_PRODUCT" FromRole="REPORT" ToRole="PRODUCTS" />
         </EntityType>
         <EntityType Name="ROLE">
           <Key>
@@ -573,6 +651,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CUSTOMERs" Relationship="Self.FK_CUSTOMER_ROLES" FromRole="ROLES" ToRole="CUSTOMER" />
           <NavigationProperty Name="STAFFs" Relationship="Self.FK_STAFF_ROLES" FromRole="ROLES" ToRole="STAFF" />
         </EntityType>
         <EntityType Name="STAFF">
@@ -643,6 +722,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="PK_REPORT_BILL">
+          <End Role="BILL" Type="Self.BILL" Multiplicity="1" />
+          <End Role="REPORT" Type="Self.REPORT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BILL">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REPORT">
+              <PropertyRef Name="IDBILL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CATE_PRODUCTS">
           <End Role="CATEGORIES" Type="Self.CATEGORy" Multiplicity="0..1" />
           <End Role="PRODUCTS" Type="Self.PRODUCT" Multiplicity="*" />
@@ -664,6 +755,18 @@
             </Principal>
             <Dependent Role="CUSTOMER">
               <PropertyRef Name="IDMYGIFT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMER_ROLES">
+          <End Role="ROLES" Type="Self.ROLE" Multiplicity="0..1" />
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER">
+              <PropertyRef Name="IDROLE" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -753,6 +856,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_REPORT_PRODUCT">
+          <End Role="PRODUCTS" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="REPORT" Type="Self.REPORT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REPORT">
+              <PropertyRef Name="IDPRODUCT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_STAFF_ROLES">
           <End Role="ROLES" Type="Self.ROLE" Multiplicity="0..1" />
           <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
@@ -788,6 +903,7 @@
           <EntitySet Name="MYGIFTs" EntityType="Self.MYGIFT" />
           <EntitySet Name="ORDERS" EntityType="Self.ORDER" />
           <EntitySet Name="PRODUCTS" EntityType="Self.PRODUCT" />
+          <EntitySet Name="REPORTs" EntityType="Self.REPORT" />
           <EntitySet Name="ROLES" EntityType="Self.ROLE" />
           <EntitySet Name="STAFFs" EntityType="Self.STAFF" />
           <EntitySet Name="USERS" EntityType="Self.USER" />
@@ -803,12 +919,20 @@
             <End Role="BILL" EntitySet="BILLs" />
             <End Role="DE_BILL" EntitySet="DE_BILL" />
           </AssociationSet>
+          <AssociationSet Name="PK_REPORT_BILL" Association="Self.PK_REPORT_BILL">
+            <End Role="BILL" EntitySet="BILLs" />
+            <End Role="REPORT" EntitySet="REPORTs" />
+          </AssociationSet>
           <AssociationSet Name="FK_CATE_PRODUCTS" Association="Self.FK_CATE_PRODUCTS">
             <End Role="CATEGORIES" EntitySet="CATEGORIES" />
             <End Role="PRODUCTS" EntitySet="PRODUCTS" />
           </AssociationSet>
           <AssociationSet Name="FK_CUSTOMER_MYGIFT" Association="Self.FK_CUSTOMER_MYGIFT">
             <End Role="MYGIFT" EntitySet="MYGIFTs" />
+            <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMER_ROLES" Association="Self.FK_CUSTOMER_ROLES">
+            <End Role="ROLES" EntitySet="ROLES" />
             <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
           </AssociationSet>
           <AssociationSet Name="FK_CUSTOMER_USER" Association="Self.FK_CUSTOMER_USER">
@@ -838,6 +962,10 @@
           <AssociationSet Name="FK_GIFT_MYGIFT" Association="Self.FK_GIFT_MYGIFT">
             <End Role="GIFT" EntitySet="GIFTs" />
             <End Role="MYGIFT" EntitySet="MYGIFTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPORT_PRODUCT" Association="Self.FK_REPORT_PRODUCT">
+            <End Role="PRODUCTS" EntitySet="PRODUCTS" />
+            <End Role="REPORT" EntitySet="REPORTs" />
           </AssociationSet>
           <AssociationSet Name="FK_STAFF_ROLES" Association="Self.FK_STAFF_ROLES">
             <End Role="ROLES" EntitySet="ROLES" />
@@ -893,6 +1021,7 @@
                 <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
                 <ScalarProperty Name="POINT_MY" ColumnName="POINT_MY" />
                 <ScalarProperty Name="IDMYGIFT" ColumnName="IDMYGIFT" />
+                <ScalarProperty Name="IDROLE" ColumnName="IDROLE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -973,6 +1102,8 @@
                 <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
                 <ScalarProperty Name="PRICE" ColumnName="PRICE" />
                 <ScalarProperty Name="ORI_PRICE" ColumnName="ORI_PRICE" />
+                <ScalarProperty Name="USD_PRICE" ColumnName="USD_PRICE" />
+                <ScalarProperty Name="HOTPRODUCT" ColumnName="HOTPRODUCT" />
                 <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
                 <ScalarProperty Name="DESCRIPTION_CPU" ColumnName="DESCRIPTION_CPU" />
                 <ScalarProperty Name="DESCRIPTION_RAM" ColumnName="DESCRIPTION_RAM" />
@@ -981,13 +1112,23 @@
                 <ScalarProperty Name="DESCRIPTION_SCREEN" ColumnName="DESCRIPTION_SCREEN" />
                 <ScalarProperty Name="DESCRIPTION_WEIGHT" ColumnName="DESCRIPTION_WEIGHT" />
                 <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
-                <ScalarProperty Name="HOTPRODUCT" ColumnName="HOTPRODUCT" />
                 <ScalarProperty Name="CATEGORYNAME" ColumnName="CATEGORYNAME" />
                 <ScalarProperty Name="CREATEBY" ColumnName="CREATEBY" />
                 <ScalarProperty Name="CREATEAT" ColumnName="CREATEAT" />
                 <ScalarProperty Name="UPDATEBY" ColumnName="UPDATEBY" />
                 <ScalarProperty Name="UPDATEAT" ColumnName="UPDATEAT" />
                 <ScalarProperty Name="IDCATEGORY" ColumnName="IDCATEGORY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REPORTs">
+            <EntityTypeMapping TypeName="QLLaptopShopModel.REPORT">
+              <MappingFragment StoreEntitySet="REPORT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDBILL" ColumnName="IDBILL" />
+                <ScalarProperty Name="IDPRODUCT" ColumnName="IDPRODUCT" />
+                <ScalarProperty Name="TOTALMONEY" ColumnName="TOTALMONEY" />
+                <ScalarProperty Name="DATERP" ColumnName="DATERP" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

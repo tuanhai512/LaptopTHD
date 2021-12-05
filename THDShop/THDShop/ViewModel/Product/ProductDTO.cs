@@ -11,8 +11,9 @@ namespace THDShop.ViewModel.Product
         public int HOTPRODUCT { get; set; }
         public string NAME { get; set; }
         public int QUANTITY { get; set; }
-        public double PRICE { get; set; }
-        public double ORI_PRICE { get; set; }
+        public int PRICE { get; set; }
+        public int USD_PRICE { get; set; }
+        public int ORI_PRICE { get; set; }
         public string DESCRIPTION { get; set; }
         public string DESCRIPTION_CPU { get; set; }
         public string DESCRIPTION_RAM { get; set; }

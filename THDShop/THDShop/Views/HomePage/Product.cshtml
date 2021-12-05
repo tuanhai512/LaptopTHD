@@ -1,0 +1,126 @@
+﻿@model IEnumerable<THDShop.PRODUCT>
+@{
+    ViewData["Title"] = "Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Product</title>
+</head>
+<body>
+    <div class="font_asap">
+        <div class="container container-240">
+            <div class="e-product">
+                <ul class="breadcrumb v4">
+                    <li><a href="#">Trang chủ</a></li>
+                    <li class="active">Sản phẩm</li>
+                </ul>
+                <div class="pd-banner">
+                    <a  href="#" class="image-bd effect_img2"><img style="width:1398px;height:316px;" src="~/Assets/Images/QuangCao/6-msi-gl-gaming.jpg" alt="" class="img-reponsive"></a>
+                </div>
+                <div class="pd-top">
+                    <h1 class="title">Sản phẩm</h1>
+                </div>
+                <div class="pd-middle">
+                    <div class="view-mode view-group">
+                        <a class="grid-icon col active"><img src="~/Assets/ECome/img/grid.png" alt=""></a>
+                        <a class="grid-icon col2"><img src="~/Assets/ECome/img/grid2.png" alt=""></a>
+                        <a class="list-icon list"><img src="~/Assets/ECome/img/list.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="product-collection-grid product-grid spc1">
+                    <div class="row">
+                        <!--LIST PRODUCT-->
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 product-item">
+                                <div class="pd-bd product-inner">
+
+                                    <!--IMAGE-->
+                                    <div class="product-img">
+                                        <a href="/HomePage/Details/@item.ID"><img src="@Url.Content(item.IMAGE)" alt="" class="img-reponsive"></a>
+                                    </div>
+                                    <div class="product-info">
+                                        <div class="color-group">
+
+                                        </div>
+                                        <div class="element-list element-list-left">
+                                            <ul class="desc-list">
+
+                                                <!--CPU-->
+                                                <li>
+                                                    <img style="padding-bottom:2px;" width="15" src="https://thenewxgear.com/wp-content/uploads/2021/08/cpu.png" class="lazyloaded" data-ll-status="loaded">
+                                                    <span>@Html.DisplayFor(modelItem => item.DESCRIPTION_CPU)</span>
+                                                </li>
+
+                                                <!--CARD-->
+                                                <li>
+                                                    <img style="padding-bottom:2px;" width="15" src="https://thenewxgear.com/wp-content/uploads/2021/08/gpu.png" class="lazyloaded" data-ll-status="loaded">
+                                                    <span>@Html.DisplayFor(modelItem => item.DESCRIPTION_CARD)</span>
+                                                </li>
+
+                                                <!--RAM-->
+                                                <li>
+                                                    <img style="padding-bottom:2px;" width="15" src="https://thenewxgear.com/wp-content/uploads/2021/08/ram.png" class="lazyloaded" data-ll-status="loaded">
+                                                    <span>@Html.DisplayFor(modelItem => item.DESCRIPTION_RAM)</span>
+                                                </li>
+
+                                                <!--SCREEN-->
+                                                <li>
+                                                    <img style="padding-bottom:2px;" width="15" src="https://thenewxgear.com/wp-content/uploads/2021/08/size.png" class="lazyloaded" data-ll-status="loaded">
+                                                    <span>@Html.DisplayFor(modelItem => item.DESCRIPTION_SCREEN)</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="element-list element-list-middle">
+                                            <div class="product-rating bd-rating">
+
+                                            </div>
+                                            <!--CATE-->
+                                            <p class="product-cate">@Html.DisplayFor(modelItem => item.CATEGORy.NAME)</p>
+                                            <!--NAME-->
+                                            <h3 class="product-title"><a href="/HomePage/Details/@item.ID">@Html.DisplayFor(modelItem => item.NAME)</a></h3>
+                                            <div class="product-bottom">
+                                                <!--PRICE-->
+                                                <div class="product-price"><span>@item.PRICE.ToString("#,##")</span></div>
+                                            </div>
+                                            <div class="product-bottom-group">
+                                                <!--CART-->
+                                                <a href="/Cart/AddToCart/@item.ID" class="btn-icon">
+                                                    <span class="icon-bg icon-cart"></span>
+                                                </a>
+                                                <!--DETAIL-->
+                                                <a href="/HomePage/Details/@item.ID" class="btn-icon">
+                                                    <span class="icon-bg icon-view"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-button-group">
+                                        <!--CART-->
+                                        <a href="/Cart/AddToCart/@item.ID" class="btn-icon">
+                                            <span class="icon-bg icon-cart"></span>
+                                        </a>
+                                        <!--DETAIL-->
+                                        <a href="/Cart/AddToCart/@item.ID" class="btn-icon">
+                                            <span class="icon-bg icon-view"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="pd-middle space-v1">
+                    <ul class="pagination">
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#"><i class="ion-ios-arrow-forward"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+

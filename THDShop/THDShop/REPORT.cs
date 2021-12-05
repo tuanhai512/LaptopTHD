@@ -17,10 +17,10 @@ namespace THDShop
         public int ID { get; set; }
         public int IDBILL { get; set; }
         public int IDPRODUCT { get; set; }
-        public Nullable<double> TOTALMONEY { get; set; }
+        public Nullable<int> TOTALMONEY { get; set; }
         public Nullable<System.DateTime> DATERP { get; set; }
     
         public virtual BILL BILL { get; set; }
-        public virtual PRODUCTS PRODUCTS { get; set; }
+        public virtual PRODUCT PRODUCT { get; set; }
     }
 }

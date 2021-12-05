@@ -14,13 +14,13 @@ namespace THDShop.Areas.Manager.Controllers
         public ActionResult Index()
         {
 
-            return View(database.BILL.ToList());
+            return View(database.BILLs.ToList());
         }
 
 
         public ActionResult Details(int id)
         {
-            return View(database.BILL.Where(s => s.ID == id).FirstOrDefault());
+            return View(database.BILLs.Where(s => s.ID == id).FirstOrDefault());
         }
         public ActionResult Searchid(int id)
         {

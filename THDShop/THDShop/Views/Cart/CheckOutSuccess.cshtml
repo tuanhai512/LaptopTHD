@@ -1,4 +1,4 @@
-﻿
+﻿@model THDShop.ViewModel.DeliAddress.CheckOutDetails
 @{
     ViewBag.Title = "CheckOutSuccess";
 }
@@ -36,6 +36,12 @@
             </div>
         </div>
         <div class="padding-table">
+            <h2>
+                @Model.IDORDER
+            </h2>
+            <h2>
+                @Model.NAME
+            </h2>
             <h3 style="font-size: 24px; font-weight: 800;text-align:center;">Khách Đã Đặt Sản Phẩm Thành Công . Quý Khách Vui Lòng Đợi Vài Phút Để Bên Nhân Viên Gọi Chốt Đơn Hàng</h3>
             <h4 style="font-size: 20px; font-weight: 600;text-align:center;">
                 Nếu Quý Khách Muốn Tiếp Tục Mua Thêm Sản Phẩm . Hãy Chọn Vào Đây.

@@ -7,13 +7,14 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDSTAFF" Type="Int32" />
     <Property Name="IDORDER" Type="Int32" Nullable="false" />
-    <Property Name="TOTALMONEY" Type="Double" Nullable="false" />
+    <Property Name="TOTALMONEY" Type="Int32" Nullable="false" />
     <Property Name="DATETIME" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="NOTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="METHODS" Type="Int32" Nullable="false" />
     <NavigationProperty Name="ORDER" Relationship="Self.FK_BILL_ORDER" FromRole="BILL" ToRole="ORDERS" />
     <NavigationProperty Name="STAFF" Relationship="Self.FK_BILL_STAFF" FromRole="BILL" ToRole="STAFF" />
     <NavigationProperty Name="DE_BILL" Relationship="Self.FK_DEBILL_BILL" FromRole="BILL" ToRole="DE_BILL" />
+    <NavigationProperty Name="REPORTs" Relationship="Self.PK_REPORT_BILL" FromRole="BILL" ToRole="REPORT" />
   </EntityType>
   <EntityType Name="CATEGORy">
     <Key>
@@ -42,7 +43,9 @@
     <Property Name="AVATAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="POINT_MY" Type="Int32" Nullable="false" />
     <Property Name="IDMYGIFT" Type="Int32" />
+    <Property Name="IDROLE" Type="Int32" />
     <NavigationProperty Name="MYGIFT" Relationship="Self.FK_CUSTOMER_MYGIFT" FromRole="CUSTOMER" ToRole="MYGIFT" />
+    <NavigationProperty Name="ROLE" Relationship="Self.FK_CUSTOMER_ROLES" FromRole="CUSTOMER" ToRole="ROLES" />
     <NavigationProperty Name="USER" Relationship="Self.FK_CUSTOMER_USER" FromRole="CUSTOMER" ToRole="USERS" />
     <NavigationProperty Name="DELI_ADDRESS" Relationship="Self.FK_DEADDRESS_CUSTOMER" FromRole="CUSTOMER" ToRole="DELI_ADDRESS" />
   </EntityType>
@@ -68,7 +71,7 @@
     <Property Name="IDORDER" Type="Int32" Nullable="false" />
     <Property Name="IDPRODUCT" Type="Int32" Nullable="false" />
     <Property Name="QUANTITY" Type="Int32" Nullable="false" />
-    <Property Name="PRICE" Type="Double" Nullable="false" />
+    <Property Name="PRICE" Type="Int32" Nullable="false" />
     <NavigationProperty Name="DE_BILL" Relationship="Self.FK_DEBILL_DEORDER" FromRole="DE_ORDER" ToRole="DE_BILL" />
     <NavigationProperty Name="ORDER" Relationship="Self.FK_DEORDER_ORDER" FromRole="DE_ORDER" ToRole="ORDERS" />
     <NavigationProperty Name="PRODUCT" Relationship="Self.FK_DEORDER_PRODUCTS" FromRole="DE_ORDER" ToRole="PRODUCTS" />
@@ -117,7 +120,7 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="DAY" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="IDDELIADDRESS" Type="Int32" Nullable="false" />
-    <Property Name="TOTALMONEY" Type="Double" Nullable="false" />
+    <Property Name="TOTALMONEY" Type="Int32" Nullable="false" />
     <Property Name="NOTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="STATUS" Type="Int32" Nullable="false" />
     <Property Name="METHODS" Type="Int32" Nullable="false" />
@@ -132,8 +135,10 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="QUANTITY" Type="Int32" Nullable="false" />
-    <Property Name="PRICE" Type="Double" Nullable="false" />
-    <Property Name="ORI_PRICE" Type="Double" Nullable="false" />
+    <Property Name="PRICE" Type="Int32" Nullable="false" />
+    <Property Name="ORI_PRICE" Type="Int32" Nullable="false" />
+    <Property Name="USD_PRICE" Type="Int32" Nullable="false" />
+    <Property Name="HOTPRODUCT" Type="Int32" Nullable="false" />
     <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="DESCRIPTION_CPU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="DESCRIPTION_RAM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -142,7 +147,6 @@
     <Property Name="DESCRIPTION_SCREEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="DESCRIPTION_WEIGHT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="HOTPRODUCT" Type="Int32" Nullable="false" />
     <Property Name="CATEGORYNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <Property Name="CREATEBY" Type="Int32" />
     <Property Name="CREATEAT" Type="DateTime" Precision="3" />
@@ -151,6 +155,19 @@
     <Property Name="IDCATEGORY" Type="Int32" />
     <NavigationProperty Name="CATEGORy" Relationship="Self.FK_CATE_PRODUCTS" FromRole="PRODUCTS" ToRole="CATEGORIES" />
     <NavigationProperty Name="DE_ORDER" Relationship="Self.FK_DEORDER_PRODUCTS" FromRole="PRODUCTS" ToRole="DE_ORDER" />
+    <NavigationProperty Name="REPORTs" Relationship="Self.FK_REPORT_PRODUCT" FromRole="PRODUCTS" ToRole="REPORT" />
+  </EntityType>
+  <EntityType Name="REPORT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDBILL" Type="Int32" Nullable="false" />
+    <Property Name="IDPRODUCT" Type="Int32" Nullable="false" />
+    <Property Name="TOTALMONEY" Type="Int32" />
+    <Property Name="DATERP" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="BILL" Relationship="Self.PK_REPORT_BILL" FromRole="REPORT" ToRole="BILL" />
+    <NavigationProperty Name="PRODUCT" Relationship="Self.FK_REPORT_PRODUCT" FromRole="REPORT" ToRole="PRODUCTS" />
   </EntityType>
   <EntityType Name="ROLE">
     <Key>
@@ -158,6 +175,7 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CUSTOMERs" Relationship="Self.FK_CUSTOMER_ROLES" FromRole="ROLES" ToRole="CUSTOMER" />
     <NavigationProperty Name="STAFFs" Relationship="Self.FK_STAFF_ROLES" FromRole="ROLES" ToRole="STAFF" />
   </EntityType>
   <EntityType Name="STAFF">
@@ -228,6 +246,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="PK_REPORT_BILL">
+    <End Role="BILL" Type="Self.BILL" Multiplicity="1" />
+    <End Role="REPORT" Type="Self.REPORT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BILL">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="REPORT">
+        <PropertyRef Name="IDBILL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_CATE_PRODUCTS">
     <End Role="CATEGORIES" Type="Self.CATEGORy" Multiplicity="0..1" />
     <End Role="PRODUCTS" Type="Self.PRODUCT" Multiplicity="*" />
@@ -249,6 +279,18 @@
       </Principal>
       <Dependent Role="CUSTOMER">
         <PropertyRef Name="IDMYGIFT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CUSTOMER_ROLES">
+    <End Role="ROLES" Type="Self.ROLE" Multiplicity="0..1" />
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLES">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CUSTOMER">
+        <PropertyRef Name="IDROLE" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -338,6 +380,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_REPORT_PRODUCT">
+    <End Role="PRODUCTS" Type="Self.PRODUCT" Multiplicity="1" />
+    <End Role="REPORT" Type="Self.REPORT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="REPORT">
+        <PropertyRef Name="IDPRODUCT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_STAFF_ROLES">
     <End Role="ROLES" Type="Self.ROLE" Multiplicity="0..1" />
     <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
@@ -373,6 +427,7 @@
     <EntitySet Name="MYGIFTs" EntityType="Self.MYGIFT" />
     <EntitySet Name="ORDERS" EntityType="Self.ORDER" />
     <EntitySet Name="PRODUCTS" EntityType="Self.PRODUCT" />
+    <EntitySet Name="REPORTs" EntityType="Self.REPORT" />
     <EntitySet Name="ROLES" EntityType="Self.ROLE" />
     <EntitySet Name="STAFFs" EntityType="Self.STAFF" />
     <EntitySet Name="USERS" EntityType="Self.USER" />
@@ -388,12 +443,20 @@
       <End Role="BILL" EntitySet="BILLs" />
       <End Role="DE_BILL" EntitySet="DE_BILL" />
     </AssociationSet>
+    <AssociationSet Name="PK_REPORT_BILL" Association="Self.PK_REPORT_BILL">
+      <End Role="BILL" EntitySet="BILLs" />
+      <End Role="REPORT" EntitySet="REPORTs" />
+    </AssociationSet>
     <AssociationSet Name="FK_CATE_PRODUCTS" Association="Self.FK_CATE_PRODUCTS">
       <End Role="CATEGORIES" EntitySet="CATEGORIES" />
       <End Role="PRODUCTS" EntitySet="PRODUCTS" />
     </AssociationSet>
     <AssociationSet Name="FK_CUSTOMER_MYGIFT" Association="Self.FK_CUSTOMER_MYGIFT">
       <End Role="MYGIFT" EntitySet="MYGIFTs" />
+      <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CUSTOMER_ROLES" Association="Self.FK_CUSTOMER_ROLES">
+      <End Role="ROLES" EntitySet="ROLES" />
       <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
     </AssociationSet>
     <AssociationSet Name="FK_CUSTOMER_USER" Association="Self.FK_CUSTOMER_USER">
@@ -423,6 +486,10 @@
     <AssociationSet Name="FK_GIFT_MYGIFT" Association="Self.FK_GIFT_MYGIFT">
       <End Role="GIFT" EntitySet="GIFTs" />
       <End Role="MYGIFT" EntitySet="MYGIFTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REPORT_PRODUCT" Association="Self.FK_REPORT_PRODUCT">
+      <End Role="PRODUCTS" EntitySet="PRODUCTS" />
+      <End Role="REPORT" EntitySet="REPORTs" />
     </AssociationSet>
     <AssociationSet Name="FK_STAFF_ROLES" Association="Self.FK_STAFF_ROLES">
       <End Role="ROLES" EntitySet="ROLES" />

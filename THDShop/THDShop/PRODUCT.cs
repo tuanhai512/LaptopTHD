@@ -18,13 +18,16 @@ namespace THDShop
         public PRODUCT()
         {
             this.DE_ORDER = new HashSet<DE_ORDER>();
+            this.REPORTs = new HashSet<REPORT>();
         }
     
         public int ID { get; set; }
         public string NAME { get; set; }
         public int QUANTITY { get; set; }
-        public double PRICE { get; set; }
-        public double ORI_PRICE { get; set; }
+        public int PRICE { get; set; }
+        public int ORI_PRICE { get; set; }
+        public int USD_PRICE { get; set; }
+        public int HOTPRODUCT { get; set; }
         public string DESCRIPTION { get; set; }
         public string DESCRIPTION_CPU { get; set; }
         public string DESCRIPTION_RAM { get; set; }
@@ -33,7 +36,6 @@ namespace THDShop
         public string DESCRIPTION_SCREEN { get; set; }
         public string DESCRIPTION_WEIGHT { get; set; }
         public string IMAGE { get; set; }
-        public int HOTPRODUCT { get; set; }
         public string CATEGORYNAME { get; set; }
         public Nullable<int> CREATEBY { get; set; }
         public Nullable<System.DateTime> CREATEAT { get; set; }
@@ -44,5 +46,7 @@ namespace THDShop
         public virtual CATEGORy CATEGORy { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DE_ORDER> DE_ORDER { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<REPORT> REPORTs { get; set; }
     }
 }

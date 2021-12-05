@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="~/Assets/main/freda/src/app/css/app.css" />
     <link href="~/Assets/css/QuangCao.css" rel="stylesheet" />
 
+    <link href="~/Assets/css/fontasp.css" rel="stylesheet" />
+
 
     <link rel="stylesheet" href="~/Assets/ECome/css/owl.carousel.min.css">
     <link rel="shortcut icon" href="~/Assets/ECome/img/favicon.png" type="~/Assets/ECome/image/png">
@@ -60,7 +62,7 @@
         <nav class="yb-main-menu " id="main-menu">
             <div class="uk-container" data-uk-navbar>
                 <div class="uk-navbar-left">
-                    <a class="yb-logo uk-navbar-item uk-logo" href="@Url.Action("Index","HomeUser")"><img width="120" height="100" src="~/Assets/Images/logoTHD.png"/></a>
+                    <a class="yb-logo uk-navbar-item uk-logo" href="@Url.Action("Index","HomeUser")"><img width="150" height="100" src="~/Assets/Images/logothdshopbgblack.png"/></a>
                 </div>
                 <div class="uk-navbar-right uk-hidden@m">
                     <a class="uk-navbar-toggle" href="#" id="btn-menu-toggle">
@@ -72,19 +74,13 @@
                     <div class="uk-navbar-center">
                         <ul class="uk-navbar-nav" data-uk-scrollspy-nav="closest: li; scroll: false; offset: 79 ">
                             <li>
-                                <a  href=""> Trang Chủ </a>
+                                <a  href="@Url.Action("Index","HomePage")"> Trang Chủ </a>
                             </li>
                             <li>
-                                <a  href=""> Sự Kiện</a>
+                                <a  href="@Url.Action("Product","HomePage")"> Sản Phẩm </a>
                             </li>
                             <li>
-                                <a  href=""> Sản Phẩm </a>
-                            </li>
-                            <li>
-                                <a  href=""> Portfolio </a>
-                            </li>
-                            <li>
-                                <a  href=""> Blog </a>
+                                <a  href=""> Voucher </a>
                             </li>
                             <li>
                                 <a  href=""> Contact </a>

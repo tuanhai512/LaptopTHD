@@ -52,7 +52,7 @@ namespace THDShop.Areas.Manager.Controllers
             entity.EMAIL = model.EMAIL;
             entity.AVATAR = model.AVATAR;
             entity.POINT_MY = 0;
-            _context.CUSTOMER.Add(entity);
+            _context.CUSTOMERs.Add(entity);
             _context.SaveChanges();
             CustomerSingleton.Instance.listCustomer.Clear();
             CustomerSingleton.Instance.Init(_context);

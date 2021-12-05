@@ -6,22 +6,22 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using THDShop.ViewModel;
-using THDShop.ViewModel.Report;
+//using THDShop.ViewModel.Report;
 
 namespace THDShop.Areas.Manager.Controllers
 {
     public class OrderController : Controller
     {
-        public ReportDTO GetReport()
-        {
-            ReportDTO getreport = Session["ReportDTO"] as ReportDTO;
-            if (getreport == null || Session["ReportDTO"] == null)
-            {
-                getreport = new ReportDTO();
-                Session["ReportDTO"] = getreport;
-            }
-            return getreport;
-        }
+        //public ReportDTO GetReport()
+        //{
+        //    ReportDTO getreport = Session["ReportDTO"] as ReportDTO;
+        //    if (getreport == null || Session["ReportDTO"] == null)
+        //    {
+        //        getreport = new ReportDTO();
+        //        Session["ReportDTO"] = getreport;
+        //    }
+        //    return getreport;
+        //}
         // GET: Manager/Order
         QLLaptopShopEntities _db = new QLLaptopShopEntities();
         // GET: QuanLy/DonHang
@@ -59,7 +59,7 @@ namespace THDShop.Areas.Manager.Controllers
         }
         public ActionResult Success(int? id)
         {
-            var getreport = GetReport();
+            //var getreport = GetReport();
             if (id == null)
             {
                 return RedirectToAction("Index");
@@ -74,7 +74,7 @@ namespace THDShop.Areas.Manager.Controllers
                     var hoadon = new BILL()
                     {
                         IDORDER = dathang.ID,
-                        TOTALMONEY = (double)dathang.TOTALMONEY,
+                        TOTALMONEY = dathang.TOTALMONEY,
                         DATETIME = dathang.DAY,
                        // ID = (int)Session["MAKH"]
 
@@ -83,7 +83,7 @@ namespace THDShop.Areas.Manager.Controllers
                     _db.SaveChanges();
                     
 
-                    var product = new PRODUCTS();
+                    var product = new PRODUCT();
                     //var report = new ReP()
                     //{
                     //    IDBILL = hoadon.ID,

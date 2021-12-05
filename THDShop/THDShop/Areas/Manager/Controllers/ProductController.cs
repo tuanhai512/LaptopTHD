@@ -96,6 +96,7 @@ namespace THDShop.Areas.Manager.Controllers
                     entity.NAME = model.NAME;
                     entity.PRICE = model.PRICE.HasValue ? model.PRICE.Value : 0;
                     entity.ORI_PRICE = model.ORI_PRICE.HasValue ? model.ORI_PRICE.Value : 0;
+                    entity.USD_PRICE = model.USD_PRICE().HasValue ? model.USD_PRICE().Value :0;
                     entity.QUANTITY = model.QUANTITY.HasValue ? model.QUANTITY.Value : 0;
                     entity.DESCRIPTION = model.DESCRIPTION;
                     entity.DESCRIPTION_CPU = model.DESCRIPTION_CPU;
@@ -180,6 +181,7 @@ namespace THDShop.Areas.Manager.Controllers
             entity.NAME = model.NAME;
             entity.PRICE = model.PRICE.HasValue ? model.PRICE.Value : 0;
             entity.ORI_PRICE = model.ORI_PRICE.HasValue ? model.ORI_PRICE.Value : 0;
+            entity.USD_PRICE = model.USD_PRICE().HasValue ? model.USD_PRICE().Value : 0;
             entity.QUANTITY = model.QUANTITY.HasValue ? model.QUANTITY.Value : 0;
             entity.DESCRIPTION = model.DESCRIPTION;
             entity.DESCRIPTION_CPU = model.DESCRIPTION_CPU;

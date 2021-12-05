@@ -40,6 +40,7 @@
           <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
           <ScalarProperty Name="POINT_MY" ColumnName="POINT_MY" />
           <ScalarProperty Name="IDMYGIFT" ColumnName="IDMYGIFT" />
+          <ScalarProperty Name="IDROLE" ColumnName="IDROLE" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -120,6 +121,8 @@
           <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
           <ScalarProperty Name="PRICE" ColumnName="PRICE" />
           <ScalarProperty Name="ORI_PRICE" ColumnName="ORI_PRICE" />
+          <ScalarProperty Name="USD_PRICE" ColumnName="USD_PRICE" />
+          <ScalarProperty Name="HOTPRODUCT" ColumnName="HOTPRODUCT" />
           <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
           <ScalarProperty Name="DESCRIPTION_CPU" ColumnName="DESCRIPTION_CPU" />
           <ScalarProperty Name="DESCRIPTION_RAM" ColumnName="DESCRIPTION_RAM" />
@@ -128,7 +131,6 @@
           <ScalarProperty Name="DESCRIPTION_SCREEN" ColumnName="DESCRIPTION_SCREEN" />
           <ScalarProperty Name="DESCRIPTION_WEIGHT" ColumnName="DESCRIPTION_WEIGHT" />
           <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
-          <ScalarProperty Name="HOTPRODUCT" ColumnName="HOTPRODUCT" />
           <ScalarProperty Name="CATEGORYNAME" ColumnName="CATEGORYNAME" />
           <ScalarProperty Name="CREATEBY" ColumnName="CREATEBY" />
           <ScalarProperty Name="CREATEAT" ColumnName="CREATEAT" />
@@ -138,7 +140,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="REPORT">
+    <EntitySetMapping Name="REPORTs">
       <EntityTypeMapping TypeName="QLLaptopShopModel.REPORT">
         <MappingFragment StoreEntitySet="REPORT">
           <ScalarProperty Name="ID" ColumnName="ID" />

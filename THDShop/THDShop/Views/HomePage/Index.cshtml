@@ -1,0 +1,62 @@
+﻿@model IEnumerable<THDShop.PRODUCT>
+@{
+    ViewData["Title"] = "HomePage";
+    Layout = "~/Views/Shared/_HomePage.cshtml";
+}
+
+<!DOCTYPE html>
+
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<div>
+    <div class="container container-240">
+        <div class="e-cat">
+
+            <!-- Asus -->
+            <div class="bestseller">
+                <div class="ecome-heading style3 spc3">
+                    <h1>Asus</h1>
+                    <a href="#" class="btn-show">Xem thêm<i class="ion-ios-arrow-forward"></i></a>
+                </div>
+                <div class="owl-carousel owl-theme owl-cate v2 js-owl-cate">
+                    @foreach (var item in Model)
+                    {
+                        <!-- list product -->
+                        <div class="product-item">
+                            <div class="pd-bd product-inner">
+                                <div class="product-img">
+                                    <a href="/HomePage/Details/@item.ID"><img src="@Url.Content(item.IMAGE)" alt="" class="img-reponsive"></a>
+                                </div>
+                                <div class="product-info">
+                                    <div class="color-group">
+                                    </div>
+                                    <div class="element-list element-list-left">
+                                    </div>
+                                    <div class="element-list element-list-middle">
+                                        <p class="product-cate">@Html.DisplayFor(modelItem => item.CATEGORy.NAME)</p>
+                                        <h3 class="product-title"><a href="/HomePage/Details/@item.ID">@Html.DisplayFor(modelItem => item.NAME)</a></h3>
+                                        <div class="product-bottom">
+                                            <div class="product-price"><span>@item.PRICE.ToString("#,##")</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="product-button-group">
+                                        <a href="/Cart/AddToCart/@item.ID" class="btn-icon">
+                                            <span class="icon-bg icon-cart"></span>
+                                        </a>
+                                        <a href="/HomePage/Details/@item.ID" class="btn-icon btn-view">
+                                            <span class="icon-bg icon-view"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
