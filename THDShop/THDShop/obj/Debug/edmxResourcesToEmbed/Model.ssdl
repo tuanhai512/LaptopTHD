@@ -61,7 +61,7 @@
     <Property Name="IDORDER" Type="int" Nullable="false" />
     <Property Name="IDPRODUCT" Type="int" Nullable="false" />
     <Property Name="QUANTITY" Type="int" Nullable="false" />
-    <Property Name="PRICE" Type="float" Nullable="false" />
+    <Property Name="PRICE" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="DELI_ADDRESS">
     <Key>
@@ -82,7 +82,7 @@
     </Key>
     <Property Name="ID" Type="varchar" MaxLength="1" Nullable="false" />
     <Property Name="G_POINT" Type="int" Nullable="false" />
-    <Property Name="G_VALUE" Type="float" Nullable="false" />
+    <Property Name="G_VALUE" Type="int" Nullable="false" />
     <Property Name="G_START" Type="datetime" />
     <Property Name="G_END" Type="datetime" />
     <Property Name="DESCREPTION" Type="nvarchar" MaxLength="1" />
@@ -114,8 +114,10 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NAME" Type="nvarchar" MaxLength="30" Nullable="false" />
     <Property Name="QUANTITY" Type="int" Nullable="false" />
-    <Property Name="PRICE" Type="float" Nullable="false" />
-    <Property Name="ORI_PRICE" Type="float" Nullable="false" />
+    <Property Name="PRICE" Type="int" Nullable="false" />
+    <Property Name="ORI_PRICE" Type="int" Nullable="false" />
+    <Property Name="USD_PRICE" Type="int" Nullable="false" />
+    <Property Name="HOTPRODUCT" Type="int" Nullable="false" />
     <Property Name="DESCRIPTION" Type="nvarchar(max)" />
     <Property Name="DESCRIPTION_CPU" Type="nvarchar" MaxLength="100" />
     <Property Name="DESCRIPTION_RAM" Type="nvarchar" MaxLength="100" />

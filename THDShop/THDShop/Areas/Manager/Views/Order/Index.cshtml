@@ -99,6 +99,14 @@
                                         @Html.DisplayFor(modelItem => item.TOTALMONEY)
                                     </td>
                                     <td>
+                                        @if (item.METHODS.Equals(0))
+                                        {
+                                            <span>Tiền Mặt(COD)</span>
+                                        }
+                                        @if (item.METHODS.Equals(1))
+                                        {
+                                            <span>PayPal</span>
+                                        }
                                     </td>
                                     <td>
                                         <a href="@Url.Action("Comfirm", "Order", new { id = @item.ID })">

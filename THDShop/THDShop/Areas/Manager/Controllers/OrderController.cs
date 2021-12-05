@@ -6,7 +6,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using THDShop.ViewModel;
-
+//using THDShop.ViewModel.Report;
 
 namespace THDShop.Areas.Manager.Controllers
 {
@@ -42,7 +42,7 @@ namespace THDShop.Areas.Manager.Controllers
             {
                 return RedirectToAction("Index");
             }
-            ORDERS dathang = _db.ORDERS.Find(id);
+            ORDER dathang = _db.ORDERS.Find(id);
             if (dathang.STATUS == 0)
             {
                 dathang.STATUS = 1;
@@ -59,13 +59,13 @@ namespace THDShop.Areas.Manager.Controllers
         }
         public ActionResult Success(int? id)
         {
-           // var getreport = GetReport();
+            //var getreport = GetReport();
             if (id == null)
             {
                 return RedirectToAction("Index");
             }
             //int temp = (int)Session["MAKH"];
-            ORDERS dathang = _db.ORDERS.Find(id);
+            ORDER dathang = _db.ORDERS.Find(id);
             if (dathang.STATUS == 1)
             {
                 if (ModelState.IsValid)
@@ -74,16 +74,16 @@ namespace THDShop.Areas.Manager.Controllers
                     var hoadon = new BILL()
                     {
                         IDORDER = dathang.ID,
-                        TOTALMONEY = (double)dathang.TOTALMONEY,
+                        TOTALMONEY = dathang.TOTALMONEY,
                         DATETIME = dathang.DAY,
                        // ID = (int)Session["MAKH"]
 
                     };
-                    _db.BILL.Add(hoadon);
+                    _db.BILLs.Add(hoadon);
                     _db.SaveChanges();
                     
 
-                    var product = new PRODUCTS();
+                    var product = new PRODUCT();
                     //var report = new ReP()
                     //{
                     //    IDBILL = hoadon.ID,
@@ -129,7 +129,7 @@ namespace THDShop.Areas.Manager.Controllers
             {
                 return RedirectToAction("Index");
             }
-            ORDERS dathang = _db.ORDERS.Find(id);
+            ORDER dathang = _db.ORDERS.Find(id);
             if (dathang.STATUS == 1)
             {
                 dathang.STATUS = 3;

@@ -21,6 +21,6 @@ namespace THDShop
         public Nullable<System.DateTime> DATERP { get; set; }
     
         public virtual BILL BILL { get; set; }
-        public virtual PRODUCTS PRODUCTS { get; set; }
+        public virtual PRODUCT PRODUCT { get; set; }
     }
 }

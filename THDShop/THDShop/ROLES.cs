@@ -12,24 +12,21 @@ namespace THDShop
     using System;
     using System.Collections.Generic;
     
-    public partial class ROLES
+    public partial class ROLE
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ROLES()
+        public ROLE()
         {
-            this.CUSTOMER = new HashSet<CUSTOMER>();
-            this.STAFF = new HashSet<STAFF>();
-            this.USERS = new HashSet<USERS>();
+            this.CUSTOMERs = new HashSet<CUSTOMER>();
+            this.STAFFs = new HashSet<STAFF>();
         }
     
         public int ID { get; set; }
         public string NAME { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CUSTOMER> CUSTOMER { get; set; }
+        public virtual ICollection<CUSTOMER> CUSTOMERs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<STAFF> STAFF { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USERS> USERS { get; set; }
+        public virtual ICollection<STAFF> STAFFs { get; set; }
     }
 }

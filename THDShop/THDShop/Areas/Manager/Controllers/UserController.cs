@@ -42,9 +42,9 @@ namespace THDShop.Areas.Manager.Controllers
                 if (ModelState.IsValid)
                 // TODO: Add insert logic here
                 {
-                    var entity = new USERS();
+                    var entity = new USER();
                     if (model == null)
-                    { entity = new USERS(); }
+                    { entity = new USER(); }
                     entity.NAME = model.NAME;
                     entity.PASSWORD = model.PASSWORD;
                     entity.ADDRESS = model.ADDRESS;
@@ -85,7 +85,7 @@ namespace THDShop.Areas.Manager.Controllers
             // TODO: Add update logic here
             if (ModelState.IsValid)
             {
-                var entity = new USERS();
+                var entity = new USER();
                 if (model == null)
                     return HttpNotFound();
                 entity.ID = model.ID;

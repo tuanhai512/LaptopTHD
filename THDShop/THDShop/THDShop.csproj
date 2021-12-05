@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>THDShop</RootNamespace>
     <AssemblyName>THDShop</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -53,6 +53,9 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -142,10 +145,11 @@
     <Compile Include="BILL.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="CATEGORIES.cs">
+    <Compile Include="CATEGORy.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\HomeUserController.cs" />
     <Compile Include="Controllers\LoginCustomerController.cs" />
     <Compile Include="CUSTOMER.cs">
@@ -184,30 +188,33 @@
     <Compile Include="MYGIFT.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="ORDERS.cs">
+    <Compile Include="ORDER.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="PRODUCTS.cs">
+    <Compile Include="PRODUCT.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="REPORT.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="ROLES.cs">
+    <Compile Include="ROLE.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="STAFF.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="USERS.cs">
+    <Compile Include="USER.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\DeliAddress\CheckOutDetails.cs" />
     <Compile Include="ViewModel\Cart.cs" />
     <Compile Include="ViewModel\Category\CategoryDTO.cs" />
     <Compile Include="ViewModel\Category\CategorySingleton.cs" />
     <Compile Include="ViewModel\Category\CreateCategoryInput.cs" />
     <Compile Include="ViewModel\Category\DetailCategoryDTO.cs" />
+    <Compile Include="ViewModel\PaypalLogger.cs" />
+    <Compile Include="ViewModel\PaypalConfiguration.cs" />
     <Compile Include="ViewModel\Customer\CreateCustomerInput.cs" />
     <Compile Include="ViewModel\Customer\CustomerDTO.cs" />
     <Compile Include="ViewModel\Customer\CustomerSingleton.cs" />
@@ -236,6 +243,7 @@
     <Content Include="Assets\css\GioHang.css" />
     <Content Include="Assets\css\QuangCao.css" />
     <Content Include="Assets\css\site.css" />
+    <Content Include="Assets\css\fontasp.css" />
     <Content Include="Assets\css\use.css" />
     <Content Include="Assets\ECome\css\ajax-loader.gif" />
     <Content Include="Assets\ECome\css\bootstrap-slider.css" />
@@ -577,8 +585,10 @@
     <Content Include="Assets\form\css\StyleSheet.css" />
     <Content Include="Assets\Images\logohot.png" />
     <Content Include="Assets\Images\logonew.png" />
-    <Content Include="Assets\Images\logoTHD.png" />
+    <Content Include="Assets\Images\logothdshopbgwhite.png" />
+    <Content Include="Assets\Images\logothdshopbgblack.png" />
     <Content Include="Assets\Images\QuangCao\1.jpg" />
+    <Content Include="Assets\Images\QuangCao\6-msi-gl-gaming.jpg" />
     <Content Include="Assets\Images\QuangCao\banner-01-1567506590.png" />
     <Content Include="Assets\Images\QuangCao\banner-laptop-t7-01-20200710043331.jpg" />
     <Content Include="Assets\Images\QuangCao\banner.jpg" />
@@ -3502,11 +3512,17 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\HomeUser\Index.cshtml" />
     <Content Include="Views\Shared\_MainPage.cshtml" />
-    <Content Include="Views\HomeUser\Details.cshtml" />
     <Content Include="Views\Cart\ShowToCart.cshtml" />
     <Content Include="Views\Cart\BagCart.cshtml" />
     <Content Include="Views\Cart\DeliveryForm.cshtml" />
     <Content Include="Views\Cart\CheckOutSuccess.cshtml" />
+    <Content Include="Views\Cart\DeliveryFormPayPal.cshtml" />
+    <Content Include="Views\Cart\CheckOutFail.cshtml" />
+    <Content Include="Views\Cart\SelectCheckOut.cshtml" />
+    <Content Include="Views\HomePage\Index.cshtml" />
+    <Content Include="Views\Shared\_HomePage.cshtml" />
+    <Content Include="Views\HomePage\Details.cshtml" />
+    <Content Include="Views\HomePage\Product.cshtml" />
     <Content Include="Views\LoginCustomer\LoginAccount.cshtml" />
     <Content Include="Views\LoginCustomer\RegisterUser.cshtml" />
   </ItemGroup>

@@ -13,7 +13,7 @@ namespace THDShop.Areas.Manager.Controllers
         QLLaptopShopEntities _db = new QLLaptopShopEntities();
         public ActionResult Index()
         {
-            var query = from c in _db.GIFT
+            var query = from c in _db.GIFTs
                         select new GiftDTO
                         {
                             DESCREPTION = c.DESCREPTION,
@@ -56,8 +56,8 @@ namespace THDShop.Areas.Manager.Controllers
                 entity.G_START = model.G_START;
                 entity.G_END = model.G_END;
                 entity.DESCREPTION = model.DESCREPTION;
-                entity.QUANTITY = (int)model.QUANTITY;
-                _db.GIFT.Add(entity);
+                entity.QUANTITY = model.QUANTITY;
+                _db.GIFTs.Add(entity);
                 _db.SaveChanges();        
                 return RedirectToAction("Index");
             }

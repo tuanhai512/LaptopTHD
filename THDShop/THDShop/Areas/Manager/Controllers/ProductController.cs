@@ -69,10 +69,10 @@ namespace THDShop.Areas.Manager.Controllers
         [ValidateInput(false)]
         public ActionResult Create(CreateProductInput model)
         {
-            var entity = new PRODUCTS();
+            var entity = new PRODUCT();
             if (model != null)
             {
-                entity = new PRODUCTS();
+                entity = new PRODUCT();
                 var categorylist = _context.CATEGORIES.ToList().Select(
                 x => new SelectListItem
                 {
@@ -96,6 +96,7 @@ namespace THDShop.Areas.Manager.Controllers
                     entity.NAME = model.NAME;
                     entity.PRICE = model.PRICE.HasValue ? model.PRICE.Value : 0;
                     entity.ORI_PRICE = model.ORI_PRICE.HasValue ? model.ORI_PRICE.Value : 0;
+                    entity.USD_PRICE = model.USD_PRICE().HasValue ? model.USD_PRICE().Value :0;
                     entity.QUANTITY = model.QUANTITY.HasValue ? model.QUANTITY.Value : 0;
                     entity.DESCRIPTION = model.DESCRIPTION;
                     entity.DESCRIPTION_CPU = model.DESCRIPTION_CPU;
@@ -153,7 +154,7 @@ namespace THDShop.Areas.Manager.Controllers
         [ValidateInput(false)]
         public ActionResult Edit(UpdateProductInput model)
         {
-            var entity = new PRODUCTS();
+            var entity = new PRODUCT();
             if (model == null)
                 return HttpNotFound();
 
@@ -180,6 +181,7 @@ namespace THDShop.Areas.Manager.Controllers
             entity.NAME = model.NAME;
             entity.PRICE = model.PRICE.HasValue ? model.PRICE.Value : 0;
             entity.ORI_PRICE = model.ORI_PRICE.HasValue ? model.ORI_PRICE.Value : 0;
+            entity.USD_PRICE = model.USD_PRICE().HasValue ? model.USD_PRICE().Value : 0;
             entity.QUANTITY = model.QUANTITY.HasValue ? model.QUANTITY.Value : 0;
             entity.DESCRIPTION = model.DESCRIPTION;
             entity.DESCRIPTION_CPU = model.DESCRIPTION_CPU;
@@ -196,7 +198,7 @@ namespace THDShop.Areas.Manager.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Delete(int id, PRODUCTS prod)
+        public ActionResult Delete(int id, PRODUCT prod)
         {
             try
             {
@@ -225,7 +227,7 @@ namespace THDShop.Areas.Manager.Controllers
                             QUANTITY = c.QUANTITY,
                             DESCRIPTION = c.DESCRIPTION,
                             IMAGE = c.IMAGE,
-                            CATEGORYNAME = c.CATEGORIES.NAME,
+                            CATEGORYNAME = c.CATEGORy.NAME,
                             DESCRIPTION_CPU = c.DESCRIPTION_CPU,
                             DESCRIPTION_RAM = c.DESCRIPTION_RAM,
                             DESCRIPTION_STORAGE = c.DESCRIPTION_STORAGE,

@@ -12,11 +12,11 @@ namespace THDShop.ViewModel.Gift
     {
         public string ID { get; set; }
         public int G_POINT { get; set; }
-        public double G_VALUE { get; set; }
+        public int G_VALUE { get; set; }
         public Nullable<DateTime> G_START { get; set; }
         public Nullable<DateTime> G_END { get; set; }
         public string DESCREPTION { get; set; }
-        public Nullable<int> QUANTITY { get; set; }
+        public int QUANTITY { get; set; }
 
     }
     public class UpdateGiftInput : CreateGiftInput

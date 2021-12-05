@@ -17,7 +17,7 @@ namespace THDShop
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public STAFF()
         {
-            this.BILL = new HashSet<BILL>();
+            this.BILLs = new HashSet<BILL>();
         }
     
         public int ID { get; set; }
@@ -33,8 +33,8 @@ namespace THDShop
         public string ROLENAME { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BILL> BILL { get; set; }
-        public virtual ROLES ROLES { get; set; }
-        public virtual USERS USERS { get; set; }
+        public virtual ICollection<BILL> BILLs { get; set; }
+        public virtual ROLE ROLE { get; set; }
+        public virtual USER USER { get; set; }
     }
 }

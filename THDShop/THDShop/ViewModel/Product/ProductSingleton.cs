@@ -24,7 +24,7 @@ namespace THDShop.ViewModel.Product
                                 PRICE = c.PRICE,
                                 ORI_PRICE = c.ORI_PRICE,
                                 DESCRIPTION = c.DESCRIPTION,
-                                CATEGORYNAME = c.CATEGORIES.NAME,
+                                CATEGORYNAME = c.CATEGORy.NAME,
                                 IDCATEGORY = c.IDCATEGORY,
                                 QUANTITY = c.QUANTITY,
                                 IMAGE = c.IMAGE,
