@@ -96,12 +96,12 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="G_POINT" Type="Int32" Nullable="false" />
     <Property Name="G_VALUE" Type="Int32" Nullable="false" />
     <Property Name="G_START" Type="DateTime" Precision="3" />
     <Property Name="G_END" Type="DateTime" Precision="3" />
-    <Property Name="DESCREPTION" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="DESCREPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="QUANTITY" Type="Int32" Nullable="false" />
     <NavigationProperty Name="MYGIFTs" Relationship="Self.FK_GIFT_MYGIFT" FromRole="GIFT" ToRole="MYGIFT" />
   </EntityType>
@@ -110,7 +110,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IDGIFT" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="IDGIFT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="CUSTOMERs" Relationship="Self.FK_CUSTOMER_MYGIFT" FromRole="MYGIFT" ToRole="CUSTOMER" />
     <NavigationProperty Name="GIFT" Relationship="Self.FK_GIFT_MYGIFT" FromRole="MYGIFT" ToRole="GIFT" />
   </EntityType>

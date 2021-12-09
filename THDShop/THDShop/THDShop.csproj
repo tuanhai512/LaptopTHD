@@ -238,6 +238,7 @@
     <Compile Include="ViewModel\User\UserDTO.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\fixscss.css" />
     <Content Include="Assets\css\checkout.css" />
     <Content Include="Assets\css\DetailsUser.css" />
     <Content Include="Assets\css\GioHang.css" />
@@ -592,6 +593,11 @@
     <Content Include="Assets\Images\QuangCao\banner-01-1567506590.png" />
     <Content Include="Assets\Images\QuangCao\banner-laptop-t7-01-20200710043331.jpg" />
     <Content Include="Assets\Images\QuangCao\banner.jpg" />
+    <Content Include="Assets\Images\QuangCao\slideshow_1.jpg" />
+    <Content Include="Assets\Images\QuangCao\slideshow_3.jpg" />
+    <Content Include="Assets\Images\QuangCao\solid1.jpg" />
+    <Content Include="Assets\Images\QuangCao\solid4.jpg" />
+    <Content Include="Assets\Images\QuangCao\solid5.jpg" />
     <Content Include="Assets\Images\shopping.png" />
     <Content Include="Assets\Images\upload.png" />
     <Content Include="Assets\js\JavaScript.js" />
@@ -3518,13 +3524,13 @@
     <Content Include="Views\Cart\CheckOutSuccess.cshtml" />
     <Content Include="Views\Cart\DeliveryFormPayPal.cshtml" />
     <Content Include="Views\Cart\CheckOutFail.cshtml" />
-    <Content Include="Views\Cart\SelectCheckOut.cshtml" />
     <Content Include="Views\HomePage\Index.cshtml" />
     <Content Include="Views\Shared\_HomePage.cshtml" />
     <Content Include="Views\HomePage\Details.cshtml" />
     <Content Include="Views\HomePage\Product.cshtml" />
     <Content Include="Views\LoginCustomer\LoginAccount.cshtml" />
     <Content Include="Views\LoginCustomer\RegisterUser.cshtml" />
+    <Content Include="Views\HomePage\Voucher.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

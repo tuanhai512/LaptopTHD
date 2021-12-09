@@ -65,6 +65,7 @@ namespace THDShop.Areas.Manager.Controllers
                 return HttpNotFound();
             entity.ID = model.ID;
             entity.NAME = model.NAME;
+            entity.CREATEAT = DateTime.Now;
             _context.Entry(entity).State = EntityState.Modified;
             _context.SaveChanges();
             CategorySingleton.Instance.listCategory.Clear();

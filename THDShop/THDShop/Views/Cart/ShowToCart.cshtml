@@ -9,174 +9,141 @@
     <link href="~/Assets/css/GioHang.css" rel="stylesheet" />
 </head>
 
-<div class="font_asap">
-    <div class="title">
-        <div class="sh-table-cell">
-            Giỏ Hàng
-        </div>
-        <div class="title2 sh-table-cell">
-            <span class="title2-all">
-                <a href="@Url.Action("Index","HomeUser")">Trang Chủ</a>
-            </span>
-            <span class="title2-all title2-cart"> > </span>
-            <span class="title2-all title2-cart">Giỏ Hàng</span>
-        </div>
-    </div>
-    <div class="shopping-cart">
-        <div class="padding">
-            <div class="giohang1">
-                <div class="giohang2 giohang2both">
-                    Giỏ Hàng
-                </div>
-                <div class="giohang2both">
-                    Chọn Phương Thức
-                </div>
-                <div class="giohang2both">
-                    Thanh Toán
-                </div>
-                <div class="giohang2both">
-                    Thành Công
-                </div>
-            </div>
-        </div>
+<div class="container container-240">
 
+    <div class="checkout">
+        <ul class="breadcrumb v3">
+            <li><a href="@Url.Action("Index","HomePage")">Trang Chủ</a></li>
+            <li class="active">Giỏ Hàng</li>
+        </ul>
+        <div class="row">
+            <div class="col-md-8 col-sm-12 col-xs-12">
+                <div class="shopping-cart bd-7">
+                    <div class="cmt-title text-center abs">
+                        <h1 class="page-title v2">Giỏ Hàng</h1>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table cart-table">
 
-
-
-        <div class="padding-table">
-            <table class="content-table table-bordered table-hover table-striped">
-                <thead>
-                    <tr>
-                        <th class="product-remove" style="width:5%">
-                            Xóa
-                        </th>
-                        <th class="product-thumbnail" style="width:20%">
-                            Hình Ảnh
-                        </th>
-                        <th class="product-name" style="width:25%">
-                            Sản phẩm
-                        </th>
-                        <th class="product-price" style="width:10%">
-                            Giá
-                        </th>
-                        <th class="product-quantity">
-                            Số Lượng
-                        </th>
-                        <th class="product-subtotal" style="width:10%">
-                            Tổng
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (Model != null)
-                    {
-                        foreach (var item in Model.Items)
-                        {
-                            double total = Convert.ToDouble(item._product.PRICE * item._quantity);
-                            <tr>
-                                <!-- Xóa -->
-                                <td class="product-remove buttons">
-                                    <a href="/Cart/RemoveCart/@item._product.ID" btn btn-primary btn-sm>
-                                        X
-                                    </a>
-                                </td>
-
-                                <!-- Hình Ảnh -->
-                                <td class="product-thumbnail">
-                                    <img src="@Url.Content(item._product.IMAGE)" style="width:100px;height:100px;">
-                                </td>
-
-                                <!-- Tên Sản Phẩm -->
-                                <td class="product-name description" style="width:25%">
-                                    <h2 class="h5 text-black">
-                                        @Html.DisplayFor(model => item._product.NAME)
-                                    </h2>
-                                </td>
-
-                                <!-- Giá -->
-                                <td class="product-price">
-                                    @item._product.PRICE.ToString("#,##")
-                                </td>
-
-                                <!-- Cập Nhật Giá , Số Lượng -->
-                                <td>
-                                    @using (Html.BeginForm("UpdateCart", "Cart"))
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    foreach (var item in Model.Items)
                                     {
-                                        <div style="display:flex">
-                                            <input type="hidden" value="@item._product.ID" name="ID_PRODUCT" />
-                                            <input type="number" class="quantity" value="@item._quantity" name="Quantity" />
-                                            <input class="Update" type="submit" value="Cập Nhật" />
-                                        </div>
+                                        double total = Convert.ToDouble(item._product.PRICE * item._quantity);
+                                        <tr class="item_cart">
+                                            <td class="product-name flex align-center">
+                                                <a href="/Cart/RemoveCart/@item._product.ID" class="btn-del"><i class="ion-ios-close-empty"></i></a>
+                                                <div class="product-img">
+                                                    <img src="@Url.Content(item._product.IMAGE)" alt="Futurelife">
+                                                </div>
+                                                <div class="product-info">
+                                                    <a href="/HomePage/Details/@item._product.ID" title="">@Html.DisplayFor(model => item._product.NAME) </a>
+                                                </div>
+                                            </td>
+                                            <td style=" padding: 49px 40px;" class="bcart-quantity single-product-detail">
+                                                <div class="single-product-info">
+                                                    @using (Html.BeginForm("UpdateCart", "Cart"))
+                                                    {
+                                                        <div style="width:140px" class="e-quantity">
+                                                            <div style="display:flex">
+                                                                <input type="hidden" value="@item._product.ID" name="ID_PRODUCT" />
+                                                                <input type="number" step="1" min="1" max="999" name="Quantity" value="@item._quantity" title="Qty" class="qty input-text js-number" size="4">
+                                                                <input class="btn btn-update" type="submit" value="Cập Nhật" />
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </td>
+                                            <td class="total-price">
+                                                <p class="price">@total.ToString("#,##")</p>
+                                            </td>
+                                        </tr>
                                     }
-                                </td>
-
-                                <!-- Tổng giá -->
-                                <td class="product-subtotal total-price">
-                                    @total.ToString("#,##")
-                                </td>
-                            </tr>
-                        }
-                    }
-                </tbody>
-            </table>
-            <div class="padding-nextpage">
-                <table class="next-table">
-                    <tr>
-                        <td>
-                            <div colspan="5" style="text-align:right;justify-content: space-between;display:flex;">
-                                <div>
-                                    <span><input class="code" type="text" placeholder="Khuyến Mãi" /></span>
-                                    <span><input class="btn-code" type="submit" value="Xác Nhận" /></span>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div style="padding-top:30px">
-                <div style="width:40%">
-                    <h2 style="color:#1a1a1a">
-                        TỔNG GIỎ HÀNG
-                        <span c style="color:#1a1a1a;padding-left:15px">
-                            <img style="width:25px;" src="~/Assets/Images/shopping.png" />
-                            <b>
-                                @Html.Action("BagCart", "Cart")
-                            </b>
-                        </span>
-                    </h2>
-                    <div>
-                        @if (Model != null)
-                        {
-                            foreach (var pro in Model.Items)
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-cart-bottom">
+                        
+                        <div style="width:300px" class="form_coupon">
+                            @using (Html.BeginForm("UpdateGift", "Cart"))
                             {
-                                double total = pro._product.PRICE * pro._quantity;
-                                <p style="margin-block-start: 0em; margin-block-end: 0em;" class="carttotal">
-                                    @Html.DisplayFor(model => pro._product.NAME) x @Html.DisplayFor(model => pro._quantity)
-                                    <span class="price">@total.ToString("N0") VNĐ</span>
-                                </p>
+                                <input type="text" placeholder="Khuyến Mãi" name="ID_Gift" class="newsletter-input form-control">
+                                <div class="input-icon">
+                                    <img src="~/Assets/ECome/img/coupon-icon.png" alt="">
+                                </div>
+                                <input style="width:100px" class="button_mini btn" type="submit" value="Xác Nhận" />
                             }
-                        }
-                        <p style="margin-block-start:1mm; margin-block-end: 0em;" class="carttotal">
-                            TỔNG TIỀN
-                            <span class="price" style="color:black">
-                                <b>
-                                    @if (Model != null)
-                                    {
-                                        @Model.Total_money().ToString("N0");<span>
-                                            VNĐ
-                                        </span>
-                                    }
-                                </b>
-                            </span>
-                        </p>
+                            </div>
+                        
+
+                    </div>
                     </div>
                 </div>
-            </div>
-            <div style="padding-top:10px;padding-bottom:60px">
-                <a href="/Cart/SelectCheckOut">
-                    <input style="padding:10px;font-size:20px;" class="Update" type="submit" value="ĐẶT HÀNG" />
-                </a>
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <div class="cart-total bd-7">
+                    <div class="cmt-title text-center abs">
+                        <h1 class="page-title v3">Tổng giỏ hàng</h1>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="shop_table">
+                            <tbody>
+                                <tr class="cart-subtotal">
+                                    <th>Tổng giá</th>
+                                    @if (Model != null)
+                                    {
+                                        <td>@Model.Total_money().ToString("N0")</td>
+                                    }
+                                    </tr>
+                                <tr class="cart-shipping">
+                                    <th>Voucher</th>
+                                    <td style="padding-left:90px;display:flex;" class="td">
+                                        @if(Model != null)
+                                        {
+                                                if (Session["ID_Gift"] != null)
+                                                {
+                                                    <div style="float:left;font-size:16px;">@Model._value<span>%</span></div>
+                                                }
+                                                else
+                                                {
+                                                    <div style="float:left;font-size:16px;">0%</div>
+                                                }
+                                        }
+                                    <div><a href="/HomePage/Voucher" class="calcu">Lấy Voucher</a></div>
+                                        
+                                    </td>
+
+                                </tr>
+                                <tr class="order-total">
+                                    <th style="padding-bottom: 20px;font-size: 25px;">Tổng</th>
+                                    @if (Model != null)
+                                    {
+                                        if (Session["ID_Gift"] != null)
+                                        {
+                                            <td>@Model.Total_money_GIFT().ToString("N0")</td>
+                                        }
+                                        else
+                                        {
+                                            <td>@Model.Total_money().ToString("N0")</td>
+                                        }
+                                    }
+                                    </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="cart-total-bottom">
+                        <a style="background-image: linear-gradient( 122deg, #fb3636, #00ae96) !important;" href="/Cart/DeliveryForm" class="btn-gradient btn-checkout">Tiền mặt khi giao hàng (COD)</a>
+                    </div>
+                    <div class="sign-in-divider">
+                        <span>or</span>
+                    </div>
+                    <div class="cart-total-bottom pp-checkout">
+                        <a href="/Cart/DeliveryFormPayPal"><img src="~/Assets/ECome/img/checkoutpp.jpg" alt="" class="img-responsive"></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+

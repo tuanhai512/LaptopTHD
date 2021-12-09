@@ -81,9 +81,9 @@
                                     <div class="header-sub-element row">
                                         <a class="hidden-xs hidden-sm" href=""><img src="~/Assets/ECome/img/icon-user.png" alt=""></a>
                                         <div class="cart">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="label5">
+                                            <a href="@Url.Action("ShowToCart","Cart")" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="label5">
                                                 <img src="~/Assets/ECome/img/icon-cart.png" alt="">
-                                                <span class="count cart-count">0</span>
+                                                <span class="count cart-count">@Html.Action("BagCart", "Cart")</span>
                                             </a>
                                             <div class="dropdown-menu dropdown-cart">
                                                 <ul class="mini-products-list">

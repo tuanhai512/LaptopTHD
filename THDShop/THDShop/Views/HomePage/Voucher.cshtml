@@ -1,0 +1,42 @@
+﻿@model IEnumerable<THDShop.GIFT>
+
+@{
+    ViewData["Title"] = "Voucher";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Voucher</title>
+</head>
+<body>
+    <div class="container container-240">
+        <div class="e-cat">
+            <div class="owl-carousel owl-theme owl-cate v2 js-owl-cate">
+                @foreach (var item in Model)
+                {
+                    <!-- list product -->
+                    <div class="product-item">
+                        <div class="pd-bd product-inner">
+                            <div class="product-info">
+                                <div class="element-list element-list-middle">
+                                    <p class="product-cate">@Html.DisplayFor(modelItem => item.DESCREPTION)</p>
+                                    <h3 class="product-title">@Html.DisplayFor(modelItem => item.ID)</h3>
+                                    <div class="product-bottom">
+                                        <div class="product-price"><span>@item.G_VALUE.ToString("#,##")</span></div>
+                                    </div>
+                                </div>
+                                <div class="product-button-group">
+                                    <a href="/Cart/AddGift/@item.ID" class="btn-icon">
+                                        <span class="icon-bg icon-cart"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+

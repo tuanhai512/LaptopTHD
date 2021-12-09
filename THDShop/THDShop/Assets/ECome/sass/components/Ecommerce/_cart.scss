@@ -630,6 +630,8 @@
         margin-bottom: 15px;
     }
     textarea {
+        width:100%;
+        height:100%;
         border: 1px solid #e1e1e1;
         @include placeholder(#999999, 14px);
         padding-left: 40px;

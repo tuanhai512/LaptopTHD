@@ -25,5 +25,10 @@ namespace THDShop.Controllers
             var query = _db.PRODUCTS.OrderByDescending(x => x.NAME);
             return View(query);
         }
+        public ActionResult Voucher()
+        {
+            var query = _db.GIFTs.OrderByDescending(x => x.ID);
+            return View(query);
+        }
     }
 }

@@ -1,117 +1,133 @@
 ﻿@model THDShop.ViewModel.DeliAddress.CreateDeliAddressInput
 @{
     var Cart = Session["Cart"] as THDShop.ViewModel.Cart;
+    ViewBag.Title = "DeliveryForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Assets/css/fixscss.css" rel="stylesheet" />
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <link href="~/Assets/css/checkout.css" rel="stylesheet" />
-    <link href="~/Assets/css/use.css" rel="stylesheet" />
-    <link href="~/Assets/css/GioHang.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body>
-    <div class="font_asap">
-        <div class="title">
-            <div class="sh-table-cell">
-                Thanh Toán Tiền Mặt
-            </div>
-            <div class="title2 sh-table-cell">
-                <span class="title2-all">
-                    <a href="/Home">Home</a>
-                </span>
-                <span class="title2-all title2-cart"> > </span>
-                <span class="title2-all">
-                    <a href="GioHang/ShowToCart">Giỏ Hàng</a>
-                </span>
-                <span class="title2-all title2-cart"> > </span>
-                <span class="title2-all title2-cart">Thanh Toán</span>
-            </div>
+<div class="main-content space1">
+    <div class="container container-240">
+        <ul class="breadcrumb">
+            <li><a href="#">Trang chủ</a></li>
+            <li class="active">Giỏ hàng</li>
+            <li class="active">Thanh toán</li>
+        </ul>
+        <div class="co-coupon">
+            THANH TOÁN TIỀN MẶT KHI GIAO HÀNG (COD)
         </div>
-        <div class="shopping-cart">
-            <div class="padding">
-                <div class="giohang1">
-                    <div class="giohang2both">
-                        Giỏ Hàng
-                    </div>
-                    <div class="giohang2both">
-                        Chọn Phương Thức
-                    </div>
-                    <div class="giohang2 giohang2both">
-                        Thanh Toán Tiền Mặt
-                    </div>
-                    <div class="giohang2both">
-                        Thành Công
-                    </div>
-                </div>
-            </div>
-            <div class="padding-table">
+        <form name="checkout" method="post" class="co">
+            <div class="cart-box-container-ver2">
+
                 <div class="row">
                     @using (Html.BeginForm("DeliveryForm", "Cart", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
-
-                        <div style="width:60%">
-                            <h3 style="font-size: 24px; font-weight: 800;">Thông tin Khách Hàng</h3>
-                            <label for="fname"><i></i> Họ Và Tên</label>
-                            @Html.EditorFor(model => model.NAME, new { htmlAttributes = new { @class = "form-control" } })
-                            <p>@Html.ValidationMessageFor(model => model.NAME, "", new { @class = "text-danger" })</p>
-
-                            <label for="phone"><i></i> Số Điện Thoại</label>
-                            @Html.EditorFor(model => model.PHONE, new { htmlAttributes = new { @class = "form-control" } })
-                            <p>@Html.ValidationMessageFor(model => model.PHONE, "", new { @class = "text-danger" })</p>
-                            <label for="adr"><i></i> Địa Chỉ</label>
-                            @Html.EditorFor(model => model.ADDRESS, new { htmlAttributes = new { @class = "form-control" } })
-                            <p>@Html.ValidationMessageFor(model => model.ADDRESS, "", new { @class = "text-danger" })</p>
-                            <label for="phuong"><i></i>Phường</label>
-                            @Html.EditorFor(model => model.WARD, new { htmlAttributes = new { @class = "form-control" } })
-                            <p>@Html.ValidationMessageFor(model => model.WARD, "", new { @class = "text-danger" })</p>
-                            <label for="quan"><i></i>Quận</label>
-                            @Html.EditorFor(model => model.DISTRICT, new { htmlAttributes = new { @class = "form-control" } })
-                            <p>@Html.ValidationMessageFor(model => model.DISTRICT, "", new { @class = "text-danger" })</p>
-                            <label for="ghichu"><i></i>Ghi Chú</label>
-                            @Html.EditorFor(model => model.NOTE, new { htmlAttributes = new { @class = "form-control" } })
-                            <div style="padding-bottom:100px;font-weight:500;color:#ffc200;">*BẠN ĐANG THANH TOÁN BẰNG TIỀN MẶT</div>
-                        </div>
-
-                        <div class="col-25">
-                            <div>
-                                <h2 style="color:#1a1a1a">
-                                    TỔNG GIỎ HÀNG
-                                    <span c style="color:#1a1a1a;padding-left:15px">
-                                        <i class="fa fa-shopping-cart"></i>
-                                        <b>
-                                            @Html.Action("BagCart", "Cart")
-                                        </b>
-                                    </span>
-                                </h2>
-                                <div>
-                                    @foreach (var pro in Cart.Items)
-                                    {
-                                        double total = pro._product.PRICE * pro._quantity;
-                                        <p style="margin-block-start: 0em; margin-block-end: 0em;" class="carttotal">
-                                            @Html.DisplayFor(model => pro._product.NAME) x @Html.DisplayFor(model => pro._quantity)
-                                            <span class="price">@total.ToString("N0") VNĐ</span>
-                                        </p>
-                                    }
-                                    <p style="margin-block-start:1mm; margin-block-end: 0em;" class="carttotal">
-                                        TỔNG TIỀN
-                                        <span class="price" style="color:black">
-                                            <b>
-                                                @Cart.Total_money().ToString("N0") VNĐ
-                                            </b>
-                                        </span>
-                                    </p>
+                        <div class="col-md-8">
+                            <div class="co-left bd-7">
+                                <div class="cmt-title text-center abs">
+                                    <h1 class="page-title v1">Thông tin khách hàng</h1>
+                                </div>
+                                <div class="row form-customer">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputcountry1" class=" control-label">Họ và Tên <span class="f-red">*</span></label>
+                                        @Html.EditorFor(model => model.NAME, new { htmlAttributes = new { @class = "form-control form-account", @type = "text" } })
+                                        <p>@Html.ValidationMessageFor(model => model.NAME, "", new { @class = "text-danger" })</p>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="inputcompany" class=" control-label">Số điện thoại</label>
+                                        @Html.EditorFor(model => model.PHONE, new { htmlAttributes = new { @class = "form-control form-account", @type = "number" } })
+                                        <p>@Html.ValidationMessageFor(model => model.PHONE, "", new { @class = "text-danger" })</p>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="inputcountry1" class=" control-label">Địa chỉ <span class="f-red">*</span></label>
+                                        @Html.EditorFor(model => model.ADDRESS, new { htmlAttributes = new { @class = "form-control form-account", @type = "text" } })
+                                        <p>@Html.ValidationMessageFor(model => model.ADDRESS, "", new { @class = "text-danger" })</p>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="inputstreet" class=" control-label">Quận <span class="f-red">*</span></label>
+                                        @Html.EditorFor(model => model.DISTRICT, new { htmlAttributes = new { @class = "form-control form-account", @type = "text" } })
+                                        <p>@Html.ValidationMessageFor(model => model.DISTRICT, "", new { @class = "text-danger" })</p>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="inputpostcode" class=" control-label">Phường</label>
+                                        @Html.EditorFor(model => model.WARD, new { htmlAttributes = new { @class = "form-control form-account", @type = "text" } })
+                                        <p>@Html.ValidationMessageFor(model => model.WARD, "", new { @class = "text-danger" })</p>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="inputfState" class=" control-label">Ghi chú</label>
+                                        @Html.TextAreaFor(model => model.NOTE, new { htmlAttributes = new { @class = "form-control form-note", @rows = "8", @placeholder = "Ghi chú ...", @style = "width: 100%;height:100 %" } })
+                                    </div>
                                 </div>
                             </div>
-                            <div style="padding-top:15px">
-                                <input class="Update" type="submit" value="Tiếp Tục Thanh Toán" />
+                        </div>
+                        <!-- End contact-form -->
+                        <div class="col-md-4">
+                            <div class="cart-total bd-7">
+                                <div class="cmt-title text-center abs">
+                                    <h1 class="page-title v3">Giỏ hàng của bạn</h1>
+                                </div>
+                                <div class="table-responsive">
+                                    <div class="co-pd">
+                                        <p class="co-title">
+                                            Sản phẩm<span>Tổng</span>
+                                        </p>
+                                        <ul class="co-pd-list">
+                                            <li class="clearfix">
+                                                @foreach (var pro in Cart.Items)
+                                                {
+                                                    double total = pro._product.PRICE * pro._quantity;
+                                                    <div class="co-name">
+                                                        @Html.DisplayFor(model => pro._product.NAME)  x @Html.DisplayFor(model => pro._quantity)
+                                                    </div>
+                                                    <div class="co-price">
+                                                        @total.ToString("N0") VNĐ
+                                                    </div>
+                                                }
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <table class="shop_table">
+                                        <tbody>
+                                            <tr class="cart-subtotal">
+                                                <th>Tạm tính</th>
+                                                <td>@Cart.Total_money().ToString("N0") VNĐ</td>
+                                            </tr>
+                                            <tr class="cart-shipping v2">
+                                                <th>Voucher</th>
+                                                <td style="padding-left:90px" class="td">
+                                                    @if (Session["ID_Gift"] != null)
+                                                    {
+                                                        <div style="float:left;font-size:16px;">@Cart._value<span>%</span></div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div style="float:left;font-size:16px;">0%</div>
+                                                    }
+                                                </td>
+                                            </tr>
+                                            <tr class="order-total v2">
+                                                <th>Tổng cộng</th>
+                                                @if (Session["ID_Gift"] != null)
+                                                {
+                                                    <td>@Cart.Total_money_GIFT().ToString("N0")</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>@Cart.Total_money().ToString("N0")</td>
+                                                }
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="cart-total-bottom v2">
+                                    <input type="submit" style=" border-width: 0px; background-image: linear-gradient( 122deg, #fb3636, #00ae96) !important;" class="btn-gradient btn-checkout btn-co-order" value="Thanh toán" />
+                                </div>
                             </div>
                         </div>
                     }
                 </div>
             </div>
-        </div>
+        </form>
     </div>
-</body>
-</html>
+</div>
+

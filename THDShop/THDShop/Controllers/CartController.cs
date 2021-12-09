@@ -22,7 +22,6 @@ namespace THDShop.Controllers
             }
             return cart;
         }
-
         //Thêm sản phẩm vào giỏ hàng
         public ActionResult AddToCart(int id)
         {
@@ -39,6 +38,21 @@ namespace THDShop.Controllers
         {
             Cart cart = Session["Cart"] as Cart;
             return View(cart);
+        }
+
+        //Buttons cập nhật voucher
+        public ActionResult UpdateGift(FormCollection form)
+        {
+            Cart cart = Session["Cart"] as Cart;
+            string id_gift = form["ID_Gift"];
+            var gift = _db.GIFTs.Where(s => s.ID == id_gift).FirstOrDefault();
+            int value = gift.G_VALUE;
+            if(gift != null)
+            {
+                Session["ID_GIFT"] = gift.ID;
+                cart.Update_gift(id_gift,value);
+            }
+            return RedirectToAction("ShowToCart", "Cart");
         }
 
         //Buttons cập nhật giỏ hàng
@@ -58,7 +72,7 @@ namespace THDShop.Controllers
             cart.Remove_CartItem(id);
             return RedirectToAction("ShowToCart", "Cart");
         }
-        
+
         public PartialViewResult BagCart()
         {
             int _t_item = 0;
@@ -69,11 +83,6 @@ namespace THDShop.Controllers
             }
             ViewBag.infoCart = _t_item;
             return PartialView("BagCart");
-        }
-        // Chon Phuong Thuc
-        public ActionResult SelectCheckOut()
-        {
-            return View();
         }
         //Thanh toán thành công
         public ActionResult CheckOutSuccess()
@@ -107,58 +116,119 @@ namespace THDShop.Controllers
             if (ModelState.IsValid)
             {
                 //Không đăng nhập
-                
+                //Không khuyến mãi
                 //Form Địa Chỉ
-                var deliaddr = new DELI_ADDRESS()
+                if (Session["ID_Gift"] == null)
                 {
-                    NAME = model.NAME,
-                    PHONE = model.PHONE,
-                    ADDRESS = model.ADDRESS,
-                    DISTRICT = model.DISTRICT,
-                    WARD = model.WARD,
-                    NOTE = model.NOTE,
-                };
-                _db.DELI_ADDRESS.Add(deliaddr);
-                _db.SaveChanges();
-
-                //Order
-                var order = new ORDER()
-                {
-                    DAY = DateTime.Now,
-                    IDDELIADDRESS = deliaddr.ID,
-                    TOTALMONEY = cart.Total_money(),
-                };
-                _db.ORDERS.Add(order);
-                _db.SaveChanges();
-
-                //Chi Tiết Order
-                var de_order = new List<DE_ORDER>();
-                foreach (var item in cart.Items)
-                {
-                    var detail = new DE_ORDER()
+                    var deliaddr = new DELI_ADDRESS()
                     {
-                        IDORDER = order.ID,
-                        IDPRODUCT = item._product.ID,
-                        QUANTITY= item._quantity,
-                        PRICE = item._product.PRICE,
+                        NAME = model.NAME,
+                        PHONE = model.PHONE,
+                        ADDRESS = model.ADDRESS,
+                        DISTRICT = model.DISTRICT,
+                        WARD = model.WARD,
+                        NOTE = model.NOTE,
                     };
-                    de_order.Add(detail);
-                }
-                foreach (var detail in de_order)
-                {
-                    _db.DE_ORDER.Add(detail);
-                    foreach (var p in _db.PRODUCTS.Where(s => s.ID == detail.IDPRODUCT))
+                    _db.DELI_ADDRESS.Add(deliaddr);
+                    _db.SaveChanges();
+
+                    //Order
+
+                    var order = new ORDER()
                     {
-                        var update_quan_pro = p.QUANTITY - detail.QUANTITY;
-                        p.QUANTITY = update_quan_pro;
+                        DAY = DateTime.Now,
+                        IDDELIADDRESS = deliaddr.ID,
+                        TOTALMONEY = cart.Total_money(),
+                    };
+                    _db.ORDERS.Add(order);
+                    _db.SaveChanges();
+
+                    //Chi Tiết Order
+                    var de_order = new List<DE_ORDER>();
+                    foreach (var item in cart.Items)
+                    {
+                        var detail = new DE_ORDER()
+                        {
+                            IDORDER = order.ID,
+                            IDPRODUCT = item._product.ID,
+                            QUANTITY = item._quantity,
+                            PRICE = item._product.PRICE,
+                        };
+                        de_order.Add(detail);
                     }
+                    foreach (var detail in de_order)
+                    {
+                        _db.DE_ORDER.Add(detail);
+                        foreach (var p in _db.PRODUCTS.Where(s => s.ID == detail.IDPRODUCT))
+                        {
+                            var update_quan_pro = p.QUANTITY - detail.QUANTITY;
+                            p.QUANTITY = update_quan_pro;
+                        }
+                    }
+                    _db.SaveChanges();
+
+                    cart.ClearCart();
+
+                    return RedirectToAction("CheckOutSuccess");
                 }
-                _db.SaveChanges();
 
-                cart.ClearCart();
+                //Không đăng nhập
+                //Có khuyến mãi
+                //Form Địa Chỉ
+                else if (Session["ID_Gift"] != null)
+                {
+                    var deliaddr = new DELI_ADDRESS()
+                    {
+                        NAME = model.NAME,
+                        PHONE = model.PHONE,
+                        ADDRESS = model.ADDRESS,
+                        DISTRICT = model.DISTRICT,
+                        WARD = model.WARD,
+                        NOTE = model.NOTE,
+                    };
+                    _db.DELI_ADDRESS.Add(deliaddr);
+                    _db.SaveChanges();
 
-                return RedirectToAction("CheckOutSuccess");
-            }   
+                    //Order
+
+                    var order = new ORDER()
+                    {
+                        DAY = DateTime.Now,
+                        IDDELIADDRESS = deliaddr.ID,
+                        TOTALMONEY = cart.Total_money_GIFT(),
+                    };
+                    _db.ORDERS.Add(order);
+                    _db.SaveChanges();
+
+                    //Chi Tiết Order
+                    var de_order = new List<DE_ORDER>();
+                    foreach (var item in cart.Items)
+                    {
+                        var detail = new DE_ORDER()
+                        {
+                            IDORDER = order.ID,
+                            IDPRODUCT = item._product.ID,
+                            QUANTITY = item._quantity,
+                            PRICE = item._product.PRICE,
+                        };
+                        de_order.Add(detail);
+                    }
+                    foreach (var detail in de_order)
+                    {
+                        _db.DE_ORDER.Add(detail);
+                        foreach (var p in _db.PRODUCTS.Where(s => s.ID == detail.IDPRODUCT))
+                        {
+                            var update_quan_pro = p.QUANTITY - detail.QUANTITY;
+                            p.QUANTITY = update_quan_pro;
+                        }
+                    }
+                    _db.SaveChanges();
+
+                    cart.ClearCart();
+
+                    return RedirectToAction("CheckOutSuccess");
+                }
+            }
             else
             {
                 ModelState.AddModelError("", "Vui Long nhap du du lieu.");

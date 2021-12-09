@@ -80,12 +80,12 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="ID" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="G_POINT" Type="int" Nullable="false" />
     <Property Name="G_VALUE" Type="int" Nullable="false" />
     <Property Name="G_START" Type="datetime" />
     <Property Name="G_END" Type="datetime" />
-    <Property Name="DESCREPTION" Type="nvarchar" MaxLength="1" />
+    <Property Name="DESCREPTION" Type="nvarchar(max)" />
     <Property Name="QUANTITY" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="MYGIFT">
@@ -93,7 +93,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IDGIFT" Type="varchar" MaxLength="1" />
+    <Property Name="IDGIFT" Type="varchar" MaxLength="30" />
   </EntityType>
   <EntityType Name="ORDERS">
     <Key>
