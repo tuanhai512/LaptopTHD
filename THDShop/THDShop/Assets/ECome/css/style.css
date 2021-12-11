@@ -93,7 +93,9 @@ html {
 
 body {
   margin: 0; }
-
+.imgpro {
+    height: 250px;
+}
 #config_tnx table {
     width: -webkit-fill-available;
     text-align: center;

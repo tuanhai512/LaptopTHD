@@ -19,6 +19,18 @@ namespace THDShop.Areas.Manager.Controllers
 
             return View(_db.USERS.ToList());
         }
+        public ActionResult Staff()
+        {
+
+
+            return View(_db.USERS.Where(s=>s.IDROLE==2).ToList());
+        }
+        public ActionResult Customer()
+        {
+
+
+            return View(_db.USERS.Where(s => s.IDROLE == 1).ToList());
+        }
 
 
         public ActionResult Details(int id)
@@ -37,12 +49,23 @@ namespace THDShop.Areas.Manager.Controllers
         [HttpPost]
         public ActionResult Create(CreateUserInput model)
         {
+            var roleList = _db.ROLES.ToList().Select(
+                     x => new SelectListItem
+                     {
+                         Text = x.NAME,
+                         Value = Convert.ToString(x.ID)
+                     }
+                     );
+            ViewBag.Roles = roleList;
             try
             {
                 if (ModelState.IsValid)
                 // TODO: Add insert logic here
                 {
+                    //model.ROLENAME = "Staff";
+
                     var entity = new USER();
+
                     if (model == null)
                     { entity = new USER(); }
                     entity.NAME = model.NAME;
@@ -51,6 +74,7 @@ namespace THDShop.Areas.Manager.Controllers
                     entity.PHONE = model.PHONE;
                     entity.EMAIL = model.EMAIL;
                     entity.AVATAR = model.AVATAR;
+                    entity.IDROLE = model.IDROLE;
                     _db.USERS.Add(entity);
                     _db.SaveChanges();
 
@@ -67,7 +91,16 @@ namespace THDShop.Areas.Manager.Controllers
 
         public ActionResult Edit(int id)
         {
-            var entity = _db.USERS.Find(id);
+              var entity = _db.USERS.Find(id);
+            var roleList = _db.ROLES.ToList().Select(
+                         x => new SelectListItem
+                         {
+                             Text = x.NAME,
+                             Value = Convert.ToString(x.ID)
+                         }
+                         );
+            ViewBag.Roles = roleList;
+          
             var model = new UpdateUserInput();
             model.ID = entity.ID;
             model.NAME = entity.NAME;
@@ -75,16 +108,27 @@ namespace THDShop.Areas.Manager.Controllers
             model.PHONE = entity.PHONE;
             model.EMAIL = entity.EMAIL;
             model.AVATAR = entity.AVATAR;
+            entity.IDROLE = model.IDROLE;
+
             return View(model);
         }
 
         [HttpPost]
         public ActionResult Edit(UpdateUserInput model)
         {
+            //List<ROLE> list = _db.ROLES.ToList();
+
+            var roleList = _db.ROLES.ToList().Select(
+                       x => new SelectListItem
+                       {
+                           Text = x.NAME,
+                           Value=Convert.ToString(x.ID)
+                       }
+                       );
+            ViewBag.Roles = roleList;
 
             // TODO: Add update logic here
-            if (ModelState.IsValid)
-            {
+          
                 var entity = new USER();
                 if (model == null)
                     return HttpNotFound();
@@ -94,10 +138,13 @@ namespace THDShop.Areas.Manager.Controllers
                 entity.ADDRESS = model.ADDRESS;
                 entity.PHONE = model.PHONE;
                 entity.EMAIL = model.EMAIL;
+                entity.IDROLE = model.IDROLE;
                 entity.AVATAR = model.AVATAR;
+                
+
                 _db.Entry(entity).State = EntityState.Modified;
                 _db.SaveChanges();
-             }
+             
             return RedirectToAction("Index");
         }
 
@@ -119,6 +166,11 @@ namespace THDShop.Areas.Manager.Controllers
 
             return View(list);
         }
-
+        //public ActionResult SelectRole()
+        //{
+        //    ROLE se_loai = new ROLE();
+        //    se_loai.listRole = _db.ROLES.ToList<ROLE>();
+        //    return PartialView(se_loai);
+        //}
     }
 }

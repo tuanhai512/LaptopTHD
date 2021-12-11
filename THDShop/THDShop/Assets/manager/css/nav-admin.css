@@ -6,21 +6,21 @@
   box-sizing: border-box;
   font-family: "Poppins" , sans-serif;
 }
-.sidebar{
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 78px;
-  background: #11101D;
-  padding: 6px 14px;
-  z-index: 99;
-  transition: all 0.5s ease;
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 78px;
+    background: #11101D;
+    padding: 6px 14px;
+    z-index: 99;
+    transition: all 0.5s ease;
 }
 
-.sidebar.open{
-  width: 250px;
-}
+    .sidebar.open {
+        width: 250px;
+    }
 .sidebar .logo-details{
   height: 60px;
   display: flex;
@@ -49,6 +49,7 @@
   transform: translateY(-50%);
   font-size: 22px;
   transition: all 0.4s ease;
+  padding-left:26%;
   font-size: 23px;
   text-align: center;
   cursor: pointer;

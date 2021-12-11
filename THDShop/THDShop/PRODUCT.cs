@@ -18,7 +18,6 @@ namespace THDShop
         public PRODUCT()
         {
             this.DE_ORDER = new HashSet<DE_ORDER>();
-            this.REPORTs = new HashSet<REPORT>();
         }
     
         public int ID { get; set; }
@@ -46,7 +45,5 @@ namespace THDShop
         public virtual CATEGORy CATEGORy { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DE_ORDER> DE_ORDER { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<REPORT> REPORTs { get; set; }
     }
 }

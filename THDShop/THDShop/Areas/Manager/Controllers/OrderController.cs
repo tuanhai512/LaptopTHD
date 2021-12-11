@@ -76,14 +76,21 @@ namespace THDShop.Areas.Manager.Controllers
                         IDORDER = dathang.ID,
                         TOTALMONEY = dathang.TOTALMONEY,
                         DATETIME = dathang.DAY,
-                       // ID = (int)Session["MAKH"]
-
+                        ORI_PRICE = dathang.ORI_PRICE
+                        // ID = (int)Session["MAKH"]
                     };
                     _db.BILLs.Add(hoadon);
-                    _db.SaveChanges();
-                    
+                    var report = new REPORT()
+                    {
+                        IDBILL = hoadon.ID,
+                        TOTALMONEY =  hoadon.TOTALMONEY,
+                        DATERP = hoadon.DATETIME,
 
-                    var product = new PRODUCT();
+
+                    };
+                    _db.REPORTs.Add(report);
+                    _db.SaveChanges();
+
                     //var report = new ReP()
                     //{
                     //    IDBILL = hoadon.ID,
@@ -91,7 +98,6 @@ namespace THDShop.Areas.Manager.Controllers
                     //    TOTALMONEY = getreport.Income(),
                     //    DATERP = DateTime.Now,
                     //    // ID = (int)Session["MAKH"]
-
                     //};
                     //_db.REPORTs.Add(report);
                     //_db.SaveChanges();

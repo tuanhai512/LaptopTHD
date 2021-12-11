@@ -7,6 +7,7 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDSTAFF" Type="Int32" />
     <Property Name="IDORDER" Type="Int32" Nullable="false" />
+    <Property Name="ORI_PRICE" Type="Int32" Nullable="false" />
     <Property Name="TOTALMONEY" Type="Double" Nullable="false" />
     <Property Name="DATETIME" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="NOTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -96,7 +97,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="G_POINT" Type="Int32" Nullable="false" />
     <Property Name="G_VALUE" Type="Int32" Nullable="false" />
     <Property Name="G_START" Type="DateTime" Precision="3" />
@@ -110,7 +111,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IDGIFT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="IDGIFT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="CUSTOMERs" Relationship="Self.FK_CUSTOMER_MYGIFT" FromRole="MYGIFT" ToRole="CUSTOMER" />
     <NavigationProperty Name="GIFT" Relationship="Self.FK_GIFT_MYGIFT" FromRole="MYGIFT" ToRole="GIFT" />
   </EntityType>
@@ -121,6 +122,7 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="DAY" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="IDDELIADDRESS" Type="Int32" Nullable="false" />
+    <Property Name="ORI_PRICE" Type="Int32" Nullable="false" />
     <Property Name="TOTALMONEY" Type="Double" Nullable="false" />
     <Property Name="NOTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="STATUS" Type="Int32" Nullable="false" />
@@ -156,7 +158,6 @@
     <Property Name="IDCATEGORY" Type="Int32" />
     <NavigationProperty Name="CATEGORy" Relationship="Self.FK_CATE_PRODUCTS" FromRole="PRODUCTS" ToRole="CATEGORIES" />
     <NavigationProperty Name="DE_ORDER" Relationship="Self.FK_DEORDER_PRODUCTS" FromRole="PRODUCTS" ToRole="DE_ORDER" />
-    <NavigationProperty Name="REPORTs" Relationship="Self.FK_REPORT_PRODUCT" FromRole="PRODUCTS" ToRole="REPORT" />
   </EntityType>
   <EntityType Name="REPORT">
     <Key>
@@ -164,11 +165,9 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDBILL" Type="Int32" Nullable="false" />
-    <Property Name="IDPRODUCT" Type="Int32" Nullable="false" />
     <Property Name="TOTALMONEY" Type="Double" />
     <Property Name="DATERP" Type="DateTime" Precision="3" />
     <NavigationProperty Name="BILL" Relationship="Self.PK_REPORT_BILL" FromRole="REPORT" ToRole="BILL" />
-    <NavigationProperty Name="PRODUCT" Relationship="Self.FK_REPORT_PRODUCT" FromRole="REPORT" ToRole="PRODUCTS" />
   </EntityType>
   <EntityType Name="ROLE">
     <Key>
@@ -386,18 +385,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_REPORT_PRODUCT">
-    <End Role="PRODUCTS" Type="Self.PRODUCT" Multiplicity="1" />
-    <End Role="REPORT" Type="Self.REPORT" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PRODUCTS">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="REPORT">
-        <PropertyRef Name="IDPRODUCT" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_STAFF_ROLES">
     <End Role="ROLES" Type="Self.ROLE" Multiplicity="0..1" />
     <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
@@ -504,10 +491,6 @@
     <AssociationSet Name="FK_GIFT_MYGIFT" Association="Self.FK_GIFT_MYGIFT">
       <End Role="GIFT" EntitySet="GIFTs" />
       <End Role="MYGIFT" EntitySet="MYGIFTs" />
-    </AssociationSet>
-    <AssociationSet Name="FK_REPORT_PRODUCT" Association="Self.FK_REPORT_PRODUCT">
-      <End Role="PRODUCTS" EntitySet="PRODUCTS" />
-      <End Role="REPORT" EntitySet="REPORTs" />
     </AssociationSet>
     <AssociationSet Name="FK_STAFF_ROLES" Association="Self.FK_STAFF_ROLES">
       <End Role="ROLES" EntitySet="ROLES" />

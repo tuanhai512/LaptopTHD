@@ -139,6 +139,7 @@ namespace THDShop.Controllers
                         DAY = DateTime.Now,
                         IDDELIADDRESS = deliaddr.ID,
                         TOTALMONEY = cart.Total_money(),
+                        ORI_PRICE=cart.Total_OriPrice()
                     };
                     _db.ORDERS.Add(order);
                     _db.SaveChanges();
@@ -196,6 +197,8 @@ namespace THDShop.Controllers
                         DAY = DateTime.Now,
                         IDDELIADDRESS = deliaddr.ID,
                         TOTALMONEY = cart.Total_money_GIFT(),
+                        ORI_PRICE = cart.Total_OriPrice()
+
                     };
                     _db.ORDERS.Add(order);
                     _db.SaveChanges();
@@ -361,6 +364,7 @@ namespace THDShop.Controllers
                             IDDELIADDRESS = deliaddress.ID,
                             DAY = DateTime.Now,
                             TOTALMONEY = cart.Total_money(),
+                            ORI_PRICE=cart.Total_OriPrice(),
                             METHODS = methods,
                         };
                         _db.ORDERS.Add(order);

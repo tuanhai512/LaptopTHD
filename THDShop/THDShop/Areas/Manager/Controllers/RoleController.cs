@@ -86,6 +86,7 @@ namespace THDShop.Areas.Manager.Controllers
             var list = database.ROLES.Where(p => p.NAME == name).ToList();
             return View(list);
         }
+      
 
     }
 }

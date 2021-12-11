@@ -14,5 +14,8 @@ namespace THDShop.ViewModel.User
         public string PHONE { get; set; }
         public string EMAIL { get; set; }
         public string AVATAR { get; set; }
+        public Nullable<int> IDROLE { get; set; }
+        public string ROLENAME { get; set; }
+
     }
 }

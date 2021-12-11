@@ -4,11 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>USER</h2>
 @using (Html.BeginForm("Searchphone", "User"))
 {
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Thương Hiệu</h1>
+        <h1 class="h3 mb-0 text-gray-800">USER</h1>
         <div class="input-group">
             <input type="text" name="phone" class="form-control bg-light border-0 small" placeholder="Nhập sdt user"
                    aria-label="Search" aria-describedby="basic-addon2">
@@ -46,6 +45,9 @@
                                 @Html.DisplayNameFor(model => model.EMAIL)
                             </th>
                             <th>
+                                @Html.DisplayNameFor(model => model.ROLENAME)
+                            </th>
+                            <th>
                                 @Html.DisplayNameFor(model => model.AVATAR)
                             </th>
                             <th></th>
@@ -78,12 +80,16 @@
                                 @Html.DisplayFor(modelItem => item.EMAIL)
                             </td>
                             <td>
+                                @Html.DisplayFor(modelItem => item.ROLE.NAME)
+
+                            </td>
+                            <td>
                                 @Html.DisplayFor(modelItem => item.AVATAR)
                             </td>
                             <td style="display: flex;align-content: center;flex-wrap: wrap;flex-direction: column;">
-                                <a href="@Url.Action("Edit", "Product", new { id = item.ID })" class="btn btn-sm btn-warning" style="margin-bottom: 5px;">Edit</a>
-                                <a href="@Url.Action("Delete", "Product", new { id = item.ID })" class="btn btn-sm btn-danger" style="margin-bottom: 5px;">Delete</a>
-                                <a href="@Url.Action("Detail", "Product", new { id = item.ID })" class="btn btn-sm btn-info" style="margin-bottom: 5px;">Detail</a>
+                                <a href="@Url.Action("Edit", "User", new { id = item.ID })" class="btn btn-sm btn-warning" style="margin-bottom: 5px;">Edit</a>
+                                <a href="@Url.Action("Delete", "User", new { id = item.ID })" class="btn btn-sm btn-danger" style="margin-bottom: 5px;">Delete</a>
+                                <a href="@Url.Action("Detail", "User", new { id = item.ID })" class="btn btn-sm btn-info" style="margin-bottom: 5px;">Detail</a>
                             </td>
                         </tr>
                             }

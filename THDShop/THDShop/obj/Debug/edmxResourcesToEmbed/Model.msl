@@ -7,6 +7,7 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="IDSTAFF" ColumnName="IDSTAFF" />
           <ScalarProperty Name="IDORDER" ColumnName="IDORDER" />
+          <ScalarProperty Name="ORI_PRICE" ColumnName="ORI_PRICE" />
           <ScalarProperty Name="TOTALMONEY" ColumnName="TOTALMONEY" />
           <ScalarProperty Name="DATETIME" ColumnName="DATETIME" />
           <ScalarProperty Name="NOTE" ColumnName="NOTE" />
@@ -107,6 +108,7 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="DAY" ColumnName="DAY" />
           <ScalarProperty Name="IDDELIADDRESS" ColumnName="IDDELIADDRESS" />
+          <ScalarProperty Name="ORI_PRICE" ColumnName="ORI_PRICE" />
           <ScalarProperty Name="TOTALMONEY" ColumnName="TOTALMONEY" />
           <ScalarProperty Name="NOTE" ColumnName="NOTE" />
           <ScalarProperty Name="STATUS" ColumnName="STATUS" />
@@ -146,7 +148,6 @@
         <MappingFragment StoreEntitySet="REPORT">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="IDBILL" ColumnName="IDBILL" />
-          <ScalarProperty Name="IDPRODUCT" ColumnName="IDPRODUCT" />
           <ScalarProperty Name="TOTALMONEY" ColumnName="TOTALMONEY" />
           <ScalarProperty Name="DATERP" ColumnName="DATERP" />
         </MappingFragment>

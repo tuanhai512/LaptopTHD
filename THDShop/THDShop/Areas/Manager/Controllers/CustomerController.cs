@@ -41,6 +41,7 @@ namespace THDShop.Areas.Manager.Controllers
         [HttpPost]
         public ActionResult Create(CreateCustomerInput model)
         {
+           
             var entity = new CUSTOMER();
             if (model == null)
                 entity = new CUSTOMER();

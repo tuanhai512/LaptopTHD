@@ -25,7 +25,7 @@ namespace THDShop.Areas.Manager.Controllers
             //            {
             //                ID = c.ID,
             //                NAME = c.NAME,
-            //                PRICE = c.PRICE,
+            //                PRICE = c.PRICE, 
             //                ORI_PRICE = c.ORI_PRICE,
             //                DESCRIPTION = c.DESCRIPTION,
             //                CATEGORYNAME = c.CATEGORy.NAME,

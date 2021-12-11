@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="QLLaptopShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="QLLaptopShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="BILL">
     <Key>
       <PropertyRef Name="ID" />
@@ -7,6 +7,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IDSTAFF" Type="int" />
     <Property Name="IDORDER" Type="int" Nullable="false" />
+    <Property Name="ORI_PRICE" Type="int" Nullable="false" />
     <Property Name="TOTALMONEY" Type="float" Nullable="false" />
     <Property Name="DATETIME" Type="datetime" Nullable="false" />
     <Property Name="NOTE" Type="nvarchar(max)" />
@@ -80,7 +81,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ID" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="G_POINT" Type="int" Nullable="false" />
     <Property Name="G_VALUE" Type="int" Nullable="false" />
     <Property Name="G_START" Type="datetime" />
@@ -93,7 +94,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IDGIFT" Type="varchar" MaxLength="30" />
+    <Property Name="IDGIFT" Type="varchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="ORDERS">
     <Key>
@@ -102,6 +103,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DAY" Type="datetime" Nullable="false" />
     <Property Name="IDDELIADDRESS" Type="int" Nullable="false" />
+    <Property Name="ORI_PRICE" Type="int" Nullable="false" />
     <Property Name="TOTALMONEY" Type="float" Nullable="false" />
     <Property Name="NOTE" Type="nvarchar(max)" />
     <Property Name="STATUS" Type="int" Nullable="false" />
@@ -139,7 +141,6 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IDBILL" Type="int" Nullable="false" />
-    <Property Name="IDPRODUCT" Type="int" Nullable="false" />
     <Property Name="TOTALMONEY" Type="float" />
     <Property Name="DATERP" Type="datetime" />
   </EntityType>
@@ -338,18 +339,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_REPORT_PRODUCT">
-    <End Role="PRODUCTS" Type="Self.PRODUCTS" Multiplicity="1" />
-    <End Role="REPORT" Type="Self.REPORT" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PRODUCTS">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="REPORT">
-        <PropertyRef Name="IDPRODUCT" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_STAFF_ROLES">
     <End Role="ROLES" Type="Self.ROLES" Multiplicity="0..1" />
     <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
@@ -464,10 +453,6 @@
     <AssociationSet Name="FK_ORDER_DEADDRESS" Association="Self.FK_ORDER_DEADDRESS">
       <End Role="DELI_ADDRESS" EntitySet="DELI_ADDRESS" />
       <End Role="ORDERS" EntitySet="ORDERS" />
-    </AssociationSet>
-    <AssociationSet Name="FK_REPORT_PRODUCT" Association="Self.FK_REPORT_PRODUCT">
-      <End Role="PRODUCTS" EntitySet="PRODUCTS" />
-      <End Role="REPORT" EntitySet="REPORT" />
     </AssociationSet>
     <AssociationSet Name="FK_STAFF_ROLES" Association="Self.FK_STAFF_ROLES">
       <End Role="ROLES" EntitySet="ROLES" />

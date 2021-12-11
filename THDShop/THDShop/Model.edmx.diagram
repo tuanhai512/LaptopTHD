@@ -4,21 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1fe057ea0f3e4c539c89776fadc7af83" Name="Diagram1">
-        <EntityTypeShape EntityType="QLLaptopShopModel.BILL" Width="1.5" PointX="12" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLLaptopShopModel.CATEGORy" Width="1.5" PointX="9.75" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLLaptopShopModel.CUSTOMER" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLLaptopShopModel.DE_BILL" Width="1.5" PointX="14.25" PointY="18.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLLaptopShopModel.DE_ORDER" Width="1.5" PointX="12" PointY="20.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLLaptopShopModel.DELI_ADDRESS" Width="1.5" PointX="7.5" PointY="18.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLLaptopShopModel.GIFT" Width="1.5" PointX="0.75" PointY="14" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLLaptopShopModel.MYGIFT" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLLaptopShopModel.ORDER" Width="1.5" PointX="9.75" PointY="18.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLLaptopShopModel.PRODUCT" Width="1.5" PointX="12" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLLaptopShopModel.REPORT" Width="1.5" PointX="14.25" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLLaptopShopModel.ROLE" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLLaptopShopModel.STAFF" Width="1.5" PointX="8.25" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLLaptopShopModel.USER" Width="1.5" PointX="3" PointY="18.125" IsExpanded="true" />
+      <Diagram DiagramId="3e8e20eb6bb94c6598471764a48b0034" Name="Diagram1">
+        <EntityTypeShape EntityType="QLLaptopShopModel.BILL" Width="1.5" PointX="12" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLLaptopShopModel.CATEGORy" Width="1.5" PointX="7.5" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLLaptopShopModel.CUSTOMER" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLLaptopShopModel.DE_BILL" Width="1.5" PointX="14.25" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLLaptopShopModel.DE_ORDER" Width="1.5" PointX="12" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLLaptopShopModel.DELI_ADDRESS" Width="1.5" PointX="7.5" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLLaptopShopModel.GIFT" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLLaptopShopModel.MYGIFT" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLLaptopShopModel.ORDER" Width="1.5" PointX="9.75" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLLaptopShopModel.PRODUCT" Width="1.5" PointX="9.75" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLLaptopShopModel.REPORT" Width="1.5" PointX="14.25" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLLaptopShopModel.ROLE" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLLaptopShopModel.STAFF" Width="1.5" PointX="8.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLLaptopShopModel.USER" Width="1.5" PointX="3" PointY="17.875" IsExpanded="true" />
         <AssociationConnector Association="QLLaptopShopModel.FK_BILL_ORDER" ManuallyRouted="false" />
         <AssociationConnector Association="QLLaptopShopModel.FK_BILL_STAFF" ManuallyRouted="false" />
         <AssociationConnector Association="QLLaptopShopModel.FK_DEBILL_BILL" ManuallyRouted="false" />
@@ -33,7 +33,6 @@
         <AssociationConnector Association="QLLaptopShopModel.FK_DEORDER_PRODUCTS" ManuallyRouted="false" />
         <AssociationConnector Association="QLLaptopShopModel.FK_ORDER_DEADDRESS" ManuallyRouted="false" />
         <AssociationConnector Association="QLLaptopShopModel.FK_GIFT_MYGIFT" ManuallyRouted="false" />
-        <AssociationConnector Association="QLLaptopShopModel.FK_REPORT_PRODUCT" ManuallyRouted="false" />
         <AssociationConnector Association="QLLaptopShopModel.FK_STAFF_ROLES" ManuallyRouted="false" />
         <AssociationConnector Association="QLLaptopShopModel.FK_USER_ROLES" ManuallyRouted="false" />
         <AssociationConnector Association="QLLaptopShopModel.FK_STAFF_USER" ManuallyRouted="false" />

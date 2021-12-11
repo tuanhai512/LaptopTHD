@@ -577,7 +577,6 @@ D:\HUFLIT\MTK\LaptopTHD\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\Newtonsoft.Json.
 D:\HUFLIT\MTK\LaptopTHD\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\Antlr3.Runtime.pdb
 D:\HUFLIT\MTK\LaptopTHD\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\HUFLIT\MTK\LaptopTHD\LaptopTHD\LaptopTHD\THDShop\THDShop\obj\Debug\THDShop.csproj.CopyComplete
-D:\Github\LaptopTHD\THDShop\THDShop\obj\Debug\THDShop.csproj.AssemblyReference.cache
 D:\HUFLIT\MTK\LaptopTHD\LaptopTHD\LaptopTHD\THDShop\THDShop\obj\Debug\THDShop.csprojAssemblyReference.cache
 D:\HUFLIT\MTK\LaptopTHD\GitHub\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\THDShop.dll.config
 D:\HUFLIT\MTK\LaptopTHD\GitHub\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\THDShop.dll
@@ -664,3 +663,14 @@ D:\HUFLIT\MTK\LaptopTHD\GitHub\LaptopTHD\LaptopTHD\THDShop\THDShop\obj\Debug\THD
 D:\HUFLIT\MTK\LaptopTHD\GitHub\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\PayPal.dll
 D:\HUFLIT\MTK\LaptopTHD\GitHub\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\PayPal.xml
 D:\HUFLIT\MTK\LaptopTHD\GitHub\LaptopTHD\LaptopTHD\THDShop\THDShop\obj\Debug\THDShop.csprojAssemblyReference.cache
+D:\Github\LaptopTHD\THDShop\THDShop\bin\ClosedXML.dll
+D:\Github\LaptopTHD\THDShop\THDShop\bin\DocumentFormat.OpenXml.dll
+D:\Github\LaptopTHD\THDShop\THDShop\bin\ExcelNumberFormat.dll
+D:\Github\LaptopTHD\THDShop\THDShop\bin\PayPal.dll
+D:\Github\LaptopTHD\THDShop\THDShop\bin\System.IO.Packaging.dll
+D:\Github\LaptopTHD\THDShop\THDShop\bin\ClosedXML.pdb
+D:\Github\LaptopTHD\THDShop\THDShop\bin\ClosedXML.xml
+D:\Github\LaptopTHD\THDShop\THDShop\bin\DocumentFormat.OpenXml.xml
+D:\Github\LaptopTHD\THDShop\THDShop\bin\ExcelNumberFormat.xml
+D:\Github\LaptopTHD\THDShop\THDShop\bin\PayPal.xml
+D:\Github\LaptopTHD\THDShop\THDShop\obj\Debug\THDShop.csproj.AssemblyReference.cache

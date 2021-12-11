@@ -9,5 +9,7 @@ namespace THDShop.ViewModel.Role
     {
         public int ID { get; set; }
         public string NAME { get; set; }
+        public List<ROLE> listRole { get; internal set; }
+
     }
 }

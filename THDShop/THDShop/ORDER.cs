@@ -24,6 +24,7 @@ namespace THDShop
         public int ID { get; set; }
         public System.DateTime DAY { get; set; }
         public int IDDELIADDRESS { get; set; }
+        public int ORI_PRICE { get; set; }
         public double TOTALMONEY { get; set; }
         public string NOTE { get; set; }
         public int STATUS { get; set; }

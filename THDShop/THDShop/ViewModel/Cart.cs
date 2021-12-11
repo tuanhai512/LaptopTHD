@@ -62,6 +62,11 @@ namespace THDShop.ViewModel
                 item._quantity = _quan;
             }
         }
+        public int Total_OriPrice()
+        {
+            var total = items.Sum(s => s._quantity * s._product.ORI_PRICE);
+            return (int)total;
+        }
         public int Total_money_GIFT()
         {
             int gift = Total_money() - Total_money() * _value / 100;
