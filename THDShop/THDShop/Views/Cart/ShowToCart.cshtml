@@ -31,34 +31,38 @@
                                     foreach (var item in Model.Items)
                                     {
                                         double total = Convert.ToDouble(item._product.PRICE * item._quantity);
-                                        <tr class="item_cart">
-                                            <td class="product-name flex align-center">
-                                                <a href="/Cart/RemoveCart/@item._product.ID" class="btn-del"><i class="ion-ios-close-empty"></i></a>
-                                                <div class="product-img">
-                                                    <img src="@Url.Content(item._product.IMAGE)" alt="Futurelife">
+                                <tr class="item_cart">
+                                    <td class="product-name flex align-center">
+                                        <a href="/Cart/RemoveCart/@item._product.ID" class="btn-del"><i class="ion-ios-close-empty"></i></a>
+                                        <div class="product-img">
+                                            <img src="@Url.Content(item._product.IMAGE)" alt="Futurelife">
+                                        </div>
+                                        <div class="product-info">
+                                            <a href="/HomePage/Details/@item._product.ID" title="">@Html.DisplayFor(model => item._product.NAME) </a>
+                                        </div>
+
+                                    </td>
+                                    <td style=" padding: 49px 40px;" class="bcart-quantity single-product-detail">
+                                        <div class="single-product-info">
+                                            @using (Html.BeginForm("UpdateCart", "Cart"))
+                                            {
+                                                <div style="width:140px" class="e-quantity">
+                                                    <div style="display:flex">
+                                                        <input type="hidden" value="@item._product.ID" name="ID_PRODUCT" />
+                                                        <input type="number" step="1" min="1" max="999" name="Quantity" value="@item._quantity" title="Qty" class="qty input-text js-number" size="4">
+                                                        <input class="btn btn-update" type="submit" value="Cập Nhật" />
+                                                    </div>
                                                 </div>
-                                                <div class="product-info">
-                                                    <a href="/HomePage/Details/@item._product.ID" title="">@Html.DisplayFor(model => item._product.NAME) </a>
-                                                </div>
-                                            </td>
-                                            <td style=" padding: 49px 40px;" class="bcart-quantity single-product-detail">
-                                                <div class="single-product-info">
-                                                    @using (Html.BeginForm("UpdateCart", "Cart"))
-                                                    {
-                                                        <div style="width:140px" class="e-quantity">
-                                                            <div style="display:flex">
-                                                                <input type="hidden" value="@item._product.ID" name="ID_PRODUCT" />
-                                                                <input type="number" step="1" min="1" max="999" name="Quantity" value="@item._quantity" title="Qty" class="qty input-text js-number" size="4">
-                                                                <input class="btn btn-update" type="submit" value="Cập Nhật" />
-                                                            </div>
-                                                        </div>
-                                                    }
-                                                </div>
-                                            </td>
-                                            <td class="total-price">
-                                                <p class="price">@total.ToString("#,##")</p>
-                                            </td>
-                                        </tr>
+                                            }
+                                        </div>
+                                    </td>
+                                    <td class="total-price">
+                                        <p class="price">@item._product.PRICE.ToString("#,##") <sub>x1</sub></p>
+                                    </td>
+                                    <td class="total-price">
+                                        <p class="price">@total.ToString("#,##")</p>
+                                    </td>
+                                </tr>
                                     }
                                 }
                             </tbody>

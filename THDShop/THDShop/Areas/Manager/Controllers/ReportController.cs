@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data;
 using System.IO;
+using THDShop.ViewModel.Report;
 
 namespace THDShop.Areas.Manager.Controllers
 {
@@ -117,10 +118,22 @@ namespace THDShop.Areas.Manager.Controllers
            
     }
         public ActionResult Searchday(DateTime day)
-        {
-            day = Convert.ToDateTime(day.Month);
-            var list = database.REPORTs.Where(p => p.DATERP == day).ToList();
-            return View(list);
+        { 
+            int month = day.Date.Month;
+
+            var list = database.REPORTs.Where(p => p.DATERP.Month == month).ToList();
+
+            var query = from c in list
+                        select new ReportDTO
+                        {
+                            ID = c.ID,
+                            IDBILL = c.IDBILL,
+                            TOTALMONEY = c.TOTALMONEY,
+                            DATERP = c.DATERP,
+                            BILL = c.BILL
+                        };
+            
+            return View(query);
         }
     }
 }

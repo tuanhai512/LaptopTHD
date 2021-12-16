@@ -90,7 +90,7 @@
 
                     <!-- Loại Sản Phảm -->
                     <div class="form-group ">
-                        @Html.DropDownList("IDCATEGORY", (IEnumerable<SelectListItem>)ViewBag.Categories, "Chọn loại", new { })
+                        @Html.DropDownList("IDCATEGORY", (IEnumerable<SelectListItem>)ViewBag.Categories, "Chọn loại", new { @id = "adad" })
                         @Html.ValidationMessageFor(model => model.IDCATEGORY, "", new { @class = "text-danger" })
                     </div>
                 </div>

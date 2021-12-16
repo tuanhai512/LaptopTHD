@@ -24,7 +24,7 @@
                     <div style="padding-top:0px;padding-bottom:0px" class="container container-240">
                         <div class="row flex">
                             <div style="padding-top:40px" class="col-lg-2 col-md-2 col-sm-6 col-xs-6 v-center header-logo">
-                                <a href="/HomePage/Index"><img src="~/Assets/Images/logothdshopbgwhite.png" alt="" class="img-reponsive"></a>
+                                <a href="@Url.Action("Index","HomePage")"><img src="~/Assets/Images/logothdshopbgwhite.png" alt="" class="img-reponsive"></a>
                             </div>
                             <div style="padding-left:170px" class="col-lg-7 col-md-7 v-center header-search hidden-xs hidden-sm">
                                 <form method="get" class="searchform ajax-search" action="/search" role="search">
@@ -235,7 +235,7 @@
                                                     <a href="#"><img src="~/Assets/ECome/img/icon-diamond.png" alt="">Flash Sale<span class="h-ribbon h-pos e-green">sale</span></a>
                                                 </li>
                                                 <li class="level1 active dropdown">
-                                                    <a href="#">Voucher<span class="h-ribbon h-pos e-skyblue">new</span></a>
+                                                    <a href="@Url.Action("Index", "Voucher")">Voucher<span class="h-ribbon h-pos e-skyblue">new</span></a>
                                                 </li>
                                                 <li class="level1 active dropdown">
                                                     <a href="#">Contact</a>
@@ -246,10 +246,10 @@
                                     <div class="header-bottom-right hidden-xs hidden-sm">
                                         <ul class="nav navbar-nav js-menubar">
                                             <li class="level1 active hassub">
-                                                <a href="#">Đăng nhập</a>
+                                                <a href="@Url.Action("LoginAccount", "LoginCustomer")">Đăng nhập</a>
                                             </li>
                                             <li class="level1 active hassub">
-                                                <a href="#">Đăng ký</a>
+                                                <a href="@Url.Action("RegisterUser", "LoginCustomer")">Đăng ký</a>
                                             </li>
                                         </ul>
                                     </div>

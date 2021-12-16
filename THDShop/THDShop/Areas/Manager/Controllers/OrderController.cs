@@ -70,7 +70,7 @@ namespace THDShop.Areas.Manager.Controllers
             {
                 if (ModelState.IsValid)
                 {
-
+                    
                     var hoadon = new BILL()
                     {
                         IDORDER = dathang.ID,

@@ -46,7 +46,7 @@ namespace THDShop.ViewModel
         public int Total_money()
         {
             var total = items.Sum(s => s._quantity * s._product.PRICE);
-            return (int)total;
+            return total;
         }
 
         public int Total_money_USD()
@@ -67,9 +67,9 @@ namespace THDShop.ViewModel
             var total = items.Sum(s => s._quantity * s._product.ORI_PRICE);
             return (int)total;
         }
-        public int Total_money_GIFT()
+        public double Total_money_GIFT()
         {
-            int gift = Total_money() - Total_money() * _value / 100;
+            var gift = Total_money() - (Total_money() * _value / 100);
             return gift;
         }
         public int total_discound { get; set; }

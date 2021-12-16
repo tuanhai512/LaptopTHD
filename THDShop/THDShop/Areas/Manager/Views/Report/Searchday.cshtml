@@ -2,12 +2,13 @@
 
 @{
 }
-@using (Html.BeginForm("Searchday", "Report"))
-{
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    @using (Html.BeginForm("Searchday", "Report"))
+    {
         <h1 class="h3 mb-0 text-gray-800">THỐNG KÊ</h1>
         <div class="input-group">
-            <input type="text" name="day" class="form-control bg-light border-0 small" placeholder="Thống kê theo tháng"
+            <input type="search" name="day" class="form-control bg-light border-0 small" placeholder="Thống kê theo tháng"
                    aria-label="Search" aria-describedby="basic-addon2">
             <div class="input-group-append">
                 <button class="btn btn-primary" type="submit">
@@ -15,15 +16,15 @@
                 </button>
             </div>
         </div>
-
-        <div class="form-group pull-right">
-            @using (Html.BeginForm("Export", "Report", FormMethod.Post))
-            {
-                <input type="submit" value="report" class="btn btn-success" />
-            }
-        </div>
+    }
+    <div class="form-group pull-right">
+        @using (Html.BeginForm("Export", "Report", FormMethod.Post))
+        {
+            <input type="submit" value="report" class="btn btn-success" />
+        }
     </div>
-}
+</div>
+
 <div class="text-center">
     <div>
         <div class="tbl-header">
