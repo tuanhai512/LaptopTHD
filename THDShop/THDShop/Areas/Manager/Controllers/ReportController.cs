@@ -117,23 +117,15 @@ namespace THDShop.Areas.Manager.Controllers
             }
            
     }
-        public ActionResult Searchday(DateTime day)
+        public ActionResult Searchday(int day)
         { 
-            int month = day.Date.Month;
+            int month = day;
 
-            var list = database.REPORTs.Where(p => p.DATERP.Month == month).ToList();
-
-            var query = from c in list
-                        select new ReportDTO
-                        {
-                            ID = c.ID,
-                            IDBILL = c.IDBILL,
-                            TOTALMONEY = c.TOTALMONEY,
-                            DATERP = c.DATERP,
-                            BILL = c.BILL
-                        };
+            var list = database.REPORTs.Where(p => p.DATERP.Value.Month == month).ToList();
+           
+           
             
-            return View(query);
+            return View(list);
         }
     }
 }

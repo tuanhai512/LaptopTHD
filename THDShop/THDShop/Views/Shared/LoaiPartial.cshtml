@@ -1,0 +1,18 @@
+﻿
+@model List<CATEGORy>
+
+<ul style="">
+    <li class="div-cate">
+        <a href="@Url.Action("Index","HomePage")">Tất cả</a>
+    </li>
+    @{
+        foreach (var item in Model)
+        {
+
+            <li class="div-cate">
+                @Html.ActionLink(item.NAME, "Index", "HomePage", new { cate = item.NAME.Trim() }, "")
+            </li>
+
+        }
+    }
+</ul>

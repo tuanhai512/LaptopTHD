@@ -3514,6 +3514,7 @@
     <Content Include="Areas\Manager\Views\User\Staff.cshtml" />
     <Content Include="Areas\Manager\Views\User\Customer.cshtml" />
     <Content Include="Areas\Manager\Views\Report\Searchday.cshtml" />
+    <Content Include="Views\Shared\LoaiPartial.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\editorEDK.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

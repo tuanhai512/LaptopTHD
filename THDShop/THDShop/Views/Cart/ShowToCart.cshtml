@@ -125,11 +125,11 @@
                                     {
                                         if (Session["ID_Gift"] != null)
                                         {
-                                            <td>@Model.Total_money_GIFT().ToString("N0")</td>
+                                            <td>@Model.Total_money_GIFT()</td>
                                         }
                                         else
-                                        {
-                                            <td>@Model.Total_money().ToString("N0")</td>
+                                        {   if (Session["ID_Gift"]==null)
+                                            {<td>@Model.Total_money().ToString("N0")</td>}
                                         }
                                     }
                                     </tr>

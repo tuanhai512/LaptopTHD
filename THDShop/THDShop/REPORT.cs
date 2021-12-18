@@ -11,20 +11,27 @@ namespace THDShop
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public partial class REPORT
     {
+        QLLaptopShopEntities _db = new QLLaptopShopEntities();
         public int ID { get; set; }
         public int IDBILL { get; set; }
         public double TOTALMONEY { get; set; }
 
-        public System.DateTime DATERP { get; set; }
+        public Nullable<System.DateTime> DATERP { get; set; }
         public double Tongdoanhthu()
         {
             var tdt = TOTALMONEY - BILL.ORI_PRICE;
             return (int)tdt;
         }
-
+        public double TongThuthang()
+        {
+           
+            var tdt =_db.REPORTs.Sum(s =>  s.Tongdoanhthu());
+            return (int)tdt;
+        }
         public virtual BILL BILL { get; set; }
     }
 }

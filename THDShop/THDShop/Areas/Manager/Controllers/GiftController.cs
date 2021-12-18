@@ -110,5 +110,27 @@ namespace THDShop.Areas.Manager.Controllers
 
             return RedirectToAction("Index");
         }
+        public ActionResult AddListGift(string id)
+        {
+
+            MYGIFT mYGIFT;
+
+            var entity = _db.GIFTs.SingleOrDefault(s=>s.ID==id);
+            var check = _db.MYGIFTs.Where(s => s.IDGIFT == id ).FirstOrDefault();
+            //  var item = _db.CUSTOMERs.Where(s => s.MYGIFT.IDGIFT == id);
+            if (check == null)
+            {
+                _db.MYGIFTs.Add(new MYGIFT
+                {
+                    IDGIFT = id
+                });
+                _db.SaveChanges();
+                return RedirectToAction("Index", "HomePage");
+            }
+         
+
+
+            return RedirectToAction("Index","HomeUser");
+        }
     }
 }

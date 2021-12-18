@@ -127,6 +127,7 @@ namespace THDShop.Areas.Manager.Controllers
         public ActionResult BillCancel()
         {
             var model = _db.ORDERS.Where(s => s.STATUS == 3).ToList();
+
             return View(model);
         }
         public ActionResult Cancel(int? id)
@@ -136,9 +137,11 @@ namespace THDShop.Areas.Manager.Controllers
                 return RedirectToAction("Index");
             }
             ORDER dathang = _db.ORDERS.Find(id);
+            DE_ORDER de_order = _db.DE_ORDER.Find(id);
             if (dathang.STATUS == 1)
             {
                 dathang.STATUS = 3;
+              
             }
             _db.Entry(dathang).State = EntityState.Modified;
             _db.SaveChanges();

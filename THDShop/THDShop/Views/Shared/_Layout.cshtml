@@ -152,14 +152,8 @@
                                             <a href="#">Thương Hiệu</a>
                                             <div style="height:auto !important;" class="menu-level-1 dropdown-menu vertical-menu">
                                                 <ul class="vertical-menu1">
-                                                    <li><a href="#">Acer</a></li>
-                                                    <li><a href="#">Asus</a></li>
-                                                    <li><a href="#">MSI</a></li>
-                                                    <li><a href="#">Lenovo</a></li>
-                                                    <li><a href="#">HP</a></li>
-                                                    <li><a href="#">Gigabyte</a></li>
-                                                    <li><a href="#">Dell</a></li>
-                                                    <li><a href="#">LG</a></li>
+                                                    @{ Html.RenderAction("LoaiPartial", "Category");}
+
                                                 </ul>
                                             </div>
                                         </li>

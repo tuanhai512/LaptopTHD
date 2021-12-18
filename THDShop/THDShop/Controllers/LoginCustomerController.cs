@@ -113,6 +113,7 @@ namespace THDShop.Controllers
                     database.Configuration.ValidateOnSaveEnabled = false;
 
                     _user.ROLENAME = "Customer";
+                  
                     database.USERS.Add(_user);
                     var _cus = new CUSTOMER()
                     {
@@ -122,8 +123,9 @@ namespace THDShop.Controllers
                         ADDRESS=_user.ADDRESS,
                         PASSWORD=_user.PASSWORD,
                         ROLENAME = "Customer",
-                    };
-                   
+                        IDMYGIFT = _user.ID ,
+
+                };
                     database.CUSTOMERs.Add(_cus);
                     database.SaveChanges();
                     return RedirectToAction("LoginAccount");
