@@ -40,7 +40,6 @@
           <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
           <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
           <ScalarProperty Name="POINT_MY" ColumnName="POINT_MY" />
-          <ScalarProperty Name="IDMYGIFT" ColumnName="IDMYGIFT" />
           <ScalarProperty Name="IDROLE" ColumnName="IDROLE" />
           <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
         </MappingFragment>
@@ -81,6 +80,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="FEEDBACKs">
+      <EntityTypeMapping TypeName="QLLaptopShopModel.FEEDBACK">
+        <MappingFragment StoreEntitySet="FEEDBACK">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDCUS" ColumnName="IDCUS" />
+          <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+          <ScalarProperty Name="DATEFB" ColumnName="DATEFB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="GIFTs">
       <EntityTypeMapping TypeName="QLLaptopShopModel.GIFT">
         <MappingFragment StoreEntitySet="GIFT">
@@ -99,6 +108,7 @@
         <MappingFragment StoreEntitySet="MYGIFT">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="IDGIFT" ColumnName="IDGIFT" />
+          <ScalarProperty Name="IDCUS" ColumnName="IDCUS" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

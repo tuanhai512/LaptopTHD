@@ -37,6 +37,7 @@ namespace THDShop.Controllers
                 {
                     database.Configuration.ValidateOnSaveEnabled = false;
                     Session["ID"] = check.ID;
+
                     int a = (int)Session["ID"];
                     Session["EMAIL"] = _user.EMAIL;
                     Session["PASSWORD"] = _user.PASSWORD;
@@ -96,7 +97,7 @@ namespace THDShop.Controllers
         public ActionResult Logout()
         {
             Session.Abandon();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "HomePage");
         }
         public ActionResult RegisterUser()
         {
@@ -125,7 +126,6 @@ namespace THDShop.Controllers
                         ADDRESS=_user.ADDRESS,
                         PASSWORD=_user.PASSWORD,
                         ROLENAME = _user.ROLENAME,
-                        IDMYGIFT = _user.ID ,
                 };
                     database.CUSTOMERs.Add(_cus);
                     database.SaveChanges();

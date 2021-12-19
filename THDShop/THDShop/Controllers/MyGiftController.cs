@@ -11,12 +11,17 @@ namespace THDShop.Areas.Manager.Controllers
         QLLaptopShopEntities database = new QLLaptopShopEntities();
 
         // GET: Manager/MyGift
-        public ActionResult Index()
-        {
-            CUSTOMER cUSTOMER = database.CUSTOMERs.FirstOrDefault();
-            Session["EMAIL"] = cUSTOMER.EMAIL;
-            var detailMygift = database.MYGIFTs.Where(m => m.ID == cUSTOMER.ID).FirstOrDefault();
-            return View(detailMygift);
+        public ActionResult Index(int idcus)
+        {  
+            ////Session["EMAIL"] = cus.EMAIL;
+
+            //var query = database.MYGIFTs.Where(s => s.IDCUS == idcus);
+            //var qcus = database.CUSTOMERs.Where(s => s.IDUSER == query);
+            //return View(query);
+            //CUSTOMER cUSTOMER = database.CUSTOMERs.FirstOrDefault();
+            //Session["EMAIL"] = cUSTOMER.EMAIL;
+            //var detailMygift = database.MYGIFTs.Where(m => m.IDCUS == cUSTOMER.ID).ToList();
+            //return View(detailMygift);
         }
 
         // GET: Manager/MyGift/Details/5

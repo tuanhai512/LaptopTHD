@@ -38,7 +38,6 @@
     <Property Name="PASSWORD" Type="varchar" MaxLength="30" />
     <Property Name="AVATAR" Type="text" />
     <Property Name="POINT_MY" Type="int" Nullable="false" />
-    <Property Name="IDMYGIFT" Type="int" />
     <Property Name="IDROLE" Type="int" />
     <Property Name="ROLENAME" Type="varchar" MaxLength="30" />
   </EntityType>
@@ -77,6 +76,15 @@
     <Property Name="DISTRICT" Type="nvarchar" MaxLength="30" Nullable="false" />
     <Property Name="NOTE" Type="nvarchar(max)" />
   </EntityType>
+  <EntityType Name="FEEDBACK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDCUS" Type="int" Nullable="false" />
+    <Property Name="CONTENT" Type="float" />
+    <Property Name="DATEFB" Type="datetime" />
+  </EntityType>
   <EntityType Name="GIFT">
     <Key>
       <PropertyRef Name="ID" />
@@ -95,6 +103,7 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IDGIFT" Type="varchar" MaxLength="20" />
+    <Property Name="IDCUS" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ORDERS">
     <Key>
@@ -218,14 +227,14 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CUSTOMER_MYGIFT">
-    <End Role="MYGIFT" Type="Self.MYGIFT" Multiplicity="0..1" />
-    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+    <End Role="MYGIFT" Type="Self.MYGIFT" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="MYGIFT">
+      <Principal Role="CUSTOMER">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="CUSTOMER">
-        <PropertyRef Name="IDMYGIFT" />
+      <Dependent Role="MYGIFT">
+        <PropertyRef Name="IDCUS" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -375,6 +384,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="PK_FEEDBACK_CUS">
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+    <End Role="FEEDBACK" Type="Self.FEEDBACK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FEEDBACK">
+        <PropertyRef Name="IDCUS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="PK_REPORT_BILL">
     <End Role="BILL" Type="Self.BILL" Multiplicity="1" />
     <End Role="REPORT" Type="Self.REPORT" Multiplicity="*" />
@@ -394,6 +415,7 @@
     <EntitySet Name="DE_BILL" EntityType="Self.DE_BILL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DE_ORDER" EntityType="Self.DE_ORDER" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DELI_ADDRESS" EntityType="Self.DELI_ADDRESS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FEEDBACK" EntityType="Self.FEEDBACK" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GIFT" EntityType="Self.GIFT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MYGIFT" EntityType="Self.MYGIFT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ORDERS" EntityType="Self.ORDERS" Schema="dbo" store:Type="Tables" />
@@ -415,8 +437,8 @@
       <End Role="PRODUCTS" EntitySet="PRODUCTS" />
     </AssociationSet>
     <AssociationSet Name="FK_CUSTOMER_MYGIFT" Association="Self.FK_CUSTOMER_MYGIFT">
-      <End Role="MYGIFT" EntitySet="MYGIFT" />
       <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+      <End Role="MYGIFT" EntitySet="MYGIFT" />
     </AssociationSet>
     <AssociationSet Name="FK_CUSTOMER_ROLES" Association="Self.FK_CUSTOMER_ROLES">
       <End Role="ROLES" EntitySet="ROLES" />
@@ -465,6 +487,10 @@
     <AssociationSet Name="FK_USER_ROLES" Association="Self.FK_USER_ROLES">
       <End Role="ROLES" EntitySet="ROLES" />
       <End Role="USERS" EntitySet="USERS" />
+    </AssociationSet>
+    <AssociationSet Name="PK_FEEDBACK_CUS" Association="Self.PK_FEEDBACK_CUS">
+      <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+      <End Role="FEEDBACK" EntitySet="FEEDBACK" />
     </AssociationSet>
     <AssociationSet Name="PK_REPORT_BILL" Association="Self.PK_REPORT_BILL">
       <End Role="BILL" EntitySet="BILL" />

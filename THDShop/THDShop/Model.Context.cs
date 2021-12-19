@@ -31,6 +31,7 @@ namespace THDShop
         public virtual DbSet<DE_BILL> DE_BILL { get; set; }
         public virtual DbSet<DE_ORDER> DE_ORDER { get; set; }
         public virtual DbSet<DELI_ADDRESS> DELI_ADDRESS { get; set; }
+        public virtual DbSet<FEEDBACK> FEEDBACKs { get; set; }
         public virtual DbSet<GIFT> GIFTs { get; set; }
         public virtual DbSet<MYGIFT> MYGIFTs { get; set; }
         public virtual DbSet<ORDER> ORDERS { get; set; }
@@ -39,7 +40,5 @@ namespace THDShop
         public virtual DbSet<ROLE> ROLES { get; set; }
         public virtual DbSet<STAFF> STAFFs { get; set; }
         public virtual DbSet<USER> USERS { get; set; }
-
-        public System.Data.Entity.DbSet<THDShop.ViewModel.Category.CategoryDTO> CategoryDTOes { get; set; }
     }
 }

@@ -59,7 +59,13 @@ namespace THDShop.ViewModel
             var item = items.Find(s => s._product.ID == id);
             if (item != null)
             {
-                item._quantity = _quan;
+                if (items.Find(s => s._product.QUANTITY >= _quan) != null)
+                {
+                    item._quantity = _quan;
+                }
+               
+                else
+                    item._quantity = 1;
             }
         }
         public int Total_OriPrice()

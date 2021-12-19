@@ -171,6 +171,7 @@
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\HomeUserController.cs" />
     <Compile Include="Controllers\LoginCustomerController.cs" />
+    <Compile Include="Controllers\MyGiftController.cs" />
     <Compile Include="CUSTOMER.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -181,6 +182,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DE_ORDER.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FEEDBACK.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GIFT.cs">
@@ -3505,6 +3509,10 @@
     <Content Include="Assets\ECome\sass\_rules.scss" />
     <Content Include="Assets\ECome\sass\_variables.scss" />
     <Content Include="Areas\Manager\Views\Report\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\User\Staff.cshtml" />
+    <Content Include="Areas\Manager\Views\User\Customer.cshtml" />
+    <Content Include="Areas\Manager\Views\Report\Searchday.cshtml" />
+    <Content Include="Views\Shared\LoaiPartial.cshtml" />
     <EntityDeploy Include="Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
@@ -3512,10 +3520,6 @@
     <Content Include="Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Manager\Views\User\Staff.cshtml" />
-    <Content Include="Areas\Manager\Views\User\Customer.cshtml" />
-    <Content Include="Areas\Manager\Views\Report\Searchday.cshtml" />
-    <Content Include="Views\Shared\LoaiPartial.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\editorEDK.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -3556,13 +3560,13 @@
     <Content Include="Views\LoginCustomer\LoginAccount.cshtml" />
     <Content Include="Views\LoginCustomer\RegisterUser.cshtml" />
     <Content Include="Views\HomePage\Voucher.cshtml" />
+    <Content Include="Views\MyGift\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Manager\Data\" />
     <Folder Include="Assets\ECome\sass\components\Mixins\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\MyList\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

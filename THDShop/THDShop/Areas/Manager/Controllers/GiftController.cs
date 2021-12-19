@@ -10,7 +10,9 @@ namespace THDShop.Areas.Manager.Controllers
 {
     public class GiftController : Controller
     {
+
         QLLaptopShopEntities _db = new QLLaptopShopEntities();
+        CUSTOMER cus;
         // GET: Manager/Gift
         public ActionResult Index()
         {
@@ -112,20 +114,25 @@ namespace THDShop.Areas.Manager.Controllers
         }
         public ActionResult AddListGift(string id)
         {
-
-            MYGIFT mYGIFT;
-
             var entity = _db.GIFTs.SingleOrDefault(s=>s.ID==id);
             var check = _db.MYGIFTs.Where(s => s.IDGIFT == id ).FirstOrDefault();
-            //  var item = _db.CUSTOMERs.Where(s => s.MYGIFT.IDGIFT == id);
+          
+            int idcus = (int)Session["ID"];
             if (check == null)
             {
-                _db.MYGIFTs.Add(new MYGIFT
-                {
-                    IDGIFT = id
-                });
+                if (Session["EMAIL"] != null) {
+                    _db.MYGIFTs.Add(new MYGIFT
+                    {/*IDCUS = cus.ID,*/
+                    IDGIFT = entity.ID
+                    }) ;
                 _db.SaveChanges();
                 return RedirectToAction("Index", "HomePage");
+                }
+                else
+                {
+                    return RedirectToAction("LoginAccount", "LoginCustomer");
+
+                }
             }
          
 
