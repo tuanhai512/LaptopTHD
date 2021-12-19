@@ -36,6 +36,8 @@ namespace THDShop.Controllers
                 if (check.ROLENAME == "Customer")
                 {
                     database.Configuration.ValidateOnSaveEnabled = false;
+                    Session["ID"] = check.ID;
+                    int a = (int)Session["ID"];
                     Session["EMAIL"] = _user.EMAIL;
                     Session["PASSWORD"] = _user.PASSWORD;
                     return RedirectToAction("Index", "HomePage");
@@ -43,10 +45,10 @@ namespace THDShop.Controllers
                 else
                 {
                     var checkM = database.USERS.Where(s => s.EMAIL == _user.EMAIL && s.PASSWORD == _user.PASSWORD).FirstOrDefault();
-                    if (checkM.ROLENAME == "Manager"|| checkM.ROLENAME == "Staff")
+                    if (checkM.ROLE.NAME == "Manager"|| checkM.ROLE.NAME == "Staff")
                     {
-                        Session["TENQLY"] = _user.NAME;
-                        Session["ID"] = _user.ID;
+                        Session["EMAIL"] = _user.EMAIL;
+                        Session["PASSWORD"] = _user.PASSWORD;
                         return Redirect("/Manager/Report");
                     }
                 }
@@ -122,9 +124,8 @@ namespace THDShop.Controllers
                         NAME=_user.NAME,
                         ADDRESS=_user.ADDRESS,
                         PASSWORD=_user.PASSWORD,
-                        ROLENAME = "Customer",
+                        ROLENAME = _user.ROLENAME,
                         IDMYGIFT = _user.ID ,
-
                 };
                     database.CUSTOMERs.Add(_cus);
                     database.SaveChanges();

@@ -1,5 +1,4 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -229,7 +228,7 @@
                                                     <a href="#"><img src="~/Assets/ECome/img/icon-diamond.png" alt="">Flash Sale<span class="h-ribbon h-pos e-green">sale</span></a>
                                                 </li>
                                                 <li class="level1 active dropdown">
-                                                    <a href="@Url.Action("Index", "Voucher")">Voucher<span class="h-ribbon h-pos e-skyblue">new</span></a>
+                                                    <a href="@Url.Action("Voucher", "HomePage")">Voucher<span class="h-ribbon h-pos e-skyblue">new</span></a>
                                                 </li>
                                                 <li class="level1 active dropdown">
                                                     <a href="#">Contact</a>
@@ -239,12 +238,24 @@
                                     </nav>
                                     <div class="header-bottom-right hidden-xs hidden-sm">
                                         <ul class="nav navbar-nav js-menubar">
-                                            <li class="level1 active hassub">
-                                                <a href="@Url.Action("LoginAccount", "LoginCustomer")">Đăng nhập</a>
-                                            </li>
-                                            <li class="level1 active hassub">
-                                                <a href="@Url.Action("RegisterUser", "LoginCustomer")">Đăng ký</a>
-                                            </li>
+                                            @if (Session["Email"] == null)
+                                            {
+                                                <li class="level1 active hassub">
+                                                    <a href="@Url.Action("RegisterUser", "LoginCustomer")">Đăng ký</a>
+                                                </li>
+                                                <li class="level1 active hassub">
+                                                    <a href="@Url.Action("LoginAccount", "LoginCustomer")">Đăng nhập</a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li class="level1 active hassub">
+                                                    <span>@Session["Email"]</span>
+                                                </li>
+                                                <li class="level1 active hassub">
+                                                    <a href="@Url.Action("Logout", "LoginCustomer")">Đăng xuất</a>
+                                                </li>
+                                            }
                                         </ul>
                                     </div>
                                 </div>

@@ -18,13 +18,18 @@ namespace THDShop
         public MYGIFT()
         {
             this.CUSTOMERs = new HashSet<CUSTOMER>();
+
+            this.USERs = new HashSet<USER>();
         }
-    
+
         public int ID { get; set; }
         public string IDGIFT { get; set; }
+        public int IDUSER { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CUSTOMER> CUSTOMERs { get; set; }
+        public virtual ICollection<USER> USERs { get; set; }
+
         public virtual GIFT GIFT { get; set; }
     }
 }

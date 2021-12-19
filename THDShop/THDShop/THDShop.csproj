@@ -241,6 +241,7 @@
     <Compile Include="ViewModel\Customer\DetailCustomerDTO.cs" />
     <Compile Include="ViewModel\Gift\CreateGiftInput.cs" />
     <Compile Include="ViewModel\Gift\DetailGiftDTO.cs" />
+    <Compile Include="ViewModel\Proxy.cs" />
     <Compile Include="ViewModel\Report\ReportDTO.cs" />
     <Compile Include="ViewModel\DeliAddress\CreateDeliAddressInput.cs" />
     <Compile Include="ViewModel\Product\CreateProductInput.cs" />
@@ -3561,6 +3562,7 @@
     <Folder Include="Areas\Manager\Data\" />
     <Folder Include="Assets\ECome\sass\components\Mixins\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\MyList\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
