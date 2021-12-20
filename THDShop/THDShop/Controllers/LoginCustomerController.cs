@@ -22,7 +22,7 @@ namespace THDShop.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult LoginAccount(USER _user)
+        public ActionResult LoginAccount(USERS _user)
         {
        
             if (!CheckExistAccount(_user))
@@ -46,7 +46,7 @@ namespace THDShop.Controllers
                 else
                 {
                     var checkM = database.USERS.Where(s => s.EMAIL == _user.EMAIL && s.PASSWORD == _user.PASSWORD).FirstOrDefault();
-                    if (checkM.ROLE.NAME == "Manager"|| checkM.ROLE.NAME == "Staff")
+                    if (checkM.ROLES.NAME == "Manager"|| checkM.ROLES.NAME == "Staff")
                     {
                         Session["EMAIL"] = _user.EMAIL;
                         Session["PASSWORD"] = _user.PASSWORD;
@@ -65,7 +65,7 @@ namespace THDShop.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditAccount(USER user)
+        public ActionResult EditAccount(USERS user)
         {
             var detail = database.USERS.Where(m => m.ID == user.ID);
 
@@ -83,7 +83,7 @@ namespace THDShop.Controllers
             return RedirectToAction("Index");
         }
 
-        public bool CheckExistAccount(USER _user)
+        public bool CheckExistAccount(USERS _user)
         {
 
             var check = database.USERS.Where(s => s.EMAIL == _user.EMAIL && s.PASSWORD == _user.PASSWORD).FirstOrDefault();
@@ -105,7 +105,7 @@ namespace THDShop.Controllers
         }
 
         [HttpPost]
-        public ActionResult RegisterUser(USER _user)
+        public ActionResult RegisterUser(USERS _user)
         {
             if (ModelState.IsValid)
             {
@@ -127,7 +127,7 @@ namespace THDShop.Controllers
                         PASSWORD=_user.PASSWORD,
                         ROLENAME = _user.ROLENAME,
                 };
-                    database.CUSTOMERs.Add(_cus);
+                    database.CUSTOMER.Add(_cus);
                     database.SaveChanges();
                     return RedirectToAction("LoginAccount");
                 }

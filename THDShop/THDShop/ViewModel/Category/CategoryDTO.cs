@@ -6,7 +6,12 @@ using System.Web;
 
 namespace THDShop.ViewModel.Category
 {
-    public class CategoryDTO
+    //public interface CategoryPrototype
+    //{
+    //    CategoryPrototype Clone();
+
+    //}
+    public class CategoryDTO/*:CategoryPrototype*/
     {
         public int ID { get; set; }
         public string NAME { get; set; }
@@ -16,5 +21,14 @@ namespace THDShop.ViewModel.Category
         public Nullable<System.DateTime> UPDATEAT { get; set; }
         [NotMapped]
         public List<CategoryDTO> listLoai { get; internal set; }
+
+        //public CategoryPrototype Clone()
+        //{
+        //    CategoryDTO cate = new CategoryDTO();
+        //    cate.NAME = NAME;
+        //    cate.CREATEAT = DateTime.Now;
+        //    return cate;
+        //}
     }
+  
 }

@@ -69,10 +69,10 @@ namespace THDShop.Areas.Manager.Controllers
         [ValidateInput(false)]
         public ActionResult Create(CreateProductInput model)
         {
-            var entity = new PRODUCT();
+            var entity = new PRODUCTS();
             if (model != null)
             {
-                entity = new PRODUCT();
+                entity = new PRODUCTS();
                 var categorylist = _context.CATEGORIES.ToList().Select(
                 x => new SelectListItem
                 {
@@ -154,7 +154,7 @@ namespace THDShop.Areas.Manager.Controllers
         [ValidateInput(false)]
         public ActionResult Edit(UpdateProductInput model)
         {
-            var entity = new PRODUCT();
+            var entity = new PRODUCTS();
             if (model == null)
                 return HttpNotFound();
 
@@ -198,7 +198,7 @@ namespace THDShop.Areas.Manager.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Delete(int id, PRODUCT prod)
+        public ActionResult Delete(int id, PRODUCTS prod)
         {
             try
             {
@@ -212,6 +212,7 @@ namespace THDShop.Areas.Manager.Controllers
                 return Content("Dữ liệu này đang được sử dụng bởi một bảng khác");
             }
         }
+
 
         public ActionResult Detail(DetailProductDTO model, int ID)
         {
@@ -227,7 +228,7 @@ namespace THDShop.Areas.Manager.Controllers
                             QUANTITY = c.QUANTITY,
                             DESCRIPTION = c.DESCRIPTION,
                             IMAGE = c.IMAGE,
-                            CATEGORYNAME = c.CATEGORy.NAME,
+                            CATEGORYNAME = c.CATEGORIES.NAME,
                             DESCRIPTION_CPU = c.DESCRIPTION_CPU,
                             DESCRIPTION_RAM = c.DESCRIPTION_RAM,
                             DESCRIPTION_STORAGE = c.DESCRIPTION_STORAGE,

@@ -11,7 +11,7 @@ namespace THDShop.ViewModel
     {
         public GIFT _gift { get; set; }
         public int _giftvalue { get; set; }
-        public PRODUCT _product { get; set; }
+        public PRODUCTS _product { get; set; }
 
         public int _quantity { get; set; }
     }
@@ -26,7 +26,7 @@ namespace THDShop.ViewModel
         {
             get { return items; }
         }
-        public void Add_Product_Cart(PRODUCT prod, int _quan = 1)
+        public void Add_Product_Cart(PRODUCTS prod, int _quan = 1)
         {
             var item = Items.FirstOrDefault(s => s._product.ID == prod.ID);
             if (item == null)
@@ -82,7 +82,7 @@ namespace THDShop.ViewModel
         public int _value { get; set; }
         public void Update_gift(string id,int value)
         {
-            var gift = _db.GIFTs.Where(s => s.ID == id);
+            var gift = _db.GIFT.Where(s => s.ID == id);
             {
                 _value = value;
             }

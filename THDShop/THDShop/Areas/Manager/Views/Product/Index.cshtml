@@ -1,4 +1,4 @@
-﻿@model IEnumerable<THDShop.PRODUCT>
+﻿@model IEnumerable<THDShop.PRODUCTS>
 
 @{
     ViewBag.Title = "Index";
@@ -102,7 +102,7 @@
                                         @Html.DisplayFor(modelItem => item.NAME)
                                     </td>
                                     <td class="table-data">
-                                        @Html.DisplayFor(modelItem => item.CATEGORy.NAME)
+                                        @Html.DisplayFor(modelItem => item.CATEGORIES.NAME)
                                     </td>
                                     <td class="table-data">
                                         @Html.DisplayFor(modelItem => item.ORI_PRICE)
@@ -120,6 +120,7 @@
                                         <a href="@Url.Action("Edit", "Product", new { id = item.ID })" class="btn btn-sm btn-warning" style="margin-bottom: 5px;">Edit</a>
                                         <a href="@Url.Action("Delete", "Product", new { id = item.ID })" class="btn btn-sm btn-danger" style="margin-bottom: 5px;">Delete</a>
                                         <a href="@Url.Action("Detail", "Product", new { id = item.ID })" class="btn btn-sm btn-info" style="margin-bottom: 5px;">Detail</a>
+                                        
                                     </td>
                                 </tr>
                             }

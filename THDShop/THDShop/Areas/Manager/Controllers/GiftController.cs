@@ -16,7 +16,7 @@ namespace THDShop.Areas.Manager.Controllers
         // GET: Manager/Gift
         public ActionResult Index()
         {
-            return View(_db.GIFTs.ToList());
+            return View(_db.GIFT.ToList());
         }
 
         // GET: Manager/Gift/Details/5
@@ -54,7 +54,7 @@ namespace THDShop.Areas.Manager.Controllers
                     entity.G_END = (DateTime)model.G_END;
                     entity.DESCREPTION = model.DESCREPTION;
                     entity.QUANTITY = model.QUANTITY;
-                    _db.GIFTs.Add(entity);
+                    _db.GIFT.Add(entity);
                     _db.SaveChanges();
 
                 }
@@ -71,7 +71,7 @@ namespace THDShop.Areas.Manager.Controllers
         // GET: Manager/Gift/Edit/5
         public ActionResult Edit(string id)
         {
-            var entity = _db.GIFTs.Find(id);
+            var entity = _db.GIFT.Find(id);
             var model = new UpdateGiftInput();
             model.ID = entity.ID;
             model.G_POINT = entity.G_POINT;
@@ -98,7 +98,7 @@ namespace THDShop.Areas.Manager.Controllers
             entity.G_END = (DateTime)model.G_END;
             entity.DESCREPTION = model.DESCREPTION;
             entity.QUANTITY = model.QUANTITY;
-            _db.GIFTs.Add(entity);
+            _db.GIFT.Add(entity);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -106,22 +106,22 @@ namespace THDShop.Areas.Manager.Controllers
         // GET: QuanLy/KhachHang/Delete/5
         public ActionResult Delete(string id)
         {
-            var entity = _db.GIFTs.Find(id);
-            _db.GIFTs.Remove(entity);
+            var entity = _db.GIFT.Find(id);
+            _db.GIFT.Remove(entity);
             _db.SaveChanges();
 
             return RedirectToAction("Index");
         }
         public ActionResult AddListGift(string id)
         {
-            var entity = _db.GIFTs.SingleOrDefault(s=>s.ID==id);
-            var check = _db.MYGIFTs.Where(s => s.IDGIFT == id ).FirstOrDefault();
+            var entity = _db.GIFT.SingleOrDefault(s=>s.ID==id);
+            var check = _db.MYGIFT.Where(s => s.IDGIFT == id ).FirstOrDefault();
           
             int idcus = (int)Session["ID"];
             if (check == null)
             {
                 if (Session["EMAIL"] != null) {
-                    _db.MYGIFTs.Add(new MYGIFT
+                    _db.MYGIFT.Add(new MYGIFT
                     {/*IDCUS = cus.ID,*/
                     IDGIFT = entity.ID
                     }) ;

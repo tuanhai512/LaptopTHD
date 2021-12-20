@@ -408,7 +408,6 @@ H:\năm 4\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\System.Web.WebPages.Razor.xml
 H:\năm 4\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\Newtonsoft.Json.xml
 H:\năm 4\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\Antlr3.Runtime.pdb
 H:\năm 4\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-H:\năm 4\LaptopTHD\LaptopTHD\THDShop\THDShop\obj\Debug\THDShop.csproj.AssemblyReference.cache
 H:\năm 4\LaptopTHD\LaptopTHD\THDShop\THDShop\obj\Debug\THDShop.csproj.CoreCompileInputs.cache
 H:\năm 4\LaptopTHD\LaptopTHD\THDShop\THDShop\obj\Debug\THDShop.csproj.CopyComplete
 H:\năm 4\LaptopTHD\LaptopTHD\THDShop\THDShop\obj\Debug\THDShop.dll
@@ -673,3 +672,14 @@ D:\Github\LaptopTHD\THDShop\THDShop\bin\ClosedXML.xml
 D:\Github\LaptopTHD\THDShop\THDShop\bin\DocumentFormat.OpenXml.xml
 D:\Github\LaptopTHD\THDShop\THDShop\bin\ExcelNumberFormat.xml
 D:\Github\LaptopTHD\THDShop\THDShop\bin\PayPal.xml
+H:\năm 4\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\ClosedXML.dll
+H:\năm 4\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\DocumentFormat.OpenXml.dll
+H:\năm 4\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\ExcelNumberFormat.dll
+H:\năm 4\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\PayPal.dll
+H:\năm 4\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\System.IO.Packaging.dll
+H:\năm 4\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\ClosedXML.pdb
+H:\năm 4\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\ClosedXML.xml
+H:\năm 4\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\DocumentFormat.OpenXml.xml
+H:\năm 4\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\ExcelNumberFormat.xml
+H:\năm 4\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\PayPal.xml
+H:\năm 4\LaptopTHD\LaptopTHD\THDShop\THDShop\obj\Debug\THDShop.csproj.AssemblyReference.cache

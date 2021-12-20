@@ -27,7 +27,7 @@ namespace THDShop
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DE_BILL> DE_BILL { get; set; }
-        public virtual ORDER ORDER { get; set; }
-        public virtual PRODUCT PRODUCT { get; set; }
+        public virtual ORDERS ORDERS { get; set; }
+        public virtual PRODUCTS PRODUCTS { get; set; }
     }
 }

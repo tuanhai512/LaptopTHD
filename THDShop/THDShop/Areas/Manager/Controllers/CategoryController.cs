@@ -34,9 +34,9 @@ namespace THDShop.Areas.Manager.Controllers
         [HttpPost]
         public ActionResult Create(CreateCategoryInput model)
         {
-            var entity = new CATEGORy();
+            var entity = new CATEGORIES();
             if (model == null)
-                entity = new CATEGORy();
+                entity = new CATEGORIES();
 
             entity.NAME = model.NAME;
             entity.CREATEAT = DateTime.Now;
@@ -60,7 +60,7 @@ namespace THDShop.Areas.Manager.Controllers
         [HttpPost]
         public ActionResult Edit(UpdateCategoryInput model)
         {
-            var entity = new CATEGORy();
+            var entity = new CATEGORIES();
             if (model == null)
                 return HttpNotFound();
             entity.ID = model.ID;
@@ -82,6 +82,17 @@ namespace THDShop.Areas.Manager.Controllers
             CategorySingleton.Instance.Init(_context);
             return RedirectToAction("Index");
         }
+        public ActionResult Duplicate(int id)
+        {
+            var post = _context.CATEGORIES.Find(id);
+            var cloneCate = post.Clone();       
+            _context.CATEGORIES.Add((CATEGORIES)cloneCate);
+            _context.SaveChanges();
+            CategorySingleton.Instance.listCategory.Clear();
+            CategorySingleton.Instance.Init(_context);
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Detail(int id)
         {
             var query = from c in _context.CATEGORIES

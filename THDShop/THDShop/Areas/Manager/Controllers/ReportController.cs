@@ -17,7 +17,7 @@ namespace THDShop.Areas.Manager.Controllers
         // GET: Manager/Report
         public ActionResult Index()
         {
-            return View(database.REPORTs.ToList());
+            return View(database.REPORT.ToList());
         }
 
         // GET: Manager/Report/Details/5
@@ -101,7 +101,7 @@ namespace THDShop.Areas.Manager.Controllers
                 new DataColumn("DATETIME"),
                 new DataColumn("DATETIMEEXPORT")
             });
-            var bill = from c in database.BILLs.ToList() select c;
+            var bill = from c in database.BILL.ToList() select c;
             foreach (var b in bill)
             {
                 dt.Rows.Add(b.ID, b.TOTALMONEY, b.DATETIME, DateTime.Now);
@@ -121,7 +121,7 @@ namespace THDShop.Areas.Manager.Controllers
         { 
             int month = day;
 
-            var list = database.REPORTs.Where(p => p.DATERP.Value.Month == month).ToList();
+            var list = database.REPORT.Where(p => p.DATERP.Value.Month == month).ToList();
            
            
             

@@ -11,8 +11,13 @@ namespace THDShop
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class CATEGORIES
+
+    public interface CategoryPrototype
+    {
+        CategoryPrototype Clone();
+
+    }
+    public partial class CATEGORIES:CategoryPrototype
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CATEGORIES()
@@ -29,5 +34,13 @@ namespace THDShop
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PRODUCTS> PRODUCTS { get; set; }
+
+        public CategoryPrototype Clone()
+        {
+            CATEGORIES cate = new CATEGORIES();
+            cate.NAME = NAME;
+            cate.CREATEAT = DateTime.Now;
+            return cate;
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace THDShop.Areas.Manager.Controllers
 
         // GET: Manager/MyGift
         public ActionResult Index(int idcus)
-        {  
+        {
             ////Session["EMAIL"] = cus.EMAIL;
 
             //var query = database.MYGIFTs.Where(s => s.IDCUS == idcus);
@@ -22,6 +22,7 @@ namespace THDShop.Areas.Manager.Controllers
             //Session["EMAIL"] = cUSTOMER.EMAIL;
             //var detailMygift = database.MYGIFTs.Where(m => m.IDCUS == cUSTOMER.ID).ToList();
             //return View(detailMygift);
+            return View();
         }
 
         // GET: Manager/MyGift/Details/5
