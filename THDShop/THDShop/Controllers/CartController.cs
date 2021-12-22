@@ -45,7 +45,7 @@ namespace THDShop.Controllers
         {
             Cart cart = Session["Cart"] as Cart;
             string id_gift = form["ID_Gift"];
-            var gift = _db.GIFT.Where(s => s.ID == id_gift).FirstOrDefault();
+            var gift = _db.GIFTs.Where(s => s.ID == id_gift).FirstOrDefault();
             int value = gift.G_VALUE;
             if(gift != null)
             {
@@ -134,7 +134,7 @@ namespace THDShop.Controllers
 
                     //Order
 
-                    var order = new ORDERS()
+                    var order = new ORDER()
                     {
                         DAY = DateTime.Now,
                         IDDELIADDRESS = deliaddr.ID,
@@ -192,7 +192,7 @@ namespace THDShop.Controllers
 
                     //Order
 
-                    var order = new ORDERS()
+                    var order = new ORDER()
                     {
                         DAY = DateTime.Now,
                         IDDELIADDRESS = deliaddr.ID,
@@ -359,7 +359,7 @@ namespace THDShop.Controllers
                         _db.SaveChanges();
 
                         int methods = 1;
-                        var order = new ORDERS()
+                        var order = new ORDER()
                         {
                             IDDELIADDRESS = deliaddress.ID,
                             DAY = DateTime.Now,

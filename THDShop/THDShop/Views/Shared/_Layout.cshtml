@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="~/Assets/ECome/css/slick-theme.css">
     <link rel="stylesheet" href="~/Assets/ECome/css/owl.theme.default.min.css">
     <link rel="stylesheet" type="text/css" href="~/Assets/ECome/css/style.css">
+    <link href="~/Assets/css/fixscss.css" rel="stylesheet" />
 </head>
 <body>
     <div class="font_asap">
@@ -81,52 +82,10 @@
                                     <div class="header-sub-element row">
                                         <a class="hidden-xs hidden-sm" href=""><img src="~/Assets/ECome/img/icon-user.png" alt=""></a>
                                         <div class="cart">
-                                            <a href="@Url.Action("ShowToCart","Cart")" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="label5">
+                                            <a href="@Url.Action("ShowToCart","Cart")" class="dropdown-toggle">
                                                 <img src="~/Assets/ECome/img/icon-cart.png" alt="">
-                                                <span class="count cart-count">@Html.Action("BagCart", "Cart")</span>
+                                                <span>@Html.Action("BagCart", "Cart")</span>
                                             </a>
-                                            <div class="dropdown-menu dropdown-cart">
-                                                <ul class="mini-products-list">
-                                                    <li class="item-cart">
-                                                        <div class="product-img-wrap">
-                                                            <a href="#"><img src="~/Assets/ECome/img/cart1.jpg" alt="" class="img-reponsive"></a>
-                                                        </div>
-                                                        <div class="product-details">
-                                                            <div class="inner-left">
-                                                                <div class="product-name"><a href="#">Harman Kardon Onyx Studio </a></div>
-                                                                <div class="product-price">
-                                                                    $ 60.00 <span>( x2)</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <a href="#" class="e-del"><i class="ion-ios-close-empty"></i></a>
-                                                    </li>
-                                                    <li class="item-cart">
-                                                        <div class="product-img-wrap">
-                                                            <a href="#"><img src="~/Assets/ECome/img/cart1.jpg" alt="" class="img-reponsive"></a>
-                                                        </div>
-                                                        <div class="product-details">
-                                                            <div class="inner-left">
-                                                                <div class="product-name"><a href="#">Harman Kardon Onyx Studio </a></div>
-                                                                <div class="product-price">
-                                                                    $ 60.00 <span>( x2)</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <a href="#" class="e-del"><i class="ion-ios-close-empty"></i></a>
-                                                    </li>
-                                                </ul>
-                                                <div class="bottom-cart">
-                                                    <div class="cart-price">
-                                                        <span>Subtotal</span>
-                                                        <span class="price-total">$ 120.00</span>
-                                                    </div>
-                                                    <div class="button-cart">
-                                                        <a href="#" class="cart-btn btn-viewcart">View Cart</a>
-                                                        <a href="#" class="cart-btn e-checkout btn-gradient">Checkout</a>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                         <a href="#" class="hidden-md hidden-lg icon-pushmenu js-push-menu">
                                             <i class="fa fa-bars f-15"></i>

@@ -25,20 +25,20 @@ namespace THDShop
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<BILL> BILL { get; set; }
-        public virtual DbSet<CATEGORIES> CATEGORIES { get; set; }
-        public virtual DbSet<CUSTOMER> CUSTOMER { get; set; }
+        public virtual DbSet<BILL> BILLs { get; set; }
+        public virtual DbSet<CATEGORy> CATEGORIES { get; set; }
+        public virtual DbSet<CUSTOMER> CUSTOMERs { get; set; }
         public virtual DbSet<DE_BILL> DE_BILL { get; set; }
         public virtual DbSet<DE_ORDER> DE_ORDER { get; set; }
         public virtual DbSet<DELI_ADDRESS> DELI_ADDRESS { get; set; }
-        public virtual DbSet<FEEDBACK> FEEDBACK { get; set; }
-        public virtual DbSet<GIFT> GIFT { get; set; }
-        public virtual DbSet<MYGIFT> MYGIFT { get; set; }
-        public virtual DbSet<ORDERS> ORDERS { get; set; }
-        public virtual DbSet<PRODUCTS> PRODUCTS { get; set; }
-        public virtual DbSet<REPORT> REPORT { get; set; }
-        public virtual DbSet<ROLES> ROLES { get; set; }
-        public virtual DbSet<STAFF> STAFF { get; set; }
-        public virtual DbSet<USERS> USERS { get; set; }
+        public virtual DbSet<FEEDBACK> FEEDBACKs { get; set; }
+        public virtual DbSet<GIFT> GIFTs { get; set; }
+        public virtual DbSet<MYGIFT> MYGIFTs { get; set; }
+        public virtual DbSet<ORDER> ORDERS { get; set; }
+        public virtual DbSet<PRODUCT> PRODUCTS { get; set; }
+        public virtual DbSet<REPORT> REPORTs { get; set; }
+        public virtual DbSet<ROLE> ROLES { get; set; }
+        public virtual DbSet<STAFF> STAFFs { get; set; }
+        public virtual DbSet<USER> USERS { get; set; }
     }
 }

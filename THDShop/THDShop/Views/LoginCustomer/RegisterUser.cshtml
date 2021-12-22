@@ -1,106 +1,52 @@
 ﻿@model THDShop.ViewModel.User.CreateUserInput
 
-
+@{
+    ViewData["Title"] = "Dangky";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    <link href="~/Assets/css/GioHang.css" rel="stylesheet" />
+}
 @using (Html.BeginForm("RegisterUser", "LoginCustomer", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-
-    <div class="limiter">
-        <div class="container-login100">
-            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-                <form class="login100-form validate-form">
-                    <span class="login100-form-title p-b-49">
-                        Register
-                    </span>
-                    <fieldset>
-                        <div class="mgin">
-                            <div class="wrap-input100 validate-input" data-validate="Email is required">
-
-                                @Html.TextBoxFor(model => model.NAME, new { @class = "input100", @type = "text", @name = "name", @placeholder = "Type your name", })
-                                @*<span class="focus-input100" data-symbol="&#xf190;"></span>*@
-                            </div>
+    <div class="container container-240">
+        <div class="myaccount">
+            <ul class="breadcrumb v3">
+                <li><a href="#">Trang chủ</a></li>
+                <li class="active">Đăng ký</li>
+            </ul>
+            <div style="padding-top: 40px; DISPLAY: FLEX; JUSTIFY-CONTENT: CENTER; " class="pd">
+                <div class="account-element bd-7">
+                    <div class="cmt-title text-center abs">
+                        <h1 class="page-title v1">Đăng ký</h1>
+                    </div>
+                    <div class="page-content">
+                        <p>Đăng ký tài khoản của bạn</p>
+                        <div class="form-group">
+                            <label>Họ và tên <span class="f-red">*</span></label>
+                            @Html.TextBoxFor(model => model.NAME, new { @class = "form-control bdr", @type = "texy", @name = "name", })
                             <div>@Html.ValidationMessageFor(model => model.NAME)</div>
-
-                        </div>
-                        <div class="mgin">
-                            <div class="wrap-input100 validate-input" data-validate="Email is required">
-
-                                @Html.TextBoxFor(model => model.EMAIL, new { @class = "input100", @type = "email", @name = "username", @placeholder = "Type your email", })
-                                @*<span class="focus-input100" data-symbol="&#xf190;"></span>*@
-                            </div>
+                            <label>Email <span class="f-red">*</span></label>
+                            @Html.TextBoxFor(model => model.EMAIL, new { @class = "form-control bdr", @type = "email", @name = "username", })
                             <div>@Html.ValidationMessageFor(model => model.EMAIL)</div>
-
-                        </div>
-                        <div class="mgin">
-                            <div class="wrap-input100 validate-input" data-validate="Password is required">
-
-                                @Html.TextBoxFor(model => model.PHONE, new { @class = "input100", @type = "number", @name = "phone", @placeholder = "Type your phone", })
-                                @*<span class="focus-input100" data-symbol="&#xf190;"></span>*@
-                            </div>
+                            <label>Số điện thoại <span class="f-red">*</span></label>
+                            @Html.TextBoxFor(model => model.PHONE, new { @class = "form-control bdr", @type = "number", @name = "phone", })
                             <div>@Html.ValidationMessageFor(model => model.PHONE)</div>
-                        </div>
-                        <div class="mgin">
-                            <div class="wrap-input100 validate-input" data-validate="Password is required">
-
-                                @Html.TextBoxFor(model => model.PASSWORD, new { @class = "input100", @type = "text", @name = "password", @placeholder = "Type your password", })
-                                @*<span class="focus-input100" data-symbol="&#xf190;"></span>*@
-                            </div>
+                            <label>Mật khẩu <span class="f-red">*</span></label>
+                            @Html.TextBoxFor(model => model.PASSWORD, new { @class = "form-control bdr", @type = "password", @name = "password", })
                             <div>@Html.ValidationMessageFor(model => model.PASSWORD)</div>
-                        </div>
-                        <div class="mgin">
-                            <div class="wrap-input100 validate-input" data-validate="Password is required">
-
-                                @Html.TextBoxFor(model => model.CONFIRM, new { @class = "input100", @type = "text", @name = "password", @placeholder = "Type your comfirm password", })
-                                @*<span class="focus-input100" data-symbol="&#xf190;"></span>*@
-                            </div>
+                            <label>Xác nhận mật khẩu <span class="f-red">*</span></label>
+                            @Html.TextBoxFor(model => model.CONFIRM, new { @class = "form-control bdr", @type = "password", @name = "password", })
                             <div>@Html.ValidationMessageFor(model => model.CONFIRM)</div>
                         </div>
-                        @Html.ValidationSummary()
-                        <div class="text-right p-t-8 p-b-31">
-                            <a href="@Url.Action("LoginAccount", "LoginCustomer")">
-                                Login
-                            </a>
+                        <div style="justify-content: center;" class="flex lr">
+                            <button style="background-image: linear-gradient( 122deg, #17a38d, #1fad9c);" type="submit" class="btn btn-submit btn-gradient">
+                                Đăng ký
+                            </button>
                         </div>
-
-                        <div class="container-login100-form-btn">
-                            <div class="wrap-login100-form-btn">
-                                <div class="login100-form-bgbtn"></div>
-                                <button class="login100-form-btn" type="submit">
-                                    Sign up
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="txt1 text-center p-t-54 p-b-20">
-                            <span>
-                                Or Sign Up Using
-                            </span>
-                        </div>
-
-                        <div class="flex-c-m">
-                            <a href="#" class="login100-social-item bg1">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-
-                            <a href="#" class="login100-social-item bg2">
-                                <i class="fa fa-twitter"></i>
-                            </a>
-
-                            <a href="#" class="login100-social-item bg3">
-                                <i class="fa fa-google"></i>
-                            </a>
-                        </div>
-
-                        <div class="flex-col-c p-t-155">
-                            <span class="txt1 p-b-17">
-                                Or Sign Up Using
-                            </span>
-
-                            <a href="#" class="txt2">
-                                Sign Up
-                            </a>
-                        </div>
-                    </fieldset>
-                </form>
+                        <a href="LoginCustomer/LoginAccount" class="btn-lostpwd spc">Quay về</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

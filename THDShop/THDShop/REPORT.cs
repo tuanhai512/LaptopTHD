@@ -18,13 +18,7 @@ namespace THDShop
         public int IDBILL { get; set; }
         public Nullable<double> TOTALMONEY { get; set; }
         public Nullable<System.DateTime> DATERP { get; set; }
-
-        public double? Tongdoanhthu()
-        {
-            var tdt = TOTALMONEY - BILL.ORI_PRICE;
-            return tdt;
-        }
-
+    
         public virtual BILL BILL { get; set; }
     }
 }
