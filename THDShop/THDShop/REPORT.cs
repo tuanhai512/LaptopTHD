@@ -11,7 +11,7 @@ namespace THDShop
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class REPORT
     {
         public int ID { get; set; }

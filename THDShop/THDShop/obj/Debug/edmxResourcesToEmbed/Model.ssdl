@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="QLLaptopShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="QLLaptopShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="BILL">
     <Key>
       <PropertyRef Name="ID" />
@@ -38,7 +38,6 @@
     <Property Name="PASSWORD" Type="varchar" MaxLength="30" />
     <Property Name="AVATAR" Type="text" />
     <Property Name="POINT_MY" Type="int" Nullable="false" />
-    <Property Name="IDMYGIFT" Type="int" />
     <Property Name="IDROLE" Type="int" />
     <Property Name="ROLENAME" Type="varchar" MaxLength="30" />
   </EntityType>
@@ -104,6 +103,7 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IDGIFT" Type="varchar" MaxLength="20" />
+    <Property Name="IDCUS" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ORDERS">
     <Key>
@@ -227,14 +227,14 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CUSTOMER_MYGIFT">
-    <End Role="MYGIFT" Type="Self.MYGIFT" Multiplicity="0..1" />
-    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+    <End Role="MYGIFT" Type="Self.MYGIFT" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="MYGIFT">
+      <Principal Role="CUSTOMER">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="CUSTOMER">
-        <PropertyRef Name="IDMYGIFT" />
+      <Dependent Role="MYGIFT">
+        <PropertyRef Name="IDCUS" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -437,8 +437,8 @@
       <End Role="PRODUCTS" EntitySet="PRODUCTS" />
     </AssociationSet>
     <AssociationSet Name="FK_CUSTOMER_MYGIFT" Association="Self.FK_CUSTOMER_MYGIFT">
-      <End Role="MYGIFT" EntitySet="MYGIFT" />
       <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+      <End Role="MYGIFT" EntitySet="MYGIFT" />
     </AssociationSet>
     <AssociationSet Name="FK_CUSTOMER_ROLES" Association="Self.FK_CUSTOMER_ROLES">
       <End Role="ROLES" EntitySet="ROLES" />

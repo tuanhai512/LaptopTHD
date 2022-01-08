@@ -24,13 +24,13 @@ namespace THDShop.Areas.Manager.Controllers
         //}
         // GET: Manager/Order
         QLLaptopShopEntities _db = new QLLaptopShopEntities();
-        public State_Changes_Status status;
+        public Phanhoi status;
         // GET: QuanLy/DonHang
         public OrderController()
         {
 
         }
-        public OrderController(State_Changes_Status _status)
+        public OrderController(Phanhoi _status)
         {
             this.status = _status;
         }

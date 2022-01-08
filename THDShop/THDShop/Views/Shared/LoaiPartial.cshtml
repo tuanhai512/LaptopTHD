@@ -10,7 +10,7 @@
         {
 
             <li class="div-cate">
-                @Html.ActionLink(item.NAME, "Index", "HomePage", new { cate = item.NAME.Trim() }, "")
+                @Html.ActionLink(item.NAME, "Index", "HomePage", new { loai = item.ID }, "")
             </li>
 
         }

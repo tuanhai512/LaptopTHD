@@ -184,13 +184,13 @@
                                                     <a href="@Url.Action("Product","HomePage")">Sản Phẩm<span class="h-ribbon h-pos e-skyblue">MỚI</span></a>
                                                 </li>
                                                 <li class="level1 active dropdown">
-                                                    <a href="#"><img src="~/Assets/ECome/img/icon-diamond.png" alt="">Flash Sale<span class="h-ribbon h-pos e-green">SALE</span></a>
+                                                    <a href="@Url.Action("Index","HomeUser")"><img src="~/Assets/ECome/img/icon-diamond.png" alt="">Flash Sale<span class="h-ribbon h-pos e-green">SALE</span></a>
                                                 </li>
                                                 <li class="level1 active dropdown">
                                                     <a href="@Url.Action("Voucher", "HomePage")">Voucher<span class="h-ribbon h-pos e-skyblue">MỚI</span></a>
                                                 </li>
                                                 <li class="level1 active dropdown">
-                                                    <a href="#">Contact</a>
+                                                    <a href="@Url.Action("Create", "Phanhoi")">Phản hồi</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -273,7 +273,22 @@
                     </div>
                 </div>
             </div>
-            @RenderBody()
+            <div class="container container-240">
+                <div class="e-cat">
+
+                    <!-- Asus -->
+                    <div class="bestseller">
+                        <div class="ecome-heading style3 spc3">
+                            
+                           
+                            <h1>SẢN PHẨM</h1>
+                            <a href="@Url.Action("Index","HomePage")" class="btn-show">Xem thêm<i class="ion-ios-arrow-forward"></i></a>
+
+                        </div>
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
             <!-- / end content -->
             <footer>
                 <div class="f-bottom">
@@ -290,13 +305,13 @@
             <!-- /footer -->
             <!-- /footer -->
         </div>
-    </div>
-    <script src="~/Assets/ECome/js/jquery.js"></script>
-    <script src="~/Assets/ECome/js/bootstrap.js"></script>
-    <script src="~/Assets/ECome/js/owl.carousel.min.js"></script>
-    <script src="~/Assets/ECome/js/slick.js"></script>
-    <script src="~/Assets/ECome/js/countdown.js"></script>
-    <script src="~/Assets/ECome/js/main.js"></script>
+                </div>
+                <script src="~/Assets/ECome/js/jquery.js"></script>
+                <script src="~/Assets/ECome/js/bootstrap.js"></script>
+                <script src="~/Assets/ECome/js/owl.carousel.min.js"></script>
+                <script src="~/Assets/ECome/js/slick.js"></script>
+                <script src="~/Assets/ECome/js/countdown.js"></script>
+                <script src="~/Assets/ECome/js/main.js"></script>
 </body>
 
 </html>

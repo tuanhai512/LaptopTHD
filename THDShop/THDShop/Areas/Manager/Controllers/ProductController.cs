@@ -58,13 +58,7 @@ namespace THDShop.Areas.Manager.Controllers
             }
             return View(links);
         }
-        public ActionResult TheloaiLap(FormCollection form)
-        {
-
-            string theloailaptop = form["Theloai"];
-            
-            return RedirectToAction("create", "Product");
-        }
+        
         public ActionResult Create()
         {
             var categorylist = _context.CATEGORIES.ToList().Select(

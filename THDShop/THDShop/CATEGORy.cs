@@ -17,14 +17,14 @@ namespace THDShop
         CategoryPrototype Clone();
 
     }
-    public partial class CATEGORy:CategoryPrototype
+    public partial class CATEGORy : CategoryPrototype
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CATEGORy()
         {
             this.PRODUCTS = new HashSet<PRODUCT>();
         }
-  
+
         public CategoryPrototype Clone()
         {
             CATEGORy cate = new CATEGORy();
@@ -38,7 +38,7 @@ namespace THDShop
         public System.DateTime CREATEAT { get; set; }
         public Nullable<int> UPDATEBY { get; set; }
         public Nullable<System.DateTime> UPDATEAT { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PRODUCT> PRODUCTS { get; set; }
     }

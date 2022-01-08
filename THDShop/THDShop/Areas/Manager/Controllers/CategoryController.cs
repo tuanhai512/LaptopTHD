@@ -92,16 +92,16 @@ namespace THDShop.Areas.Manager.Controllers
             CategorySingleton.Instance.Init(_context);
             return RedirectToAction("Index");
         }
-        public ActionResult Duplicate(int id)
-        {
-            var post = _context.CATEGORIES.Find(id);
-            //var cloneCate = post.Clone();       
-            //_context.CATEGORIES.Add((CATEGORy)cloneCate);
-            _context.SaveChanges();
-            CategorySingleton.Instance.listCategory.Clear();
-            CategorySingleton.Instance.Init(_context);
-            return RedirectToAction("Index");
-        }
+        //public ActionResult Duplicate(int id)
+        //{
+        //    var post = _context.CATEGORIES.Find(id);
+        //    //var cloneCate = post.Clone();       
+        //    //_context.CATEGORIES.Add((CATEGORy)cloneCate);
+        //    _context.SaveChanges();
+        //    CategorySingleton.Instance.listCategory.Clear();
+        //    CategorySingleton.Instance.Init(_context);
+        //    return RedirectToAction("Index");
+        //}
 
         public ActionResult Detail(int id)
         {

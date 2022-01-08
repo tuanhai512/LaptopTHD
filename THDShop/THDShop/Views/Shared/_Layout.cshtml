@@ -187,13 +187,13 @@
                                                     <a href="@Url.Action("Product","HomePage")">Sản Phẩm<span class="h-ribbon h-pos e-skyblue">new</span></a>
                                                 </li>
                                                 <li class="level1 active dropdown">
-                                                    <a href="#"><img src="~/Assets/ECome/img/icon-diamond.png" alt="">Flash Sale<span class="h-ribbon h-pos e-green">sale</span></a>
+                                                    <a href="@Url.Action("Index","HomeUser")"><img src="~/Assets/ECome/img/icon-diamond.png" alt="">Flash Sale<span class="h-ribbon h-pos e-green">SALE</span></a>
                                                 </li>
                                                 <li class="level1 active dropdown">
                                                     <a href="@Url.Action("Voucher", "HomePage")">Voucher<span class="h-ribbon h-pos e-skyblue">new</span></a>
                                                 </li>
                                                 <li class="level1 active dropdown">
-                                                    <a href="#">Contact</a>
+                                                    <a href="@Url.Action("Create", "Share")">Phản hồi</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -218,7 +218,7 @@
                                                     <a href="@Url.Action("Logout", "LoginCustomer")">Đăng xuất</a>
                                                 </li>
                                                 <li class="level1 active hassub">
-                                                    <a href="@Url.Action("Index", "MyGift",new { id = Session["ID"] })">Kho Voucher</a>
+                                                    <a href="@Url.Action("MyGift", "LoginCustomer",new { id = Session["ID"] })">Kho Voucher</a>
                                                 </li>
                                             }
                                         </ul>

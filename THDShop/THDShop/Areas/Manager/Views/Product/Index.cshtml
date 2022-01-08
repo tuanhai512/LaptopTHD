@@ -1,4 +1,4 @@
-﻿@model IEnumerable<THDShop.PRODUCTS>
+﻿@model IEnumerable<THDShop.PRODUCT>
 
 @{
     ViewBag.Title = "Index";
@@ -102,7 +102,7 @@
                                         @Html.DisplayFor(modelItem => item.NAME)
                                     </td>
                                     <td class="table-data">
-                                        @Html.DisplayFor(modelItem => item.CATEGORIES.NAME)
+                                        @Html.DisplayFor(modelItem => item.CATEGORy.NAME)
                                     </td>
                                     <td class="table-data">
                                         @Html.DisplayFor(modelItem => item.ORI_PRICE)

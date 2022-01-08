@@ -11,10 +11,20 @@ namespace THDShop.Controllers
     {
         // GET: HomePage
         QLLaptopShopEntities _db = new QLLaptopShopEntities();
-        public ActionResult Index()
+        public ActionResult Index(int? loai)
         {
-            var query = _db.PRODUCTS.OrderByDescending(x => x.NAME);
-            return View(query);
+
+            if(loai == null) {
+                var query = _db.PRODUCTS.OrderByDescending(x => x.NAME);
+                return View(query);
+            }
+            else
+            {
+                var proList = _db.PRODUCTS.OrderByDescending(x => x.NAME)
+                    .Where(x => x.IDCATEGORY == loai);
+                return View(proList);
+            }
+            
         }
         public ActionResult Details(int id)
         {
