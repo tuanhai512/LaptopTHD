@@ -17,7 +17,6 @@ namespace THDShop
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CUSTOMER()
         {
-            this.MYGIFTs = new HashSet<MYGIFT>();
             this.DELI_ADDRESS = new HashSet<DELI_ADDRESS>();
             this.FEEDBACKs = new HashSet<FEEDBACK>();
         }
@@ -32,11 +31,11 @@ namespace THDShop
         public string PASSWORD { get; set; }
         public string AVATAR { get; set; }
         public int POINT_MY { get; set; }
+        public Nullable<int> IDMYGIFT { get; set; }
         public Nullable<int> IDROLE { get; set; }
         public string ROLENAME { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MYGIFT> MYGIFTs { get; set; }
+        public virtual MYGIFT MYGIFT { get; set; }
         public virtual ROLE ROLE { get; set; }
         public virtual USER USER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -40,6 +40,7 @@
           <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
           <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
           <ScalarProperty Name="POINT_MY" ColumnName="POINT_MY" />
+          <ScalarProperty Name="IDMYGIFT" ColumnName="IDMYGIFT" />
           <ScalarProperty Name="IDROLE" ColumnName="IDROLE" />
           <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
         </MappingFragment>
@@ -108,7 +109,6 @@
         <MappingFragment StoreEntitySet="MYGIFT">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="IDGIFT" ColumnName="IDGIFT" />
-          <ScalarProperty Name="IDCUS" ColumnName="IDCUS" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

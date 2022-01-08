@@ -1,4 +1,4 @@
-﻿@model IEnumerable<THDShop.USER>
+﻿@model IEnumerable<THDShop.USERS>
 
 @{
 }
@@ -84,7 +84,7 @@
                             </td>
                            
                             <td>
-                                @Html.DisplayFor(modelItem => item.ROLE.NAME)
+                                @Html.DisplayFor(modelItem => item.ROLES.NAME)
                             </td>
                             <td style="display: flex;align-content: center;flex-wrap: wrap;flex-direction: column;">
                                 <a href="@Url.Action("Edit", "User", new { id = item.ID })" class="btn btn-sm btn-warning"  style="margin-bottom: 5px;">Edit</a>

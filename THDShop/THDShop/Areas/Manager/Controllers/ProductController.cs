@@ -233,6 +233,7 @@ namespace THDShop.Areas.Manager.Controllers
             }
         }
 
+
         public ActionResult Detail(DetailProductDTO model, int ID)
         {
             var query = from c in _context.PRODUCTS

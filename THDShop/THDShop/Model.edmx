@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QLLaptopShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="QLLaptopShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BILL">
           <Key>
             <PropertyRef Name="ID" />
@@ -43,6 +43,7 @@
           <Property Name="PASSWORD" Type="varchar" MaxLength="30" />
           <Property Name="AVATAR" Type="text" />
           <Property Name="POINT_MY" Type="int" Nullable="false" />
+          <Property Name="IDMYGIFT" Type="int" />
           <Property Name="IDROLE" Type="int" />
           <Property Name="ROLENAME" Type="varchar" MaxLength="30" />
         </EntityType>
@@ -108,7 +109,6 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDGIFT" Type="varchar" MaxLength="20" />
-          <Property Name="IDCUS" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ORDERS">
           <Key>
@@ -232,14 +232,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CUSTOMER_MYGIFT">
-          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
-          <End Role="MYGIFT" Type="Self.MYGIFT" Multiplicity="*" />
+          <End Role="MYGIFT" Type="Self.MYGIFT" Multiplicity="0..1" />
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CUSTOMER">
+            <Principal Role="MYGIFT">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="MYGIFT">
-              <PropertyRef Name="IDCUS" />
+            <Dependent Role="CUSTOMER">
+              <PropertyRef Name="IDMYGIFT" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -442,8 +442,8 @@
             <End Role="PRODUCTS" EntitySet="PRODUCTS" />
           </AssociationSet>
           <AssociationSet Name="FK_CUSTOMER_MYGIFT" Association="Self.FK_CUSTOMER_MYGIFT">
-            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
             <End Role="MYGIFT" EntitySet="MYGIFT" />
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
           </AssociationSet>
           <AssociationSet Name="FK_CUSTOMER_ROLES" Association="Self.FK_CUSTOMER_ROLES">
             <End Role="ROLES" EntitySet="ROLES" />
@@ -550,9 +550,10 @@
           <Property Name="PASSWORD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="AVATAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="POINT_MY" Type="Int32" Nullable="false" />
+          <Property Name="IDMYGIFT" Type="Int32" />
           <Property Name="IDROLE" Type="Int32" />
           <Property Name="ROLENAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="MYGIFTs" Relationship="Self.FK_CUSTOMER_MYGIFT" FromRole="CUSTOMER" ToRole="MYGIFT" />
+          <NavigationProperty Name="MYGIFT" Relationship="Self.FK_CUSTOMER_MYGIFT" FromRole="CUSTOMER" ToRole="MYGIFT" />
           <NavigationProperty Name="ROLE" Relationship="Self.FK_CUSTOMER_ROLES" FromRole="CUSTOMER" ToRole="ROLES" />
           <NavigationProperty Name="USER" Relationship="Self.FK_CUSTOMER_USER" FromRole="CUSTOMER" ToRole="USERS" />
           <NavigationProperty Name="DELI_ADDRESS" Relationship="Self.FK_DEADDRESS_CUSTOMER" FromRole="CUSTOMER" ToRole="DELI_ADDRESS" />
@@ -629,8 +630,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDGIFT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="IDCUS" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_CUSTOMER_MYGIFT" FromRole="MYGIFT" ToRole="CUSTOMER" />
+          <NavigationProperty Name="CUSTOMERs" Relationship="Self.FK_CUSTOMER_MYGIFT" FromRole="MYGIFT" ToRole="CUSTOMER" />
           <NavigationProperty Name="GIFT" Relationship="Self.FK_GIFT_MYGIFT" FromRole="MYGIFT" ToRole="GIFT" />
         </EntityType>
         <EntityType Name="ORDER">
@@ -794,14 +794,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CUSTOMER_MYGIFT">
-          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
-          <End Role="MYGIFT" Type="Self.MYGIFT" Multiplicity="*" />
+          <End Role="MYGIFT" Type="Self.MYGIFT" Multiplicity="0..1" />
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CUSTOMER">
+            <Principal Role="MYGIFT">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="MYGIFT">
-              <PropertyRef Name="IDCUS" />
+            <Dependent Role="CUSTOMER">
+              <PropertyRef Name="IDMYGIFT" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -988,8 +988,8 @@
             <End Role="PRODUCTS" EntitySet="PRODUCTS" />
           </AssociationSet>
           <AssociationSet Name="FK_CUSTOMER_MYGIFT" Association="Self.FK_CUSTOMER_MYGIFT">
-            <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
             <End Role="MYGIFT" EntitySet="MYGIFTs" />
+            <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
           </AssociationSet>
           <AssociationSet Name="FK_CUSTOMER_ROLES" Association="Self.FK_CUSTOMER_ROLES">
             <End Role="ROLES" EntitySet="ROLES" />
@@ -1085,6 +1085,7 @@
                 <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
                 <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
                 <ScalarProperty Name="POINT_MY" ColumnName="POINT_MY" />
+                <ScalarProperty Name="IDMYGIFT" ColumnName="IDMYGIFT" />
                 <ScalarProperty Name="IDROLE" ColumnName="IDROLE" />
                 <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
               </MappingFragment>
@@ -1153,7 +1154,6 @@
               <MappingFragment StoreEntitySet="MYGIFT">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="IDGIFT" ColumnName="IDGIFT" />
-                <ScalarProperty Name="IDCUS" ColumnName="IDCUS" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

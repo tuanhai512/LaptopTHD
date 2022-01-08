@@ -14,6 +14,12 @@ namespace THDShop
     
     public partial class MYGIFT
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public MYGIFT()
+        {
+            this.CUSTOMERs = new HashSet<CUSTOMER>();
+        }
+    
         public int ID { get; set; }
         public string IDGIFT { get; set; }
         public int IDCUS { get; set; }

@@ -6,11 +6,13 @@ using System.Web;
 
 namespace THDShop.ViewModel.Category
 {
+  
     public class CreateCategoryInput
     {
         [Required]
         [Display(Name = "Tên loại")]
         public string NAME { get; set; }
+
     }
     public class UpdateCategoryInput : CreateCategoryInput
     {
