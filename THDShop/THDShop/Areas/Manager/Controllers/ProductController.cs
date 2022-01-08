@@ -6,18 +6,25 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using THDShop;
+using THDShop.ViewModel;
 using THDShop.ViewModel.Product;
+
 
 namespace THDShop.Areas.Manager.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : Controller 
     {
         // GET: Manager/Product
         private QLLaptopShopEntities _context = new QLLaptopShopEntities();
-        public ProductController()
+        
+      
+        
+        public ProductController( )
         {
             ProductSingleton.Instance.Init(_context);
         }
+
+     
         public ActionResult Index(int id = 0)
         {
             //var query = from c in _context.PRODUCTS
@@ -51,6 +58,13 @@ namespace THDShop.Areas.Manager.Controllers
             }
             return View(links);
         }
+        public ActionResult TheloaiLap(FormCollection form)
+        {
+
+            string theloailaptop = form["Theloai"];
+            
+            return RedirectToAction("create", "Product");
+        }
         public ActionResult Create()
         {
             var categorylist = _context.CATEGORIES.ToList().Select(
@@ -69,6 +83,8 @@ namespace THDShop.Areas.Manager.Controllers
         [ValidateInput(false)]
         public ActionResult Create(CreateProductInput model)
         {
+
+            CalculateClient sales = new CalculateClient(new Sale_Price());
             var entity = new PRODUCT();
             if (model != null)
             {
@@ -90,14 +106,18 @@ namespace THDShop.Areas.Manager.Controllers
                     model.UploadImage.SaveAs(Path.Combine(Server.MapPath("~/Assets/Images"), filename));
                 }
                 entity.IMAGE = model.IMAGE;
-                if (ModelState.IsValid)
+                var sp = new LaptopGM();
+
+
+                    if (ModelState.IsValid)
                 {
+                    var i = model.ORI_PRICE;
                     entity.ID = model.ID;
                     entity.NAME = model.NAME;
-                    entity.PRICE = model.PRICE.HasValue ? model.PRICE.Value : 0;
                     entity.ORI_PRICE = model.ORI_PRICE.HasValue ? model.ORI_PRICE.Value : 0;
-                    entity.USD_PRICE = model.USD_PRICE().HasValue ? model.USD_PRICE().Value :0;
+                    entity.PRICE = sales.Calculate((int)i);
                     entity.QUANTITY = model.QUANTITY.HasValue ? model.QUANTITY.Value : 0;
+                    entity.USD_PRICE = model.USD_PRICE(1);
                     entity.DESCRIPTION = model.DESCRIPTION;
                     entity.DESCRIPTION_CPU = model.DESCRIPTION_CPU;
                     entity.DESCRIPTION_RAM = model.DESCRIPTION_RAM;
@@ -181,7 +201,7 @@ namespace THDShop.Areas.Manager.Controllers
             entity.NAME = model.NAME;
             entity.PRICE = model.PRICE.HasValue ? model.PRICE.Value : 0;
             entity.ORI_PRICE = model.ORI_PRICE.HasValue ? model.ORI_PRICE.Value : 0;
-            entity.USD_PRICE = model.USD_PRICE().HasValue ? model.USD_PRICE().Value : 0;
+            entity.USD_PRICE = model.USD_PRICE(1);
             entity.QUANTITY = model.QUANTITY.HasValue ? model.QUANTITY.Value : 0;
             entity.DESCRIPTION = model.DESCRIPTION;
             entity.DESCRIPTION_CPU = model.DESCRIPTION_CPU;

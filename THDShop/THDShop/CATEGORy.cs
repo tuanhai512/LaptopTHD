@@ -11,15 +11,27 @@ namespace THDShop
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class CATEGORy
+    using THDShop.ViewModel.Category;
+    public interface CategoryPrototype
+    {
+        CategoryPrototype Clone();
+
+    }
+    public partial class CATEGORy:CategoryPrototype
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CATEGORy()
         {
             this.PRODUCTS = new HashSet<PRODUCT>();
         }
-    
+  
+        public CategoryPrototype Clone()
+        {
+            CATEGORy cate = new CATEGORy();
+            cate.NAME = NAME;
+            cate.CREATEAT = DateTime.Now;
+            return cate;
+        }
         public int ID { get; set; }
         public string NAME { get; set; }
         public Nullable<int> CREATEBY { get; set; }

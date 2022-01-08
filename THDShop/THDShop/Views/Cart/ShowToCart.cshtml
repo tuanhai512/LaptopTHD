@@ -7,6 +7,13 @@
 
 <head>
     <link href="~/Assets/css/GioHang.css" rel="stylesheet" />
+    <style>
+        .flexwrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    </style>
 </head>
 
 <div class="container container-240">
@@ -31,6 +38,8 @@
                                     foreach (var item in Model.Items)
                                     {
                                         double total = Convert.ToDouble(item._product.PRICE * item._quantity);
+                                        double totalusd = Convert.ToDouble(item._product.USD_PRICE * item._quantity);
+
                                 <tr class="item_cart">
                                     <td class="product-name flex align-center">
                                         <a href="/Cart/RemoveCart/@item._product.ID" class="btn-del"><i class="ion-ios-close-empty"></i></a>
@@ -61,11 +70,15 @@
                                             }
                                         </div>
                                     </td>
-                                    <td class="total-price">
-                                        <p class="price">@item._product.PRICE.ToString("#,##") <sub>x1</sub></p>
+                                    <td class="total-price flexwrap"style="top: -5px;position:relative;">
+                                       
+                                            <p class="price ">@item._product.PRICE.ToString("#,##") </p>
+                                            <p> <sub>x @item._quantity</sub></p>
+
                                     </td>
-                                    <td class="total-price">
-                                        <p class="price">@total.ToString("#,##")</p>
+                                    <td class="total-price ">
+                                        <p class="price ">@total.ToString("#,##") </p>
+                                        <p><sub>( @totalusd USD )</sub></p>
                                     </td>
                                 </tr>
                                     }
@@ -102,7 +115,7 @@
                                     <th>Tổng giá</th>
                                     @if (Model != null)
                                     {
-                                        <td>@Model.Total_money().ToString("N0")</td>
+                                        <td>@Model.Total_money().ToString("N0") </td>
                                     }
                                     </tr>
                                 <tr class="cart-shipping">
@@ -130,7 +143,7 @@
                                     {
                                         if (Session["ID_Gift"] != null)
                                         {
-                                            <td>@Model.Total_money_GIFT()</td>
+                                            <td>@Model.Total_money_GIFT() </td>
                                         }
                                         else
                                         {   if (Session["ID_Gift"]==null)

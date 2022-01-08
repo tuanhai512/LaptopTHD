@@ -22,7 +22,7 @@ namespace THDShop.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult LoginAccount(USER _user)
+        public ActionResult LoginAccount(CUSTOMER _user)
         {
        
             if (!CheckExistAccount(_user))
@@ -32,7 +32,7 @@ namespace THDShop.Controllers
             }
             else
             {
-                var check = database.USERS.Where(s => s.EMAIL == _user.EMAIL && s.PASSWORD == _user.PASSWORD).FirstOrDefault();
+                var check = database.CUSTOMERs.Where(s => s.EMAIL == _user.EMAIL && s.PASSWORD == _user.PASSWORD).FirstOrDefault();
                 if (check.ROLENAME == "Customer")
                 {
                     database.Configuration.ValidateOnSaveEnabled = false;
@@ -41,11 +41,12 @@ namespace THDShop.Controllers
                     int a = (int)Session["ID"];
                     Session["EMAIL"] = _user.EMAIL;
                     Session["PASSWORD"] = _user.PASSWORD;
+                    
                     return RedirectToAction("Index", "HomePage");
                 }                
                 else
                 {
-                    var checkM = database.USERS.Where(s => s.EMAIL == _user.EMAIL && s.PASSWORD == _user.PASSWORD).FirstOrDefault();
+                    var checkM = database.CUSTOMERs.Where(s => s.EMAIL == _user.EMAIL && s.PASSWORD == _user.PASSWORD).FirstOrDefault();
                     if (checkM.ROLE.NAME == "Manager"|| checkM.ROLE.NAME == "Staff")
                     {
                         Session["EMAIL"] = _user.EMAIL;
@@ -83,10 +84,10 @@ namespace THDShop.Controllers
             return RedirectToAction("Index");
         }
 
-        public bool CheckExistAccount(USER _user)
+        public bool CheckExistAccount(CUSTOMER _user)
         {
 
-            var check = database.USERS.Where(s => s.EMAIL == _user.EMAIL && s.PASSWORD == _user.PASSWORD).FirstOrDefault();
+            var check = database.CUSTOMERs.Where(s => s.EMAIL == _user.EMAIL && s.PASSWORD == _user.PASSWORD).FirstOrDefault();
 
             if (check != null)
             {
@@ -139,6 +140,10 @@ namespace THDShop.Controllers
             }
             return View();
         }
-
+        public ActionResult MyGift(int id)
+        {
+            var bill = database.MYGIFTs.Where(m => m.IDCUS == id).ToList();
+            return View(bill);
+        }
     }
 }

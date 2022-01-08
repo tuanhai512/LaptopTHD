@@ -10,111 +10,115 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Create Product</h1>
 </div>
-
-@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("TheloaiLap", "Product"))
 {
-    @Html.AntiForgeryToken()
-    <div style="display: flex; align-items: flex-start;">
-        <div class="text-center-box">
-            <div class="paddingtop rl" style="padding-bottom: 20px;">
-                <div class="form">
-                    <!-- Tên -->
-                    <div class="form-group">
-                        @Html.EditorFor(model => model.NAME, new { htmlAttributes = new { placeholder = "Tên Sản Phẩm" } })
-                        @Html.ValidationMessageFor(model => model.NAME, "", new { @class = "text-danger" })
-                    </div>
+    <div>
+        <div class="form-group ">
+            <input type="text" name="Theloai" value="" />
+            <input class="btn btn-update" type="submit" value="Chon" />
 
-                    <!-- Giá Bán -->
-                    <div class="form-group ">
-                        @Html.EditorFor(model => model.PRICE, new { htmlAttributes = new { placeholder = "Giá Bán" } })
-                        @Html.ValidationMessageFor(model => model.PRICE, "", new { @class = "text-danger" })
-                    </div>
-
-                    <!-- Giá Gốc -->
-                    <div class="form-group ">
-                        @Html.EditorFor(model => model.ORI_PRICE, new { htmlAttributes = new { placeholder = "Giá Gốc" } })
-                        @Html.ValidationMessageFor(model => model.ORI_PRICE, "", new { @class = "text-danger" })
-                    </div>
-
-                    <!-- Số Lượng -->
-                    <div class="form-group">
-                        @Html.EditorFor(model => model.QUANTITY, new { htmlAttributes = new { placeholder = "Số Lượng" } })
-                        @Html.ValidationMessageFor(model => model.QUANTITY, "", new { @class = "text-danger" })
-                    </div>
-
-                    <!-- Mô Tả Chung -->
-                    <div class="form-group ">
-                        @Html.TextAreaFor(model => model.DESCRIPTION, new { htmlAttributes = new { placeholder = "..." }, id = "txtContent" })
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="text-center-box">
-            <div class="paddingtop rl" style="padding-bottom: 20px;">
-                <div class="form">
-                    <!-- Mô Tả Card -->
-                    <div class="form-group ">
-                        @Html.EditorFor(model => model.DESCRIPTION_CARD, new { htmlAttributes = new { placeholder = "Mô Tả Card" } })
-                        @Html.ValidationMessageFor(model => model.DESCRIPTION_CARD, "", new { @class = "text-danger" })
-                    </div>
-
-                    <!-- Mô Tả CPU -->
-                    <div class="form-group ">
-                        @Html.EditorFor(model => model.DESCRIPTION_CPU, new { htmlAttributes = new { placeholder = "Mô Tả CPU" } })
-                        @Html.ValidationMessageFor(model => model.DESCRIPTION_CPU, "", new { @class = "text-danger" })
-                    </div>
-
-                    <!-- Mô Tả Ram -->
-                    <div class="form-group ">
-                        @Html.EditorFor(model => model.DESCRIPTION_RAM, new { htmlAttributes = new { placeholder = "Mô Tả Ram" } })
-                        @Html.ValidationMessageFor(model => model.DESCRIPTION_RAM, "", new { @class = "text-danger" })
-                    </div>
-
-                    <!-- Mô Tả Khung Hình -->
-                    <div class="form-group ">
-                        @Html.EditorFor(model => model.DESCRIPTION_SCREEN, new { htmlAttributes = new { placeholder = "Mô Tả Khung Hình" } })
-                        @Html.ValidationMessageFor(model => model.DESCRIPTION_SCREEN, "", new { @class = "text-danger" })
-                    </div>
-
-                    <!-- Mô Tả Dung lượng -->
-                    <div class="form-group ">
-                        @Html.EditorFor(model => model.DESCRIPTION_STORAGE, new { htmlAttributes = new { placeholder = "Mô Tả Dung lượng" } })
-                        @Html.ValidationMessageFor(model => model.DESCRIPTION_STORAGE, "", new { @class = "text-danger" })
-                    </div>
-
-                    <!-- Mô Tả Cân Nặng -->
-                    <div class="form-group ">
-                        @Html.EditorFor(model => model.DESCRIPTION_WEIGHT, new { htmlAttributes = new { placeholder = "Mô Tả Cân Nặng" } })
-                        @Html.ValidationMessageFor(model => model.DESCRIPTION_WEIGHT, "", new { @class = "text-danger" })
-                    </div>
-
-                    <!-- Loại Sản Phảm -->
-                    <div class="form-group ">
-                        @Html.DropDownList("IDCATEGORY", (IEnumerable<SelectListItem>)ViewBag.Categories, "Chọn loại", new { @id = "adad" })
-                        @Html.ValidationMessageFor(model => model.IDCATEGORY, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="text-center-box">
-            <div class="paddingtop rl" style="padding-bottom: 20px;">
-                <div class="form">
-                    <!-- Hình Ảnh -->
-                    <div class="form-group ">
-                        <img src="@Url.Content(Model.IMAGE)" style="height:250px; width:250px; margin:10px;border-radius:10px;" id="previewImg" />
-                        <input type="file" id="file" name="UploadImage" onchange="ChangeImage(this, document.getElementById('previewImg'))" />
-                        <label for="file" class="btn-2">Upload Hình Ảnh</label>
-                    </div>
-
-                    <!-- Buttons -->
-                    <div>
-                        <input class="btn btn-success" type="submit" value="Create" />
-                        <span class="btn btn-link">@Html.ActionLink("Quay về", "Index") </span>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 }
-<script src="~/Scripts/editorEDK.js"></script>
-<script src="~/Assets/manager/ckeditor/ckeditor.js"></script>
+    @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div style="display: flex; align-items: flex-start;">
+            <div class="text-center-box">
+                <div class="paddingtop rl" style="padding-bottom: 20px;">
+                    <div class="form">
+                        <!-- Tên -->
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.NAME, new { htmlAttributes = new { placeholder = "Tên Sản Phẩm" } })
+                            @Html.ValidationMessageFor(model => model.NAME, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- Giá Bán -->
+                        <!-- Giá Gốc -->
+                        <div class="form-group ">
+                            @Html.EditorFor(model => model.ORI_PRICE, new { htmlAttributes = new { placeholder = "Giá Gốc" } })
+                            @Html.ValidationMessageFor(model => model.ORI_PRICE, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- Số Lượng -->
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.QUANTITY, new { htmlAttributes = new { placeholder = "Số Lượng" } })
+                            @Html.ValidationMessageFor(model => model.QUANTITY, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- Mô Tả Chung -->
+                        <div class="form-group ">
+                            @Html.TextAreaFor(model => model.DESCRIPTION, new { htmlAttributes = new { placeholder = "..." }, id = "txtContent" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center-box">
+                <div class="paddingtop rl" style="padding-bottom: 20px;">
+                    <div class="form">
+                        <!-- Mô Tả Card -->
+                        <div class="form-group ">
+                            @Html.EditorFor(model => model.DESCRIPTION_CARD, new { htmlAttributes = new { placeholder = "Mô Tả Card" } })
+                            @Html.ValidationMessageFor(model => model.DESCRIPTION_CARD, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- Mô Tả CPU -->
+                        <div class="form-group ">
+                            @Html.EditorFor(model => model.DESCRIPTION_CPU, new { htmlAttributes = new { placeholder = "Mô Tả CPU" } })
+                            @Html.ValidationMessageFor(model => model.DESCRIPTION_CPU, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- Mô Tả Ram -->
+                        <div class="form-group ">
+                            @Html.EditorFor(model => model.DESCRIPTION_RAM, new { htmlAttributes = new { placeholder = "Mô Tả Ram" } })
+                            @Html.ValidationMessageFor(model => model.DESCRIPTION_RAM, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- Mô Tả Khung Hình -->
+                        <div class="form-group ">
+                            @Html.EditorFor(model => model.DESCRIPTION_SCREEN, new { htmlAttributes = new { placeholder = "Mô Tả Khung Hình" } })
+                            @Html.ValidationMessageFor(model => model.DESCRIPTION_SCREEN, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- Mô Tả Dung lượng -->
+                        <div class="form-group ">
+                            @Html.EditorFor(model => model.DESCRIPTION_STORAGE, new { htmlAttributes = new { placeholder = "Mô Tả Dung lượng" } })
+                            @Html.ValidationMessageFor(model => model.DESCRIPTION_STORAGE, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- Mô Tả Cân Nặng -->
+                        <div class="form-group ">
+                            @Html.EditorFor(model => model.DESCRIPTION_WEIGHT, new { htmlAttributes = new { placeholder = "Mô Tả Cân Nặng" } })
+                            @Html.ValidationMessageFor(model => model.DESCRIPTION_WEIGHT, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- Loại Sản Phảm -->
+                        <div class="form-group ">
+                            @Html.DropDownList("IDCATEGORY", (IEnumerable<SelectListItem>)ViewBag.Categories, "Chọn loại", new { @id = "adad" })
+                            @Html.ValidationMessageFor(model => model.IDCATEGORY, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center-box">
+                <div class="paddingtop rl" style="padding-bottom: 20px;">
+                    <div class="form">
+                        <!-- Hình Ảnh -->
+                        <div class="form-group ">
+                            <img src="@Url.Content(Model.IMAGE)" style="height:250px; width:250px; margin:10px;border-radius:10px;" id="previewImg" />
+                            <input type="file" id="file" name="UploadImage" onchange="ChangeImage(this, document.getElementById('previewImg'))" />
+                            <label for="file" class="btn-2">Upload Hình Ảnh</label>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div>
+                            <input class="btn btn-success" type="submit" value="Create" />
+                            <span class="btn btn-link">@Html.ActionLink("Quay về", "Index") </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <script src="~/Scripts/editorEDK.js"></script>
+    <script src="~/Assets/manager/ckeditor/ckeditor.js"></script>

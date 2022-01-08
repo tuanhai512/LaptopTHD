@@ -120,11 +120,7 @@ namespace THDShop.Areas.Manager.Controllers
         public ActionResult Searchday(int day)
         { 
             int month = day;
-
             var list = database.REPORTs.Where(p => p.DATERP.Value.Month == month).ToList();
-           
-           
-            
             return View(list);
         }
     }

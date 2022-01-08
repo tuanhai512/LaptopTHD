@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using static THDShop.ViewModel.Proxy;
 
 namespace THDShop.ViewModel
 {
@@ -12,11 +12,11 @@ namespace THDShop.ViewModel
         public GIFT _gift { get; set; }
         public int _giftvalue { get; set; }
         public PRODUCT _product { get; set; }
-
         public int _quantity { get; set; }
     }
     public class Cart
-    {
+    {//proxy pattern
+       
         QLLaptopShopEntities _db = new QLLaptopShopEntities();
 
         [NotMapped]
@@ -26,6 +26,9 @@ namespace THDShop.ViewModel
         {
             get { return items; }
         }
+
+        
+
         public void Add_Product_Cart(PRODUCT prod, int _quan = 1)
         {
             var item = Items.FirstOrDefault(s => s._product.ID == prod.ID);

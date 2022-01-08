@@ -10,7 +10,7 @@ using THDShop.ViewModel;
 
 namespace THDShop.Areas.Manager.Controllers
 {
-    public class OrderController : Controller
+    public class OrderController : Controller 
     {
         //public ReportDTO GetReport()
         //{
@@ -24,7 +24,16 @@ namespace THDShop.Areas.Manager.Controllers
         //}
         // GET: Manager/Order
         QLLaptopShopEntities _db = new QLLaptopShopEntities();
+        public State_Changes_Status status;
         // GET: QuanLy/DonHang
+        public OrderController()
+        {
+
+        }
+        public OrderController(State_Changes_Status _status)
+        {
+            this.status = _status;
+        }
         public ActionResult ShowMonAn()
         {
             if (Session["GioHang"] == null)
@@ -45,7 +54,7 @@ namespace THDShop.Areas.Manager.Controllers
             ORDER dathang = _db.ORDERS.Find(id);
             if (dathang.STATUS == 0)
             {
-                dathang.STATUS = 1;
+                status.Change_Status(id);
             }
             _db.Entry(dathang).State = EntityState.Modified;
             _db.SaveChanges();

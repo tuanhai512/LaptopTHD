@@ -256,7 +256,7 @@
                                                     <a href="@Url.Action("Logout", "LoginCustomer")">Đăng xuất</a>
                                                 </li>
                                                 <li class="level1 active hassub">
-                                                    <a href="@Url.Action("Index", "MyGift",new { id = Session["ID"] })">Kho Voucher</a>
+                                                    <a href="@Url.Action("MyGift", "LoginCustomer",new { id = Session["ID"] })">Kho Voucher</a>
                                                 </li>
                                             }
                                         </ul>
@@ -268,7 +268,7 @@
                 </div>
             </header>
             <!-- /header -->
-            <div class="ads-group v3">
+            <div class="ads-group v3 " style="height: -webkit-fill-available;">
                 <div class="container container-240">
                     <div class="row">
                         <div class="col-lg-3 col-md-3 set-w"></div>
@@ -298,7 +298,7 @@
                     </div>
                 </div>
             </div>
-            <div class="homepage-banner">
+            <div class="homepage-banner" style="height: -webkit-fill-available;">
                 <div class="container container-240">
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-xs-6">

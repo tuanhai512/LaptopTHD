@@ -5,12 +5,23 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using static THDShop.ViewModel.Proxy;
 
 namespace THDShop.ViewModel.Product
 {
-    public class CreateProductInput
+    public class CreateProductInput : IMath 
     {
-        public CreateProductInput()
+        private Proxy.Math math = new Proxy.Math();
+        public int USD_PRICE(int? x)
+        {
+            var usdprice = (ORI_PRICE*2) / 22000;
+            x = usdprice;
+            return math.USD_PRICE(x);
+        }
+        
+        //Constructor: assigns strategy to interface  
+
+        public CreateProductInput( )
         {
             IMAGE = "~/Assets/Images/upload.png";
         }
@@ -29,9 +40,9 @@ namespace THDShop.ViewModel.Product
         [Display(Name = "Số lượng")]
         public int? QUANTITY { get; set; }
 
-        [Range(1, int.MaxValue, ErrorMessage = "Giá không được âm")]
-        [Required(ErrorMessage = "Bạn chưa nhập giá bán")]
-        [Display(Name = "Giá Bán")]
+        //[Range(1, int.MaxValue, ErrorMessage = "Giá không được âm")]
+        //[Required(ErrorMessage = "Bạn chưa nhập giá bán")]
+        //[Display(Name = "Giá Bán")]
         public int? PRICE { get; set; }
 
         [Range(1, int.MaxValue, ErrorMessage = "Giá không được âm")]
@@ -64,14 +75,11 @@ namespace THDShop.ViewModel.Product
 
         public string IMAGE { get; set; }
         public int HOTPRODUCT { get; set; }
-        public int? USD_PRICE ()
-        {
-            var usdprice = PRICE / 22000;
-            return usdprice;   
-        }
+        
 
         [NotMapped]
         public HttpPostedFileBase UploadImage { get; set; }
+        
     }
     public class UpdateProductInput : CreateProductInput
     {

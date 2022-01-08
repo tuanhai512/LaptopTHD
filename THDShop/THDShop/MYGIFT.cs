@@ -17,7 +17,8 @@ namespace THDShop
         public int ID { get; set; }
         public string IDGIFT { get; set; }
         public int IDCUS { get; set; }
-    
+        
+
         public virtual CUSTOMER CUSTOMER { get; set; }
         public virtual GIFT GIFT { get; set; }
     }

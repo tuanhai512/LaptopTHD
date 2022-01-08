@@ -11,7 +11,8 @@ namespace THDShop
 {
     using System;
     using System.Collections.Generic;
-    
+    using THDShop.Areas.Manager.Controllers;
+
     public partial class ORDER
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +21,12 @@ namespace THDShop
             this.BILLs = new HashSet<BILL>();
             this.DE_ORDER = new HashSet<DE_ORDER>();
         }
-    
+       public State_Changes_Status status;
+
+        public ORDER(State_Changes_Status _status)
+        {
+            this.status = _status;
+        }
         public int ID { get; set; }
         public System.DateTime DAY { get; set; }
         public int IDDELIADDRESS { get; set; }

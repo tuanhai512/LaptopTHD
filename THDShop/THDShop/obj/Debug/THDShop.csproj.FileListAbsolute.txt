@@ -673,3 +673,4 @@ D:\Github\LaptopTHD\THDShop\THDShop\bin\ClosedXML.xml
 D:\Github\LaptopTHD\THDShop\THDShop\bin\DocumentFormat.OpenXml.xml
 D:\Github\LaptopTHD\THDShop\THDShop\bin\ExcelNumberFormat.xml
 D:\Github\LaptopTHD\THDShop\THDShop\bin\PayPal.xml
+D:\Github\LaptopTHD\THDShop\THDShop\obj\Debug\THDShop.csproj.AssemblyReference.cache

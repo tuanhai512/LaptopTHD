@@ -112,32 +112,6 @@ namespace THDShop.Areas.Manager.Controllers
 
             return RedirectToAction("Index");
         }
-        public ActionResult AddListGift(string id)
-        {
-            var entity = _db.GIFTs.SingleOrDefault(s=>s.ID==id);
-            var check = _db.MYGIFTs.Where(s => s.IDGIFT == id ).FirstOrDefault();
-          
-            int idcus = (int)Session["ID"];
-            if (check == null)
-            {
-                if (Session["EMAIL"] != null) {
-                    _db.MYGIFTs.Add(new MYGIFT
-                    {/*IDCUS = cus.ID,*/
-                    IDGIFT = entity.ID
-                    }) ;
-                _db.SaveChanges();
-                return RedirectToAction("Index", "HomePage");
-                }
-                else
-                {
-                    return RedirectToAction("LoginAccount", "LoginCustomer");
-
-                }
-            }
-         
-
-
-            return RedirectToAction("Index","HomeUser");
-        }
+       
     }
 }
