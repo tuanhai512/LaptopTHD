@@ -63,7 +63,9 @@
                             foreach (var item in Model)
                             {
                         <tr class="table-row">
-
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ID)
+                            </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.NAME)
                             </td>

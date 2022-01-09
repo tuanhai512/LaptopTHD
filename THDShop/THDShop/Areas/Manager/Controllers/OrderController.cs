@@ -24,16 +24,9 @@ namespace THDShop.Areas.Manager.Controllers
         //}
         // GET: Manager/Order
         QLLaptopShopEntities _db = new QLLaptopShopEntities();
-        public Phanhoi status;
+      //  public Phanhoi status;
         // GET: QuanLy/DonHang
-        public OrderController()
-        {
-
-        }
-        public OrderController(Phanhoi _status)
-        {
-            this.status = _status;
-        }
+        
         public ActionResult ShowMonAn()
         {
             if (Session["GioHang"] == null)
@@ -54,12 +47,11 @@ namespace THDShop.Areas.Manager.Controllers
             ORDER dathang = _db.ORDERS.Find(id);
             if (dathang.STATUS == 0)
             {
-                status.Change_Status(id);
+                dathang.STATUS = 1;
             }
             _db.Entry(dathang).State = EntityState.Modified;
             _db.SaveChanges();
             return RedirectToAction("Index");
-
         }
         public ActionResult BillSuccess()
         {
@@ -84,8 +76,10 @@ namespace THDShop.Areas.Manager.Controllers
                     {
                         IDORDER = dathang.ID,
                         TOTALMONEY = dathang.TOTALMONEY,
+                        NOTE=dathang.NOTE,
                         DATETIME = dathang.DAY,
                         ORI_PRICE = dathang.ORI_PRICE
+                       
                         // ID = (int)Session["MAKH"]
                     };
                     _db.BILLs.Add(hoadon);
@@ -119,7 +113,8 @@ namespace THDShop.Areas.Manager.Controllers
                             IDBILL = hoadon.ID,
                             IDORDER = item.IDORDER,
                             IDPRODUCT = item.IDPRODUCT,
-                            QUANTITY = item.QUANTITY,
+                            QUANTITY = item.QUANTITY
+                            
                         };
                         _db.DE_BILL.Add(cthoadon);
                         _db.SaveChanges();
@@ -133,12 +128,12 @@ namespace THDShop.Areas.Manager.Controllers
             return RedirectToAction("Index");
 
         }
-        public ActionResult BillCancel()
-        {
-            var model = _db.ORDERS.Where(s => s.STATUS == 3).ToList();
+        //public ActionResult BillCancel()
+        //{
+        //    var model = _db.ORDERS.Where(s => s.STATUS == 3).ToList();
 
-            return View(model);
-        }
+        //    return View(model);
+        //}
         public ActionResult Cancel(int? id)
         {
             if (id == null)

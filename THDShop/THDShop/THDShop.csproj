@@ -155,7 +155,6 @@
     <Compile Include="Areas\Manager\Controllers\GiftController.cs" />
     <Compile Include="Areas\Manager\Controllers\LoginManagerController.cs" />
     <Compile Include="Areas\Manager\Controllers\OrderController.cs" />
-    <Compile Include="Areas\Manager\Controllers\PhanhoiController.cs" />
     <Compile Include="Areas\Manager\Controllers\ProductController.cs" />
     <Compile Include="Areas\Manager\Controllers\ReportController.cs" />
     <Compile Include="Areas\Manager\Controllers\RoleController.cs" />
@@ -231,7 +230,6 @@
     <Compile Include="USER.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\AbstractFactory.cs" />
     <Compile Include="ViewModel\DeliAddress\CheckOutDetails.cs" />
     <Compile Include="ViewModel\Cart.cs" />
     <Compile Include="ViewModel\Category\CategoryDTO.cs" />
@@ -3523,7 +3521,6 @@
     <Content Include="Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Manager\Views\Phanhoi\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\editorEDK.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -3566,7 +3563,8 @@
     <Content Include="Views\HomePage\Voucher.cshtml" />
     <Content Include="Areas\Manager\Views\MyGift\Index.cshtml" />
     <Content Include="Views\LoginCustomer\MyGift.cshtml" />
-    <Content Include="Views\Shared\Create.cshtml" />
+    <Content Include="Views\LoginCustomer\EditAccount.cshtml" />
+    <Content Include="Views\LoginCustomer\DonDat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -100,7 +100,6 @@ namespace THDShop.Areas.Manager.Controllers
                     model.UploadImage.SaveAs(Path.Combine(Server.MapPath("~/Assets/Images"), filename));
                 }
                 entity.IMAGE = model.IMAGE;
-                var sp = new LaptopGM();
 
 
                     if (ModelState.IsValid)

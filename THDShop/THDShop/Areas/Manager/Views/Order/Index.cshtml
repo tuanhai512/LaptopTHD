@@ -43,6 +43,11 @@
                             </th>
                             <th class="header__item">
                                 <a class="filter__link" id="name" href="#">
+                                    Email
+                                </a>
+                            </th>
+                            <th class="header__item">
+                                <a class="filter__link" id="name" href="#">
                                     Tên
                                 </a>
                             </th>
@@ -79,69 +84,72 @@
                         {
                             foreach (var item in Model)
                             {
-                                <tr class="table-row">
-                                    <td class="table-data">
-                                        @(item.DAY.ToString("dd/MM HH:mm"))
-                                    </td>
-                                    <td class="table-data">
-                                        @Html.DisplayFor(modelItem => item.ID)
-                                    </td>
-                                    <td class="table-data">
-                                        @Html.DisplayFor(modelItem => item.DELI_ADDRESS.NAME)
-                                    </td>
-                                    <td class="table-data">
-                                        @Html.DisplayFor(modelItem => item.DELI_ADDRESS.PHONE)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DELI_ADDRESS.ADDRESS)
-                                    </td>
-                                    <td class="table-data">
-                                        @Html.DisplayFor(modelItem => item.TOTALMONEY)
-                                    </td>
-                                    <td>
-                                        @if (item.METHODS.Equals(0))
-                                        {
-                                            <span>Tiền Mặt(COD)</span>
-                                        }
-                                        @if (item.METHODS.Equals(1))
-                                        {
-                                            <span>PayPal</span>
-                                        }
-                                    </td>
-                                    <td>
-                                        <a href="@Url.Action("Comfirm", "Order", new { id = @item.ID })">
-                                            @if (item.STATUS.Equals(0))
-                                            {
-                                                <span class="btn btn-sm btn-warning">Xác Nhận</span>
-                                            }
-                                        </a>
-                                        <a href="@Url.Action("Success", "Order", new { id = @item.ID })" style="margin-bottom: 5px;">
-                                            @if (item.STATUS.Equals(1))
-                                            {
-                                                <span class="btn btn-sm btn-info">Hoàn Tất</span>
-                                            }
-                                            @if (item.STATUS.Equals(2))
-                                            {
-                                                <span class="btn-disabled">Đã Hoàn Tất</span>
-                                            }
-                                        </a>
-                                        <a href="@Url.Action("Cancel", "Order", new { id = @item.ID })" style="margin-bottom: 5px;">
-                                            @if (item.STATUS.Equals(1))
-                                            {
-                                                <span class="btn btn-sm btn-danger">Hủy Đơn</span>
-                                            }
-                                            @if (item.STATUS.Equals(3))
-                                            {
-                                                <span class="btn-disabled">Đã Hủy Đơn</span>
-                                            }
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="@Url.Action("Details", "Order", new { id = @item.ID })" style="text-decoration: none;">
-                                            <span class="btn btn-info btn-sm">Chi Tiết</span>
-                                        </a>
-                                    </td>
-                                </tr>
+                        <tr class="table-row">
+                            <td class="table-data">
+                                @(item.DAY.ToString("dd/MM HH:mm"))
+                            </td>
+                            <td class="table-data">
+                                @Html.DisplayFor(modelItem => item.ID)
+                            </td>
+                            <td class="table-data">
+                                @Html.DisplayFor(modelItem => item.DELI_ADDRESS.CUSTOMER.EMAIL)
+                            </td>
+                            <td class="table-data">
+                                @Html.DisplayFor(modelItem => item.DELI_ADDRESS.NAME)
+                            </td>
+                            <td class="table-data">
+                                @Html.DisplayFor(modelItem => item.DELI_ADDRESS.PHONE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DELI_ADDRESS.ADDRESS)
+                            </td>
+                            <td class="table-data">
+                                @Html.DisplayFor(modelItem => item.TOTALMONEY)
+                            </td>
+                            <td>
+                                @if (item.METHODS.Equals(0))
+                                {
+                                    <span>Tiền Mặt(COD)</span>
+                                }
+                                @if (item.METHODS.Equals(1))
+                                {
+                                    <span>PayPal</span>
+                                }
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Comfirm", "Order", new { id = @item.ID })">
+                                    @if (item.STATUS.Equals(0))
+                                    {
+                                        <span class="btn btn-sm btn-warning">Xác Nhận</span>
+                                    }
+                                </a>
+                                <a href="@Url.Action("Success", "Order", new { id = @item.ID })" style="margin-bottom: 5px;">
+                                    @if (item.STATUS.Equals(1))
+                                    {
+                                        <span class="btn btn-sm btn-info">Hoàn Tất</span>
+                                    }
+                                    @if (item.STATUS.Equals(2))
+                                    {
+                                        <span class="btn-disabled">Đã Hoàn Tất</span>
+                                    }
+                                </a>
+                                <a href="@Url.Action("Cancel", "Order", new { id = @item.ID })" style="margin-bottom: 5px;">
+                                    @if (item.STATUS.Equals(1))
+                                    {
+                                        <span class="btn btn-sm btn-danger">Hủy Đơn</span>
+                                    }
+                                    @if (item.STATUS.Equals(3))
+                                    {
+                                        <span class="btn-disabled">Đã Hủy Đơn</span>
+                                    }
+                                </a>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Details", "Order", new { id = @item.ID })" style="text-decoration: none;">
+                                    <span class="btn btn-info btn-sm">Chi Tiết</span>
+                                </a>
+                            </td>
+                        </tr>
                             }
                         }
                     </tbody>

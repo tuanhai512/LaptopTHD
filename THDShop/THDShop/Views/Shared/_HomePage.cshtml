@@ -79,7 +79,13 @@
                             <div style="padding-top:40px" class="col-lg-3  col-md-3 col-sm-6 col-xs-6 v-center header-sub">
                                 <div class="right-panel">
                                     <div class="header-sub-element row">
-                                        <a class="hidden-xs hidden-sm" href=""><img src="~/Assets/ECome/img/icon-user.png" alt=""></a>
+                                        @if (Session["Email"] != null)
+                                        {
+                                            <a class="hidden-xs hidden-sm" href="@Url.Action("EditAccount", "LoginCustomer", new { id = Session["ID"] })"><img src="~/Assets/ECome/img/icon-user.png" alt=""></a>
+                                        }
+                                        else
+                                        { <a class="hidden-xs hidden-sm" href="#"><img src="~/Assets/ECome/img/icon-user.png" alt=""></a>
+                                        }
                                         <div class="cart">
                                             <a href="@Url.Action("ShowToCart","Cart")" class="dropdown-toggle">
                                                 <img src="~/Assets/ECome/img/icon-cart.png" alt="">
@@ -216,6 +222,9 @@
                                                 </li>
                                                 <li class="level1 active hassub">
                                                     <a href="@Url.Action("MyGift", "LoginCustomer",new { id = Session["ID"] })">Kho Voucher</a>
+                                                </li>
+                                                <li class="level1 active hassub">
+                                                    <a href="@Url.Action("DonDat", "LoginCustomer",new { id = Session["ID"] })">Xem đơn đặt</a>
                                                 </li>
                                             }
                                         </ul>

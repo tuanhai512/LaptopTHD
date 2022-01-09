@@ -49,10 +49,11 @@
                                 Ngày Sinh
                             </a>
                         </th>
+                                                <th>Điểm</th>
+
                         <th>
                             Ảnh
                         </th>
-                        <th></th>
                     </tr>
                 </thead>
             </table>
@@ -79,6 +80,9 @@
                         </td>
                         <td class="table-data">
                             @Html.DisplayFor(modelItem => item.BIRTHDAY)
+                        </td>
+                        <td class="table-data">
+                            @Html.DisplayFor(modelItem => item.POINT_MY)
                         </td>
                         <td>
                             <img src="@Url.Content(item.AVATAR)" width="100" height="100" style="border-radius: 10px;" />

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<THDShop.BILL>
+
+@{
+    ViewBag.Title = "DonDat";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DonDat</h2>
+
+<table class="table">
+    <tr>
+        <th>
+Mã Hóa đơn        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TOTALMONEY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DATETIME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER.DELI_ADDRESS.ADDRESS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.METHODS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER.NOTE)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TOTALMONEY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DATETIME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ORDER.DELI_ADDRESS.ADDRESS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.METHODS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOTE)
+        </td>
+    </tr>
+}
+
+</table>

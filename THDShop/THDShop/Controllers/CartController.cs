@@ -122,12 +122,14 @@ namespace THDShop.Controllers
                 {
                     var deliaddr = new DELI_ADDRESS()
                     {
+                       
                         NAME = model.NAME,
                         PHONE = model.PHONE,
                         ADDRESS = model.ADDRESS,
                         DISTRICT = model.DISTRICT,
                         WARD = model.WARD,
                         NOTE = model.NOTE,
+                        IDCUSTOMER = (int)Session["ID"]
                     };
                     _db.DELI_ADDRESS.Add(deliaddr);
                     _db.SaveChanges();
@@ -138,6 +140,7 @@ namespace THDShop.Controllers
                     {
                         DAY = DateTime.Now,
                         IDDELIADDRESS = deliaddr.ID,
+                        NOTE=deliaddr.NOTE,
                         TOTALMONEY = cart.Total_money(),
                         ORI_PRICE=cart.Total_OriPrice()
                     };
@@ -186,6 +189,7 @@ namespace THDShop.Controllers
                         DISTRICT = model.DISTRICT,
                         WARD = model.WARD,
                         NOTE = model.NOTE,
+                        IDCUSTOMER = (int)Session["ID"]
                     };
                     _db.DELI_ADDRESS.Add(deliaddr);
                     _db.SaveChanges();
@@ -196,6 +200,7 @@ namespace THDShop.Controllers
                     {
                         DAY = DateTime.Now,
                         IDDELIADDRESS = deliaddr.ID,
+                        NOTE=deliaddr.NOTE,
                         TOTALMONEY = cart.Total_money_GIFT(),
                         ORI_PRICE = cart.Total_OriPrice()
 

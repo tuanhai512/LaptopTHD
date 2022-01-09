@@ -61,14 +61,14 @@ namespace THDShop.Controllers
         }
         public ActionResult EditAccount(int ID)
         {
-            var detailUser = database.USERS.Where(m => m.ID == ID).FirstOrDefault();
+            var detailUser = database.CUSTOMERs.Where(m => m.ID == ID).FirstOrDefault();
             return View(detailUser);
         }
 
         [HttpPost]
-        public ActionResult EditAccount(USER user)
+        public ActionResult EditAccount(CUSTOMER user)
         {
-            var detail = database.USERS.Where(m => m.ID == user.ID);
+            var detail = database.CUSTOMERs.Where(m => m.ID == user.ID);
 
             if (detail == null)
             {
@@ -81,7 +81,7 @@ namespace THDShop.Controllers
                 database.SaveChanges();
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","HomePage");
         }
 
         public bool CheckExistAccount(CUSTOMER _user)
@@ -143,6 +143,12 @@ namespace THDShop.Controllers
         public ActionResult MyGift(int id)
         {
             var bill = database.MYGIFTs.Where(m => m.IDCUS == id).ToList();
+            return View(bill);
+        }
+
+        public ActionResult DonDat(int id)
+        {
+            var bill = database.BILLs.Where(m => m.ORDER.DELI_ADDRESS.CUSTOMER.ID == id).ToList();
             return View(bill);
         }
     }
