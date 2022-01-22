@@ -14,7 +14,8 @@ namespace THDShop.Controllers
         public ActionResult Index(int? loai)
         {
 
-            if(loai == null) {
+            if (loai == null)
+            {
                 var query = _db.PRODUCTS.OrderByDescending(x => x.NAME);
                 return View(query);
             }
@@ -24,7 +25,7 @@ namespace THDShop.Controllers
                     .Where(x => x.IDCATEGORY == loai);
                 return View(proList);
             }
-            
+
         }
         public ActionResult Details(int id)
         {
@@ -44,19 +45,18 @@ namespace THDShop.Controllers
         public ActionResult AddListGift(string id)
         {
             //id = "SINHVIEN";
-            var entity = _db.GIFTs.SingleOrDefault(s=>s.ID==id); 
+            var entity = _db.GIFTs.SingleOrDefault(s => s.ID == id);
             var check = _db.MYGIFTs.Where(s => s.IDGIFT == id).FirstOrDefault();
 
-            int idcus = (int)Session["ID"];
-            //if (check == null)
-            //{
+            if (check != null)
+            {
                 if (Session["ID"] != null)
                 {
                     var myGift = new MYGIFT()
                     {
                         IDGIFT = entity.ID,
                         IDCUS = (int)Session["ID"],
-                      };
+                    };
                     _db.MYGIFTs.Add(myGift);
                     _db.SaveChanges();
                     return RedirectToAction("MyGift", "LoginCustomer");
@@ -64,10 +64,10 @@ namespace THDShop.Controllers
                 else
                 {
                     return RedirectToAction("LoginAccount", "LoginCustomer");
-
                 }
-            //}
-            //return RedirectToAction("Index", "HomeUser");
+            }
+            return RedirectToAction("Index", "HomeUser");
         }
+
     }
 }

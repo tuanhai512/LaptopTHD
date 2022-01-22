@@ -36,7 +36,25 @@ namespace THDShop.Areas.Manager.Controllers
         }
         public ActionResult Index()
         {
-            return View(_db.ORDERS.ToList());
+            if (Session["IDQL"] != null || Session["IDNV"] != null)
+            {
+                return View(_db.ORDERS.ToList());
+            }
+            return Redirect("/LoginCustomer/LoginAccount");
+            
+        }
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var dathang = _db.ORDERS.Find(id);
+            if (dathang == null)
+            {
+                return HttpNotFound();
+            }
+            return View(dathang);
         }
         public ActionResult Comfirm(int? id)
         {
@@ -78,8 +96,8 @@ namespace THDShop.Areas.Manager.Controllers
                         TOTALMONEY = dathang.TOTALMONEY,
                         NOTE=dathang.NOTE,
                         DATETIME = dathang.DAY,
-                        ORI_PRICE = dathang.ORI_PRICE
-                       
+                        ORI_PRICE = dathang.ORI_PRICE,
+                        METHODS = dathang.METHODS
                         // ID = (int)Session["MAKH"]
                     };
                     _db.BILLs.Add(hoadon);
@@ -128,12 +146,12 @@ namespace THDShop.Areas.Manager.Controllers
             return RedirectToAction("Index");
 
         }
-        //public ActionResult BillCancel()
-        //{
-        //    var model = _db.ORDERS.Where(s => s.STATUS == 3).ToList();
+        public ActionResult BillCancel()
+        {
+            var model = _db.ORDERS.Where(s => s.STATUS == 3).ToList();
 
-        //    return View(model);
-        //}
+            return View(model);
+        }
         public ActionResult Cancel(int? id)
         {
             if (id == null)
@@ -152,21 +170,6 @@ namespace THDShop.Areas.Manager.Controllers
             return RedirectToAction("Index");
 
         }
-        // GET: QuanLy/DonHang/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var order = _db.ORDERS.Find(id);
-            if (order == null)
-            {
-                return HttpNotFound();
-            }
-            return View(order);
-        }
-
         // POST: QuanLy/DonHang/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)

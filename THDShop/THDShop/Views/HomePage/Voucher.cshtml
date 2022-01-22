@@ -26,15 +26,15 @@
                                         <div class="product-price"><span>@item.G_VALUE.ToString("#,##")</span></div>
                                     </div>
                                 </div>
-                                @using (Html.BeginForm("AddListGift","HomePage", FormMethod.Post))
+                                @using (Html.BeginForm("AddListGift", "HomePage", FormMethod.Post))
                                 {
                                     <div class="product-button-group">
-                                        <button href="/Gift/AddListGift/@item.ID" class="btn-icon">
+                                        <button class="btn-icon">
                                             <span class="icon-bg icon-plus"></span>
                                         </button>
                                     </div>
-                                    }
-                                </div>
+                                }
+                            </div>
                         </div>
                     </div>
                 }

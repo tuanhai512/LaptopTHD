@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>E-come | Multi-Purpose HTML Template for Electronics Store</title>
+    <title>THDShop</title>
 
     <link href="~/Assets/css/fontasp.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/Assets/ECome/css/owl.carousel.min.css">
@@ -24,7 +24,7 @@
                     <div style="padding-top:0px;padding-bottom:0px" class="container container-240">
                         <div class="row flex">
                             <div style="padding-top:40px" class="col-lg-2 col-md-2 col-sm-6 col-xs-6 v-center header-logo">
-                                <a href="@Url.Action("Index","HomePage")"><img src="~/Assets/Images/logothdshopbgwhite.png" alt="" class="img-reponsive"></a>
+                                <a href="@Url.Action("Index","HomeUser")"><img src="~/Assets/Images/logothdshopbgwhite.png" alt="" class="img-reponsive"></a>
                             </div>
                             <div style="padding-left:170px" class="col-lg-7 col-md-7 v-center header-search hidden-xs hidden-sm">
                                 <form method="get" class="searchform ajax-search" action="/search" role="search">
@@ -81,10 +81,49 @@
                                     <div class="header-sub-element row">
                                         @if (Session["Email"] != null)
                                         {
-                                            <a class="hidden-xs hidden-sm" href="@Url.Action("EditAccount", "LoginCustomer", new { id = Session["ID"] })"><img src="~/Assets/ECome/img/icon-user.png" alt=""></a>
+                                            <div class="cart">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="label5">
+                                                    <img src="~/Assets/ECome/img/icon-user.png" alt="">
+                                                </a>
+                                                <div class="dropdown-menu dropdown-cart" style="min-width: 180px;">
+                                                    <ul class="mini-products-list">
+                                                        @if (Session["ID"] != null)
+                                                        {
+                                                            <li class="item-cart">
+                                                                <div>
+                                                                    <a href="@Url.Action("Details", "LoginCustomer", new { id = Session["ID"] })">
+                                                                        Thông tin cá nhân
+                                                                    </a>
+                                                                </div>
+                                                            </li>
+                                                            <li style="display:flow-root" class="item-cart">
+                                                                <div>
+                                                                    <a href="@Url.Action("DonDat", "LoginCustomer", new { id = Session["ID"] })">
+                                                                        Đơn đặt
+                                                                    </a>
+                                                                </div>
+                                                                <div style="padding-top:15px">
+                                                                    <a href="@Url.Action("MyGift", "LoginCustomer",new { id = Session["ID"] })">
+                                                                        Voucher của tôi
+                                                                    </a>
+                                                                </div>
+                                                            </li>
+
+                                                        }
+                                                        <li class="item-cart">
+                                                            <div>
+                                                                <a href="@Url.Action("Logout", "LoginCustomer")">
+                                                                    Đăng xuất
+                                                                </a>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         }
                                         else
-                                        { <a class="hidden-xs hidden-sm" href="#"><img src="~/Assets/ECome/img/icon-user.png" alt=""></a>
+                                        {
+                                            <a class="hidden-xs hidden-sm" href="#"></a>
                                         }
                                         <div class="cart">
                                             <a href="@Url.Action("ShowToCart","Cart")" class="dropdown-toggle">
@@ -195,9 +234,6 @@
                                                 <li class="level1 active dropdown">
                                                     <a href="@Url.Action("Voucher", "HomePage")">Voucher<span class="h-ribbon h-pos e-skyblue">MỚI</span></a>
                                                 </li>
-                                                <li class="level1 active dropdown">
-                                                    <a href="@Url.Action("Create", "Phanhoi")">Phản hồi</a>
-                                                </li>
                                             </ul>
                                         </div>
                                     </nav>
@@ -216,15 +252,6 @@
                                             {
                                                 <li class="level1 active hassub">
                                                     <span>@Session["Email"]</span>
-                                                </li>
-                                                <li class="level1 active hassub">
-                                                    <a href="@Url.Action("Logout", "LoginCustomer")">Đăng xuất</a>
-                                                </li>
-                                                <li class="level1 active hassub">
-                                                    <a href="@Url.Action("MyGift", "LoginCustomer",new { id = Session["ID"] })">Kho Voucher</a>
-                                                </li>
-                                                <li class="level1 active hassub">
-                                                    <a href="@Url.Action("DonDat", "LoginCustomer",new { id = Session["ID"] })">Xem đơn đặt</a>
                                                 </li>
                                             }
                                         </ul>
@@ -246,10 +273,10 @@
                                     <div class="slide">
                                         <div style="height: 39%;" class="e-slide v2 js-slider-3items">
                                             <div class="e-slide-img v2">
-                                                <a href="#"><img width="721" height="300" src="~/Assets/Images/QuangCao/slideshow_1.jpg" alt=""></a>
+                                                <a href="@Url.Action("Index","HomeUser")"><img width="721" height="300" src="~/Assets/Images/QuangCao/slideshow_1.jpg" alt=""></a>
                                             </div>
                                             <div class="e-slide-img v2">
-                                                <a href="#"><img width="721" height="300" src="~/Assets/Images/QuangCao/slideshow_3.jpg" alt=""></a>
+                                                <a href="@Url.Action("Index","HomeUser")"><img width="721" height="300" src="~/Assets/Images/QuangCao/slideshow_3.jpg" alt=""></a>
                                             </div>
                                         </div>
                                     </div>
@@ -257,7 +284,7 @@
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     <div class="ads">
                                         <div style="height: 39%;" class="banner-img banner-img2">
-                                            <a href="#"><img style="height:310px" src="~/Assets/Images/QuangCao/solid1.jpg" alt="" class="img-responsive"></a>
+                                            <a href="@Url.Action("Index","HomeUser")"><img style="height:310px" src="~/Assets/Images/QuangCao/solid1.jpg" alt="" class="img-responsive"></a>
                                         </div>
                                     </div>
                                 </div>
@@ -271,12 +298,12 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-xs-6">
                             <div class="banner-img banner-img2">
-                                <a href="#"><img src="~/Assets/Images/QuangCao/solid4.jpg" alt="" class="img-responsive"></a>
+                                <a href="@Url.Action("Index","HomeUser")"><img src="~/Assets/Images/QuangCao/solid4.jpg" alt="" class="img-responsive"></a>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-6">
                             <div class="banner-img banner-img2">
-                                <a href="#"><img src="~/Assets/Images/QuangCao/solid5.jpg" alt="" class="img-responsive"></a>
+                                <a href="@Url.Action("Index","HomeUser")"><img src="~/Assets/Images/QuangCao/solid5.jpg" alt="" class="img-responsive"></a>
                             </div>
                         </div>
                     </div>
@@ -287,13 +314,7 @@
 
                     <!-- Asus -->
                     <div class="bestseller">
-                        <div class="ecome-heading style3 spc3">
-                            
-                           
-                            <h1>SẢN PHẨM</h1>
-                            <a href="@Url.Action("Index","HomePage")" class="btn-show">Xem thêm<i class="ion-ios-arrow-forward"></i></a>
-
-                        </div>
+                        
                         @RenderBody()
                     </div>
                 </div>
@@ -314,13 +335,13 @@
             <!-- /footer -->
             <!-- /footer -->
         </div>
-                </div>
-                <script src="~/Assets/ECome/js/jquery.js"></script>
-                <script src="~/Assets/ECome/js/bootstrap.js"></script>
-                <script src="~/Assets/ECome/js/owl.carousel.min.js"></script>
-                <script src="~/Assets/ECome/js/slick.js"></script>
-                <script src="~/Assets/ECome/js/countdown.js"></script>
-                <script src="~/Assets/ECome/js/main.js"></script>
+    </div>
+    <script src="~/Assets/ECome/js/jquery.js"></script>
+    <script src="~/Assets/ECome/js/bootstrap.js"></script>
+    <script src="~/Assets/ECome/js/owl.carousel.min.js"></script>
+    <script src="~/Assets/ECome/js/slick.js"></script>
+    <script src="~/Assets/ECome/js/countdown.js"></script>
+    <script src="~/Assets/ECome/js/main.js"></script>
 </body>
 
 </html>

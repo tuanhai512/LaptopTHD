@@ -70,15 +70,15 @@
                                             }
                                         </div>
                                     </td>
-                                    <td class="total-price flexwrap"style="top: -5px;position:relative;">
+                                    <td class="total-price flexwrap"style="position:relative;">
                                        
                                             <p class="price ">@item._product.PRICE.ToString("#,##") </p>
-                                            <p> <sub>x @item._quantity</sub></p>
+                                            @*<p> <sub>x @item._quantity</sub></p>*@
 
                                     </td>
                                     <td class="total-price ">
                                         <p class="price ">@total.ToString("#,##") </p>
-                                        <p><sub>( @totalusd USD )</sub></p>
+                                        @*<p><sub>( @totalusd USD )</sub></p>*@
                                     </td>
                                 </tr>
                                     }
@@ -143,7 +143,7 @@
                                     {
                                         if (Session["ID_Gift"] != null)
                                         {
-                                            <td>@Model.Total_money_GIFT() </td>
+                                            <td>@Model.Total_money_GIFT().ToString("N0") </td>
                                         }
                                         else
                                         {   if (Session["ID_Gift"]==null)

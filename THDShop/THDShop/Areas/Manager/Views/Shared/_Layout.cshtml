@@ -26,264 +26,232 @@
     <link href="~/Assets/manager/css/nav-admin.css" rel="stylesheet" />\
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href="~/Assets/css/fontasp.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-       
     </style>
 </head>
 
-<body id="page-top">
+<body  id="page-top">
+    <div class="font_asap">
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
+        <!-- Page Wrapper -->
+        <div id="wrapper">
 
-        <!-- Sidebar -->
-        <div class="sidebar  " style=" overflow-y: auto; ">
-            <div class="logo-details">
-                <i class='bx bxl-c-plus-plus icon'></i>
-                <div class="logo_name">LaptopShop</div>
-                <i class='bx bx-menu' id="btn"></i>
-            </div>
-            <ul class="nav-list ">
-
-                <li>
-                    <a href="@Url.Action("Index", "Report")">
-                        <i class='bx bx-grid-alt'></i>
-                        <span class="links_name">Home</span>
-                    </a>
-                    <span class="tooltip">Home</span>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index", "User")">
-                        <i class='bx bx-user'></i>
-                        <span class="links_name">User</span>
-                    </a>
-                    <span class="tooltip">User</span>
-                </li>
-                <li>
-                    <a href="@Url.Action("Staff", "User")">
-                        <i class='bx bx-user'></i>
-                        <span class="links_name">Staff</span>
-                    </a>
-                    <span class="tooltip">Staff</span>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index", "Phanhoi")">
-                        <i class='bx bx-chat'></i>
-                        <span class="links_name">Feedback</span>
-                    </a>
-                    <span class="tooltip">Feedback</span>
-                </li>
-                <li>
-                    <a href="@Url.Action("Customer", "User")">
-                        <i class='bx bx-user'></i>
-                        <span class="links_name">Customer</span>
-                    </a>
-                    <span class="tooltip">Customer</span>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index", "Category")">
-                        <i class='bx bx-pie-chart-alt-2'></i>
-                        <span class="links_name">Category</span>
-                    </a>
-                    <span class="tooltip">Category</span>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index", "Report")">
-                        <i class='bx bx-pie-chart-alt-2'></i>
-                        <span class="links_name">Analytics</span>
-                    </a>
-                    <span class="tooltip">Analytics</span>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index", "Product")">
-                        <i class='bx bx-folder'></i>
-                        <span class="links_name">Product</span>
-                    </a>
-                    <span class="tooltip">Product</span>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index", "Order")">
-                        <i class='bx bx-cart-alt'></i>
-                        <span class="links_name">Order</span>
-                    </a>
-                    <span class="tooltip">Order</span>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index", "Bill")">
-                        <i class='bx bx-cart-alt'></i>
-                        <span class="links_name">Bill</span>
-                    </a>
-                    <span class="tooltip">Bill</span>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index", "Role")">
-                        <i class='bx bx-heart'></i>
-                        <span class="links_name">Roles</span>
-                    </a>
-                    <span class="tooltip">Roles</span>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index", "Gift")">
-                        <i class='bx bx-heart'></i>
-                        <span class="links_name">Voucher</span>
-                    </a>
-                    <span class="tooltip">Voucher</span>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class='bx bx-cog'></i>
-                        <span class="links_name">Setting</span>
-                    </a>
-                    <span class="tooltip">Setting</span>
-                </li>
-                <li class="profile">
-                    <div class="profile-details">
-                        <img src="~/manager/img/profile.jpg" alt="profileImg">
-                        <div class="name_job">
-                            <!-- Name -->
-                            <div class="name">Prem Shahi</div>
-                        </div>
-                    </div>
-                    <i class='bx bx-log-out' id="log_out"></i>
-                </li>
-            </ul>
-        </div>
-        <!-- End of Sidebar -->
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column home-section">
-
-            <!-- Main Content -->
-            <div id="content">
-
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
-                    <strong style="font-size:25px">
-                        MANAGER
-                    </strong>
-                    <!-- Topbar Search -->
-                    <!--<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                   aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>-->
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
-
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="logo-details">
+                    <i class='bx bxl-c-plus-plus icon'></i>
+                    <div class="logo_name">LaptopShop</div>
+                    <i class='bx bx-menu' id="btn"></i>
+                </div>
+                <ul class="nav-list ">
+                    @if (Session["IDQL"] != null)
+                    {
+                        <li>
+                            <a href="@Url.Action("Index", "Report")">
+                                <i class='bx bx-pie-chart-alt-2'></i>
+                                <span class="links_name">Thống kê</span>
                             </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                 aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                               placeholder="Search for..." aria-label="Search"
-                                               aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
+                            <span class="tooltip">Thống kê</span>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "User")">
+                                <i class='bx bx-user'></i>
+                                <span class="links_name">Tài khoản</span>
+                            </a>
+                            <span class="tooltip">Tài khoản</span>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Category")">
+                                <i class='bx bxs-component'></i>
+                                <span class="links_name">Thương hiệu</span>
+                            </a>
+                            <span class="tooltip">Thương hiệu</span>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Product")">
+                                <i class='bx bx-folder'></i>
+                                <span class="links_name">Sản phẩm</span>
+                            </a>
+                            <span class="tooltip">Sản phẩm</span>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Order")">
+                                <i class='bx bx-cart-alt'></i>
+                                <span class="links_name">Đơn hàng</span>
+                            </a>
+                            <span class="tooltip">Đơn hàng</span>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Bill")">
+                                <i class='bx bx-clipboard'></i>
+                                <span class="links_name">Hóa đơn</span>
+                            </a>
+                            <span class="tooltip">Hóa đơn</span>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Role")">
+                                <i class='bx bx-sitemap'></i>
+                                <span class="links_name">Chức vụ</span>
+                            </a>
+                            <span class="tooltip">Chức vụ</span>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Gift")">
+                                <i class='bx bx-gift'></i>
+                                <span class="links_name">Voucher</span>
+                            </a>
+                            <span class="tooltip">Voucher</span>
+                        </li>
+                    }
+                    @if (Session["IDNV"] != null)
+                    {
+                        <li>
+                            <a href="@Url.Action("Index", "Order")">
+                                <i class='bx bx-cart-alt'></i>
+                                <span class="links_name">Đơn hàng</span>
+                            </a>
+                            <span class="tooltip">Đơn hàng</span>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Bill")">
+                                <i class='bx bx-clipboard'></i>
+                                <span class="links_name">Hóa đơn</span>
+                            </a>
+                            <span class="tooltip">Hóa đơn</span>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <!-- End of Sidebar -->
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column home-section">
+
+                <!-- Main Content -->
+                <div id="content">
+
+                    <!-- Topbar -->
+                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                        <!-- Sidebar Toggle (Topbar) -->
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        @if (Session["IDQL"] != null)
+                        {
+                            <strong style="font-size:25px">
+                                Quản Lý
+                            </strong>
+                        }
+                        @if (Session["IDNV"] != null)
+                        {
+                            <strong style="font-size:25px">
+                                Nhân viên
+                            </strong>
+                        }
+                        <!-- Topbar Search -->
+                        <!--<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group">
+                                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                       aria-label="Search" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>-->
+                        <!-- Topbar Navbar -->
+                        <ul class="navbar-nav ml-auto">
+
+                            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                            <li class="nav-item dropdown no-arrow d-sm-none">
+                                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-search fa-fw"></i>
+                                </a>
+                                <!-- Dropdown - Messages -->
+                                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                     aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto w-100 navbar-search">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control bg-light border-0 small"
+                                                   placeholder="Search for..." aria-label="Search"
+                                                   aria-describedby="basic-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="button">
+                                                    <i class="fas fa-search fa-sm"></i>
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
+                                    </form>
+                                </div>
+                            </li>
 
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                     src="~/manager/img/undraw_profile.svg">
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
+                            <!-- Nav Item - User Information -->
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">@Session["Email"]</span>
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
+                                <!-- Dropdown - User Information -->
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                     aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="@Url.Action("Logout","LoginManager")">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Logout
+                                    </a>
+                                </div>
+                            </li>
 
-                    </ul>
+                        </ul>
 
-                </nav>
-                <!-- End of Topbar -->
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+                    </nav>
+                    <!-- End of Topbar -->
+                    <!-- Begin Page Content -->
+                    <div class="container-fluid">
 
-                    @RenderBody()
+                        @RenderBody()
+
+                    </div>
+                    <!-- /.container-fluid -->
 
                 </div>
-                <!-- /.container-fluid -->
+                <!-- End of Main Content -->
+
 
             </div>
-            <!-- End of Main Content -->
-
+            <!-- End of Content Wrapper -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Page Wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
 
-    </div>
-    <!-- End of Page Wrapper -->
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.html">Logout</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
+    </div>
     <!-- Bootstrap core JavaScript-->
     <script src="~/Assets/manager/vendor/jquery/jquery.min.js"></script>
     <script src="~/Assets/manager/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

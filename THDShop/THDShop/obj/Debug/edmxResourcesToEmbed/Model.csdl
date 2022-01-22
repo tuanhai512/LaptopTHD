@@ -9,7 +9,7 @@
     <Property Name="IDORDER" Type="Int32" Nullable="false" />
     <Property Name="ORI_PRICE" Type="Int32" Nullable="false" />
     <Property Name="TOTALMONEY" Type="Double" Nullable="false" />
-    <Property Name="DATETIME" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DATETIME" Type="DateTime" Nullable="false" />
     <Property Name="NOTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="METHODS" Type="Int32" Nullable="false" />
     <NavigationProperty Name="ORDER" Relationship="Self.FK_BILL_ORDER" FromRole="BILL" ToRole="ORDERS" />
@@ -24,9 +24,9 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="CREATEBY" Type="Int32" />
-    <Property Name="CREATEAT" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CREATEAT" Type="DateTime" Nullable="false" />
     <Property Name="UPDATEBY" Type="Int32" />
-    <Property Name="UPDATEAT" Type="DateTime" Precision="3" />
+    <Property Name="UPDATEAT" Type="DateTime" />
     <NavigationProperty Name="PRODUCTS" Relationship="Self.FK_CATE_PRODUCTS" FromRole="CATEGORIES" ToRole="PRODUCTS" />
   </EntityType>
   <EntityType Name="CUSTOMER">
@@ -36,7 +36,7 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDUSER" Type="Int32" Nullable="false" />
     <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="BIRTHDAY" Type="DateTime" Precision="3" />
+    <Property Name="BIRTHDAY" Type="DateTime" />
     <Property Name="ADDRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="EMAIL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
@@ -100,7 +100,7 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDCUS" Type="Int32" Nullable="false" />
     <Property Name="CONTENT" Type="Double" />
-    <Property Name="DATEFB" Type="DateTime" Precision="3" />
+    <Property Name="DATEFB" Type="DateTime" />
     <NavigationProperty Name="CUSTOMER" Relationship="Self.PK_FEEDBACK_CUS" FromRole="FEEDBACK" ToRole="CUSTOMER" />
   </EntityType>
   <EntityType Name="GIFT">
@@ -110,8 +110,8 @@
     <Property Name="ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="G_POINT" Type="Int32" Nullable="false" />
     <Property Name="G_VALUE" Type="Int32" Nullable="false" />
-    <Property Name="G_START" Type="DateTime" Precision="3" />
-    <Property Name="G_END" Type="DateTime" Precision="3" />
+    <Property Name="G_START" Type="DateTime" />
+    <Property Name="G_END" Type="DateTime" />
     <Property Name="DESCREPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="QUANTITY" Type="Int32" Nullable="false" />
     <NavigationProperty Name="MYGIFTs" Relationship="Self.FK_GIFT_MYGIFT" FromRole="GIFT" ToRole="MYGIFT" />
@@ -131,7 +131,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="DAY" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DAY" Type="DateTime" Nullable="false" />
     <Property Name="IDDELIADDRESS" Type="Int32" Nullable="false" />
     <Property Name="ORI_PRICE" Type="Int32" Nullable="false" />
     <Property Name="TOTALMONEY" Type="Double" Nullable="false" />
@@ -163,9 +163,9 @@
     <Property Name="IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="CATEGORYNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <Property Name="CREATEBY" Type="Int32" />
-    <Property Name="CREATEAT" Type="DateTime" Precision="3" />
+    <Property Name="CREATEAT" Type="DateTime" />
     <Property Name="UPDATEBY" Type="Int32" />
-    <Property Name="UPDATEAT" Type="DateTime" Precision="3" />
+    <Property Name="UPDATEAT" Type="DateTime" />
     <Property Name="IDCATEGORY" Type="Int32" />
     <NavigationProperty Name="CATEGORy" Relationship="Self.FK_CATE_PRODUCTS" FromRole="PRODUCTS" ToRole="CATEGORIES" />
     <NavigationProperty Name="DE_ORDER" Relationship="Self.FK_DEORDER_PRODUCTS" FromRole="PRODUCTS" ToRole="DE_ORDER" />
@@ -177,7 +177,7 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDBILL" Type="Int32" Nullable="false" />
     <Property Name="TOTALMONEY" Type="Double" />
-    <Property Name="DATERP" Type="DateTime" Precision="3" />
+    <Property Name="DATERP" Type="DateTime" />
     <NavigationProperty Name="BILL" Relationship="Self.PK_REPORT_BILL" FromRole="REPORT" ToRole="BILL" />
   </EntityType>
   <EntityType Name="ROLE">
@@ -199,7 +199,7 @@
     <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="ADDRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="BRITHDAY" Type="DateTime" Precision="3" />
+    <Property Name="BRITHDAY" Type="DateTime" />
     <Property Name="EMAIL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PASSWORD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="AVATAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />

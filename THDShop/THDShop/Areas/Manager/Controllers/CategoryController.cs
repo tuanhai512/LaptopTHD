@@ -20,12 +20,17 @@ namespace THDShop.Areas.Manager.Controllers
         }
         public ActionResult Index()
         {
+            if (Session["IDQL"] != null)
+            {
+                var query = CategorySingleton.Instance.listCategory;
+                return View(query.ToList());
+            }
+            return Redirect("/LoginCustomer/LoginAccount");
             //if (Session["IDQL"] == null)
             //{
             //    return RedirectToAction("Index", "LoginQuanLy");
             //}
-            var query = CategorySingleton.Instance.listCategory;
-            return View(query.ToList());
+            
         }
         public ActionResult Create()
         {

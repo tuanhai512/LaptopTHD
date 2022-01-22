@@ -8,7 +8,7 @@
     <link href="~/Assets/css/GioHang.css" rel="stylesheet" />
 }
 <body>
-    @using (Html.BeginForm("LoginAccount", "LoginCustomer", FormMethod.Post))
+    @using(Html.BeginForm("LoginAccount","LoginCustomer",FormMethod.Post))
     {
         <div class="container container-240">
             <div class="myaccount">
@@ -23,24 +23,25 @@
                         </div>
                         <div class="page-content">
                             <p>Đăng nhập tài khoản của bạn</p>
-                                <div class="form-group">
-                                    <label>Email <span class="f-red">*</span></label>
-                                        @Html.TextBoxFor(model => model.EMAIL, new { @class = "form-control bdr", @type = "email", @name = "username", })
-                                        <div>@Html.ValidationMessageFor(model => model.EMAIL)</div>
-                                    <label>Mật khẩu <span class="f-red">*</span></label>
-                                        @Html.TextBoxFor(model => model.PASSWORD, new { @class = "form-control bdr", @type = "password", @name = "password", })
-                                        <div>@Html.ValidationMessageFor(model => model.PASSWORD)</div>
+                            <div class="form-group">
+                                <label>Email <span class="f-red">*</span></label>
+                                @Html.TextBoxFor(model => model.EMAIL, new { @class = "form-control bdr", @type = "email", @name = "username", })
+                                <div>@Html.ValidationMessageFor(model => model.EMAIL)</div>
+                                <label>Mật khẩu <span class="f-red">*</span></label>
+                                @Html.TextBoxFor(model => model.PASSWORD, new { @class = "form-control bdr", @type = "password", @name = "password", })
+                                <div>@Html.ValidationMessageFor(model => model.PASSWORD)</div>
+                            </div>
+                            @Html.ValidationSummary()
+                            <div class="flex lr">
+                                <a href="@Url.Action("RegisterUser", "LoginCustomer")" style="background-image: linear-gradient( 122deg, #17a38d, #1fad9c);" class="btn btn-submit btn-gradient">
+                                    Đăng ký
+                                </a>
+                                <div class="checkbox checkbox-default">
+                                    <button style="background-image: linear-gradient( 122deg, #e4403e, #e4403e);" type="submit" class="btn btn-submit btn-gradient">
+                                        Đăng nhập
+                                    </button>
                                 </div>
-                                <div class="flex lr">
-                                    <a href="@Url.Action("RegisterUser", "LoginCustomer")" style="background-image: linear-gradient( 122deg, #17a38d, #1fad9c);" class="btn btn-submit btn-gradient">
-                                        Đăng ký
-                                    </a>
-                                    <div class="checkbox checkbox-default">
-                                        <button style="background-image: linear-gradient( 122deg, #e4403e, #e4403e);" type="submit" class="btn btn-submit btn-gradient">
-                                            Đăng nhập
-                                        </button>
-                                    </div>
-                                </div>
+                            </div>
                             <a href="#" class="btn-lostpwd spc">Quên mật khẩu?</a>
                         </div>
                     </div>

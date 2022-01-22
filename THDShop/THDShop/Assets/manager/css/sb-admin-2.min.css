@@ -9710,6 +9710,17 @@ option {
     font-size: 20px;
     color: WHITE;
 }
+input[type=datetime] {
+    color: white;
+    width: 100%;
+    padding: 5px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: #17142e82;
+    border-color: #2230be12;
+}
 input[type=number] {
     color: white;
     width: 100%;

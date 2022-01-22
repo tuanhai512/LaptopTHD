@@ -1,0 +1,102 @@
+﻿@model THDShop.CUSTOMER
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="main-body">
+
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Tài khoản</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Thông tin cá nhân</li>
+            </ol>
+        </nav>
+        <!-- /Breadcrumb -->
+        <div class="shopping-cart v2 bd-7">
+            <div class="cmt-title text-center abs">
+                <h1 class="page-title v4">Thông tin cá nhân</h1>
+            </div>
+
+            <div style="padding:25px" class="row gutters-sm">
+                <div class="col-md-4 mb-3">
+
+                    <!-- Avatar -->
+
+                    <div class="shopping-cart v2 bd-7">
+                        <div class="cmt-title text-center abs">
+                            <h1 class="page-title v4">Avatar</h1>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div style="padding-bottom:30px" class="d-flex flex-column align-items-center text-center">
+                                    <img src="@Url.Content(Model.AVATAR)" alt="Avatar" class="rounded-circle" width="250">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card mb-3">
+
+                        <!-- Thông tin -->
+
+                        <div class="shopping-cart v2 bd-7">
+                            <div class="cmt-title text-center abs">
+                                <h1 class="page-title v4">Thông tin</h1>
+                            </div>
+                            <div style="padding: 25px" class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Họ tên</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        @Html.DisplayFor(model => model.NAME)
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Email</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        @Html.DisplayFor(model => model.EMAIL)
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Số điện thoại</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        @Html.DisplayFor(model => model.PHONE)
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Địa chỉ</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        @Html.DisplayFor(model => model.ADDRESS)
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <a href="/LoginCustomer/EditAccount/@Html.DisplayFor(model =>model.ID)" class="btn btn-info ">Sửa</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

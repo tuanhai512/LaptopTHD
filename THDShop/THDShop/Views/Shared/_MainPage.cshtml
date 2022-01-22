@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - User</title>
+    <title>THDShop</title>
     <link rel="stylesheet" href="~/Assets/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/Assets/css/site.css" />
 
@@ -62,7 +62,7 @@
         <nav class="yb-main-menu " id="main-menu">
             <div class="uk-container" data-uk-navbar>
                 <div class="uk-navbar-left">
-                    <a class="yb-logo uk-navbar-item uk-logo" href="@Url.Action("Index","HomeUser")"><img width="150" height="100" src="~/Assets/Images/logothdshopbgblack.png"/></a>
+                    <a class="yb-logo uk-navbar-item uk-logo" href="@Url.Action("Index","HomeUser")"><img width="150" height="100" src="~/Assets/Images/logothdshopbgblack.png" /></a>
                 </div>
                 <div class="uk-navbar-right uk-hidden@m">
                     <a class="uk-navbar-toggle" href="#" id="btn-menu-toggle">
@@ -74,16 +74,13 @@
                     <div class="uk-navbar-center">
                         <ul class="uk-navbar-nav" data-uk-scrollspy-nav="closest: li; scroll: false; offset: 79 ">
                             <li>
-                                <a  href="@Url.Action("Index","HomePage")"> Trang Chủ </a>
+                                <a href="@Url.Action("Index","HomePage")"> Trang Chủ </a>
                             </li>
                             <li>
-                                <a  href="@Url.Action("Product","HomePage")"> Sản Phẩm </a>
+                                <a href="@Url.Action("Product","HomePage")"> Sản Phẩm </a>
                             </li>
                             <li>
-                                <a  href=""> Voucher </a>
-                            </li>
-                            <li>
-                                <a  href=""> Contact </a>
+                                <a href="@Url.Action("Voucher","HomePage")"> Voucher </a>
                             </li>
                         </ul>
                     </div>
@@ -97,49 +94,54 @@
                                     <img style="filter:invert(1);width:25px;" src="~/Assets/Images/shopping.png" />
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <span class="uk-icon" data-uk-icon="icon: facebook"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="uk-icon" data-uk-icon="icon: instagram"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="uk-icon" data-uk-icon="icon: twitter"></span>
-                                </a>
-                            </li>
                             @if (Session["Email"] == null)
                             {
-                                <li><a href="@Url.Action("LoginAccount", "LoginUser")" class="dropdown-toggle">Đăng nhập</a></li>
+                                <li><a href="@Url.Action("LoginAccount","LoginCustomer")">Đăng nhập</a></li>
+                                <li><a href="@Url.Action("RegisterUser","LoginCustomer")">Đăng ký</a></li>
                             }
                             else
                             {
-                                <li><span style="color:black;text-align:center;vertical-align:middle;">@Session["Email"]</span></li>
-                                <li><a href="@Url.Action("Logout", "LoginCustomer")">Đăng xuất</a></li>
-
-                            }
-                            @if (Session["Email"] == null)
-                            {
-                                <li class="dropdown submenu">
-                                    <a href="@Url.Action("RegisterUser", "LoginCustomer")" class="dropdown-toggle">Đăng ký</a>
-                                </li><li class="dropdown submenu">
-    <a href="~/Views/Shared/Gift_index.cshtml">Doi diem thuong</a>
-</li>
-                            }
-                            else
-                            {
-                                <li class="dropdown submenu">
-                                    <a href="@Url.Action("DonDat", "LoginCustomer", new { id = Session["MaKH"] })">Đơn Đặt</a>
-                                </li>
-                                <li class="dropdown submenu">
-                                    <a href="@Url.Action("EditAccount", "LoginCustomer", new { id = Session["MaKH"] })">Thông tin</a>
-                                </li>
-                                <li class="dropdown submenu">
-                                    <a href="@Url.Action("Index", "MyGift", new { id = Session["MaKH"] })">Kho diem thuong</a>
+                                <li>
+                                    <div style="padding-top:30px;" class="cart">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="label5" style="color: #dbdbdb;">
+                                            @Session["Email"]
+                                        </a>
+                                        <div class="dropdown-menu dropdown-cart" style="min-width: 180px;">
+                                            <ul class="mini-products-list">
+                                                @if (Session["ID"] != null)
+                                                {
+                                                    <li class="item-cart">
+                                                        <div>
+                                                            <a style="color: #000000;" href="@Url.Action("Details", "LoginCustomer", new { id = Session["ID"] })">
+                                                                Thông tin cá nhân
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                    <li class="item-cart">
+                                                        <div>
+                                                            <a style="color: #000000;" href="@Url.Action("DonDat", "LoginCustomer", new { id = Session["ID"] })">
+                                                                Đơn đặt
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                    <li class="item-cart">
+                                                        <div>
+                                                            <a style="color: #000000;" href="@Url.Action("MyGift", "LoginCustomer",new { id = Session["ID"] })">
+                                                                Voucher của tôi
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                }
+                                                <li class="item-cart">
+                                                    <div>
+                                                        <a style="color: #000000;" href="@Url.Action("Logout", "LoginCustomer")">
+                                                            Đăng xuất
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </li>
                             }
                         </ul>

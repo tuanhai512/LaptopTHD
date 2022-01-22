@@ -115,10 +115,131 @@ namespace THDShop.Controllers
             }
             if (ModelState.IsValid)
             {
+
                 //Không đăng nhập
                 //Không khuyến mãi
                 //Form Địa Chỉ
-                if (Session["ID_Gift"] == null)
+                if (Session["ID_Gift"] == null && Session["ID"] == null)
+                {
+                    var deliaddr = new DELI_ADDRESS()
+                    {
+
+                        NAME = model.NAME,
+                        PHONE = model.PHONE,
+                        ADDRESS = model.ADDRESS,
+                        DISTRICT = model.DISTRICT,
+                        WARD = model.WARD,
+                        NOTE = model.NOTE,
+                    };
+                    _db.DELI_ADDRESS.Add(deliaddr);
+                    _db.SaveChanges();
+
+                    //Order
+
+                    var order = new ORDER()
+                    {
+                        DAY = DateTime.Now,
+                        IDDELIADDRESS = deliaddr.ID,
+                        NOTE = deliaddr.NOTE,
+                        TOTALMONEY = cart.Total_money(),
+                        ORI_PRICE = cart.Total_OriPrice()
+                    };
+                    _db.ORDERS.Add(order);
+                    _db.SaveChanges();
+
+                    //Chi Tiết Order
+                    var de_order = new List<DE_ORDER>();
+                    foreach (var item in cart.Items)
+                    {
+                        var detail = new DE_ORDER()
+                        {
+                            IDORDER = order.ID,
+                            IDPRODUCT = item._product.ID,
+                            QUANTITY = item._quantity,
+                            PRICE = item._product.PRICE,
+                        };
+                        de_order.Add(detail);
+                    }
+                    foreach (var detail in de_order)
+                    {
+                        _db.DE_ORDER.Add(detail);
+                        foreach (var p in _db.PRODUCTS.Where(s => s.ID == detail.IDPRODUCT))
+                        {
+                            var update_quan_pro = p.QUANTITY - detail.QUANTITY;
+                            p.QUANTITY = update_quan_pro;
+                        }
+                    }
+                    _db.SaveChanges();
+
+                    cart.ClearCart();
+
+                    return RedirectToAction("CheckOutSuccess");
+                }
+
+                //Không đăng nhập
+                //Có khuyến mãi
+                //Form Địa Chỉ
+                else if (Session["ID_Gift"] != null && Session["ID"] == null)
+                {
+                    var deliaddr = new DELI_ADDRESS()
+                    {
+                        NAME = model.NAME,
+                        PHONE = model.PHONE,
+                        ADDRESS = model.ADDRESS,
+                        DISTRICT = model.DISTRICT,
+                        WARD = model.WARD,
+                        NOTE = model.NOTE,
+                    };
+                    _db.DELI_ADDRESS.Add(deliaddr);
+                    _db.SaveChanges();
+
+                    //Order
+
+                    var order = new ORDER()
+                    {
+                        DAY = DateTime.Now,
+                        IDDELIADDRESS = deliaddr.ID,
+                        NOTE = deliaddr.NOTE,
+                        TOTALMONEY = cart.Total_money_GIFT(),
+                        ORI_PRICE = cart.Total_OriPrice()
+
+                    };
+                    _db.ORDERS.Add(order);
+                    _db.SaveChanges();
+
+                    //Chi Tiết Order
+                    var de_order = new List<DE_ORDER>();
+                    foreach (var item in cart.Items)
+                    {
+                        var detail = new DE_ORDER()
+                        {
+                            IDORDER = order.ID,
+                            IDPRODUCT = item._product.ID,
+                            QUANTITY = item._quantity,
+                            PRICE = item._product.PRICE,
+                        };
+                        de_order.Add(detail);
+                    }
+                    foreach (var detail in de_order)
+                    {
+                        _db.DE_ORDER.Add(detail);
+                        foreach (var p in _db.PRODUCTS.Where(s => s.ID == detail.IDPRODUCT))
+                        {
+                            var update_quan_pro = p.QUANTITY - detail.QUANTITY;
+                            p.QUANTITY = update_quan_pro;
+                        }
+                    }
+                    _db.SaveChanges();
+
+                    cart.ClearCart();
+
+                    return RedirectToAction("CheckOutSuccess");
+                }
+
+                //Có đăng nhập
+                //Không khuyến mãi
+                //Form Địa Chỉ
+                else if(Session["ID_Gift"] == null && Session["ID"] != null)
                 {
                     var deliaddr = new DELI_ADDRESS()
                     {
@@ -176,10 +297,10 @@ namespace THDShop.Controllers
                     return RedirectToAction("CheckOutSuccess");
                 }
 
-                //Không đăng nhập
+                //Có đăng nhập
                 //Có khuyến mãi
                 //Form Địa Chỉ
-                else if (Session["ID_Gift"] != null)
+                else if (Session["ID_Gift"] != null && Session["ID"] != null)
                 {
                     var deliaddr = new DELI_ADDRESS()
                     {
@@ -236,6 +357,10 @@ namespace THDShop.Controllers
 
                     return RedirectToAction("CheckOutSuccess");
                 }
+
+
+
+
             }
             else
             {
@@ -351,52 +476,108 @@ namespace THDShop.Controllers
                     }
                     if (ModelState.IsValid)
                     {
-                        var deliaddress = new DELI_ADDRESS()
+                        // Không đăng nhập khách hàng
+                        if (Session["ID"] == null)
                         {
-                            NAME = model.NAME,
-                            PHONE = model.PHONE,
-                            ADDRESS = model.ADDRESS,
-                            WARD = model.WARD,
-                            DISTRICT = model.DISTRICT,
-                        };
-
-                        _db.DELI_ADDRESS.Add(deliaddress);
-                        _db.SaveChanges();
-
-                        int methods = 1;
-                        var order = new ORDER()
-                        {
-                            IDDELIADDRESS = deliaddress.ID,
-                            DAY = DateTime.Now,
-                            TOTALMONEY = cart.Total_money(),
-                            ORI_PRICE=cart.Total_OriPrice(),
-                            METHODS = methods,
-                        };
-                        _db.ORDERS.Add(order);
-                        _db.SaveChanges();
-
-                        var de_order = new List<DE_ORDER>();
-                        foreach (var item in cart.Items)
-                        {
-                            var detail = new DE_ORDER()
+                            var deliaddress = new DELI_ADDRESS()
                             {
-                                IDPRODUCT = item._product.ID,
-                                IDORDER = order.ID,
-                                QUANTITY = item._quantity,
-                                PRICE = item._product.PRICE,
+                                NAME = model.NAME,
+                                PHONE = model.PHONE,
+                                ADDRESS = model.ADDRESS,
+                                WARD = model.WARD,
+                                DISTRICT = model.DISTRICT,
+                                
                             };
-                            de_order.Add(detail);
-                        }
-                        foreach (var detail in de_order)
-                        {
-                            _db.DE_ORDER.Add(detail);
-                            foreach (var p in _db.PRODUCTS.Where(s => s.ID == detail.IDPRODUCT))
+
+                            _db.DELI_ADDRESS.Add(deliaddress);
+                            _db.SaveChanges();
+
+                            int methods = 1;
+                            var order = new ORDER()
                             {
-                                var update_quan_pro = p.QUANTITY - detail.QUANTITY;
-                                p.QUANTITY = update_quan_pro;
+                                IDDELIADDRESS = deliaddress.ID,
+                                DAY = DateTime.Now,
+                                TOTALMONEY = cart.Total_money(),
+                                ORI_PRICE = cart.Total_OriPrice(),
+                                METHODS = methods,
+                            };
+                            _db.ORDERS.Add(order);
+                            _db.SaveChanges();
+
+                            var de_order = new List<DE_ORDER>();
+                            foreach (var item in cart.Items)
+                            {
+                                var detail = new DE_ORDER()
+                                {
+                                    IDPRODUCT = item._product.ID,
+                                    IDORDER = order.ID,
+                                    QUANTITY = item._quantity,
+                                    PRICE = item._product.PRICE,
+                                };
+                                de_order.Add(detail);
                             }
+                            foreach (var detail in de_order)
+                            {
+                                _db.DE_ORDER.Add(detail);
+                                foreach (var p in _db.PRODUCTS.Where(s => s.ID == detail.IDPRODUCT))
+                                {
+                                    var update_quan_pro = p.QUANTITY - detail.QUANTITY;
+                                    p.QUANTITY = update_quan_pro;
+                                }
+                            }
+                            _db.SaveChanges();
                         }
-                        _db.SaveChanges();
+                        //Co dang nhap
+                        else
+                        {
+                            var deliaddress = new DELI_ADDRESS()
+                            {
+                                NAME = model.NAME,
+                                PHONE = model.PHONE,
+                                ADDRESS = model.ADDRESS,
+                                WARD = model.WARD,
+                                DISTRICT = model.DISTRICT,
+                                IDCUSTOMER = (int)Session["ID"]
+                            };
+
+                            _db.DELI_ADDRESS.Add(deliaddress);
+                            _db.SaveChanges();
+
+                            int methods = 1;
+                            var order = new ORDER()
+                            {
+                                IDDELIADDRESS = deliaddress.ID,
+                                DAY = DateTime.Now,
+                                TOTALMONEY = cart.Total_money(),
+                                ORI_PRICE = cart.Total_OriPrice(),
+                                METHODS = methods,
+                            };
+                            _db.ORDERS.Add(order);
+                            _db.SaveChanges();
+
+                            var de_order = new List<DE_ORDER>();
+                            foreach (var item in cart.Items)
+                            {
+                                var detail = new DE_ORDER()
+                                {
+                                    IDPRODUCT = item._product.ID,
+                                    IDORDER = order.ID,
+                                    QUANTITY = item._quantity,
+                                    PRICE = item._product.PRICE,
+                                };
+                                de_order.Add(detail);
+                            }
+                            foreach (var detail in de_order)
+                            {
+                                _db.DE_ORDER.Add(detail);
+                                foreach (var p in _db.PRODUCTS.Where(s => s.ID == detail.IDPRODUCT))
+                                {
+                                    var update_quan_pro = p.QUANTITY - detail.QUANTITY;
+                                    p.QUANTITY = update_quan_pro;
+                                }
+                            }
+                            _db.SaveChanges();
+                        }
                     }
                 }
 

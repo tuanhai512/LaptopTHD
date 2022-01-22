@@ -13,9 +13,13 @@ namespace THDShop.Areas.Manager.Controllers
         QLLaptopShopEntities database = new QLLaptopShopEntities();
         public ActionResult Index()
         {
-         
-          
-            return View(database.ROLES.ToList());
+
+            if (Session["IDQL"] != null)
+            {
+                return View(database.ROLES.ToList());
+            }
+            return Redirect("/LoginCustomer/LoginAccount");
+            
         }
 
      

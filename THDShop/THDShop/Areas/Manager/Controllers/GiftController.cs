@@ -16,7 +16,12 @@ namespace THDShop.Areas.Manager.Controllers
         // GET: Manager/Gift
         public ActionResult Index()
         {
-            return View(_db.GIFTs.ToList());
+            if (Session["IDQL"] != null || Session["IDNV"] != null)
+            {
+                return View(_db.GIFTs.ToList());
+            }
+            return Redirect("/LoginCustomer/LoginAccount");
+            
         }
 
         // GET: Manager/Gift/Details/5
@@ -50,7 +55,7 @@ namespace THDShop.Areas.Manager.Controllers
                     entity.ID = model.ID;
                     entity.G_POINT = model.G_POINT;
                     entity.G_VALUE = model.G_VALUE;
-                    entity.G_START = (DateTime)model.G_START;
+                    entity.G_START = DateTime.Now;
                     entity.G_END = (DateTime)model.G_END;
                     entity.DESCREPTION = model.DESCREPTION;
                     entity.QUANTITY = model.QUANTITY;

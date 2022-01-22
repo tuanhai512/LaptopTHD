@@ -8,7 +8,7 @@
 </head>
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Detail Product</h1>
+    <h1 class="h3 mb-0 text-gray-800">CHI TIẾT SẢN PHẨM</h1>
 </div>
 
 @using (Html.BeginForm("Detail", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -48,19 +48,6 @@
                     </div>
                     <div class="form-group">
                         @Html.DisplayFor(model => model.QUANTITY)
-                    </div>
-
-                    <!-- Mô Tả Chung -->
-                    <div class="form-group name-title">
-                        Mô tả chung
-                    </div>
-                    <div class="form-group ">
-                        @Html.DisplayFor(model => model.DESCRIPTION)
-                    </div>
-                    <div class="form-group name-title">
-USD                    </div>
-                    <div class="form-group ">
-                        @Html.DisplayFor(model => model.USD_PRICE)
                     </div>
                 </div>
             </div>
@@ -118,7 +105,7 @@ USD                    </div>
 
                     <!-- Loại Sản Phảm -->
                     <div class="form-group name-title">
-                        Loại sản phẩm
+                        Thương hiệu
                     </div>
                     <div class="form-group ">
                         @Html.DisplayFor(model => model.CATEGORYNAME)

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - User</title>
+    <title>THDShop</title>
 
     <link href="~/Assets/css/fontasp.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/Assets/ECome/css/owl.carousel.min.css">
@@ -22,9 +22,7 @@
                     <div class="container container-240">
                         <div class="row flex">
                             <div style="padding-top:40px" class="col-lg-2 col-md-2 col-sm-6 col-xs-6 v-center header-logo">
-
                                 <a href="@Url.Action("Index","HomeUser")"><img src="~/Assets/Images/logothdshopbgwhite.png" alt="" class="img-reponsive"></a>
-
                             </div>
                             <div style="padding-left:170px" class="col-lg-7 col-md-7 v-center header-search hidden-xs hidden-sm">
                                 <form method="get" class="searchform ajax-search" action="/search" role="search">
@@ -82,11 +80,50 @@
                                     <div class="header-sub-element row">
                                         @if (Session["Email"] != null)
                                         {
-                                            <a class="hidden-xs hidden-sm" href="@Url.Action("EditAccount", "LoginCustomer", new { id = Session["ID"] })"><img src="~/Assets/ECome/img/icon-user.png" alt=""></a>
+                                            <div class="cart">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="label5">
+                                                    <img src="~/Assets/ECome/img/icon-user.png" alt="">
+                                                </a>
+                                                <div class="dropdown-menu dropdown-cart" style="min-width: 180px;">
+                                                    <ul class="mini-products-list">
+                                                        @if (Session["ID"] != null)
+                                                        {
+                                                            <li class="item-cart">
+                                                                <div>
+                                                                    <a href="@Url.Action("Details", "LoginCustomer", new { id = Session["ID"] })">
+                                                                        Thông tin cá nhân
+                                                                    </a>
+                                                                </div>
+                                                            </li>
+                                                            <li style="display:flow-root" class="item-cart">
+                                                                <div>
+                                                                    <a href="@Url.Action("DonDat", "LoginCustomer", new { id = Session["ID"] })">
+                                                                        Đơn đặt
+                                                                    </a>
+                                                                </div>
+                                                                <div style="padding-top:15px">
+                                                                    <a href="@Url.Action("MyGift", "LoginCustomer",new { id = Session["ID"] })">
+                                                                        Voucher của tôi
+                                                                    </a>
+                                                                </div>
+                                                            </li>
+                                                        }
+                                                        <li class="item-cart">
+                                                            <div>
+                                                                <a href="@Url.Action("Logout", "LoginCustomer")">
+                                                                    Đăng xuất
+                                                                </a>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         }
                                         else
-                                        { <a class="hidden-xs hidden-sm" href="#"><img src="~/Assets/ECome/img/icon-user.png" alt=""></a>
-                                        }                                        <div class="cart">
+                                        {
+                                            <a class="hidden-xs hidden-sm" href="#"></a>
+                                        }                                     
+                                        <div class="cart">
                                             <a href="@Url.Action("ShowToCart","Cart")" class="dropdown-toggle">
                                                 <img src="~/Assets/ECome/img/icon-cart.png" alt="">
                                                 <span>@Html.Action("BagCart", "Cart")</span>
@@ -197,9 +234,6 @@
                                                 <li class="level1 active dropdown">
                                                     <a href="@Url.Action("Voucher", "HomePage")">Voucher<span class="h-ribbon h-pos e-skyblue">new</span></a>
                                                 </li>
-                                                <li class="level1 active dropdown">
-                                                    <a href="@Url.Action("Create", "Phanhoi")">Phản hồi</a>
-                                                </li>
                                             </ul>
                                         </div>
                                     </nav>
@@ -218,15 +252,6 @@
                                             {
                                                 <li class="level1 active hassub">
                                                     <span>@Session["Email"]</span>
-                                                </li>
-                                                <li class="level1 active hassub">
-                                                    <a href="@Url.Action("Logout", "LoginCustomer")">Đăng xuất</a>
-                                                </li>
-                                                <li class="level1 active hassub">
-                                                    <a href="@Url.Action("MyGift", "LoginCustomer",new { id = Session["ID"] })">Kho Voucher</a>
-                                                </li>
-                                                <li class="level1 active hassub">
-                                                    <a href="@Url.Action("DonDat", "LoginCustomer",new { id = Session["ID"] })">Xem đơn đặt</a>
                                                 </li>
                                             }
                                         </ul>

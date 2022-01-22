@@ -17,7 +17,11 @@ namespace THDShop.Areas.Manager.Controllers
         // GET: Manager/Report
         public ActionResult Index()
         {
-            return View(database.REPORTs.ToList());
+            if (Session["IDQL"] != null)
+            {
+                return View(database.REPORTs.ToList());
+            }
+            return Redirect("/LoginCustomer/LoginAccount");
         }
 
         // GET: Manager/Report/Details/5

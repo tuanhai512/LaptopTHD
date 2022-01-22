@@ -49,14 +49,18 @@ namespace THDShop.Areas.Manager.Controllers
             //return View(query.ToList());
             //var query = ProductSingleton.Instance.listProduct;
             //return View(query.ToList());
-            var links = from l in _context.PRODUCTS
-                        select l;
-            if (id != 0)
+            if (Session["IDQL"] != null)
             {
-                links = links.Where(x => x.ID == id);
+                var links = from l in _context.PRODUCTS
+                            select l;
+                if (id != 0)
+                {
+                    links = links.Where(x => x.ID == id);
+                    return View(links);
+                }
                 return View(links);
             }
-            return View(links);
+            return Redirect("/LoginCustomer/LoginAccount");
         }
         
         public ActionResult Create()
@@ -126,12 +130,12 @@ namespace THDShop.Areas.Manager.Controllers
                 else
                 {
 
-                    return View();
+                    return View(model);
                 }
             }
             else
             {
-                return View();
+                return View(model);
             }
         }
         public ActionResult Edit(int ID)

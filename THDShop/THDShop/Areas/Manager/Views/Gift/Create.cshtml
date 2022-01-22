@@ -3,81 +3,70 @@
 @{
     ViewBag.Title = "Create";
 }
-
-<h2>Create</h2>
+<head>
+    <link href="~/form/css/StyleSheet.css" rel="stylesheet" />
+</head>
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Tạo voucher</h1>
+</div>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    <div style="display: flex; align-items: flex-start;">
+        <div class="text-center-box">
+            <div class="paddingtop rl" style="padding-bottom: 20px;">
+                <div class="form">
+                    <!-- Mã -->
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.ID, new { htmlAttributes = new { placeholder = "Mã Voucher" } })
+                        @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
+                    </div>
 
-    <div class="form-horizontal">
-        <h4>GIFT</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.ID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <!-- Điểm để đổi -->
+                    <div class="form-group ">
+                        @Html.EditorFor(model => model.G_POINT, new { htmlAttributes = new { placeholder = "Điểm" } })
+                        @Html.ValidationMessageFor(model => model.G_POINT, "", new { @class = "text-danger" })
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.G_POINT, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.G_POINT, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.G_POINT, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <!-- Số Lượng -->
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.G_VALUE, new { htmlAttributes = new { placeholder = "% Giảm (1-100)" } })
+                        @Html.ValidationMessageFor(model => model.G_VALUE, "", new { @class = "text-danger" })
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.G_VALUE, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.G_VALUE, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.G_VALUE, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <!-- Thời gian bắt đầu -->
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.G_START, new { htmlAttributes = new { placeholder = "Thời gian bắt đầu" } })
+                        @Html.ValidationMessageFor(model => model.G_START, "", new { @class = "text-danger" })
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.G_START, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.G_START, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.G_START, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <!-- Thời gian kết thúc -->
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.G_END, new { htmlAttributes = new { placeholder = "Thời gian kết thúc" } })
+                        @Html.ValidationMessageFor(model => model.G_END, "", new { @class = "text-danger" })
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.G_END, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.G_END, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.G_END, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <!-- mô tả -->
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.DESCREPTION, new { htmlAttributes = new { placeholder = "Mô tả voucher" } })
+                        @Html.ValidationMessageFor(model => model.DESCREPTION, "", new { @class = "text-danger" })
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DESCREPTION, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DESCREPTION, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DESCREPTION, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <!-- số lượng -->
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.QUANTITY, new { htmlAttributes = new { placeholder = "Số lượng" } })
+                        @Html.ValidationMessageFor(model => model.QUANTITY, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.QUANTITY, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.QUANTITY, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.QUANTITY, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <!-- Buttons -->
+                <div>
+                    <input class="btn btn-success" type="submit" value="Tạo" />
+                    <span class="btn btn-link">@Html.ActionLink("Quay về", "Index") </span>
+                </div>
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

@@ -20,8 +20,12 @@
         }
     </style>
 </head>
-<div>
 
+<div class="ecome-heading style3 spc3">
+    <h1>SẢN PHẨM</h1>
+    <a href="@Url.Action("Product","HomePage")" class="btn-show">Xem thêm<i class="ion-ios-arrow-forward"></i></a>
+</div>
+<div>
     <div class="owl-carousel owl-theme owl-cate v2 js-owl-cate">
         @foreach (var item in Model)
         {
@@ -55,39 +59,135 @@
             </div>
         }
     </div>
-    <div>
+</div>
+
+<div class="ecome-heading style3 spc3">
+    <h1>ASUS</h1>
+    <a href="@Url.Action("Product","HomePage")" class="btn-show">Xem thêm<i class="ion-ios-arrow-forward"></i></a>
+</div>
+<div>
+    <div class="owl-carousel owl-theme owl-cate v2 js-owl-cate">
         @foreach (var item in Model)
         {
-            <div class="box ">
-                <div class="pd-bd product-inner">
-                    <div class="product-img">
-                        <a href="/HomePage/Details/@item.ID"><img src="@Url.Content(item.IMAGE)" alt="" class="img-reponsive imgpro"></a>
-                    </div>
-                    <div class="product-info">
-                        <div class="color-group">
+            if (item.IDCATEGORY == 1)
+            {
+                <div class="product-item">
+                    <div class="pd-bd product-inner">
+                        <div class="product-img">
+                            <a href="/HomePage/Details/@item.ID"><img src="@Url.Content(item.IMAGE)" alt="" class="img-reponsive imgpro"></a>
                         </div>
-                        <div class="element-list element-list-left">
-                        </div>
-                        <div class="element-list element-list-middle">
-                            <p class="product-cate">@Html.DisplayFor(modelItem => item.CATEGORy.NAME)</p>
-                            <h3 class="product-title"><a href="/HomePage/Details/@item.ID">@Html.DisplayFor(modelItem => item.NAME)</a></h3>
-                            <div class="product-bottom">
-                                <div class="product-price"><span>@item.PRICE.ToString("#,##")</span></div>
+                        <div class="product-info">
+                            <div class="color-group">
                             </div>
-                        </div>
-                        <div class="product-button-group">
-                            <a href="/Cart/AddToCart/@item.ID" class="btn-icon">
-                                <span class="icon-bg icon-cart"></span>
-                            </a>
-                            <a href="/HomePage/Details/@item.ID" class="btn-icon btn-view">
-                                <span class="icon-bg icon-view"></span>
-                            </a>
+                            <div class="element-list element-list-left">
+                            </div>
+                            <div class="element-list element-list-middle">
+                                <p class="product-cate">@Html.DisplayFor(modelItem => item.CATEGORy.NAME)</p>
+                                <h3 class="product-title"><a href="/HomePage/Details/@item.ID">@Html.DisplayFor(modelItem => item.NAME)</a></h3>
+                                <div class="product-bottom">
+                                    <div class="product-price"><span>@item.PRICE.ToString("#,##")</span></div>
+                                </div>
+                            </div>
+                            <div class="product-button-group">
+                                <a href="/Cart/AddToCart/@item.ID" class="btn-icon">
+                                    <span class="icon-bg icon-cart"></span>
+                                </a>
+                                <a href="/HomePage/Details/@item.ID" class="btn-icon btn-view">
+                                    <span class="icon-bg icon-view"></span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
         }
     </div>
-
 </div>
+
+<div class="ecome-heading style3 spc3">
+    <h1>MSI</h1>
+    <a href="@Url.Action("Product","HomePage")" class="btn-show">Xem thêm<i class="ion-ios-arrow-forward"></i></a>
+</div>
+<div>
+    <div class="owl-carousel owl-theme owl-cate v2 js-owl-cate">
+        @foreach (var item in Model)
+        {
+            if (item.IDCATEGORY == 2)
+            {
+                <div class="product-item">
+                    <div class="pd-bd product-inner">
+                        <div class="product-img">
+                            <a href="/HomePage/Details/@item.ID"><img src="@Url.Content(item.IMAGE)" alt="" class="img-reponsive imgpro"></a>
+                        </div>
+                        <div class="product-info">
+                            <div class="color-group">
+                            </div>
+                            <div class="element-list element-list-left">
+                            </div>
+                            <div class="element-list element-list-middle">
+                                <p class="product-cate">@Html.DisplayFor(modelItem => item.CATEGORy.NAME)</p>
+                                <h3 class="product-title"><a href="/HomePage/Details/@item.ID">@Html.DisplayFor(modelItem => item.NAME)</a></h3>
+                                <div class="product-bottom">
+                                    <div class="product-price"><span>@item.PRICE.ToString("#,##")</span></div>
+                                </div>
+                            </div>
+                            <div class="product-button-group">
+                                <a href="/Cart/AddToCart/@item.ID" class="btn-icon">
+                                    <span class="icon-bg icon-cart"></span>
+                                </a>
+                                <a href="/HomePage/Details/@item.ID" class="btn-icon btn-view">
+                                    <span class="icon-bg icon-view"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<div class="ecome-heading style3 spc3">
+    <h1>ACER</h1>
+    <a href="@Url.Action("Product","HomePage")" class="btn-show">Xem thêm<i class="ion-ios-arrow-forward"></i></a>
+</div>
+<div>
+    <div class="owl-carousel owl-theme owl-cate v2 js-owl-cate">
+        @foreach (var item in Model)
+        {
+            if (item.IDCATEGORY == 3)
+            {
+                <div class="product-item">
+                    <div class="pd-bd product-inner">
+                        <div class="product-img">
+                            <a href="/HomePage/Details/@item.ID"><img src="@Url.Content(item.IMAGE)" alt="" class="img-reponsive imgpro"></a>
+                        </div>
+                        <div class="product-info">
+                            <div class="color-group">
+                            </div>
+                            <div class="element-list element-list-left">
+                            </div>
+                            <div class="element-list element-list-middle">
+                                <p class="product-cate">@Html.DisplayFor(modelItem => item.CATEGORy.NAME)</p>
+                                <h3 class="product-title"><a href="/HomePage/Details/@item.ID">@Html.DisplayFor(modelItem => item.NAME)</a></h3>
+                                <div class="product-bottom">
+                                    <div class="product-price"><span>@item.PRICE.ToString("#,##")</span></div>
+                                </div>
+                            </div>
+                            <div class="product-button-group">
+                                <a href="/Cart/AddToCart/@item.ID" class="btn-icon">
+                                    <span class="icon-bg icon-cart"></span>
+                                </a>
+                                <a href="/HomePage/Details/@item.ID" class="btn-icon btn-view">
+                                    <span class="icon-bg icon-view"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
 

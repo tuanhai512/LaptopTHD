@@ -6,21 +6,23 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     @using (Html.BeginForm("Searchday", "Report"))
     {
-        <h1 class="h3 mb-0 text-gray-800">THỐNG KÊ</h1>
-        <div class="input-group">
-            <input type="text" name="day" class="form-control bg-light border-0 small" placeholder="Thống kê theo tháng"
-                   aria-label="Search" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-                <button class="btn btn-primary" type="submit">
-                    <i class="fas fa-search fa-sm"></i>
-                </button>
+        <div style="display:flex">
+            <h1 class="h3 mb-0 text-gray-800">THỐNG KÊ</h1>
+            <div class="input-group">
+                <input type="text" name="day" class="form-control bg-light border-0 small" placeholder="Thống kê theo tháng"
+                       aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
             </div>
         </div>
     }
-    <div class="form-group pull-right">
+    <div class="pull-right">
         @using (Html.BeginForm("Export", "Report", FormMethod.Post))
         {
-            <input type="submit" value="report" class="btn btn-success" />
+            <input type="submit" value="Báo cáo Excel" class="btn btn-success" />
         }
     </div>
 </div>
@@ -33,17 +35,17 @@
                     <tr>
                         <th class="header__item">
                             <a class="filter__link filter__link--number" id="id" href="#">
-                                Ma HD
+                                Mã HĐ
                             </a>
                         </th>
                         <th class="header__item">
                             <a class="filter__link filter__link--number" id="name" href="#">
-                                @Html.DisplayNameFor(model => model.DATERP)
+                                Ngày Báo Cáo
                             </a>
                         </th>
                         <th class="header__item">
                             <a class="filter__link" id="cate" href="#">
-                                @Html.DisplayNameFor(model => model.BILL.ORI_PRICE)
+                                Giá Bán
                             </a>
                         </th>
                         <th class="header__item">
@@ -52,13 +54,10 @@
                             </a>
                         </th>
                         <th class="header__item">
-                            <a class="filter__link filter__link--number" id="price" href="#">
-                                Tổng doanh thu tren don
+                            <a class="filter__link filter__link--number" id="oriprice" href="#">
+                                Tổng Doanh Thu
                             </a>
                         </th>
-                      
-
-                        <th></th>
                     </tr>
                 </thead>
             </table>
@@ -80,28 +79,19 @@
 
                                 </td>
                                 <td class="table-data">
-                                    @item.BILL.ORI_PRICE.ToString("N0")
+                                    @item.BILL.ORI_PRICE.ToString("#,##")
                                 </td>
                                 <td class="table-data">
-                                    @item.TOTALMONEY.ToString("N0")
+                                    @item.TOTALMONEY
                                 </td>
                                 <td class="table-data">
-                                    @item.Tongdoanhthu().ToString("N0")
+                                    @item.Tongdoanhthu()
                                 </td>
 
-
-                                <td style="display: flex;align-content: center;flex-wrap: wrap;flex-direction: column;">
-                                    @*<a href="@Url.Action("Edit", "Product", new { id = item.ID })" class="btn btn-sm btn-warning" style="margin-bottom: 5px;">Edit</a>
-                            <a href="@Url.Action("Delete", "Product", new { id = item.ID })" class="btn btn-sm btn-danger" style="margin-bottom: 5px;">Delete</a>
-                            <a href="@Url.Action("Detail", "Product", new { id = item.ID })" class="btn btn-sm btn-info" style="margin-bottom: 5px;">Detail</a>*@
-                                </td>
                             </tr>
-                           
                         }
-
                     }
                 </tbody>
-                
             </table>
         </div>
     </div>

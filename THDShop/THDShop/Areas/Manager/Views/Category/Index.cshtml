@@ -11,7 +11,7 @@
         <h1 class="h3 mb-0 text-gray-800">Thương Hiệu</h1>
         <div class="input-group">
             <input type="text" name="name" class="form-control bg-light border-0 small" placeholder="Nhập tên thương hiệu"
-                   aria-label="Search" aria-describedby="basic-addon2" >
+                   aria-label="Search" aria-describedby="basic-addon2">
             <div class="input-group-append">
                 <button class="btn btn-primary" type="submit">
                     <i class="fas fa-search fa-sm"></i>
@@ -66,11 +66,9 @@
                                         @Html.DisplayFor(modelItem => item.NAME)
                                     </td>
                                     <td style="display: flex;align-content: center;flex-wrap: wrap;flex-direction: column;">
-                                        <a href="@Url.Action("Edit", "Category", new { id = item.ID })" class="btn btn-sm btn-warning" style="margin-bottom: 5px;">Edit</a>
-                                        <a href="@Url.Action("Delete", "Category", new { id = item.ID })" class="btn btn-sm btn-danger" style="margin-bottom: 5px;">Delete</a>
-                                        <a href="@Url.Action("Detail", "Category", new { id = item.ID })" class="btn btn-sm btn-info" style="margin-bottom: 5px;">Detail</a>
-                                        <a href="@Url.Action("Duplicate", "Category", new { id = item.ID })" class="btn btn-sm btn-secondary" style="margin-bottom: 5px;">Duplicate</a>
-
+                                        <a href="@Url.Action("Edit", "Category", new { id = item.ID })" class="btn btn-sm btn-warning" style="margin-bottom: 5px;">Sửa</a>
+                                        <a href="@Url.Action("Delete", "Category", new { id = item.ID })" class="btn btn-sm btn-danger" style="margin-bottom: 5px;">Xóa</a>
+                                        <a href="@Url.Action("Duplicate", "Category", new { id = item.ID })" class="btn btn-sm btn-secondary" style="margin-bottom: 5px;">Copy</a>
                                     </td>
                                 </tr>
                             }
@@ -79,4 +77,5 @@
                 </table>
             </div>
         </div>
-    </div>}
+    </div>
+}

@@ -672,3 +672,12 @@ D:\Github\LaptopTHD\THDShop\THDShop\bin\DocumentFormat.OpenXml.xml
 D:\Github\LaptopTHD\THDShop\THDShop\bin\ExcelNumberFormat.xml
 D:\Github\LaptopTHD\THDShop\THDShop\bin\PayPal.xml
 D:\Github\LaptopTHD\THDShop\THDShop\obj\Debug\THDShop.csproj.AssemblyReference.cache
+D:\HUFLIT\MTK\LaptopTHD\GitHub\LaptopTHD\LaptopTHD\THDShop\THDShop\obj\Debug\THDShop.csprojAssemblyReference.cache
+D:\HUFLIT\MTK\LaptopTHD\GitHub\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\ClosedXML.dll
+D:\HUFLIT\MTK\LaptopTHD\GitHub\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\DocumentFormat.OpenXml.dll
+D:\HUFLIT\MTK\LaptopTHD\GitHub\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\ExcelNumberFormat.dll
+D:\HUFLIT\MTK\LaptopTHD\GitHub\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\System.IO.Packaging.dll
+D:\HUFLIT\MTK\LaptopTHD\GitHub\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\ClosedXML.pdb
+D:\HUFLIT\MTK\LaptopTHD\GitHub\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\ClosedXML.xml
+D:\HUFLIT\MTK\LaptopTHD\GitHub\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\DocumentFormat.OpenXml.xml
+D:\HUFLIT\MTK\LaptopTHD\GitHub\LaptopTHD\LaptopTHD\THDShop\THDShop\bin\ExcelNumberFormat.xml

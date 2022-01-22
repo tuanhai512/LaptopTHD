@@ -4,25 +4,71 @@
     ViewBag.Title = "MyGift";
 }
 
-<h2>MyGift</h2>
+<div class="container container-240">
 
-<table class="table">
-    <tr>
-        <th>Mã Giảm giá     </th>
-        <th>
-Giảm        </th>
-        <th></th>
-    </tr>
+    <div class="checkout wishlist">
+        <ul class="breadcrumb v3">
+            <li><a href="#">Trang chủ</a></li>
+            <li class="active">Voucher của tôi</li>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.GIFT.ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GIFT.DESCREPTION)
-        </td>
-    </tr>
-}
+        </ul>
+        @if (Model != null)
+        {
+            <div class="shopping-cart v2 bd-7">
+                <div class="cmt-title text-center abs">
+                    <h1 class="page-title v4">Voucher của tôi</h1>
+                </div>
 
-</table>
+                <div class="table-responsive">
+                    <table class="table cart-table">
+
+                        <tbody>
+                            <tr>
+                                <th style="text-align: center;">
+                                    Mã Voucher
+                                </th>
+                                <th style="text-align: center;">
+                                    Giám giá
+                                </th>
+                                <th style="text-align: center;">
+                                    Ghi Chú
+                                </th>
+                            </tr>
+                            @foreach (var item in Model)
+                            {
+
+                                <tr class="item_cart">
+                                    <td class="total-price">
+                                        <p class="price">@Html.DisplayFor(modelItem => item.GIFT.ID)</p>
+                                    </td>
+                                    <td class="total-price">
+                                        <p class="price">@Html.DisplayFor(modelItem => item.GIFT.G_VALUE)</p>
+                                    </td>
+                                    <td class="total-price">
+                                        @Html.DisplayFor(modelItem => item.GIFT.DESCREPTION)
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        }
+        else
+        {
+            <div class="shopping-cart v2 bd-7">
+                <div class="cmt-title text-center abs">
+                    <h1 class="page-title v4">Wishlist</h1>
+                    <div class="w-empty">
+                        <p>No products were added to the wishlist</p>
+                    </div>
+                </div>
+
+            </div>
+
+        }
+    </div>
+
+</div>

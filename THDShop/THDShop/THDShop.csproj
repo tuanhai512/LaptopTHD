@@ -3514,6 +3514,7 @@
     <Content Include="Areas\Manager\Views\User\Customer.cshtml" />
     <Content Include="Areas\Manager\Views\Report\Searchday.cshtml" />
     <Content Include="Views\Shared\LoaiPartial.cshtml" />
+    <Content Include="Areas\Manager\Views\Order\Details.cshtml" />
     <EntityDeploy Include="Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
@@ -3565,6 +3566,7 @@
     <Content Include="Views\LoginCustomer\MyGift.cshtml" />
     <Content Include="Views\LoginCustomer\EditAccount.cshtml" />
     <Content Include="Views\LoginCustomer\DonDat.cshtml" />
+    <Content Include="Views\LoginCustomer\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

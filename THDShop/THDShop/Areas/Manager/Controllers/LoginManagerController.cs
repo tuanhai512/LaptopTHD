@@ -91,7 +91,7 @@ namespace THDShop.Areas.Manager.Controllers
         public ActionResult Logout()
         {
             Session.Abandon();
-            return RedirectToAction("Index", "LoginUser");
+            return RedirectToAction("Index", "Bill");
         }
     }
 }

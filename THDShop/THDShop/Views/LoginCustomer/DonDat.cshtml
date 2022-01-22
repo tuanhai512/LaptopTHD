@@ -1,54 +1,97 @@
-﻿@model IEnumerable<THDShop.BILL>
+﻿@model IEnumerable<THDShop.ORDER>
 
 @{
     ViewBag.Title = "DonDat";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="container container-240">
 
-<h2>DonDat</h2>
+    <div class="checkout wishlist">
+        <ul class="breadcrumb v3">
+            <li><a href="#">Trang chủ</a></li>
+            <li class="active">Đơn đặt</li>
+        </ul>
 
-<table class="table">
-    <tr>
-        <th>
-Mã Hóa đơn        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TOTALMONEY)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DATETIME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ORDER.DELI_ADDRESS.ADDRESS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.METHODS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ORDER.NOTE)
-        </th>
-    </tr>
+        <div class="shopping-cart v2 bd-7">
+            <div class="cmt-title text-center abs">
+                <h1 class="page-title v4">Đơn đặt</h1>
+            </div>
+            <div class="table-responsive">
+                <table class="table cart-table">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TOTALMONEY)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DATETIME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ORDER.DELI_ADDRESS.ADDRESS)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.METHODS)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NOTE)
-        </td>
-    </tr>
-}
-
-</table>
+                    <tbody>
+                        <tr>
+                            <th style="text-align: center;">
+                                Ngày đặt
+                            </th>
+                            <th style="text-align: center;">
+                                Mã hóa đơn
+                            </th>
+                            <th style="text-align: center;">
+                                Tên
+                            </th>
+                            <th style="text-align: center;">
+                                Tổng giá
+                            </th>
+                            <th style="text-align: center;">
+                                Phương thức
+                            </th>
+                            <th style="text-align: center;">
+                                Tình trạng đơn
+                            </th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="item_cart">
+                                <td class="total-price">
+                                    <p class="price">@(item.DAY.ToString("dd/MM HH:mm"))</p>
+                                </td>
+                                <td class="total-price">
+                                    <p class="price">@Html.DisplayFor(modelItem => item.ID)</p>
+                                </td>
+                                <td class="total-price">
+                                    <p class="price">@Html.DisplayFor(modelItem => item.DELI_ADDRESS.NAME)</p>
+                                </td>
+                                <td class="total-price">
+                                    <p class="price">@Html.DisplayFor(modelItem => item.TOTALMONEY)</p>
+                                </td>
+                                <td class="w-status">
+                                    <p>
+                                        @if (item.METHODS.Equals(0))
+                                        {
+                                            <span>Tiền Mặt(COD)</span>
+                                        }
+                                        @if (item.METHODS.Equals(1))
+                                        {
+                                            <span>PayPal</span>
+                                        }
+                                    </p>
+                                </td>
+                                <td class="w-status">
+                                    <p>
+                                        @if (item.STATUS.Equals(0))
+                                        {
+                                            <span>Chờ xác nhận</span>
+                                        }
+                                        @if (item.STATUS.Equals(1))
+                                        {
+                                            <span>Đang giao hàng</span>
+                                        }
+                                        @if (item.STATUS.Equals(2))
+                                        {
+                                            <span>Giao hàng thành công</span>
+                                        }
+                                        @if (item.STATUS.Equals(3))
+                                        {
+                                            <span>Giao hàng thất bại</span>
+                                        }
+                                    </p>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

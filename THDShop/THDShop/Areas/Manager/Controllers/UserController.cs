@@ -16,8 +16,12 @@ namespace THDShop.Areas.Manager.Controllers
         public ActionResult Index()
         {
 
-
-            return View(_db.USERS.ToList());
+            if (Session["IDQL"] != null)
+            {
+                return View(_db.USERS.ToList());
+            }
+            return Redirect("/LoginCustomer/LoginAccount");
+            
         }
         public ActionResult Staff()
         {

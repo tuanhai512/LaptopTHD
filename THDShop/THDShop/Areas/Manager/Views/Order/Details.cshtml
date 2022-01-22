@@ -1,0 +1,106 @@
+﻿@model THDShop.ORDER
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>CHI TIẾT ĐẶT HÀNG</h2>
+
+<div>
+    <h4>MÃ ĐẶT HÀNG : @Html.DisplayFor(model => model.ID)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt style="padding-top:10px">
+            NGÀY : @Html.DisplayFor(model => model.DAY)
+        </dt>
+        <dt style="padding-top:10px">
+            TÊN : @Html.DisplayFor(model => model.DELI_ADDRESS.NAME)
+        </dt>
+        <dt style="padding-top:10px">
+            SỐ ĐIỆN THOẠI : @Html.DisplayFor(model => model.DELI_ADDRESS.PHONE)
+        </dt>
+        <dt style="padding-top:10px">
+            ĐỊA CHỈ : <span>@Html.DisplayFor(model => model.DELI_ADDRESS.ADDRESS)</span>
+            <span>P.@Html.DisplayFor(model => model.DELI_ADDRESS.WARD)</span>
+            <span>Q.@Html.DisplayFor(model => model.DELI_ADDRESS.DISTRICT)</span>
+        </dt>
+        <dt style="padding-top:10px">
+            TỔNG TIỀN : @Math.Round(Model.TOTALMONEY).ToString("N0")
+        </dt>
+        <dt style="padding-top:10px">
+            TRẠNG THÁI :  @if (Model.STATUS.Equals(0))
+            {
+                <span>Chờ Xác Nhận</span>
+            }
+            @if (Model.STATUS.Equals(1))
+            {
+                <span>Đã Xác Nhận</span>
+            }
+            @if (Model.STATUS.Equals(2))
+            {
+                <span>Đã Hoàn Tất</span>
+            }
+            @if (Model.STATUS.Equals(3))
+            {
+                <span>Đã Hủy Đơn</span>
+            }
+        </dt>
+        <dt style="padding-top:10px">
+            GHI CHÚ : @Html.DisplayFor(model => model.NOTE)
+        </dt>
+    </dl>
+</div>
+<hr />
+<div class="text-center">
+    <div>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead class="table-header">
+                    <tr>
+                        <th class="header__item">
+                            <a class="filter__link filter__link--number" id="id" href="#">
+                                Sản phẩm
+                            </a>
+                        </th>
+                        <th class="header__item">
+                            <a class="filter__link" id="name" href="#">
+                                Số lượng
+                            </a>
+                        </th>
+                        <th class="header__item">
+                            <a class="filter__link" id="cate" href="#">
+                                Giá
+                            </a>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tbody class="table-content">
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model.DE_ORDER)
+                        {
+                            <tr class="table-row">
+                                <td class="table-data">
+                                    @Html.DisplayFor(modelItem => item.PRODUCT.NAME)
+                                </td>
+                                <td class="table-data">
+                                    @Html.DisplayFor(modelItem => item.QUANTITY)
+                                </td>
+                                <td class="table-data">
+                                    @item.PRICE.ToString("N0")
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<p style="padding-top:20px">
+    @Html.ActionLink("Quay về", "Index")
+</p>
